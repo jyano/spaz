@@ -133,13 +133,17 @@ G=function(arg, str){var a,ag= _.tA(arguments), p, n, m, d,g
     g[str]=1
     //g.N= g.$ && N(g.f);
     g.N = g.$ && N(g.f)
-    g.N_ =N(g.f);
+
+    g.N_ =g.$N=N(g.f)
     g._N =N(g.l)
-    g.$N= N(g.f)
+
+
     g.$_N= N(g.s)
     g.S = g.$ && S(g.f)
     g._S = S(g.l)
-    g.$S=  g.S_ = S(g.f)
+
+    g.S_ =   g.$S= S(g.f)
+
     g.$_S= S(g.s)
     g.O = g.$ && O(g.f)
     g.O_ = O(g.f)

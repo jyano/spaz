@@ -73,69 +73,83 @@ b._bS=function(j,o){var b=this
         j.XY(b.X() + o.x,
             b.Y() + o.y).rt(b.rt() + o.rt)})
 }
-b.bS = function () {
-    var b = this, w = b.W(), g = G(arguments), o, i, a, sc
-    //pass it a display object (which i guess implies its already loaded)
-    o = cjs.iDO(g.f) ? {i: g.f, bm: g.f} : g.O ? g.f :
-    {i: g.f, sc: g.s, x: g.t, y: g[3], r: g[4], al: g[5]}
 
-    //if not loaded, async loads and passes it back as a data object
-    //next time, then, when loaded it can bypass async
-    if (S(o.i)) {
-        w.g.bm(o.i, function (bm) {
-            b.bS(_.x(o, {i: bm, bm: bm}))
-        })
-        return this
+
+b.bS = function () {var b = this, w = b.W(), g = G(arguments), o, i, a, sc //pass it a display object (which i guess implies its already loaded)
+
+
+    o = cjs.iDO(g.f) ? {i: g.f, bm: g.f} : g.O ? g.f : {i: g.f, sc: g.s, x: g.t, y: g[3], r: g[4], al: g[5]}
+
+    if (S(o.i)) {w.g.bm(o.i, function (bm) {b.bS(_.x(o, {i: bm, bm: bm})) })} //if not loaded, async loads and passes it back as a data object //next time, then, when loaded it can bypass async
+
+    else {
+        _xyr(o)
+        _sc(o)
+        _im(o)
+
+        //they can pass in a formed shapeer
+        if (cjs.hasDim(o.bm) && !g.n) {o.bm.rC()}//regCent //can not center things that dont have dimensions! // scale, position and place the bm in the ct (which is on the stage)
+        o.bm.sXY(o.sc).XY(o.x, o.y).rt(o.r).al(o.al)
+
+        this._gx(o.bm)
     }
-
-    _xyr(o)
-    _sc(o)
-    _im(o)
-
-    //they can pass in a formed shapeer
-    if (!g.n && !cjs.iH(o.bm) && !cjs.iCt(o.bm)) {
-        o.bm.rC()
-    }//regCent
-    //can not center things that dont have dimensions!
-    // scale, position and place the bm in the ct (which is on the stage)
-    o.bm.sXY(o.sc).XY(o.x, o.y).rt(o.r).al(o.al).a2(this._gx().gx)
     return this
 }
+
+
+
+cjs.hasDim=function(bm){
+ return   !cjs.iH(bm) && !cjs.iCt(bm)
+}
+
+
 b._Sp=function(sp,o){
-    this._gx().gx.A(sp)
+
+    this._gx(sp)
+
     sp.rC()
         .XY(o.x, o.y)
         .sXY(o.sX, o.sY).rt(o.r)
     return sp
-
 }
-b.Sp = function () {
-    var g = G(arguments),
-        sp, o
 
-    o = _xyr({sp: g.f, x: g.s, y: g.t, sX: g[3], sY: g[4], r: g[5]})
-    o.sX = N(o.sX, 1); o.sY = N(o.sY, o.sX)
+
+
+b.Sp = function () {var g = G(arguments), o,
+    sp
+
+
+    o = _xyr({
+        sp: g.f,
+        x: g.s,
+        y: g.t,
+        sX: g[3],
+        sY: g[4],
+        r: g[5]
+    })
+
+    o.sX = N(o.sX, 1);
+    o.sY = N(o.sY, o.sX)
+
     o.sp = o.sp || Mummy
 
     sp = $Sp(o.sp)
   return b._Sp(sp,o)
 
 }
-b.sp = function () {
-    var b = this, g = G(arguments), ch
+
+
+b.sp = function () {var b = this, g = G(arguments),
+
+    ch
+
     if (b.gx && b.gx.children) {
-        ch = g.p ? b.gx.children :
-            g.n ? b.gx.children[0] :
-                _.l(b.gx.children)
-        if (g.u) {
-            return ch
-        }
-        if (g.F_) {
-            _.e(ch, g.f);
-            return this
-        }
+        ch = g.p ? b.gx.children : g.n ? b.gx.children[0] : _.l(b.gx.children)
+        if (g.u) {return ch}
+        if (g.F_) {_.e(ch, g.f);return this}
     }
 }
+
 b.Bm = function (iS, x, y, sX, sY, rt) {
     var b = this, w = b.W(), g = G(arguments);
     b.gx = b.gx || w.g.ct()
@@ -147,10 +161,19 @@ b.Bm = function (iS, x, y, sX, sY, rt) {
         return iS
     }
     return b
-    function fn(bm) {
-        bm.rC().XY(N(x, 0), N(y, 0)).sXY(N(sX, 1), N(sY, sX || 1)).rt(N(rt, 0))
+
+    function fn(bm){
+
+        bm.rC()
+            .XY(N(x, 0), N(y, 0))
+            .sXY(N(sX, 1), N(sY, sX || 1))
+            .rt(N(rt, 0))
     }
+
 }
+
+
+
 f.clrSp=function(){
     this.sprites = []
     this_sp = []

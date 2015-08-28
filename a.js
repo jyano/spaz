@@ -12,7 +12,7 @@ dirs=[
 
     'play',  'play/graphics',
 
-    'games','games/apps'
+    '/play/games','play/apps'
 ]
 
 

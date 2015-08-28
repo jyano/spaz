@@ -281,7 +281,6 @@ MY = function () {W()
 
 }
 
-
 //
 ROOM3D = BOUNCELAY = function () {
     W([800, 800], {g: 50}).C('z')
@@ -327,7 +326,10 @@ PAINTBALL = function () {
     })
 
 }
-BUB=SPRINK=BUBBLEPOP=function(){W({W:2000,g:0}).Y();
+BUB=SPRINK=BUBBLEPOP=function(){
+
+
+    W({W:2000,g:0}).Y();
 
 
     _.t( 10, function(){ w.D(800,200,'r', 20).K('r')  })
@@ -372,7 +374,7 @@ BUB=SPRINK=BUBBLEPOP=function(){W({W:2000,g:0}).Y();
     //2do:draw line to connect these pts..
     // w.chalk('center of the two fixtures not necessarily  same as the cX pt. (can only represent col center if fSs are sSAME size... maybe halfway btwen this and the actual contact point would be nice')
 
-}
+}  //M.lC is not a function
 BRUISE=CORNERBATTLE=function(){W([3000,1000],{g:0,t:0})
     //<- var lP=cx.lP(b) //b.lP( cx.pX(), cx.pY() )
 

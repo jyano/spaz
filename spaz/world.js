@@ -8,17 +8,20 @@ b.C = function (c) {
     this._col = c
     return this
 }
-b._gx=function(){
+
+b._gx=function(a){
     this.gx = this.gx || w.g.ct();
+    if(a){this.gx.A(a)}
     return this
 }
+
 b.$h = function () {
     var h = $H()
     this.bS(h)
-
     h.c.apply(h, G(arguments))
     return h
 }
+
 b.rec = function (c, W, H, x, y, a) {
     var b = this, w = b.W(), g = G(arguments, 'k'),
         o, fD, p, f
@@ -61,6 +64,7 @@ b.rec = function (c, W, H, x, y, a) {
         if (g.p) {
             f.g = w.g.h().rec(o)
         }//  f.g= w.g.h().rec(o) //this for but: (does something important)
+
         else {
             f.g = w.g.rec(o)//(o.w, o.h, o.c, o.C, o.l)
             f.bS(f.g)
@@ -70,6 +74,8 @@ b.rec = function (c, W, H, x, y, a) {
     return f
 
 }
+
+
 b.cir= function(){var b=this,g=G(arguments), o= g.f, fd,  h,  f
     //if passed array, it assumes it is arguments for ONE cir
     if(g.A){
@@ -95,19 +101,28 @@ b.cir= function(){var b=this,g=G(arguments), o= g.f, fd,  h,  f
     o.al=  N(o.al, 1)
     o.s = D(o.s)? o.s: 0; if(g.n){o.s=1}
     o.d =  N(o.d,.5)
+
+
     fd = new b2d.FixtureDef
     fd.d(o.d).r(o.b).fr(o.f)
     fd.shape = new b2d.CircleShape(o.r/30)
     fd.shape.SetLocalPosition(V(o.x, o.y, '-'))
     fd.isSensor = o.s? true : g.n? true: false
+
     f = b.f(fd)
+
     f.K(o.k)
+
     if(o.c!=0){
         f.g = w.g.h().cir(o)
         f.bS(f.g)
     }
     return f
 }
+
+
+
+
 f.dot=function(c){var f=this, w=f.B().W(),v
 
     v=f.cen()
@@ -136,39 +151,10 @@ b.dot= function(){var b=this,  w= b.W(),  g= G(arguments)
     return b
 
 }
-b.f=function(){var b=this,g=G(arguments), o,
-    ag=g[0],
-    l= g.L,
-    FD=b2d.iFD
-    if(g.u){return b._f()}
-    if(g.S_){l--}
-    if(g._S){l--}
-    if(g.A){g.e0(function(gg){b.ap('f', g.G(gg))})}//   [ [],[],fD,4,[] ]
-    else if(g.SA){
-        g.e1(function(f){//       'c',  [ [.,.],[.,.],fD ]
-            if(FD(f)){b._f(f, g.f)}
-            else {
-                if(!S(_.f(f))){f.unshift(g.f)}
-                if(FD(f[1])){b._f(f[1],f[0])}
-                else { $a(b,'f',f) }}})}
-    else if (FD(g.f)){return b._f(g[0])}//(fD)
-    else if (g.S_ && FD(g.s)){ b._f(g[1], g[0]) }//('c', fD)
-    else if(O(g.s)){
-        o=g.S_?{c:g.f,v:g.r}:{v:g}//if (g.n) {o.s=1}
-        b.pol(o)
-        if(g.n){b.sen(1)}}//pol
-    else if(l==1||l==3){
-        o={c:g[0], r:g[1], x:g[2], y:g[3]}
-        if(g.n){o.s=1}
-        b.cir(o)}
-    else {
-        o={c:g[0], w:g[1],  h:g[2], x:g[3], y:g[4], a:g[5]}
-        if(g.n){o.s=1}
-        b.rec(o).C(o.c)
-        // $a(b,'rec', g.g)
-    }
-    return b.d(1)
-}
+
+
+
+
 
 anim()
 function anim(){
@@ -231,22 +217,41 @@ function anim(){
 
 
 }
+
 W=b2d.W=function(){var g=G(arguments),o
+
+
     o = g.A_? _.x(g.s||{}, {W:g.f[0], H:g.f[1], wW:g.f[2], wH:g.f[3]}) :
+
         N(g.f) && U(g.s)? { g: g.f }:
+
             g.$N? {W:g.f,H:g.s, wW:g.t, wH:g[3]}:
+
                 g.S? {w:g.f }: g.f || {} //W([], [{}]) //W(1000)//W(1200,600,[N],[N])//W('U')
+
 
     _w = o.w
     o.g = N(o.g) ? V(0, o.g) : O(o.g) ? V(o.g) : V(0, 10)
     o.sl = U(o.sl) ? true : o.sl
     w = new b2d.World(o.g, o.sl)
-
     if(o.xx!==0){z()}
-    w.W = N(o.W,1200); w.H = N(o.H,600);w.w = N(o.wW, w.W);     w.h = N(o.wH, w.H);
-    w.Ww = w.W/w.w; w.wW = w.w/w.W; w.Hh = w.H/ w.h; w.hH = w.h/ w.H;
-    w.mZ = w.hH > w.wW? w.hH : w.wW; w.mS = w.Ww > w.Hh ? w.Ww : w.Hh;
-    w.hW = w.W/2; w.hH = w.H/2; w.z=1; w.SCALE=1
+
+    w.W = N(o.W,1200);
+    w.w = N(o.wW, w.W);
+    w.Ww = w.W/w.w;
+    w.wW = w.w/w.W;
+
+    w.hW = w.W/2;
+    w.H = N(o.H,600);
+    w.h = N(o.wH, w.H);
+    w.Hh = w.H/ w.h;
+    w.hH = w.h/ w.H;
+    w.hH = w.H/2;
+
+    w.mZ = w.hH > w.wW? w.hH : w.wW;
+    w.mS = w.Ww > w.Hh ? w.Ww : w.Hh;
+    w.z=  w.SCALE=1
+
     //handling
     w.bH=   []; w.pH=   []; w.PH=   []; w.eH=   []  //l.P=  l.post=  function (fn) {this.PostSolve = fn; return this}
 //l.b=  l.beg=  function (fn) {this.BeginContact = fn; return this}
@@ -284,52 +289,42 @@ W=b2d.W=function(){var g=G(arguments),o
     }
 
     w.walls(_w)
+
     keys()
     mouse()
     T.t(function(){
-
-
         if(w.mj){w.mj.tg(w.mx, w.my)}
         w.step(1/60)
         if(F(o.cb)){o.cb()}
         if(!T.iP()){ w.I.u(); w.s.u(); w.i.u()}
-
         //  w.DrawDebugData()
-
         w.e(function(b){
-            b.wX = b.X(); b.wY= b.Y()
+            b.wX = b.X();
+            b.wY= b.Y()
             b.sX = w.wTS(b.wX, b.wY).x
             b.sY= w.wTS(b.wX, b.wY).y
-            if(O(b.gx)){
-                b.gx.XY(b.X(), b.Y()).rt(b.rt())
-            }
+            if(O(b.gx)){b.gx.XY(b.X(), b.Y()).rt(b.rt())}
         })
-
     })
+
     if(o.t!==0){
-
         w.t =  w._t = w._t || w.S(w.hW, w.hH, 'w', [[20,2,'-'] ]).r(.8) //trackee
-
         w.i.A( w.tSpr=  $Ct().XY(w.t.X(), w.t.Y()) ) //  w.tSpr.bm('guy', function(g){  g.sXY(.2)}) // w.tSpr.A(g)
-
         T.t(function(){
-
             if(F(w.t.cb)){w.t.cb()} else if(F(w.tCb)){w.tCb()}
-
             w.s.x = -w.sXCap( (w.t.X()-w.hW+ w.hW)*w.z - w.hW  )
-
             w.s.y = -w.sYCap( (w.t.Y()-w.hH+ w.hH)*w.z - w.hH  )
-
-            if(w.t == w._t){
-                w.t.XY(w.tSpr.X(), w.tSpr.Y())
-                w.s.rot(w.tSpr.rot())
-            }
+            if(w.t == w._t){w.t.XY(w.tSpr.X(), w.tSpr.Y()); w.s.rot(w.tSpr.rot())}
         })
     }
+
     w.o=o //w.stats()
+
     return w
 
 }
+
+
 function mouse() {
     w.mm(logMXY)
     w.md(function (o) {
@@ -427,7 +422,7 @@ function keys(){
     K._loaded = 1
 }
 
-w.kill=w.xD=function(){w.e(function(b){if(b.iD()){b.kill()}})}
+w.killD=w.xD=function(){w.e(function(b){if(b.iD()){b.kill()}})}
 
 
     w.pol = function () {
@@ -567,7 +562,9 @@ w.kill=w.xD=function(){w.e(function(b){if(b.iD()){b.kill()}})}
         }
         return b
     }
-    w.polyCirc = function (x, y, r, sides) {
+
+
+w.polyCirc = function (x, y, r, sides) {
         var w = this,
             b = w.D(x, y)
 
