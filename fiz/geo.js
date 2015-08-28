@@ -1,6 +1,17 @@
 b2d.p()
 
 
+b2d.vs=function(){ var g=G(arguments)
+    //all this does is to 'scale down' a series of points
+    //can pass in pts naked OR in an array
+    if(g.s){return _.m(g, b2d.div)}
+    //passed in verts ([],[],[])
+    return _.m(g.f, b2d.div) //passed an array [[],[],[]]
+   //b2d.div <- function div(v){return V(v).div()}
+}
+
+
+
 M.p= function(){
     //it expects worldVerts....
 //it works with worldVerts...
@@ -24,17 +35,15 @@ M.p= function(){
 }
 
 ps= gpcas.geometry.PolySimple.prototype
-ps.n= ps.num = ps.numPoints=function(){return this.getNumPoints()}
+pD= gpcas.geometry.PolyDefault.prototype
+
+
 ps.vs= function(){var p=this,vs=[]
     _.t(p.n(), function(i){
         vs.push([p.getX(i), p.getY(i)])})
     return vs
 }
-ps.g=function(n){
-    return this.getInnerPoly(n||0)}
-ps.nP=function(){var pD=this,n
-    n= pD.getNumInnerPoly()
-    return n}
+
 ps.reg=  function(b){var p=this,g=G(arguments),
     vs=p.vs(),b,o
 
@@ -47,25 +56,6 @@ ps.reg=  function(b){var p=this,g=G(arguments),
 
     return M.p(vs)
 }
-ps.n=ps.num = ps.numPoints=function(){return this.getNumPoints()}
-ps.vs= function(){var p=this,vs=[]
-
-    _.t(p.n(), function(i){vs.push([p.getX(i), p.getY(i)])})
-
-    return vs
-}
-ps.g=function(n){
-    return this.getInnerPoly(n||0)}
-ps.nP=function(){var pD=this,n
-    n= pD.getNumInnerPoly()
-    return n}
-pD= gpcas.geometry.PolyDefault.prototype
-pD.g=function(n){
-    return this.getInnerPoly(n||0)}
-pD.nP=function(){var pD=this,n
-    n= pD.getNumInnerPoly()
-
-    return n}
 pD.dot=function(w){var pD=this
     pD.vs(function(v){
         w.dot('w',v[0],v[1])})
@@ -82,8 +72,8 @@ pD.U=function(){var pD=this, g=G(arguments),
 
     return pD.union( M.p(g[0]) )
 }
-pD.I=pD.intersection
-pD.X=pD.xor
+
+
 pD.reg= pD.rel=function(b){var p=this,g=G(arguments),
     vs=p.vs(),b,o
 
@@ -136,30 +126,18 @@ pD.ps=function(){var p=this,
     return ps
 
 }
-pD.hH=function(){var pD=this
-    var h
-    pD.ps(function(p){if(p.isHole()){h=true}})
-    return h
-}
+
 pD.pol=function(b){var p=this
-
-
     p= M.p( [ [0,50],[-50,0],[0,-50],[50,0]  ])
     // w.pol(v.x, v.y, p) -> p.pol(w,v)?
-
-
-
     p.ps(b,function(p){b.pol(p)})
     return p
 }
 pD.ger=function(x,y){var p=this,v=V(x,y)
-
     return p.reg(-v.x, -v.y)
-
 }
 pD.D=function(){var pD=this, gg=G(arguments)
     b2d.mini()
-
     gg.e(function(g){
         if(iB(g)){
             if(g.n()==1){return pD.D(g.f())}
@@ -171,7 +149,6 @@ pD.D=function(){var pD=this, gg=G(arguments)
         else {pD=pD.difference(M.p(g))}
 
     })
-
     return pD
 }
 pD.A=pD.addPoints=function(pts){var p=this
@@ -180,28 +157,13 @@ pD.A=pD.addPoints=function(pts){var p=this
             p.addPoint(V(pt))
         })
     }
-    return p}
-pD.n=pD.num = pD.numPoints=function(){
-    return this.getNumPoints()
+    return p
 }
-pD.vs=function(fn){var p=this,g=G(arguments),
-    vs=[]
+pD.vs=function(fn){var p=this,g=G(arguments), vs=[]
+    _.t(p.n(),function(i){vs.push([p.getX(i), p.getY(i)])})
+    if(g.n){vs= _.m(vs, function(v){return V(v).sub(g[0])})}
 
-    _.t(p.n(),function(i){
-        vs.push([
-            p.getX(i),
-            p.getY(i)])})
-
-
-    if(g.n){
-
-        vs= _.m(vs, function(v){
-            return V(v).sub(g[0])
-        })
-    }
-
-    if(g.p){
-        vs= _.m(vs, function(v){
+    if(g.p){vs= _.m(vs, function(v){
             return V(v).add(g[0])
         })
     }
@@ -215,11 +177,9 @@ pD.vs=function(fn){var p=this,g=G(arguments),
 }
 pD.plus=function(x,y){var p=this,
     vs=p.vs()
-
     vs = _.m(vs, function(v){
         v=V(v)
         return v.add(x||0, y||0)})
-
     return M.p(vs)
 }
 pD.minus=function(x,y){var p=this,
@@ -229,6 +189,7 @@ pD.minus=function(x,y){var p=this,
         return v.sub(x||0, y||0)})
     return M.p(vs)
 }
+
 pD.dot=function(){var p=this
 
     p.vs(function(v){
@@ -240,13 +201,8 @@ pD.dot=function(){var p=this
 
 b2d.tF=function(f){return  b2d.iB(f)?f.f():f}
 b2d.iF=b2d.isFixt
-b2d.vs=function(){
-    //all this does is to 'scale down' a series of points
-    //can pass in pts naked OR in an array
-    var g=G(arguments)
-    if(g[1]){return _.m(g, b2d.div)   }//passed in verts ([],[],[])
-    return _.m(g[0], b2d.div) //passed an array [[],[],[]]
-}
+
+
 b2d.hV= b2d.hasVerts = function (poly) {
     return poly.m_List.get(0)
 }
