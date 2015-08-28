@@ -32,25 +32,26 @@ b.pol = function(){
 }
 
 b._pol=function(o){
-    var b=this,
-        fs  = newFixts(b, o)
-    _.e(fs, dressFixt)
+    var b=this, fs  = newFixts(b, o)
+
+    dressFs(fs,o)
+
     bindS(b,o)
     return fsRetVal(fs)
-    function dressFixt(f) {
+
+
+}
+
+function dressFs(fs,o){
+
+    _.e(fs, function (f){
         f.d(o.d).r(o.b).fr(o.f)
         if (o.s) {f.m_isSensor = o.s ? true : false; f.sen(1) }
         f.K(o.k)
         f.C(o.c, o.C, o.l)
         if (o.lf) {  f.bS(w.s.h().lf(o).lt(o.v)) }
         if (o.rf) {  f.bS(w.s.h().rf(o).lt(o.v))  }
-    }
-
-
-
-
-
-
+    })
 }
 
 function _passedVs(g){return  b2d.iGP(g.f) && U(g.s)}
