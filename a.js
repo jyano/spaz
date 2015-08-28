@@ -3,7 +3,7 @@ dirs=[
 
     '/front/front', '/front/can', '/graf', '/anim',
     'fiz',    'fiz/deps',  'fiz/joints', '/spaz',
-    
+
     'play',  'play/graphics',
 
     'games','games/apps'

@@ -1,317 +1,380 @@
-$PT()
 
-$H= $h= function(){var g=G(arguments),
-    h = new cjs.Shape(), //if (cjs.iH(x)) {return new cjs.Shape(x.graphics)}
-//pass in your own obj to use 'o.i/o.bf' or 'o.lf' or 'o.rf'
-    o= g.O? g.f:
-        g.N_? ( N( g[3] )? // 'c-C-l' pattern
-        { x:g.f, y:g.s, C: g.t, l:g[3]} : { x:g.f, y:g.s, c: g.t, C:g[3], l:g[4]} ) :
-            // 'c-C-l' pattern
-            N(g.s)? { C:g.f, l:g.s } :
-            { c:g.f, C:g.s, l:g.t }
-    h.XY( N(o.x,0), N(o.y,0) )
-    h.c( o.c || 'z', o.C || 'w', o.l ||  8 )
-    if(o.C){h.C(o.C)}
-    if(N(o.l)){h.l(o.l)}
-    if(g.p){h.dg()}
-    return  h
-}
-$Cir=   function () {var g = G(arguments),
-    o = g.S_? {c:g.f,x:g.s,y:g.t,r:g[3]}: {x:g.f,y:g.s,r:g.t}
-    return $H(o.c,o.x,o.y).dc(o.r)
-}
-St=function(){z()
-    s = cjs.stg(1200,600).A()
-    h = $h(0,0).a2(s)
-    SL(h)
+NEWSTG=function(){z()
+    //three ways to make a new stage
+    s = cjs.s('r',100 ).A().bm('me')
+    s.can.drag()
+    c= $.canvas('b',100).A().drag().XY(400)
+    s1=cjs.s(c)
+    s1.A().bm('me')
+    c2= $.canvas('b',100).A().id('someId').drag().XY(300,100)
+    s2=  cjs.s(['someId'])
+    s2.tick().bm('me')
+
 }
 
 
-cjs.iCt = function (ct) {
-//haha only a ct can impl addContainer( ha! //MOMENT OF BRILLIANCE
-    return O(ct) && ct.addContainer
+ONOFFTICK=function(){W({w:0})
+    //will break if u change it
+    fun = w.s.t(ball)
+    $.in(3, function(){
+        w.s.xT(fun)
+    })
+    function ball(){if(R(5)<1){ w.ball()}}
+
+
 }
-cjs.M = function (a) {
-    var m = new cjs.Matrix2D()
-    if (N(a)) {
-        m.rotate(a)
-    }
-    return m
-}
-cjs.Gx = cjs.gx = function (a) {
-    return new cjs.Graphics(a)
-}
-cjs.rulers = function () {
-    $.d('b', 100, 100).al(.3).dg()
-    $.d('r', 100, 300).al(.3).dg()
-}
-cjs.iH = function (h) {
-    return O(h) && h.graphics
-}
-cjs.iT = function (t) {
-    if (O(t)) {
-        return (t.textBaseline)
-    }
-}
-cjs.m2d = function (a, b, c, d, e, f) {
-    if (U(c)) {
-        return new cjs.Matrix2D(1, 0, 0, 1, N(a, 0), N(b, 0))
-    }
-    return new cjs.Matrix2D(
-        N(a, 1),
-        N(b, 0),
-        N(c, 0),
-        N(d, 1),
-        N(e, 0),
-        N(f, 0)
-    )
-}
-cjs.dia = function self(width, height, fc, sc) {
-    fc = fc || 'green'
-    sc = sc || 'white'
-    width = width || 100
-    height = height || width
-    halfwidth = width / 2
-    halfheight = height / 2
-    var h = new createjs.Shape()
-    h.graphics.f(fc).s(sc)
-        .mt(0, -halfheight)
-        .lt(-halfwidth, 0).lt(0, halfheight)
-        .lt(halfwidth, 0).lt(0, -halfheight)
-    return h
+DRAG=function(){z()
+    $.dragStage()
 }
 
-BlurFilter = blF=function(bx,by,q){
-    return new createjs.BlurFilter(bx,by,q)
+TFSET= function(){W()._(function(){
+    w.i.qB('me').grow().drag()
+
+    i= w.i.qB('me').XY(200,200)
+
+    ball = w.ball()
+
+    $.in(3, function(){
+
+        w.C('b'); ball.bS(i)
+
+    })
+
+    //  me.startMoving(10, 10)
+
+    T.t(function(){iS = i.inStage()
+        $l(iS)
+    })
+    b= w.i.qB('me')
+
+
+    b.setTransform(0,0,2,.5,0,40,4,2,3)
+
+    //m = b.getMatrix()
+    function tf(a,b,c,d,e,f,g,h,i){
+        return this.x=a||0,
+            this.y=b||0,
+            this.scaleX=null==c?1:c,
+            this.scaleY=null==d?1:d,
+            this.rotation=e||0,
+            this.skewX=f||0,
+            this.skewY=g||0,
+            this.regX =h||0,
+            this.regY =i||0,
+            this}
+
+})}
+
+TEXT = function () {W()
+    w.S(300, 100, 'z', 1500, 1)
+    w.d('r', 300, 100)
+    w.i.T('top').XY(300, 100).bl('+')  // should become + (counterintuitive i know.. but i noticed and fixed it!)
+    w.i.T('bottom').XY(500, 100).bl('-')
+    w.i.T('middle').XY(700, 100)
+    w.dot(300, 400)
+    nice = w.i.T('nice', 135, 'x', 300, 400)
+    /*
+     w.i.T('linewidth 0').XY(100,300).lW(0)
+     w.i.T('linewidth null').XY(100, 500).bl('bottom')
+     w.i.T('linewidth 100').XY(100, 700).drag().bl('middle').lW(800)
+     w.i.T('lineheight -100').XY(700,300).lH(-100)
+     w.i.T('lineheight 0').XY(700,500).lH(0)
+     w.i.T('lineheight 100').XY(700,700).lH(100)
+     w.i.T('linealign left').XY(600, 100)
+     w.i.T('linealign right').XY(600, 200).tA('right')//.bl('bottom')
+     w.i.T('linealign center').XY(600, 300).tA('center')//.bl('middle')
+     */
+    hello = 'fasdafsafsdfadsafafdsfadsafdsafdsfsd'
+    w.show('hello')
 }
-AlphaMaskFilter = aMF=function(mask){
-    return new createjs.AlphaMaskFilter(mask)
+SPEECH=function(){W()._(function(){
+    t = w.i.T( 600, 300, 'hiiiiiiiiii', 200, 'r')
+    ct = w.i.ct().drag()
+    ct.h(200, 150).cir(130,'w').cir(100,50,100,'w')
+    ct.T(250,150, 'yoyoyoo', 60, 'd')
+    $.in(10, function(){ct.rm()})
+    //ct.tw( [{   sxy:.1, x:x-250, y:y-250 }, 20000])
+})}
+
+
+
+
+
+WHYQ = function () {
+    cjs.Keys.l = cjs.Keys.left = false
+    cjs.Keys.r = cjs.Keys.right = false
+    cjs.Keys.u = cjs.Keys.up = false
+    cjs.Keys.d = cjs.Keys.down = false
+
+    $.kU('l', function () {
+        if ($.test) {
+            $l('left lifted')
+        }
+        cjs.Keys.l = cjs.Keys.left = false
+    })
+
+    $.kD('l', function () {
+        if ($.test) {
+            $l('left pressed')
+        }
+        cjs.Keys.l = cjs.Keys.left = true
+        cjs.Keys.dir = 'left'
+    })
+
+    $.kD('l', function () {
+        if ($.test) {
+            $l('left pressed')
+        }
+        cjs.Keys.l = cjs.Keys.left = true
+        cjs.Keys.dir = 'left'
+    })
+
+    $.kD('r', function () {
+        if ($.test) {
+            $l('right pressed')
+        }
+        cjs.Keys.r = cjs.Keys.right = true
+        cjs.Keys.dir = 'right'
+    })
+
+    $.kU('r', function () {
+        if ($.test) {
+            $l('right lifted')
+        }
+        cjs.Keys.r = cjs.Keys.right = false
+    })
+
+
+    $.kD('u', function () {
+        if ($.test) {
+            $l('up pressed')
+        }
+        cjs.Keys.u = cjs.Keys.up = true
+    })
+    $.kU('u', function () {
+        if ($.test) {
+            $l('up lifted')
+        }
+        cjs.Keys.u = cjs.Keys.up = false
+    })
+    $.kD('d', function () {
+        if ($.test) {
+            $l('down pressed')
+        }
+        cjs.Keys.d = cjs.Keys.down = true
+    })
+
+    $.kU('d', function () {
+        if ($.test) {
+            $l('down lifted')
+        }
+        cjs.Keys.d = cjs.Keys.down = false
+    })
 }
-forMaskFilter = trx = function(n){
-    var g=G(arguments),
-        a=[]
+FANCYEDIT = function (x, y) {
 
-    //for making mask filter
-    if(g.n){
-        return 'rgba(0,0,0,' +  g[0]||0  + ')'   }
 
-    _.each(g,function(n){
-        a.push(trx(n,'-'))})
+    z()
 
-    return a
-}
-cjs.blurFilter = function(x,y,c){return new cjs.BlurFilter(x,y,c)}
-//T$ = cjs.Ticker  //dep
-ColorFilter = clF=function(a,b,c,d,e,f,g){return new createjs.ColorFilter(a,b,c,d,e,f,g)}
-ColorMatrixFilter = clMF=function(m){return new createjs.ColorMatrixFilter(m)}
-ColorMatrix = CM=function(){
-    var c=new createjs.ColorMatrix()
-    c.b=c.adjustBrightness
-    c.c=c.adjustColor
-    c.C=c.adjustContrast
-    c.h=c.adjustHue
-    c.s=c.adjustSaturation
-    c.cl=c.clone
-    c.cc=c.concat
-    c.m=c.copyMatrix
-    c.r=c.reset
-    c.A=c.toArray
-    c.S=c.toString
-    return c}
+    canvas = $.canvas('g', 400)
+    stage = new cjs.Stage(canvas[0]).tick()
+    frame = $.dragFrame(theSpan = $.span())
 
+    theSpan.A(
+        $.button('X', function () {
+            frame.remove()
+        }),
+        $.button('pics', function () {
+            $.imagesDiv(stage)
+        }),
 
-function filterTests(){
+        $.button('transform'),
+        $.button('text'),
 
+        $.button('paint', function () {
 
-    BMC=function(){W()._(function() {
-        h = w.i.h(0,0,'+')
-            .cir({r: 150, bf: 'me'})
-            .cir({x: 500, y: 200, r: 100, bf: 'me'})
-    })}
+            _paintColor = '#0FF'
 
-    BLUR = blr=function(){
+            var size = 10, oX = 0, oY = 0, shape
 
-        wMb(function(b){
+            var paintStage = $.dragStage()
 
-            var ag=0,rg=100,sp=0.04
+            // stage.a(  EaselText('finger paint', 'b', 40, 100, 10))
 
-            z()
+            paintStage.bm(
+                stage.du(), //?
 
-            s=St(500).drg().a().c('x').a(b.xy(100).cc())
+                function (m) {
 
-            tt(function(e){v=sin(ag+=sp)*rg
-                b.cc('+').fl([blF(v,v,2)])
-                s.u(e)})
-        })
-    }
-    MASK = msk=function(){
 
-        sss=function(){var args=G(arguments)
+                    m.XY(40).sXY(.4)
 
-            z()
 
+                    stagePainter(paintStage)
 
-            stage = SuperStage(600).a()
-
-
-            if(args.f){
-
-                stage.a(args.f)
-
-                _.each(args.r,
-                    function(arg){
-
-                        if( F(arg) ){ arg(args.f) }
-
-                    })
-            }
-
-            return stage}
-
-
-
-        wMb(function(b){
-
-            sss(b, TR)
-
-
-            b.fl([
-
-                aMF(
-                    Gx().lf(
-                        trx(1,0),[0,1],0,0,200,200
-                    ).dr0(400).H().cc(400).cc('*')
-                )
-
-            ]).cc(400)})
-
-    }
-    COLOR = clr=function(r){var ag=0,rg=100,sp=0.04
-
-        wMb(function(b){z();
-
-            s=St(500).drg().a().c('X').a(b.xy(100))
-            b.cc().fl([r=='g'? clF(.3,1,.3,1,0,0,0,0)
-                :r=='b'? clF(.3,.3,1,1,0,0,0,0)
-                :r=='r'? clF(1,.1,1,1,0,0,0,0)
-                :r=='rg'? clF(1,1,.1,1,1,1,20,0)
-                :clF(1,.1,1,1,0,0,0,0)]).cc('+')
-        })
-    }
-    COLORMATRIX = cmx=function(){
-
-        var g=G(arguments);
-        g[0]=g[0]||'a'
-
-        wMb(function(b){b.xy(100).cc();
-                _e(g,function(mf){b.clMF(mf,'+')})},
-
-            St(500).drg().a().c('X') )
-    }
-    BLURFILT=function(){z()
-
-        stage = createjs.stage('black', 800).tick().A()
-        shape = new createjs.Shape().XY(100)
-
-        stage.A(shape)
-
-        shape.graphics.f("red").dc(0,0,50)
-
-        var blurFilter = new createjs.BlurFilter(50, 50, 10)
-
-        shape.filters = [blurFilter]
-
-        var bounds = blurFilter.getBounds()
-
-        shape.cache(-50+bounds.x, -50+bounds.y, 100+bounds.width, 100+bounds.height)
-
-        shape.startMoving()
-        shape.vx = 1
-        shape.vy = 1
-    }
-    BLURFILT2=function(){z()
-
-        stage = createjs.stage('black', 800).tick().A()
-
-
-
-        stage.bm('me',
-
-            function(bm){
-
-                var blurFilter = new createjs.BlurFilter(5, 10)
-
-                bm.filters = [blurFilter]
-
-                var bounds = blurFilter.getBounds()
-
-                bm.cache(-50+bounds.x, -50+bounds.y, 400+bounds.width, 400+bounds.height)
-
-
-            }
-        )
-
-
-
-
-    }
-    BLURFILT3=function(){z()
-
-        $l('welcome to BLUFILTER3')
-        $l('here we will attempt an animated blur filter')
-
-        stage = createjs.stage('black', 800).tick().A()
-
-        stage.bm('me',
-
-            function(bm){ bm.XY(100,300).drag()
-
-                var blurFilter = $blurFilter(5, 10)
-
-                bm.filters =  [ blurFilter ]
-
-                var bounds = blurFilter.getBounds()
-
-                bm.cache(-50+bounds.x, -50+bounds.y, 400+bounds.width, 400+bounds.height)
-
-                var blurAmount=0,
-
-                    blurMultiple=40,
-
-                    speed=0.06
-
-                createjs.Ticker.on('tick', function(){
-                    $l('tick')
-
-                    var blur = Math.sin(blurAmount += speed) * blurMultiple;
-                    bm.filters = [$blurFilter(blur, blur, 2)]
-                    bm.updateCache()
 
                 })
 
 
+        }),
+        $.button('cut'),
+
+        $.button('save'))
+
+    theSpan.A($.br(), canvas)
+
+    theSpan.A($.div().A(
+        $.button('clear', function () {
+            stage.removeAllChildren()
+        }),
+
+        $.button('flat', function () {
+
+            stage.removeAllChildren()
+
+            stage.bm(stage.toDataURL(), function (bm) {
+                bm.drag()
             })
 
+        }),
+
+        $.button('clone', function () {
 
 
+            var newSpan = $span()
+
+            var newStage = dragStage(newSpan)
 
 
+            newStage.bm(stage.du(), function (bm) {
+                SL(bm)
+
+            })
+
+        }),
+
+        $.button('recur', function () {
+
+            stage.bm(stage.du(), function (bm) {
+
+                bm.sxy(.4)
+                SL(bm)
+
+            })
+        }),
+
+        $.button('copy', function () {
+
+            _copy = stage.du()
 
 
+        }),
+
+        $.button('paste', function () {
+            stage.bm(_copy, function (bm) {
+                bm.drag()
+            })
+        }),
+
+        $.button('replace', function () {
+
+            stage.rm()
+            stage.bm(_copy, function (bm) {
+                bm.drag()
+            })
+
+        })
+    ))
+
+    theSpan.dblclick(function () {
+        $('button').toggle()
+    })
 
 
+    theSpan.A()
 
-
-
-
-
-
-
-
-
-    }
 
 }
+ICEN=function(){Q(['guy','me'],function(){//z()
+    s= new cjs.Stage( $.can( 'p', 1200, 600 )[0] ).A(); s.c=$(s.canvas)
+    //s.bm('me', function(bb){b=bb.drag() })
+    s.qB('guy').XY(300,300).spin()
+    s.qB('guy').XY(300,300).sXY( .5, .3).spin()
+    T.t(function(){ s.u() })
+    $.in(3, function(){   T.f(1)   })
+    $.in(9, function(){  T.f(1000)  })
+})}
+
+
+
+
+touchEnable = function (s) {
+    cjs.Touch.enable(s);
+    return s
+}//important for ipad//move this onto stage itself
+
+
+old=function(){
+    ct.bmR=   function(i,fn){var ct=this,bm
+        alert('ct.bmR')
+        $.i(i, function(i){
+            bm = $Bm( i[0] ).a2(ct)
+            bm.rXY(
+                bm.W()/2,
+                bm.H()/2
+            )
+            if(fn){ fn(bm) }
+        })
+        return ct
+    }
+}
+
+//to shape -> ct.circle = function(x,y,r,c){var ct=this;ct.A(cjs.circle(x,y,r,c));return ct}
+
+// 'P' is avaible.  potition?  (M is taken by Math, but mouse needs something)
+
+
+
+
+
+old=function(){
+
+    q.mf = q.manifest = function () {var q=this,g=G(arguments)
+        q.loadManifest(cjs.mf.apply(null, g))
+        return q}
+    cjs.lQDep= cjs.lqDep=cjs.loadQueueDep=function(mf,fn){
+        var q = new cjs.LoadQueue(true)
+        if(A(mf)){q.loadManifest(cjs.mf.apply(null, mf))}
+        if(F(fn)){q.complete(function () {fn(function (i) {return q.getResult(i)})})}
+        return q}
+    cjs.mfDep = cjs.manifestDep = function(a){var g=G(arguments), mf=[]
+        _.e(g, function (v) {
+            mf.push({
+                src: cjs.src(v),
+                id: v})})
+        return mf
+    }
+
+    //cjs.handleFileLoad = function (e) {if (e.item.type == "image") {images[e.item.id] = e.result}}
+//cjs.makeManifest = cjs.makeMan=function(a) {return cjs.manifest.apply(null, _.m(a.images, function (i) {return Graphics.fromSource(i)}))}
+
+    QDep=function(i,fn){
+        q=cjs.lQ(),
+            mf=[]
+        _.e(i,function(v) {mf.push({src: cjs.src(v), id: v})})
+        q.mf(mf)
+        q.c(function(){fn(q)})
+        return q}
+
+    tickX=function(e){j.Y(e.delta/1000*100,'-' )}
+    timeStamp2 = function(s, j, pxPerSec){
+        var fn=function(s,e){
+            if(!N(j.ts)){j.ts=0;j.lts=e.ts}
+            else{j.ts= e.ts-j.lts;j.lts=e.ts
+                j.y((j.ts/1000) * pxPerSec,'-')  }}
+        return s.t(fn)}
+}
+
 function balls(){
 
     CHICKBALLS=function(){
@@ -321,7 +384,6 @@ function balls(){
                     .cir({bf:'chicks',r: 120})
             })})
     }
-
     HAIRBALLS = function () {
         W(400, 400)._(function () {
 
@@ -397,7 +459,6 @@ function balls(){
             b.bS(nice)
         })
     }
-
     RADIANTBALLS=function(){s=cjs.S('a')
         b1=s.cannonBall(100,200)
         b2=s.basketBall(100,100)
