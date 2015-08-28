@@ -684,3 +684,20 @@ cjs.m2d = function (a, b, c, d, e, f) {if (U(c)) {
 }
     return new cjs.Matrix2D(N(a, 1), N(b, 0), N(c, 0), N(d, 1), N(e, 0), N(f, 0))}
 
+i.sXY = function(x,y){
+
+    var i=this,
+        g=G(arguments),v
+
+    if(U(g[0])){
+        return i
+        return {x:i.sX(),y:i.sY()}
+    }
+
+    v=V(g[0],g[1])
+    x=_.tN(v.x)
+    y=_.tN(v.y,v.x)
+    i.sX(x)
+    i.sY(y)
+    return i
+}

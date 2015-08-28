@@ -1,4 +1,29 @@
 b2d.p()
+w.p= function(x,y,sc,cn){var w=this,g=G(arguments),
+    p
+    sc = N(sc, 1)
+    cn= cn || 'jump'
+    p = w.D(x,y).fR()
+    p.cn(cn)
+    p.SetBullet(true)
+    p.rec({c:'r', l:5, C:'r', w:22*sc, h:40*sc}).d(5)
+    p.rec({
+
+        s: 1,
+        w: 8*sc, h:8*sc,
+        x: 0,
+        y: 20*sc,
+
+    }).K('feet').C('X')
+    p.Bm( 'me', 0, 0,  0.25*sc    )
+
+    // p.bS(   {i:'me', sc: .25*sc, x:-10,y:-110}  )
+
+    if(g.p){p.tr()}
+    p.r(.4)
+    p.lD(.5)
+    return p
+}
 w.P=function (x, y,sc) {var w=this,
     g=G(arguments)
     p = w.p(N(g.f, w.hW), N(g.s, w.H-50), N(sc,2))
