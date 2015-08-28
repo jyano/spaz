@@ -32,7 +32,27 @@ w.gG=function(x,y){var w=this,
     return gG
 
 }
-
+w.badGuy=function(x,y){var that=this,w=this
+    b = w.D(x, y,'d',60).K('badGuy').bS(
+        w.s.h(x,y)
+    )
+    b.draw=function(frame){var b=this
+        b.sp().rf(['r','g'],
+            [frame[0], frame[1]], 60).dc(60)
+    }
+    b.h = b.health = 100
+    b.cl(function(){b.h--})
+    funcId = I(function(){
+        b.draw( frameByHealth(b) )
+        if(b.h<=0){clearInterval(funcId);b.kill()}
+        function frameByHealth(b){
+            if(b.h<0){b.h=0}
+            if(b.h>100){b.h=100}
+            if(b.h<50){ return [ 1-((b.h/50)),1 ] }
+            else {return [0, 1-((b.h-50)/50)  ]} }
+    }, 300)
+    return b
+}
 
 GG=function(){W({g: 0}).Y()
 
