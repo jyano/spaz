@@ -63,7 +63,7 @@ h.pol = function (V, c, C, l) {
     var h = this, g = G(arguments), o
     //array must come first b/c its an obj
     o = A(g.f) ? {v: g.f, c: g.s, C: g.t, l: g[3]} : O(g.f) ? g.f : {}
-    b2d.oDef(o)
+    df.oDef(o)
     h.ef().es()
     h.c(o)
     if (o.bf) {
@@ -633,7 +633,7 @@ h.rg=function(o){var h=this,g=G(arguments),
         {c2:g[0]}
             : {}
 
-    b2d.grad(o)
+    df.grad(o)
 
     o.x2 = N(o.x2, o.x1)
     o.y2 = N(o.y2, o.y1)

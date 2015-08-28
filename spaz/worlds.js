@@ -134,6 +134,7 @@ function mouse() {
         w.my = p.y
     }
 }
+
 function keys(){
     $.kD('l',function(){
         if ($.test) {$l('left pressed')}
@@ -194,6 +195,8 @@ function keys(){
 
     K._loaded = 1
 }
+
+
 function debug() {
     /*
 
