@@ -7,19 +7,22 @@ html(lang="en")
         script.
           _app = wappyApp = '#{app}'
           _pam = wappyPam = '#{pam}'
-
         +S(['us','string', 'both', 'jq','objects','qq','jqfn','html','ctx', 'can', 'frontExtension'])
         +S(['cjs','cjsMC','anims','create', 'graphix',  'graf',  'filt', 'anim' ])
-        +S(['gpcas',  'polyMath'])
-
-        +S(['bx', 'box','sep', 'fiz', 'coll'])
-        +S(['ray','co', 'polyCirc',   'geo' ,'geoWorld' ])
-        +S([ 'joints', 'distJoints', 'revJoints', 'advancedJoints'])
 
 
-        +S(['spaz','walls', 'bfr','spazBindSp','bPoly', 'scrolling', 'player','yip'])
+        //box
+        +S(['gpcas',  'polyMath', 'bx', 'box', 'sep'])
+
+        //fiz
+        +S(['fiz', 'coll', 'joint', 'ray' , 'co',  'geo'])
+
+
+        +S(['spaz', 'wall', 'world', 'player', 'yip', 'scrolling'])
+
 
         +S(['canApps', 'betaGames','coGames', 'cxGames','geoGames'])
         +S(['jointGames','netguy','scrollGames', 'shapePuzGames', 'yipGames','greenGuy'])
         +S(['loadApps', 'graphicsTests', 'play'])
+
         body
