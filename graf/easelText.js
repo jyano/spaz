@@ -36,3 +36,25 @@ t.C = function (cS) {
     return this}
 t.mW = function () {return this.getMeasuredWidth()}
 
+//text
+$T= function(a,b,c,d,e){var g = G(arguments), o, t
+    return new cjs.Text(a,b,c,d,e)
+
+    o = g.O ? g.f :
+
+    {t: g.f, f:g.s, c:g.t, x:g[3], y:g[4]}
+
+    o.f = N(o.f) ? o.f + 'px Arial' : o.f
+    o.f = o.f || '50px Arial'
+    o.c = o.c || 'y'
+    o.x = N(o.x, 600)
+    o.y = N(o.y, 100)
+    t = new cjs.Text(o.t, o.f, o.c)
+    t.XY(o.x, o.y).drag()
+
+    if (g.n) {t.regX = t.W() / 2}
+    if (g.p) {t.bl('alphabetic')}
+
+    return t.bl('middle')
+
+}

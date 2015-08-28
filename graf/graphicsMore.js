@@ -1440,9 +1440,187 @@ TESTWATCHKEYS=function(){z()
     $.test=true
     cjs.watchKeys()}
 
+function utils() {
+    Utils = {}
+    Utils.isNested = isArrayWhoseFirstObjIsAlsoAnArray = Utils.isDataUrl = Du = function (a) {
+        return s$(a).contains('data:')
+    }
+    Utils.asElement =  E
+    Utils.apply = _a = function (a, b, c, d, e) {//_.isUndefined(a)? qq('a')
+        return F(a) ? a.apply(c || a, b)
+            : S(a) ? a.split(b || '/').pop()// after('/')
+
+            : 0//:a.animate(b,c,d,e)//
+    }
+    Utils.URL = _u = function (a) {
+
+        url = function (a) {
+            return 'url("' + a + '")'
+        }
+
+        return url(a)
+        //return _.isUndefined(a)? qq('ul'): url(a)
+
+    }
+    Utils.func = _v = function (a) {
+        return S(a) ?
+            function () {
+                Function(a)()
+            }
+            : F(a) ? a : F(a.value) ? a.value() : a.value
+    }
+
+    Graphics = window['Graphics'] || {}
+    Graphics.getCanvas = C
+    Utils.chompRight = chompRight = function (a, b) {
+        return s$(a).chompRight(b).s
+    }
+    Utils.ensureRight = ensureRight = function (a, b) {
+        return
+
+        s$(a).ensureRight(b).s
+    }
+    Range = function (a, b) {
+        var g = G(arguments)
+
+        return N(b) ? _.range(a, b)
+
+            : g.P ? _.range(a)
+
+            : _.range(1, (a || 10) + 1)
+
+    }
+//should be dep? 'fsa'.toUpperCase()
+    Utils.toUpperCase = toUpperCase = uC = function (a) {
+        return S(a) ? a.toUpperCase()
+            : A(a) ? _.map(a, function (a) {
+            return uC(a)
+        }) : a
+    }
+    Utils.isUpper = isUpper = Uc = function (a) {
+        if (S(a)) { //for safety?
+            return s$(a).isUpper()
+        }
+    }
+    lC = function (a) {
+        return S(a) ? a.toLowerCase()
+            : A(a) ? _.m(a, function (a) {
+            return lC(a)
+        }) : a
+    }
+    Lc = function (a) {
+        if (S(a)) {
+            return s$(a).isLower()
+        }
+    }
+    _.props = Utils.props = $p = function p(i, t, kK, vf, f) {
+//get: index thing key //set: index thing key value [function] //setOb: index thing ob [function]
+        if (O(kK)) {
+            _.each(kK, function (v, k) {
+                p(i, t, k, v, vf)
+            })
+        }                   //setOb
+
+        if (U(kK)) {
+            return _p(p, i, t)
+        }
+        if (vf == "*") {
+            return p(i, t, kK, $r(kK))
+        } // set it randomly?!
+        else if (U(vf)) {
+            return t[oO(i, kK)]
+        }   //get
+        else {
+            f = f || _s  //function(t,k,v){t[k]=v}  //set
+            f(t, oO(i, kK), oO(kK, vf, 'R'))
+        }
+        return t
+    }
+    _.methods = Utils.methods = $m = function f(i, x, m, g) { //=met
+        if (U(i)) {
+            return
+        }
+        if (U(x)) {
+            return _p(f, i)
+        }
+        if (U(m)) {
+            return _p(f, i, x)
+        }// if(U(g)){return _p(f,i,x,m)}
+        if (!A(g)) {
+            return _a(f, [i, x, m, _r(arguments, 3)])
+        }//met('x',  c.x, 'd',  [i,0,0]     )//met('x',  c.x, 'd',   i,0,0   )
+        return _a(x[oO(i, m)], g, x) || x
+    }
+    nN = function (w) {
+        return Boolean(Number(w))
+    }//M=
+    Nn = _.isNan
+    J = function (a, b, c) {
+        if (S(a)) {
+            return $.getJSON(a, b, c)
+        }
+        ;
+        return JSON.stringify(a)
+    }
+    isWindow = function (a) {
+        if (O(a)) {
+            if (s$(a).contains('Window') ||
+                s$(a[0]).contains('Window')) {
+                return window
+            }
+        }
+    }
+
+}
+
+function yano() {
+    Yano.func = function () {
+        $('body').C('*')
+    }
+    Yano.interval = 1000
+    Yano.intervalID = null
+//when you call this straight:
+//it checks if a Y-func is currently running (by seeing if Y.intervalID is set)
+//if it is, it clears the Y-func.. (and then unsets the Y.intervalID)
+// if func not running, it does setInterval, saving the returned # as Y.intervalID
+// if you pass in a neg, it will only toggle(turn) off
+// if you pass in a pos, it will only toggle(turn) on
+    Yano.toggleFunc = function self(func, interval) {
+        var args = G(arguments),
+            func = args[0],
+            interval = args[1]
 
 
+        if (Yano.intervalID) {
+            if (args.P) {
+                clearInterval(Yano.intervalID)
+                Yano.intervalID = null
+            }
+        }
+        else {
+            if (args.N) {
+                Yano.intervalID = setInterval(Yano.func, Yano.interval)
+            }
+        }
+    } //rat
+    Yano.setToggleFunc = function (func, interval) {
+        if (func) {
+            Yano.intervalFunc = func
+        }
+        if (interval) {
+            Yano.interval = interval
+        }
+        Yano.setIntervalID = setInterval(Yano.intervalFunc, Yano.interval)
+        return Yano.toggleFunc
+    }
+//random
+    Yano.random = Yano.rand = $r = function (a, b) {
+        a = a || 'c'; //cannot be 'color' ?? only abr??
+        var values = _.values(oO(a))
+        return Oo(a, b) || values[_.random(_.size(values) - 1)]
+    }
 
+}
 TESTKEYBOARD=function(){z()
 
     cjs.watchKeys()
@@ -1505,4 +1683,31 @@ $sw= cjs.sw= cjs.stopWatch=function(){var t=$t()
         }
         return d}
 
+}
+
+oC = function (c) {
+    return oO('c', c)
+}
+oK = function (a) {
+    return oO('k', a)
+}
+oT = function (a) {
+    return oO('t', a)
+}
+oE = function (a) {
+    return oO('e', a)
+}
+oI = function (a) {
+    return oO('i', a)
+}
+oS = function (a) {
+    return oO('s', a)
+}
+$o = function o(a, b, c) {
+    return _.isUndefined(b) ? _p(o, a) : G(arguments).N ? oO(a, b, c) : Oo(a, b, c)
+}
+oQ = function (f, m) {
+    $(function () {
+        Q(m || mf, f)
+    })
 }
