@@ -1,12 +1,14 @@
 dirs=[
 
 
-    '/front/front', '/front/can', '/front/create', '/front/anim',
+    '/front/front', '/front/can', '/graf', '/anim',
+    'fiz',    'fiz/deps',  'fiz/joints', '/spaz',
+    
+    'play',  'play/graphics',
 
-    'play/graphics',
-    'fiz',    'fiz/deps',  'fiz/joints',
-    'play', 'games','apps'
+    'games','games/apps'
 ]
+
 
 
 console.log('w'); both(); function both(){

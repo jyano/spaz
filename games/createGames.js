@@ -1,5 +1,3 @@
-
-
 iso=function(){
     Tile = function(){
 

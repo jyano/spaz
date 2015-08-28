@@ -39,11 +39,6 @@ $PT()
     t.mW = function () {return this.getMeasuredWidth()}
 
 
-
-
-
-
-
 function createStuff(){
     $El = cjs.el = function (a) {
         a = $(a)[0]
