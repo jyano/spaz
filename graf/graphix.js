@@ -546,7 +546,11 @@ function Shape(){
         gx.dc(N(o.x,0),N(o.y,0),N(o.r,50))
         return h
     }
-    h.cirs=function(g){g.e(function(c){this.dc(c)}); return this}
+    h.cirs=function(g){
+        var h=this
+        g.e(function(c){h.dc(c)}); return this
+    }
+
     h.dc= function(x,y,r){var h=this,gx=h.graphics,g=G(arguments),o
         h.cp()
         if(g.A){return $a(h,'dc',g.f)}

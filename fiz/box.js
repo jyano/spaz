@@ -309,7 +309,7 @@ V=function(x,y,x2,y2){var g=G(arguments),
 
     else if(O(x)){
 
-        if(b2d.isFixt(O(x))){x=x.B()}
+        if(b2d.iF(O(x))){x=x.B()}
         y= F(x.Y)? x.Y() : x.y
         x= F(x.X)? x.X() : x.x
     }

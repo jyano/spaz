@@ -185,7 +185,7 @@ pD.dot=function(){var p=this
     })
     return p}
 b2d.tF=function(f){return  b2d.iB(f)?f.f():f}
-b2d.iF=b2d.isFixt
+
 b2d.hV= b2d.hasVerts = function (poly) {
     return poly.m_List.get(0)
 }
