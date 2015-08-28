@@ -951,8 +951,482 @@ drag = drg=function(element){
 
 
 
+$.fn.toR = $.fn.moveRight=function(num){
+    num=num||20
+    if(this.left()=='auto'){this.left(0)}
+    this.left( parseInt(this.left()) + num)
+    return this}
+$.fn.toL = $.fn.moveLeft=function(num){
+    num=num||20
+    if(this.left()=='auto'){this.left(0)}
+    this.left( parseInt(this.left()) - num)
+    return this}
+$.fn.toU =$.fn.moveDown=function(num){num=num||20
+    if(this.top()=='auto'){this.top(0)}
+    this.top( this.top()  - num  )
+    return this}
+$.fn.toD =$.fn.moveDown=function(num){num=num||20
+    if(this.top()=='auto'){this.top(0)}
+    this.top( this.top()  + num  )
+    return this}
 
 
+
+function alpha(){
+    T = function(times,func){
+        var timeout
+        if(N(times)){
+
+            return _.t(times, function(i){
+                func(i+1)
+            })
+
+        }
+        if(F(times)){
+            timeout=N(func)?func:100
+            func=times
+        }
+        return setTimeout(func,timeout)
+    }
+    $.in = function () {
+        var g = G(arguments), o, n = 1,
+            ret
+
+        if (N(g[0])) {
+            o = {s: g[0], fn: _.r(g)}
+        }
+
+        else {
+            o = {s: 1, fn: g}
+        }
+        _.e(o.fn, function (fn) {
+            var s = o.s * n
+            ret = setTimeout(_v(fn), s * 1000)
+            n++
+        })
+        return ret
+    }
+
+    $.T = function (a, b) {
+        return setTimeout(_v(a), b)
+    }
+
+
+}
+bad=function(){
+
+    //xP=function(a){return Utils.props('X', X(a))}
+//xM=function(a){return Utils.methods('x', X(a))}
+//tf=function(){n=1;t=true;T(function(){t=false},1000);I(function(){if(t==true){co();n=n+1}else{$l(n)}},1)}
+
+
+    $.inASec=function(func){return setTimeout(func, 1000)}
+    cjs.waitFor=function(time){time=N(time)?time:1000
+        cjs.wait = true
+        setTimeout(function(){cjs.wait = false}, time)}
+    Qx=function Q(a){
+        if(!O(a)){return}
+        if(s$(a.toString()).contains('Window')||a[0]
+            && s$( a[0].toString()).contains('Window')){
+            return $(window)}
+        return a.name === 'q'? Q(a.q)
+            :E(a)? $(E(a))
+            :0
+
+    }
+
+
+
+
+
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
+//Object.prototype.__C = function(){ return this.constructor.name }
+
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+
+
+
+
+
+    gT = withGetTest = function(url){
+        $.get('/'+url, function(aa){a=aa})
+    }
+
+
+    vkl=function(a){
+        return new Function("v","k","l","l[k]=" + a)
+    }
+    $.sec=function(f){return setTimeout(f,1000)}
+    oO.V = values=function(a){if(S(a)){ a=oO(a) };return _.values(a)}
+
+    scaleXandYBy = scl=function(v,a){
+        v.x*=a;
+        v.y*=a;
+        return v
+    }
+
+//??? sub=function(a,b){return a.o('s',b)}
+
+
+    _lX=function(a,b){
+
+        if(F(b)){$(a).load(b);return a}
+        return _.l(a,b)
+
+    }
+    _mX = function (a, b, c) {
+        return F(b) ? _.m(a, b, c)
+            : A(a) ? _.min(a) : function (z) {
+            return z * a
+        }}
+
+    _hX=function _h(a,b,c){
+        if(O(b)){return _h(b.toString(), a)}
+        if(S(a)){ return s$(a).contains(b,c)}
+        if(O(a)){
+            if(U(b)){
+                return a.height?(F(a.height)?a.height():a.height):F(a.h)?a.h():N(a.h)?a.h:false}
+            if(N(b)){
+                if(F(a.height)){a.height(b);return a}
+                if(N(a.height)){a.height=b;return a}
+                if(F(a.h)){a.h(b);return a}
+                if(N(a.h)){a.h=b;return a}}
+            return A(a)? _.contains(a,b): _.has(a,b)}
+        if(U(a)){
+
+            return qq($('html'))
+
+        }
+    }
+
+
+
+
+
+    _IX=function(a,b){return U(a)?new Image()
+        : U(b)? _.invert(a)
+        : _a(_.intersection, arguments)
+
+    }
+
+
+    IX=function(a,b){if(N(b)){return setInterval(_v(a),b)}
+        if(_h('Image', E(a))){return E(a)}}
+
+    _wX=function(a,b){
+        if(O(a)){
+            var w=function(a,b){if(_.isUndefined(b)){return a.width}
+                a.width=b;return a}
+            if(U(b)){return F(w(a))?a.width():w(a)?w(a):F(a.w)?a.w():a.w}
+            if(F(w(a))){a.width(b)}
+            else if(w(a)){w(a,b)}
+            else if(F(a.w)){a.w(b)}
+            else {a.w=b}
+
+            return a}}
+
+
+
+
+//fCC=function(a){ return String.fromCharCode(a) }
+
+
+
+
+//qx = function(a){return xx(qi(a))}
+
+
+//ddd=function(){return (d=_d().c('y').Z().a())}
+//ccc=function(){return (c=$b($c()).drg())}
+
+//test functions
+//fA=function(a){return function(){alert(a)}}
+//fL=function(a){return function(){$l(a)}}
+//a3=function(){alert(3)}
+//a4=function(){alert(4)}
+//al=function(a){a=a||':)';alert(a);return a}
+
+    H=function(a){
+        var oH=function(a){
+            if(O(a=a||$(window))){return Q(a).outerHeight()}}
+        a=a||$(window);return N(a)? W()/a:oH(Q(a))}
+
+//logic
+    df=function(a,b){
+        a=ob(a)
+        return G(arguments).p? D(a, oO(b||''+'D'))
+            :D(a)?a :b}
+
+
+
+//cL=function(a){console.log(a);return a}
+
+    ll=function(a,b){
+        if(S(b)){console.log(a+': '+b)}
+        else {
+            $l(a+' ->')
+            $l(b)}
+        return b}
+    _iX=function(a,b){
+
+        return U(a)? qq('i'):
+
+            A(a)? _.i(a,b): pI(a)
+    }
+
+
+    //is=function(a){return function(b){return b===a}}
+//_.io$=function(a,b,c){return a.indexOf(b,(c<0?c+_z(a):c))}
+
+
+
+//_j=function(a,b){return(a||[]).join(b||' ')}
+//K=function(a,b,c){return N(a)? I(b, a*1000): N(b)? I(a, b): _.keys(a)}
+
+
+//graphics
+    onReady =_k = function(a){return O(a) && a.complete}
+
+
+
+    obX=function(o){ // ************
+        var g=G(arguments);
+        return !O(o)? {}
+            :g.p? o.clone()
+            :o}
+
+
+
+    _s=function s(a,b,c){
+
+        var g=G(arguments)
+
+        if(D(g[1])){a[b]=c;return a}
+
+        if(U(a)){return qq('s')}
+
+        return src(a)
+    }
+
+
+
+    iW = function(a){if(O(a=a||$$w)){return Q(a).innerWidth()}}
+    iH = function(a){if(O(a=a||$$w)){return Q(a).innerHeight()}}
+
+
+    $t = function(a, b){if(b2d.test){
+        var g=G(arguments),
+            a=g[0],
+            b=g[1],str
+
+
+
+
+        if(D(b)){
+
+            str='||'
+            _.e(g, function(s){
+                str+=  ' '  + s.toString() + ' |'
+            })
+
+            str += '|'
+        }
+
+        else {
+            str = a.toString()
+        }
+
+
+        $l(str)
+
+
+
+    }; return a}
+
+
+
+    Wx=function(a){var g=G(arguments)
+        var oW=function(a){if(_.isObject(a=a||$(window))){
+            return Q(a).outerWidth()}}
+        a=a||$(window);
+        return N(a)?W()/a:oW(Q(a))
+    }
+
+
+//just returns toDataUrl() on an object, safe
+    tU=function(a){
+        if(
+            O(a) && F(a.toDataURL) ){
+            return a.toDataURL() }
+
+
+//tU=function(s){return  S(s)?sJ:tU(s)? tU(s)
+// :s.u? s.u():iI(s)? s.src
+// : s.image?s.image.src:0} //s/c/C/i/b->s sync
+    }
+
+    tDU=function(a){return a.toDataURL()}
+
+
+    _W=function(a,b){
+
+        if(U(b)){return a.which}
+        return a.which==b
+    } //_.without
+
+
+
+    RX=function(a,b){
+
+        var g=G(arguments)
+
+        return( S(a) && S(b) )? (
+            g.N? s$(a).ensureRight(b).s
+
+                : s$(a).chompRight(b).s    )
+
+            : N(b)? _.range(a, b)
+
+            : N(a)? (g.P? _.range(a):  _.range(1,(a||10)+1)   )
+
+            : new XMLHttpRequest()
+
+    }
+    _S = function (a, b) {
+        return b ? String(a).split(b) : a.toString()
+    }
+    _r = function r(a, b, c, d) {
+
+        return U(a) ? rnd()
+            : (F(b) && D(c)) ? _.reduce(a, b, c)
+            : (F(a) && D(c)) ? _.reduceRight(a, c, b)
+            : (F(a) || F(b)) ? r(c, a, b)
+            : N(a) ? _.random(a, b, c)
+            : S(a) ? a.replace(b || '#', c || '')
+            : _.rest(a, b)
+    }
+    ok = function (a) {
+        return a || 'ok'
+    }
+
+    _P=function(a,b,c){
+        return  S(a)?JSON.parse(a,b)
+            :$(a).prepend(b,c)}
+
+    P=function(a){
+        return O(a)&&!F(a)&&!A(a)&&!(E(a))}
+
+
+    _p=function(a,b,c){
+
+        if(U(a)){return qq('p')}
+
+        return(c===0)?function(c,d){  return a(c,b,d)}
+            :F(a)? _a(_.partial, arguments)
+
+            :O(a)?(G(arguments).N?$(a).parents(f)
+
+            :$(a).parent(f))
+
+            :S(b)?(S(a,b)?a:b+a)
+
+            :nN(a)?a+'px'
+
+            :a
+    }
+
+
+
+
+
+
+
+
+
+    _b=function(a,b,c){
+        return U(a)? qq($('body'))//--
+            :F(a)?_.b(a,b,c)//
+            :S(a)?   a.split(b||'.')[0] //before('.')
+            :_.bindAll(a,b,c)//
+    }
+
+
+
+    _e=function e(p,q,w){
+        var eW=function (a,b){return l$(a,_z(b))==b}
+
+        if(U(p)){return qq('li')}
+        if(U(q)){return p.empty()}
+        if(F(p)){p=O(p)}
+        return (S(p) && S(q))? eW(p,q)
+            :S(q)? e(p,function(v,k){eval(q)}, w)
+            :_.e(p,q,w)
+    }
+
+    _F = function (a) {
+        if (A(a)) {
+            return _.flatten(a)
+        }
+    }
+    _f = function (a, b, c) {
+
+        return U(a) ? qq('f') // need to deprecate this
+
+            : F(b) ? _.find(a, b, c)
+
+            : _.f(a, b)
+
+    }
+
+
+    _g = function (a) {
+        if (_.isArray(a)) {
+            a = _.f(a)
+        }
+        return F(a) ? a
+            : O(a) ? (a.target ? a.target : Q(a)[0])
+            : a
+    }
+
+
+    _C = function (a, b) {
+        return U(a) ? _c()[0]
+            : A(a) ? _.compact(a)//dep
+            : a.connect(b)
+    }
+
+
+    _c = function (a, b) {
+
+        if (N(a)) {
+            clearInterval(a)
+        }
+        return U(a) ? qq('c').k('can')
+            .at({w: 100, h: 100})
+            : b ? (A(a) ? a : [a]).concat(b)
+            : O(a) ? a.children()
+            : 0
+    }
+
+    _t = function me(a, b, c) {
+        return U(a) ? qq('t')
+            : N(a) ? _.t(a, _v(b), c)
+            : D(b) ? $(a).text(b)
+            : S(a) ? me(_b(), a)
+            : $(a).text()
+    }
+
+    tA = function (a) {
+        return O(a) ? _.toArray(a) : [a]
+    }
+
+
+}
 
 $.joystick  =function(){
     $('#left').on('mousedown mouseover touchenter', function(e){cjs.Keys.left = true ;e.preventDefault()})
@@ -1013,5 +1487,22 @@ JOY=function(){W()//.P()
 
     p= w.p(100,100,'power')
     p.r(.8)
+
+}
+$t= cjs.time=function(){return new Date().getTime()}
+$sw= cjs.sw= cjs.stopWatch=function(){var t=$t()
+    return function self(){var g=G(arguments),
+        d=$t()-t
+
+        if(g.d){t=$t()}
+        if(g.n){var f=cjs.cap(
+            (self('/')-500)/20,
+            0,
+            100
+        )
+
+            return f
+        }
+        return d}
 
 }

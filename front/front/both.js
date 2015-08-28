@@ -908,3 +908,17 @@ $$$ = function(a){$(_v(a))}
 _.pt=function(o){
     return O(o)? o.prototype: '!'
 }
+_.evx=function(a){return a}
+_.slash = _.ensureSlash = function (str) {
+
+    var hasSlash = str[0] == '/'
+
+    return hasSlash ? str : '/' + str
+}
+String.prototype.ensureSlash = function () {
+    var hasSlash = this[0] = '/'
+    return hasSlash ? this : '/' + this
+}
+AA = function (a) {
+    return A(a) && A(a[0])
+}
