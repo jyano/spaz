@@ -285,3 +285,7 @@ ct.qB=  ct.bQ=function(name, x, y, sX,sY, rt){var b,g=G(arguments)
     this.A(b );
     return b
 }
+cjs.iCt = function (ct) {
+//haha only a ct can impl addContainer( ha! //MOMENT OF BRILLIANCE
+    return O(ct) && ct.addContainer
+}

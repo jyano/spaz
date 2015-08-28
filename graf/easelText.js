@@ -58,3 +58,16 @@ $T= function(a,b,c,d,e){var g = G(arguments), o, t
     return t.bl('middle')
 
 }
+
+$.fn.T = function () {var d = this, g = G(arguments)
+    d.E()
+    g.e(function (str) { d.A($.h3(str)) })
+    return d
+}
+
+
+cjs.iT = function (t) {
+    if (O(t)) {
+        return (t.textBaseline)
+    }
+}

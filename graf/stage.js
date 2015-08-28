@@ -37,3 +37,14 @@ $St=function(){var st, g=G(arguments), cv
     return st.A()
     //.t()
 }
+$.St=function(){z()
+    s = $St().t()
+    s.bm('me', function(bb){
+        b=bb.drag()
+    })
+    return s
+}
+$.dragStage = function (x, y) {
+    s = $St('v',  '+')
+    return $.dragFrame($(s.canvas))
+}

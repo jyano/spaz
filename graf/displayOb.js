@@ -659,3 +659,28 @@ function easPhys(){
 
 }
 easPhys()
+
+
+cjs.iDO= function(i){return O(i)&&F(i.getStage)}
+
+
+
+_bm=function(a){return new cjs.Bitmap(a)}
+$Bm=  function(bm){var g=G(arguments)
+    bm= _bm(bm)
+    if(g.p){ bm.drag() }
+    return bm
+}
+
+cjs.M = function (a) {
+    var m = new cjs.Matrix2D()
+    if (N(a)) {
+        m.rotate(a)
+    }
+    return m
+}
+cjs.m2d = function (a, b, c, d, e, f) {if (U(c)) {
+    return new cjs.Matrix2D(1, 0, 0, 1, N(a, 0), N(b, 0))
+}
+    return new cjs.Matrix2D(N(a, 1), N(b, 0), N(c, 0), N(d, 1), N(e, 0), N(f, 0))}
+

@@ -1,10 +1,4 @@
-cjs=C$=createjs; T= cjs.Ticker
-
-
-
-
-
-
+cjs=C$=createjs;
 
 $PT =  function(){
 
@@ -32,148 +26,22 @@ $PT =  function(){
 
 }
 $PT()
-df={}
 
-cjs.toColor =toColor = tCl=function(n1,n2,n3,n4){
 
-    return n2? "rgba("+n1+","+n2+","+""+n3+","+(n4||1)+")"
-        :
-        $r('c', n1)
-}
 
-$.fn.T = function () {var d = this, g = G(arguments)
-    d.E()
-    g.e(function (str) { d.A($.h3(str)) })
-    return d
-}
-cjs.iDO= function(i){return O(i)&&F(i.getStage)}
 eD.init=function(){
     var eD=this
     eD.initialize.apply(eD, arguments)
     return eD
 }
-$.fn.a2=function(el){el.A(this); return this}
-$.St=function(){z()
-    s = $St().t()
-    s.bm('me', function(bb){
-        b=bb.drag()
-    })
-    return s
-}
-$.dragStage = function (x, y) {
-    s = $St('v',  '+')
-    return $.dragFrame($(s.canvas))
-}
-
 cjs.bulletHit = function (bullet, inWhat) {
-
-    var x = bullet.centerX(),
-        y = bullet.centerY()
-
+    var x = bullet.centerX(), y = bullet.centerY()
     var res = Math.pointInCircle(x, y, {x: inWhat.x, y: inWhat.y, radius: inWhat.H() / 2})
-
     if (res == true) {
         $l('hit!')
     }
     return res
 }
-_xyr=function(o){
-    o.x=N(o.x,0)
-    o.y=N(o.y,0)
-    o.r=N(o.r,0)
-    return o}
-_im=function(o){
-    o.i= o.i||'me'
-    o.al = N(o.al,1)
-}
-_sc=function(o){
-    o.sc = N(o.sc, ( cjs.iH(o.i) ? 1 : .4 ));
-    if (!A(o.sc)) {o.sc = [o.sc, o.sc]};
-    return o
-}
-_bm=function(a){return new cjs.Bitmap(a)}
-
-$Bm=  function(bm){var g=G(arguments)
-    bm= _bm(bm)
-    if(g.p){ bm.drag() }
-    return bm
-}
-
-$H= $h= function(){var g=G(arguments),
-    h = new cjs.Shape(), //if (cjs.iH(x)) {return new cjs.Shape(x.graphics)}
-//pass in your own obj to use 'o.i/o.bf' or 'o.lf' or 'o.rf'
-    o= g.O? g.f:
-        g.N_? ( N( g[3] )? // 'c-C-l' pattern
-        { x:g.f, y:g.s, C: g.t, l:g[3]} : { x:g.f, y:g.s, c: g.t, C:g[3], l:g[4]} ) :
-            // 'c-C-l' pattern
-            N(g.s)? { C:g.f, l:g.s } :
-            { c:g.f, C:g.s, l:g.t }
-    h.XY( N(o.x,0), N(o.y,0) )
-    h.c( o.c || 'z', o.C || 'w', o.l ||  8 )
-    if(o.C){h.C(o.C)}
-    if(N(o.l)){h.l(o.l)}
-    if(g.p){h.dg()}
-    return  h
-}
-$Cir=   function () {var g = G(arguments),
-    o = g.S_? {c:g.f,x:g.s,y:g.t,r:g[3]}: {x:g.f,y:g.s,r:g.t}
-    return $H(o.c,o.x,o.y).dc(o.r)
-}
-
-cjs.iCt = function (ct) {
-//haha only a ct can impl addContainer( ha! //MOMENT OF BRILLIANCE
-    return O(ct) && ct.addContainer
-}
-cjs.M = function (a) {
-    var m = new cjs.Matrix2D()
-    if (N(a)) {
-        m.rotate(a)
-    }
-    return m
-}
-cjs.Gx = cjs.gx = function (a) {
-    return new cjs.Graphics(a)
-}
-cjs.rulers = function () {
-    $.d('b', 100, 100).al(.3).dg()
-    $.d('r', 100, 300).al(.3).dg()
-}
-cjs.iH = function (h) {
-    return O(h) && h.graphics
-}
-cjs.iT = function (t) {
-    if (O(t)) {
-        return (t.textBaseline)
-    }
-}
-cjs.m2d = function (a, b, c, d, e, f) {
-    if (U(c)) {
-        return new cjs.Matrix2D(1, 0, 0, 1, N(a, 0), N(b, 0))
-    }
-    return new cjs.Matrix2D(
-        N(a, 1),
-        N(b, 0),
-        N(c, 0),
-        N(d, 1),
-        N(e, 0),
-        N(f, 0)
-    )
-}
-cjs.dia = function self(width, height, fc, sc) {
-    fc = fc || 'green'
-    sc = sc || 'white'
-    width = width || 100
-    height = height || width
-    halfwidth = width / 2
-    halfheight = height / 2
-    var h = new createjs.Shape()
-    h.graphics.f(fc).s(sc)
-        .mt(0, -halfheight)
-        .lt(-halfwidth, 0).lt(0, halfheight)
-        .lt(halfwidth, 0).lt(0, -halfheight)
-    return h
-}
-
 $.space = function (fn){return $.kD('space',fn)}
 $.scroll = function (a) {
     return $(window).scroll(a || function () {
@@ -266,7 +134,6 @@ $.fn.keyControls = function (num) {
         })
     }
 }// o.keyControls(num) should deprecate use of key(o)
-
 cjs.Keys = function (o) {
 
     if (O(o)) {
@@ -366,7 +233,6 @@ cjs.watchKeys = function () {
         cjs.Keys.d = cjs.Keys.down = false
     })
 }
-
 cjs.bindSlide = SL = function () {
     var g = G(arguments),
         b = g[0],

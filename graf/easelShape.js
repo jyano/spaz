@@ -1,32 +1,6 @@
 $PT()
-df.b = function () {
-    var g = G(arguments), o
-    o = g.A ? {hs: g.f} : g.f || {}
-    o.hs = o.hs || []
-    o.i = o.i || 'me'
-    return o
-}
-df.h = function (o) {
-    o = o || {}
-    if (U(o.v)) {
-        o.v = [[-100, 50], [0, -50], [100, 0]]
-    }
-    //o.v= _.m(o.v, function(v){v=V(v);return [v.x,v.y]})
-    o.c = o.c || 'p'
-    o.x = _.tN(o.x)
-    o.y = _.tN(o.y)
-    o.a = _.tN(o.a)
-    o.r = N(o.r, 40)
-    o.w = N(o.w, 50)
-    o.h = N(o.h, o.w || 100)
-    o.d = N(o.d, 0.5)
-    o.b = N(o.b, 0.5)
-    o.f = N(o.f, 0.5)
-    o.s = D(o.s) ? o.s : 0
-    o.o = N(o.o, 1)
-    o.q = D(q) ? o.q : true
-    return o
-}
+
+
 h.rec = function () {
     var h = this, g = G(arguments), o
 
@@ -706,4 +680,46 @@ cjs.lg= h.lg=function(){var g=G(arguments), o//h=this, gx=h.graphics,
     o.x2 = N(o.x2,0)
     o.y2=N(o.y2)? o.y2: N(o.r)?o.r*2: 100
     return o
+}
+
+
+$H= $h= function(){var g=G(arguments),
+    h = new cjs.Shape(), //if (cjs.iH(x)) {return new cjs.Shape(x.graphics)}
+//pass in your own obj to use 'o.i/o.bf' or 'o.lf' or 'o.rf'
+    o= g.O? g.f:
+        g.N_? ( N( g[3] )? // 'c-C-l' pattern
+        { x:g.f, y:g.s, C: g.t, l:g[3]} : { x:g.f, y:g.s, c: g.t, C:g[3], l:g[4]} ) :
+            // 'c-C-l' pattern
+            N(g.s)? { C:g.f, l:g.s } :
+            { c:g.f, C:g.s, l:g.t }
+    h.XY( N(o.x,0), N(o.y,0) )
+    h.c( o.c || 'z', o.C || 'w', o.l ||  8 )
+    if(o.C){h.C(o.C)}
+    if(N(o.l)){h.l(o.l)}
+    if(g.p){h.dg()}
+    return  h
+}
+$Cir=   function () {var g = G(arguments),
+    o = g.S_? {c:g.f,x:g.s,y:g.t,r:g[3]}: {x:g.f,y:g.s,r:g.t}
+    return $H(o.c,o.x,o.y).dc(o.r)
+}
+cjs.Gx = cjs.gx = function (a) {
+    return new cjs.Graphics(a)
+}
+cjs.iH = function (h) {
+    return O(h) && h.graphics
+}
+cjs.dia = function self(width, height, fc, sc) {
+    fc = fc || 'green'
+    sc = sc || 'white'
+    width = width || 100
+    height = height || width
+    halfwidth = width / 2
+    halfheight = height / 2
+    var h = new createjs.Shape()
+    h.graphics.f(fc).s(sc)
+        .mt(0, -halfheight)
+        .lt(-halfwidth, 0).lt(0, halfheight)
+        .lt(halfwidth, 0).lt(0, -halfheight)
+    return h
 }

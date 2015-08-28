@@ -171,3 +171,16 @@ $.update=function(curr, update, g){var res
     else res = update
     return res
 }
+
+cjs.rulers = function () {
+    $.d('b', 100, 100).al(.3).dg()
+    $.d('r', 100, 300).al(.3).dg()
+}
+
+cjs.toColor =toColor = tCl=function(n1,n2,n3,n4){
+    return n2? "rgba("+n1+","+n2+","+""+n3+","+(n4||1)+")"
+        :
+        $r('c', n1)}
+
+
+$.fn.a2=function(el){el.A(this); return this}

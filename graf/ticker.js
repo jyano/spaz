@@ -1,4 +1,4 @@
-
+T= cjs.Ticker
 
 cjs.xL = T.s = function () {
     T.removeAllEventListeners()
