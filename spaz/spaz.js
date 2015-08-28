@@ -29,7 +29,7 @@ f.bI = function () {var f = this, b = f.B(), w = b.W(), g = G(arguments), o
     if (!A(o.sc)) {
         o.sc = [o.sc, o.sc]
     }
-    _xyr(o)
+    $df.xyr(o)
     o.al = N(o.al, 1)
     if (!g.n && !cjs.iH(o.i) && !cjs.iCt(o.i)) {
         o.i.rC()
@@ -38,7 +38,7 @@ f.bI = function () {var f = this, b = f.B(), w = b.W(), g = G(arguments), o
     return this._bI(o)
 }
 f._bS=function(o){var f=this, b= f.B(), w=b.W(),j
-    bsDF(o)
+    $df.bsDF(o)
     j = o.j
     j.al( o.al )
     w.g.A(j)
@@ -83,9 +83,9 @@ b.bS = function () {var b = this, w = b.W(), g = G(arguments), o, i, a, sc //pas
     if (S(o.i)) {w.g.bm(o.i, function (bm) {b.bS(_.x(o, {i: bm, bm: bm})) })} //if not loaded, async loads and passes it back as a data object //next time, then, when loaded it can bypass async
 
     else {
-        _xyr(o)
-        _sc(o)
-        _im(o)
+        $df.xyr(o)
+        $df.sc(o)
+        $df.im(o)
 
         //they can pass in a formed shapeer
         if (cjs.hasDim(o.bm) && !g.n) {o.bm.rC()}//regCent //can not center things that dont have dimensions! // scale, position and place the bm in the ct (which is on the stage)
@@ -370,7 +370,7 @@ function bPoly(){
     function polyShapeArgs(g){
         var o= g.A ? (S(g.f[0]) ? {c: g.f[0], v: _.r(g.f)} : {v: g.f}) :
             g.O ? g.f : !g.S_ ?  {v:g} : _.x({c: g.f}, g.t ? {v: g.r} : {  v: g.s} )
-        df.h(o)
+        $df.h(o)
         if (b2d.iGP(o.v)) {o.v = o.v.vs()}
         return o
     }
