@@ -430,6 +430,323 @@ function keys(){
 w.kill=w.xD=function(){w.e(function(b){if(b.iD()){b.kill()}})}
 
 
+makeBod()
+dims()
+walls()
+
+w.bfR = function () {
+    var w = this, g = G(arguments), b, h, o
+    o = S(g.t) ? {x: g.f, y: g.s, i: g.t, w: g[3], h: g[4], c: g[5]} :
+    {x: g.f, y: g.s, w: g.t, h: g[3], c: g[4]}
+    o.i = o.i || 'sun'
+    o.c = o.c || 'y' // can be removed
+    b = w.D(o.x, o.y, o.c, o.w, o.h)
+    h = w.g.h().al(.5)
+    if (o.c) {
+        h.c(o.c)
+    }
+    h.bf(o.i)
+    h.rec(o.w, o.h)
+    b.bS(h)
+    return b
+}
+w.$h = function () {
+    return this.i.h.apply(this.i, arguments)
+} // h = $h().a2(s).rXY(100, 300).XY(100,300).drag()
+//  h.rec( 'r','b',600, 200,  600, 200)
+// h.rec( 'g',100, 100,  100, 20)
+w.C = function (c) {
+    var w = this
+    w.bg.h().c(c || $r()).dr(0, 0, w.w, w.h)
+    return w
+}
+w.lG=function(c,c2){var w=this,o
+    o={c1:c2||'z', c2:c||'r', x1:0,y1:0,x2:0,y2:0}
+    _.x(o,R()?(R()?{y2:w.h}:{x2:w.w}):
+        R()?(R()?{x1:w.w,y1:w.h}:{x2:w.w,y2:w.h}):
+            R()?{x1:w.w,y2:w.h}:{y1:w.h,x1:w.w})
+    w.bg.h().lf(o).dr(0,0,w.w,w.h)
+    w.bg.h(0, 0, $r()).dr(0, 0, w.w, w.h).al(.2)
+
+    return w
+}
+w.D=function(){var w=this, g=G(arguments,'k'),o,b
+    if(g.u){return w.D(w.hW, w.hH)}
+    o= g.O? g.f:
+        g.O_? {p:g.f, f:g.r}:
+        {p:[g.f,g.s],f:_.r(g,2)}
+    b = w.CreateBody( b2d.D(o.p) )
+    b.K(g.k)
+    $a(b, 'f', g.G( o.f ) )
+    return b
+}//w.sp=w.ct=function(x,y){var w=this;return w.hud.ct(x||w.hW,y||w.hH).drag()}
+w.warp = function () {
+    var w = this
+    w.eEv(function (b) {
+
+        if (b.X() < 10) {
+            b.X(w.W - 10)
+        }
+        if (b.X() > w.W - 10) {
+            b.X(10)
+        }
+        if (b.Y() < 10) {
+            b.Y(w.H - 10)
+        }
+        if (b.Y() > w.H - 10) {
+            b.Y(10)
+        }
+    })
+
+    return w
+}
+w.UI = function () {
+    return $(this.i.canvas)
+}
+w._ = function(fn){Q(function(){fn(w)})}
+w.tE=function(fn){var w=this
+    T.t(function(){  w.e(fn)  })
+    return this
+} // TICKER !!!!!
+
+function walls() {
+    w.R = function (c, W, H, x, y) {
+        var w = this, g = G(arguments),
+            wC = w.cen(),
+            r
+
+        if (!S(g.f)) {
+            y = x;
+            x = H;
+            H = W;
+            W = c;
+            c = 'x'
+        }
+        if (U(W)) {
+            W = 200
+            H = 200
+            x = wC.x - W / 2
+            y = wC.y - H / 2
+        }
+        else if (U(H)) {
+
+            H = W
+            x = wC.x - W / 2
+            y = wC.y - H / 2
+        }
+        else if (U(x)) {
+            x = wC.x - W / 2;
+            y = wC.y - H / 2
+        }
+        return w.S(
+            x + W / 2,
+            N(y, x) + H / 2,
+            c,
+            W, H
+        )
+
+        /*
+         x=N(g[0])?g[0]:wC.x
+         y=N(y)?y:N(g[0])?N(g[0]):wC.y
+         W=N(W)?W:100
+         H=N(H)?H:W
+         */
+    }
+    w.walls = function () {
+        var w = this, g = G(arguments), o
+
+        if (g.f === 0) {
+            return
+        }
+        o = g.$S ? {w: g.f, c: g.s} : g.A ? {w: g.f[0], c: g.f[1]} : {}
+        o.c = o.c || 'o';
+        o.w = o.w || '*'
+        o.l = 40
+
+        if (o.w == '*') {
+            sides();
+            verSides()
+        }
+        if (o.w == '@') {
+            w.warp();
+            return w
+        }
+        if (o.w == '_') {
+            bot()
+        }
+        if (o.w == '~') {
+            top()
+        }
+        if (o.w == '[') {
+            left()
+        }
+        if (o.w == ']') {
+            right()
+        }
+        if (o.w == 'U') {
+            sides();
+            bot()
+        }
+        if (o.w == 'A') {
+            sides();
+            top()
+        }
+
+        if (o.w == 'C') {
+            verSides();
+            left()
+        }
+
+        if (o.w == 'L') {
+            left();
+            bot()
+        }
+        if (o.w == '=') {
+            verSides()
+        }
+        if (o.w == '|') {
+            sides()
+        }
+
+
+        if (o.w == '->') {
+            verSides();
+            left();
+            right1()
+        }
+        if (o.w == '<-') {
+            verSides();
+            left1();
+            right()
+        }
+        if (o.w == '<->') {
+            verSides();
+            left1();
+            right1()
+        }
+
+
+        if (o.w == 'r2') {
+            verSides();
+            left();
+            right2()
+        }
+        if (o.w == 'l2') {
+            verSides();
+            left2();
+            right()
+        }
+
+
+        /*
+
+         if (A(o.w)){
+
+         c = o.w[0]
+         if (!S(c)){
+         h = W;
+         W = c;
+         c = 'o'
+         }
+         o.c = o.c || 'o'
+         w.floor = w.R(o.c, w.wW, 20, 0, w.wH - 20)
+         w.right = w.R(o.c, 20, w.wH, w.Ww - 20, 0)
+         w.roof = w.R(o.c, w.wW, 20, 0, 0)
+         w.left = w.R(o.c, 20, w.wH, 0, 0)}*/
+
+        function sides() {
+            right();
+            left()
+        }
+
+        function verSides() {
+            top();
+            bot()
+        }
+
+
+        function left() {
+
+            w.l_ = w.left = w.S(0, w.h / 2, o.c, o.l * 2, w.h).K('wall side left')
+            w.l_.SetBullet(true)
+
+        }
+
+
+        function right() {
+            w.r_ = w.right = w.S(
+                w.w, w.h / 2, o.c, o.l * 2, w.h
+            ).K('wall side right')
+            w.r_.SetBullet(true)
+        }
+
+        function right2() {
+            w.r_ = w.right = w.S(w.w, w.h / 2, o.c, o.l * 2, w.h / 2).K('wall side right')
+        }
+
+        function right1() {
+            w.r1_ = w.right1 = w.S(w.w, 100, o.c, o.l * 2, 200);
+            w.r2_ = w.right2 = w.S(w.w, w.h - 100, 'o', o.l * 2, 200).K('wall side right')
+        }
+
+
+        function left2() {
+            w.l_ = w.left = w.S(0, w.h / 2, o.c, o.l * 2, w.h / 2).K('wall side right')
+        }
+
+        function left1() {
+            w.l1_ = w.left1 = w.S(0, 100, o.c, o.l * 2, 200);
+            w.l2_ = w.left2 = w.S(0, w.h - 100, 'o', o.l * 2, 200).K('wall side right')
+        }
+
+
+        function top() {
+
+            w.t_ = w.roof = w.S(w.w / 2, 0, 'o', w.w, o.l * 2).K('wall roof')
+            w.t_.SetBullet(true)
+
+        }
+
+
+        function bot() {
+            w.b_ = w.floor = w.S(w.w / 2, w.h, o.c, w.w, o.l * 2).K('wall floor')
+            w.b_.SetBullet(true)
+        }
+
+    }
+    w.vW = function (col, H, x, y) {
+        var w = this, g = G(arguments),
+            cW = w.can.W(),
+            cH = w.can.H()
+        if (!S(col)) {
+            y = x;
+            x = H;
+            H = col;
+            col = 'x'
+        }
+        H = (H == '+') ? cH : N(H) ? H : cH / 2 - 10
+        if (U(x)) {
+            x = cW / 2;
+            y = cH / 2 - H / 2
+        }
+        else if (U(y)) {
+            x = (x == '+') ? cW - 20 : (x == '-') ? 0 : x
+            y = cH / 2 - H / 2
+        }
+        //x-=10?
+        return w.R(col, 20, H, x, y).bo(.2).K('wall')
+    }
+
+    w.clr = w.wXx = function () {
+        var w = this
+        w.e(function (b) {
+            if (b != w.right && b != w.left && b != w.roof && b != w.floor)
+                b.xx()
+        })
+        return w
+    }
+}
+function makeBod() {
     w.pol = function () {
         var w = this, g = G(arguments), b, o
         if (g.A) {
@@ -567,6 +884,8 @@ w.kill=w.xD=function(){w.e(function(b){if(b.iD()){b.kill()}})}
         }
         return b
     }
+
+
     w.polyCirc = function (x, y, r, sides) {
         var w = this,
             b = w.D(x, y)
@@ -575,10 +894,8 @@ w.kill=w.xD=function(){w.e(function(b){if(b.iD()){b.kill()}})}
 
         return b
     }
-
-
-
-
+}
+function dims(){
     w.sH = function (h) {var w = this
         if (U(h)) {return w.H * w.s.scaleY}
         w.s.scaleY = h / w.H
@@ -591,72 +908,8 @@ w.kill=w.xD=function(){w.e(function(b){if(b.iD()){b.kill()}})}
     w.wTS=w.wToS=  function(x,y){var w=this,
         x=(x +w.s.x/w.z)*w.z,
         y=(y+ w.s.y/w.z)*w.z
-        return {x:x, y:y}}
-
-
-
-
-
-
-w.$h = function () {
-    return this.i.h.apply(this.i, arguments)
-} // h = $h().a2(s).rXY(100, 300).XY(100,300).drag()
-//  h.rec( 'r','b',600, 200,  600, 200)
-// h.rec( 'g',100, 100,  100, 20)
-w.C = function (c) {
-    var w = this
-    w.bg.h().c(c || $r()).dr(0, 0, w.w, w.h)
-    return w
-}
-w.lG=function(c,c2){var w=this,o
-    o={c1:c2||'z', c2:c||'r', x1:0,y1:0,x2:0,y2:0}
-    _.x(o,R()?(R()?{y2:w.h}:{x2:w.w}):
-        R()?(R()?{x1:w.w,y1:w.h}:{x2:w.w,y2:w.h}):
-            R()?{x1:w.w,y2:w.h}:{y1:w.h,x1:w.w})
-    w.bg.h().lf(o).dr(0,0,w.w,w.h)
-    w.bg.h(0, 0, $r()).dr(0, 0, w.w, w.h).al(.2)
-
-    return w
-}
-w.D=function(){var w=this, g=G(arguments,'k'),o,b
-    if(g.u){return w.D(w.hW, w.hH)}
-    o= g.O? g.f:
-        g.O_? {p:g.f, f:g.r}:
-        {p:[g.f,g.s],f:_.r(g,2)}
-    b = w.CreateBody( b2d.D(o.p) )
-    b.K(g.k)
-    $a(b, 'f', g.G( o.f ) )
-    return b
-}//w.sp=w.ct=function(x,y){var w=this;return w.hud.ct(x||w.hW,y||w.hH).drag()}
-w.warp = function () {
-    var w = this
-    w.eEv(function (b) {
-
-        if (b.X() < 10) {
-            b.X(w.W - 10)
-        }
-        if (b.X() > w.W - 10) {
-            b.X(10)
-        }
-        if (b.Y() < 10) {
-            b.Y(w.H - 10)
-        }
-        if (b.Y() > w.H - 10) {
-            b.Y(10)
-        }
-    })
-
-    return w
-}
-w.UI = function () {
-    return $(this.i.canvas)
-}
-w._ = function(fn){Q(function(){fn(w)})}
-w.tE=function(fn){var w=this
-    T.t(function(){  w.e(fn)  })
-    return this
-} // TICKER !!!!!
-
+        return {x:x, y:y}
+    }}
 
 dev()
 function dev(){
