@@ -1,21 +1,7 @@
 f.S = f.stg = function () {return this.W().s}
 b.St = b.S = b.stg = function () {return this.W().s}
 b.horizCenter = function () {var b = this; b.X(b.W().hW); return b}   //-> b.X('hC')//b.g=function(){ return this.f().g }
-f.C = function () {var f = this,
-    b = f.B(), w = b.W(), g = G(arguments), o, h
-    o = g.O ? g.f : {c: g.f, C: g.s, l: g[2]}
-    o.c = (o.c == '*') ? $r() : (o.c || 'b')
-    o.C = o.C || o.c
-    f.removeSprites()
-    h = f.iC() ?
-        // if circle?
-        w.s.h().cir(f.pX(), f.pY(), f.rad(), o.c, o.C, o.l) :
-        // if poly
-        w.s.h().pol(f.rV(), o.c, o.C, o.l)
-    f.bS(h)
-    b.i = h
-    return f
-}
+
 b.C = function (c) {
     this.fs(function (f) {
         f.C(c)
@@ -85,99 +71,11 @@ b.rec = function (c, W, H, x, y, a) {
     return f
 
 }
-b.pol = function () {
-    var b = this, w = b.W(), g = G(arguments), fs, n, arr, o, vs
 
-    b2d.mini()
 
-    //-> {c:'r', v:[[],[],[]]} //pass in {c:'r', v:[[],[],[]]} //pass in [[],[],[]] //pass in ['r',[],[],[]]
-    // b.fs(function(f){b1.pol(f.rV())})//g[0].ps(function(v){b.pol(v)})// else {_.e(g[0], function(v){b.pol(v)})}
 
-    if (g.u) {
-        return b
-    }
 
-    if (iP(g.f) && U(g.s)) {
-        return b.pol({v: g.f})
-    }
 
-    if (S(g.f) && iP(g.s) && U(g.t)) {
-
-        return b.pol({c: g.f, v: g.s})
-    }
-
-    if (iF(g.f)) {
-        g.f = g.f.rV()
-    }
-    else if (iB(g.f)) {
-        g.f.fs(b);
-        return b
-    }
-    if (g.A) {
-        o = S(g.f[0]) ?
-        {c: g.f[0], v: _.r(g.f)} :
-        {v: g.f}
-    }
-    else {
-        o = g.O ? g.f :
-            g.S_ ?
-                (g.t ?
-                {c: g.f, v: g.r} :
-                {c: g.f, v: g.s}) :
-            {v: g}
-    }
-
-    o = df.h(o)
-    if (iP(o.v)) {
-        o.v = o.v.vs()
-    }
-    n = b.n()
-    if (O(o.v[0][0])) {
-        _.e(o.v, function (v) {
-            b2d.sep(b, v)
-        })
-    }
-
-    //pass in 2 or more objs->
-    else {
-        b2d.sep(b, o.v);
-        o.v = [o.v]
-    }
-
-    //pass in one object
-    //->  ['r', [],[],[] ]//->  [[],[],[]]
-    //pass in color and loose verts//->'r',[],[],[]//->  'r', [[],[],[]]
-    //just pass in loose verts//-> [],[],[]
-    //same two as above but also nested in wrapper array.. so just ONE pam
-    //if (o.X) {b.clear()}
-    //the NEW fixts
-    fs = _.f(b.fs(), b.n() - n) //each of only the NEW fixts
-    _.e(fs, function (f) {
-        f.d(o.d).r(o.b).fr(o.f)
-        if (o.s) {
-            f.m_isSensor = o.s ? true : false
-            f.sen(1)
-        }
-        f.K(o.k)
-        f.C(o.c, o.C, o.l)
-        if (o.lf) {
-            f.bS(w.s.h().lf(o).lt(o.v))
-        }
-        if (o.rf) {
-            f.bS(w.s.h().rf(o).lt(o.v))
-        }
-    })
-
-    o.i = o.i || o.bf
-    if (o.i) {
-        h = w.g.h()
-        h.bV(o)
-        b.bS(h)
-    }
-
-    //b.cir('y', 10);b.cir('z', 6)
-    return fs.length > 1 ? fs : fs[0]
-}
 b.cir= function(){var b=this,g=G(arguments), o= g.f, fd,  h,  f
     //if passed array, it assumes it is arguments for ONE cir
     if(g.A){
