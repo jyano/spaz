@@ -3,7 +3,16 @@ b2d.tA=function(vs){return _.m(vs, function(v){return v.tA(v)})}
 
 
 
+b._pol=function(o){
+    var b=this, fs  = newFixts(b, o)
 
+    dressFs(fs,o)
+
+    bindS(b,o)
+    return fsRetVal(fs)
+
+
+}
 b.pol = function(){
 
 
@@ -31,16 +40,6 @@ b.pol = function(){
 
 }
 
-b._pol=function(o){
-    var b=this, fs  = newFixts(b, o)
-
-    dressFs(fs,o)
-
-    bindS(b,o)
-    return fsRetVal(fs)
-
-
-}
 
 function dressFs(fs,o){
 
@@ -78,21 +77,28 @@ function bindS(b,o){
 }
 
 
-f.C = function () {var f = this,
+f.C = function () {
+
+    var f = this,
     b = f.B(), w = b.W(), g = G(arguments), o, h
     o = g.O ? g.f : {c: g.f, C: g.s, l: g[2]}
     o.c = (o.c == '*') ? $r() : (o.c || 'b')
     o.C = o.C || o.c
     f.removeSprites()
+
     h = f.iC() ?
         // if circle?
         w.s.h().cir(f.pX(), f.pY(), f.rad(), o.c, o.C, o.l) :
         // if poly
         w.s.h().pol(f.vs(), o.c, o.C, o.l)
+
     f.bS(h)
+
     b.i = h
+
     return f
 }
+
 
 
 function polyShapeArgs(g){
