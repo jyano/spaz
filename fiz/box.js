@@ -105,8 +105,8 @@ b2d.p= function(){
     pH=  b2d.PolygonShape.prototype
     pJ = b2d.Joints.b2PrismaticJoint.prototype
     pJD = pd = b2d.Joints.b2PrismaticJointDef.prototype
-    pD= gpcas.geometry.PolyDefault.prototype
-    ps= gpcas.geometry.PolySimple.prototype
+    pD= gpcas.geometry.PolyDefault.prototype//////////////////
+    ps= gpcas.geometry.PolySimple.prototype/////////////////////////
     q = cjs.LoadQueue.prototype
     rJD=b2d.RevoluteJointDef.prototype
     rJ=b2d.RevoluteJoint.prototype
@@ -125,6 +125,8 @@ b2d.p= function(){
     x=  ctx=  xx=CanvasRenderingContext2D.prototype
     xGr= CanvasGradient.prototype
 }
+
+
 b2d.p()
 
 
