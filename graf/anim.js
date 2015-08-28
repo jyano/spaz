@@ -1,10 +1,7 @@
 $PT()
-
 tween()
-
 spriteApps()
 movie()
-
 $SS =  function(ss){
     ss.images = ss.images || ss.i
     ss.animations = ss.animations || ss.a
@@ -18,7 +15,6 @@ $SS =  function(ss){
     //to do: parse it! (get rid of unnecessary json strings in keys)
     return ss
 }
-
 $Sp=   function(ss,x,y){var g=G(arguments), sp
     //call a spritesheet by name
     if(S(ss)){ ss = cjs._sp[ ss ] }
@@ -29,9 +25,6 @@ $Sp=   function(ss,x,y){var g=G(arguments), sp
     sp.XY( N(x,0), N(y,0) )
     return sp
 }
-
-
-
 sp.p = function(an){var sp=this
     if(U(an)){sp.play()}
     else {sp.gotoAndPlay(an)}
@@ -59,7 +52,6 @@ sp.e= function(fn){fn=fn||function(){n = N(window['n'], 0); $l('frame! '+ n++)}
     this.on('animationend', fn)
     return this
 }
-
 cjs.sSU = cjs.SpriteSheetUtils
 sS.flp=sS.addFlipped=function(a, b, c){
     cjs.sSU.addFlippedFrames(this,  a||true, b||false, c||false )
@@ -105,7 +97,6 @@ cjs.sSB= cjs.builder = cjs.spriteSheetBuilder =   cjs.ssB = cjs.ssb = function (
     return sSB
 }
 meSprite=function(){return $Sp( $SS ).XY(10).drag()}
-
 function tween(){
 
 
@@ -1221,7 +1212,6 @@ function spriteApps(){
 
 
 }
-
 function beta(){
     tw.Plugin =function(a,b){
         var g=G(arguments),a=g[0],b=g[1]

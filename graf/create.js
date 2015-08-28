@@ -14,33 +14,17 @@ $PT =  function(){
     mc=cjs.MovieClip.prototype
     q = cjs.LoadQueue.prototype
     st= s=  cjs.Stage.prototype
+
     sS = ss = cjs.SpriteSheet.prototype
     sSB=      cjs.SpriteSheetBuilder.prototype
     sp=s=cjs.Sprite.prototype
     tl= cjs.Timeline.prototype
     t=cjs.Text.prototype
-    ct =cjs.Container.prototype
+
     tw = cjs.Tween.prototype
 
 
 }
-$PT()
-eD.init=function(){alert('eD.init')
-    var eD=this
-    eD.initialize.apply(eD, arguments)
-    return eD
-}
-cjs.bulletHit = function (bullet, inWhat) {alert('bullletHit')
-    var x = bullet.centerX(), y = bullet.centerY()
-    var res = M.pointInCircle(x, y, {x: inWhat.x, y: inWhat.y, radius: inWhat.H() / 2})
-    if (res == true) {$l('hit!')}
-    return res
-}
-
-
-
-
-$.space = function (fn){return $.kD('space',fn)}
 $.scroll = function (a) {
     return $(window).scroll(a || function () {
         $('body').C('*')
@@ -52,7 +36,6 @@ $.click = m$ = function (f) {
 $.dblclick = m$$ = function (f) {
     return $(document).on('dblclick', _v(f))
 }
-
 KEYOB = {
     up: 38, u: 38,
     down: 40, d: 40,
@@ -232,7 +215,6 @@ cjs.watchKeys = function () {
         cjs.Keys.d = cjs.Keys.down = false
     })
 }
-
 K=  function(k,fn) {var g = G(arguments), o,key
     if(g.u){
         if (K._loaded) {return}
@@ -319,10 +301,59 @@ K=  function(k,fn) {var g = G(arguments), o,key
     }
 
 }
+$.space = function (fn){return $.kD('space',fn)}
+q = cjs.LoadQueue.prototype
+_MF = ['me', 'guy', 'chicks', 'sun', 'flame', 'earth']
+Q=function(){var g=G(arguments),  o=g.F?{c:g.f}: {m:g.f,c:g.s}
+    o.m = o.m || _MF
+    Q = (new cjs.LoadQueue).c(o.c).m(o.m)
+}
+WQ = function(){
+    var g = G(arguments), o = _.x({ob:g.f||{}},
+        F(g.t)?{fn0: g.s, fn: g.t}: {fn: g.s})
+    o.fn = o.fn || function(){}
 
+    w = W(o.ob)
+    if (o.fn0) {o.fn0(w)}
+    Q(o.ob.I||_MF ,
+        function(){o.fn(w)
+        })
 
-T= cjs.Ticker
+}
+q.f= q.l= function(fn){var q=this
+    q.on("fileload", fn)
+    return q}
+q.c= function (fn) {var q=this
+    if(F(fn)){ q.on("complete", fn) }
+    return q
+}
+q.b=  q.bm =function(i, ct, x, y){
+    var bm = $Bm( this.r(i) );
+    if(ct){bm.a2(ct,x,y)}; return bm
+}
+q.i=  q.r= function(i){i  = this.getResult(i); i.w= i.width;i.h = i.height; return i}
+q.$=function(i){
+    return $(this.i(i))
+}
+q.m = function(){var q=this, g=G(arguments), _mf, mf
+    // q.m:
+// protosig:
+//
+// 'me',..
+//
+// {src:'me', id:'him'},..
+//
+// [ {src:*, id:*}, 'me',.. ]
 
+    if(g.u){return q}
+    _mf = g.A ? g.f : g
+    mf = _.m(_mf,  function(item){
+        return S(item)? {src: _.src(item),id:item} : item
+    })
+    q.loadManifest( mf )
+    return q
+}
+T = cjs.Ticker
 cjs.xL = T.s = function () {
     T.removeAllEventListeners()
 } // u might say xTHIS but not thisX? i dont know what i am talking about
@@ -332,7 +363,6 @@ cjs.xL = T.s = function () {
  t       time : how much  since T  started
  r      runTime  : how much time has T been running for
  */
-
 T.p = function () {
     T.setPaused(false);
     return T
@@ -401,6 +431,7 @@ T.m = function (ticks) {
  (another script, DOM rendering, etc).
 
  */
+ct =cjs.Container.prototype
 ct.t = ct.oT = function (fn) {
     var g = G(arguments)
     if (F(fn)) {
@@ -419,58 +450,279 @@ ct.xT = function (fn) {
     this.off('tick', fn)
     return this
 }
-
-
-
-
-
-_MF = ['me', 'guy', 'chicks', 'sun', 'flame', 'earth']
-Q=function(){var g=G(arguments),  o=g.F?{c:g.f}: {m:g.f,c:g.s}
-    o.m = o.m || _MF
-    Q = (new cjs.LoadQueue).c(o.c).m(o.m)
+function maybe(){
+    eD.init=function(){alert('eD.init')
+        var eD=this
+        eD.initialize.apply(eD, arguments)
+        return eD
+    }
 }
-WQ = function(){
-    var g = G(arguments), o = _.x({ob:g.f||{}},
-        F(g.t)?{fn0: g.s, fn: g.t}: {fn: g.s})
-    o.fn = o.fn || function(){}
+function alpha(){
+    cjs.bulletHit = function (bullet, inWhat) {alert('bullletHit')
+        var x = bullet.centerX(),
+            y = bullet.centerY()
+        var res = M.pointInCircle(x, y, {
+            x: inWhat.x,
+            y: inWhat.y,
+            radius: inWhat.H() / 2
+        })
 
-    w = W(o.ob)
-    if (o.fn0) {o.fn0(w)}
-    Q(o.ob.I||_MF ,
-        function(){o.fn(w)
+        if (res == true) {$l('hit!')}
+
+        return res
+    }
+}
+cjs.M = function (a) {
+    var m = new cjs.Matrix2D()
+    if (N(a)) {
+        m.rotate(a)
+    }
+    return m
+}
+cjs.m2d = function (a, b, c, d, e, f) {if (U(c)) {
+    return new cjs.Matrix2D(1, 0, 0, 1, N(a, 0), N(b, 0))
+}
+    return new cjs.Matrix2D(N(a, 1), N(b, 0), N(c, 0), N(d, 1), N(e, 0), N(f, 0))}
+cjs.bindSlide = SL = function () {
+    var g = G(arguments),
+        b = g[0],
+        b2 = g[1] || b
+
+    return b.on('mousedown',
+        function (e) {
+            var bx = b2.x - e.rawX,
+                by = b2.y - e.rawY
+            b.on('pressmove', function (e) {
+
+                if (g.P) {
+                    b2.x = bx + e.rawX
+                }
+
+                //if (g.N) {
+                b2.y = by + e.rawY
+                //}
+            })
+
+        })
+}
+cjs.bindReverseSlide = LS = function (b, b2) {
+    var g = G(arguments),
+        b = g[0],
+
+        b2 = g[1],
+        d = oE('d'),
+        pm = oE('pm'),
+        b2 = b2 || b
+
+    return b.on(d, function (e) {
+        var bx = b2.x + e.rawX, by = b2.y + e.rawY
+
+        b.on(pm, function (e) {
+
+            if (g.P) {
+                b2.x = bx - e.rawX
+            }
+            if (g.N) {
+                b2.y = by - e.rawY
+            }
+
+        })
+    })
+}
+cjs.bindRotate = RT = function (b, b2) {
+
+
+    //b = what the control is
+    //b2 what it should control (default = itself!)
+    //if(g.p){  //b.rgc( '+' )   }
+
+    var g = G(arguments), b = g[0], b2 = g[1] || b
+
+    return b.on('mousedown',
+
+        function (e) {
+
+            var X = e.rawX, Y = e.rawY, r = b2.rotation
+
+            b.on('pressmove', function (e) {
+
+
+                b2.rotation = r - (   (e.rawY - Y) / 500   ) - (   e.rawX - X  )
+
+
+            })
         })
 
 }
-q.f= q.l= function(fn){var q=this
-    q.on("fileload", fn)
-    return q}
-q.c= function (fn) {var q=this
-    if(F(fn)){ q.on("complete", fn) }
-    return q
-}
-q.b=  q.bm =function(i, ct, x, y){
-    var bm = $Bm( this.r(i) );
-    if(ct){bm.a2(ct,x,y)}; return bm
-}
-q.i=  q.r= function(i){i  = this.getResult(i); i.w= i.width;i.h = i.height; return i}
-q.$=function(i){
-    return $(this.i(i))
-}
-q.m = function(){var q=this, g=G(arguments), _mf, mf
-    // q.m:
-// protosig:
-//
-// 'me',..
-//
-// {src:'me', id:'him'},..
-//
-// [ {src:*, id:*}, 'me',.. ]
+cjs.bindRotate2 = RTT = function (b, b2) {
 
-    if(g.u){return q}
-    _mf = g.A ? g.f : g
-    mf = _.m(_mf,  function(item){
-        return S(item)? {src: _.src(item),id:item} : item
+
+    //b = what the control is
+    //b2 what it should control (default = itself!)
+
+
+    var g = G(arguments), b = g[0], b2 = g[1] || b
+
+
+    if (g.p) {  // b.rgc( '+' )
+    }
+
+    return b.on('mousedown',
+
+        function (e) {
+
+            var X = e.rawX, Y = e.rawY, r = b2.rotation
+
+            b.on('pressmove', function (e) {
+
+
+                b2.rotation = r + (   (e.rawY - Y) / 500   ) + (   e.rawX - X  )
+
+
+            })
+        })
+
+}
+cjs.bindScale = SC = function (b, b2) {
+    var g = G(arguments), b = g[0], b2 = g[1],
+        d = oE('d'), pm = oE('pm'), b2 = b2 || b,
+        cp = function (n) {
+            return n < .2 ? .2 : n > 2 ? 2 : n
+        }
+
+    return b.on(d,
+
+        function (e) {
+            var X = e.rawX, Y = e.rawY,
+                sx = b2.scaleX,
+                sy = b2.scaleY
+
+            b.on(pm,
+
+                function (e) {
+                    if (g.n) {
+                        b2.sXY(cp(sx + (
+                            (e.rawX - X) / 200)),
+                            cp(sy - ((e.rawX - X) / 200))
+                        )
+
+                    }
+
+                    else if (g.p) {
+                        cXY(b2, sx + ((e.rawX - X) / 50), sy - ((e.rawY - Y) / 50))
+                        cXY(b2, sy - ((e.rawY - Y) / 50)), sx + ((e.rawX - X) / 50)
+                    }
+
+                    else {
+                        b2.sXY(sx - ((e.rawX - X) / 50), sy - ((e.rawY - Y) / 50))
+                    }
+                })
+        }
+    )
+}
+cjs.bindSkew = SK = function (b) {
+    var g = G(arguments), b = g[0], b2 = g[1], d = oE('d'), pm = oE('pm'), b2 = b2 || b
+
+    return b.on(d,
+        function (e) {
+            var X = e.rawX, Y = e.rawY
+            b.on(pm, function (e) {
+
+
+                b2.kXY(
+                    (e.rawY - Y) * .5, (e.rawX - X) * .5
+                )
+
+            })
+        })
+}
+cjs.bindTransform = TR = function TR(b, b2, m) {
+
+    var g = G(arguments),
+        b = g[0],
+        b2 = g[1],
+
+        b2 = b2 || b, m = g[2] || 'SL'
+
+    if (m == 'SL') {
+        cjs.bindSlide(b, b2);
+        m = 'SC'
+    }
+
+    else if (m == 'SC') {
+        cjs.bindScale(b, b2);
+        m = 'RT'
+    }
+
+    else if (m == 'RT') {
+        cjs.bindRotate(b, b2);
+        m = 'SL'
+    }
+
+    return b.on('pressup', function (e) {
+
+        b.removeAllEventListeners();
+
+        TR(b, b2, m)
+
     })
-    q.loadManifest( mf )
-    return q
+}
+cjs.reggy = reggy = function (o, s) {
+
+    s = s || o.parent
+
+    s.bm('me', function (b) {
+
+        b.W(40).H(40)
+
+        I(function () {
+            b.XY(o.x + o.regX, o.y + o.regY)
+        }, 100)
+
+    })
+
+
+}
+cjs.bindSlideAndRotate = KK = function (b, b2) {
+
+    var g = G(arguments), b = g[0],
+        b2 = g[1] || b
+    cjs.bindSlide(b);
+    cjs.bindRotate(b, b2)
+    if (g.p) {
+
+        b.rgc('+')
+    }
+
+    if (g.N) {
+        //    reggy(b,b2)
+    }
+}
+cjs.bindRotateThenSkew = RK = function (b, b2, m) {
+    var g = G(arguments), b = g[0], b2 = g[1],
+        d = oE('d'),
+        pm = oE('pm'),
+        b2 = b2 || b,
+        m = g[2] || 'RT'
+
+
+    //if(g.p){var s=St('y',1000)
+    //    _t(b||5,function(i){s.a().bm(
+    //        function(bm){bm.xy(i*50);TR(bm)})});return s}
+
+    if (m == 'RT') {
+        RT(b, b2);
+        m = 'SK'
+    }
+
+    else if (m == 'SK') {
+        SK(b, b2);
+        m = 'RT'
+    }
+
+    return b.on(oE('pu'),
+        function (e) {
+            Do(b).O();
+            RK(b, b2, m)
+        })
 }

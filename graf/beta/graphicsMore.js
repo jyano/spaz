@@ -970,8 +970,6 @@ $.fn.toD =$.fn.moveDown=function(num){num=num||20
     this.top( this.top()  + num  )
     return this}
 
-
-
 function alpha(){
     T = function(times,func){
         var timeout

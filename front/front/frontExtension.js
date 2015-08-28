@@ -1,4 +1,3 @@
-
 oOo = function oOo(a, b) {
     if (_.isUndefined(b)) {
         return _I(lC(V(oO(a))))
@@ -84,10 +83,7 @@ $.update=function(curr, update, g){var res
     else res = update
     return res
 }
-
-
 $.fn.a2=function(el){el.A(this); return this}
-
 $.rulers = function () {
     $.d('b', 100, 100).al(.3).dg()
     $.d('r', 100, 300).al(.3).dg()

@@ -7,20 +7,18 @@ html(lang="en")
         script.
           _app = wappyApp = '#{app}'
           _pam = wappyPam = '#{pam}'
+
         +S(['us','string', 'both', 'jq','objects','qq','jqfn','html'])
-        +S(['ctx', 'can','canApps', 'graf0'])
+        +S(['ctx', 'can', 'frontExtension'])
 
 
         //graf
-        +S(['cjs','cjsMC'])
-        +S([ 'graf', 'displayOb', 'container',  'easelText' ])
-        +S(['easelGx', 'easelShapeOb', 'grafShapes', 'easelShapeBitmap'])
-        +S([ 'tran', 'filts', 'data','anims', 'anim' ])
+        +S(['cjs','cjsMC','anims'])
+        +S([ 'create', 'displayOb', 'tran','easelShapeOb', 'filt', 'anim' ])
 
 
         //gpcas poly lib
         +S(['gpcas',  'polyMath'])
-
 
 
         //fiz
@@ -29,16 +27,11 @@ html(lang="en")
         +S(['ray','co', 'polyCirc',   'geo' ,'geoWorld' ])
 
 
-
-
-
         //spaz
         +S(['spaz','walls', 'bfr','spazBindSp','bPoly', 'scrolling', 'player','yip'])
 
 
-
-
-        +S(['betaGames','coGames', 'cxGames','geoGames'])
+        +S(['canApps', 'betaGames','coGames', 'cxGames','geoGames'])
         +S(['jointGames','netguy','scrollGames', 'shapePuzGames', 'yipGames','greenGuy'])
         +S(['loadApps', 'graphicsTests', 'play'])
         body
