@@ -646,33 +646,24 @@ STAB=function(){W({g:0})
         w.tim(7)
 
         w.b(function (cx){
-            cx.w('bul', 'tim', function (t) {
-                t.B().kill()})
-            cx.w('bul', p, function () {
-                this.B().kill()})
-            cx.w('tim', p, function () {
-                p.kill()})
+            cx.w('bul', 'tim', function (tim) {tim.B().kill()})
+            cx.w('bul', p, function () {this.B().kill()})
+            cx.w('tim', p, function () {p.kill()})
         })
+
+
 
 
         $.click(function(e){
 
             var x = e.pageX - p.X(),
                 y = e.pageY - p.Y(),
-
-                rot,  adj
-
-            rot = M.tD(M.atan(y/x))
-
-            adj = x > 0 ? 90 : 270
+                rot = M.tD(M.atan(y/x)),
+                adj = x > 0 ? 90 : 270
 
             p.rot(rot + adj).I(x / 20, y / 20)
 
-            w.bul(
-                p.wP(0,-100), 10
-            )
-                .I(x,y)
-                .bS({i:'sun',sc:.1})
+            w.bul(p.wP(0,-100), 10).bS({i:'sun',sc:.1}).I(x,y)
 
         })
 
@@ -680,6 +671,11 @@ STAB=function(){W({g:0})
         //to do:  maybe u only get 10 buls ever.. so u must chase them :) (only way to kill badguys)
 
     }
+
+
+
+
+
     FLAPPY=function(){W({w:0,g:50})
         w.S( 800,500,'o',100,600).K('plat')
         w.S( 1200,0,'o',100,600).K('plat')

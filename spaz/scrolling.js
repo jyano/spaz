@@ -187,8 +187,8 @@ w.inout=function(){var w=this, // now it works!!!!
     return w}
 w.showOff=function(){var w=this
     zin()
-    function zout(){w.zoomOut(); $.in(10, zin)}
-    function zin(){w.zoomIn();  $.in(4, zout)}
+    function zout(){w.zoomOut(); _.in(10, zin)}
+    function zin(){w.zoomIn();  _.in(4, zout)}
     return w
 }
 w.pan=function(o){
@@ -570,7 +570,7 @@ function scrollApps(){
         p = w.p().cn('thrust')
         sun = w.sun()
 
-        $.in(.3,function(){
+        _.in(.3,function(){
 
 
             sun.sp().twL([{r:360},10000])

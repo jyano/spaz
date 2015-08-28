@@ -84,7 +84,7 @@ f.C = function () {
     o = g.O ? g.f : {c: g.f, C: g.s, l: g[2]}
     o.c = (o.c == '*') ? $r() : (o.c || 'b')
     o.C = o.C || o.c
-    f.removeSprites()
+    f.rmSp()
 
     h = f.iC() ?
         // if circle?

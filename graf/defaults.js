@@ -94,3 +94,11 @@ _sc=function(o){
     if (!A(o.sc)) {o.sc = [o.sc, o.sc]};
     return o
 }
+
+bsDF=function(o){o=o||{}
+    o.x = N(o.x, 0);
+    o.y = N(o.y, 0);
+    o.rt = N(o.rt, 0);
+    o.al = N(o.al, 1)
+    return o
+}

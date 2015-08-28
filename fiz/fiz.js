@@ -996,11 +996,23 @@ b.stat = function () {var b=this,
 }
 b.kin = function () {return this.type(1)}
 b.ap=function(met,g){var b=this;return   b[met].apply(b,g)}
-b.xF=  b.Xx=  b.Xf =b.E =  b.clr = b.empty = b.clear =    function (f) {
+
+
+
+b.rmF =    function (f) {
     if(f){this.DestroyFixture(f)}
-    else {this.fs(function (f) {this.xF(f)  })}
+    else {this.fs(function (f) {this.rmF(f)  })}
     return this
-}
+} //= b.xF=  b.Xx=  b.Xf =b.E =  b.clr = b.empty = b.clear
+f.kill   = function () {
+    var f=this,b= f.B(),w= b.W()
+    if (!f) {return}
+    if(w._fPreKill){w._fPreKill(f)}
+    if(b){b.rmF(f)}
+}//= f.xx = f.remove
+
+
+
 b.of=function(k){
 
     if( b2d.iF(k) ){ k = k.B() }
@@ -1053,4 +1065,14 @@ b.$$=function(fn){var b=this, w=b.W()
     })
     })
     return b
+}
+
+f.killB=  f.kB= f.xB = f.xX = f.XX = function () { if (this && this.B()) {
+    this.B().kill() }}
+b.kill = b.xx = b.destroy = function () {
+    var b = this, w = b.W()
+    b.SetActive(false)
+    if (w._preKill) {w._preKill(b)}
+    b.W().DestroyBody(b)
+    return b.pos()
 }

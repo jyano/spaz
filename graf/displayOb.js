@@ -701,3 +701,13 @@ i.sXY = function(x,y){
     i.sY(y)
     return i
 }
+
+
+cjs.isOb = function (s) {
+    return O(s) && s.parent
+}
+cjs.rmOb = function (s) {
+    if (cjs.isOb(s)) {
+        s.remove()
+    }
+}

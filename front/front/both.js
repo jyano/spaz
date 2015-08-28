@@ -805,17 +805,17 @@ _.in1 = function (time) {
 _.in = function (time, fn) {
     var g = G(arguments),
         o = F(g[0]) ? {fn: g[0]} : {s: g[0], fn: g[1]}
+
     o.s = N(o.s) ? o.s : 1
-    o.fn = o.fn || function () {
-    }
+
+
     return setTimeout(
         function () {
+            if (g.m) {$.c$()}
 
-            if (g.m) {
-                $.c$()
-            }
-            o.fn()
+            o.fn = o.fn || function () {}
 
+            if(F(o.fn)){o.fn()}
         },
         o.s * 1000)
 }
