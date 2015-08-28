@@ -166,8 +166,6 @@ ColorMatrix = CM=function(){
     c.A=c.toArray
     c.S=c.toString
     return c}
-
-
 function filterTests(){
 
 
@@ -360,7 +358,6 @@ function filterTests(){
     }
 
 }
-
 FILS=function(){Q(function(){s= $St().t()
 
     i = Q.i('me')
@@ -464,22 +461,17 @@ BLF1=function(){
         st.u()
     }
 }
-
-
 st.mX=function(){return this.mouseX}
 st.mY=function(){return this.mouseY}
 st.m = function(){
     return $Pt( this.mX(), this.mY() )
 }
-
-
 /*This example demonstrates revealing an image using another image as the
  mask. The mask is created by drawing a
  shape, and then caching the shape to make an image with an alpha
  channel. It is then applied to the image as
  an mask using the <code>AlphaMaskFilter</code> filter. Another copy of
  */
-
 st.cc=function(){return this.cacheCanvas }
 BLF=function(){$.i('me', function(img){iDr=0  //examples.hideDistractor();//cjs.Touch.enable(st)
     s = $St(); s.enableMouseOver()
@@ -513,16 +505,12 @@ BLF=function(){$.i('me', function(img){iDr=0  //examples.hideDistractor();//cjs.
         s.u()
     })
 })}
-
-
-
 HGX=function(){W()
     h = w.i.h()
     h.graphics.ss(40, "round", "round")
     h.C("rgba(0,0,0,0.2)").mt(100, 100)
     h.graphics.curveTo(200,500,600,300)
 }
-
 BLF2=function(){
 
     var isDrawing
@@ -600,13 +588,11 @@ BLF2=function(){
 
 
 }
-
 GREY=function(){Q(function(){
     Q.b('me').a2($St().t())
         .fl( $cMF(   $cM().s(-100)    )  )
         .ca(0,0,1000,1000)
 })}
-
 ALPH=function(){Q(function(){
 
     st = $St().t()
@@ -628,7 +614,6 @@ ALPH=function(){Q(function(){
     me.cache(0,0,1000,1000)
 
 })}
-
 BLR=function(){Q(function(){
     st = $St().t()
     h = st.h(100,100,'r').cir(50)
@@ -640,7 +625,6 @@ BLR=function(){Q(function(){
         bd = f.b()
         h.ca(-50 + bd.x, -50 + bd.y, 100 + bd.w, 100 + bd.h )})
 })}
-
 REVEAL=function(){Q(function(){stage =$St().t()
 
     var isDrawing,

@@ -1,11 +1,7 @@
-
 ps= gpcas.geometry.PolySimple.prototype
 pD= gpcas.geometry.PolyDefault.prototype
-
 ps.n= ps.num = ps.numPoints=function(){return this.getNumPoints()}
-
 ps.g=function(n){return this.getInnerPoly(n||0)}
-
 ps.nP=function(){var pD=this,n
     n= pD.getNumInnerPoly()
     return n}

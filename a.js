@@ -1,8 +1,14 @@
 dirs=[
 
 
-    '/front/front', '/front/can', '/graf', '/anim',
-    'fiz',    'fiz/deps',  'fiz/joints', '/spaz',
+    '/front/front', '/front/can',
+
+
+    '/graf', '/graf/deps',
+
+    'fiz',    'fiz/deps',
+    'geo',
+    'fiz/joints', '/spaz',
 
     'play',  'play/graphics',
 
