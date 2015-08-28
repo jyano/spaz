@@ -1,8 +1,6 @@
 f.S = f.stg = function () {return this.W().s}
 b.St = b.S = b.stg = function () {return this.W().s}
 b.horizCenter = function () {var b = this; b.X(b.W().hW); return b}   //-> b.X('hC')//b.g=function(){ return this.f().g }
-
-//color
 f.C = function () {var f = this,
     b = f.B(), w = b.W(), g = G(arguments), o, h
     o = g.O ? g.f : {c: g.f, C: g.s, l: g[2]}
@@ -26,7 +24,6 @@ b.C = function (c) {
     return this
 }
 
-//shape
 b._gx=function(){
     this.gx = this.gx || w.g.ct();
     return this
@@ -222,8 +219,6 @@ b.cir= function(){var b=this,g=G(arguments), o= g.f, fd,  h,  f
 }
 
 
-
-//dot
 f.dot=function(c){var f=this, w=f.B().W(),v
 
     v=f.cen()
@@ -252,6 +247,8 @@ b.dot= function(){var b=this,  w= b.W(),  g= G(arguments)
     return b
 
 }
+
+
 b.f=function(){var b=this,g=G(arguments), o,
     ag=g[0],
     l= g.L,

@@ -498,7 +498,7 @@ STAB=function(){W({g:0})
         //slide = w.rec(1200, 30, 1200,40, 'b').den(1).fric(.5).rest(.5)
 
     }
-    SMASH=function(){W([2000,1500,2000,1500]).G(200).C('b'); var b1, b2
+    CANNOTREADPROPXOFUNDEFINED =SMASH=function(){W([2000,1500,2000,1500]).G(200).C('b'); var b1, b2
         // y and remote control fireball
         var y= w.y(300,100,'+')
         farMoon =  w.D(600, 100, 'y', 150).K('b').r(1.2).lV(200, 0).cn('thrust').fR()
@@ -521,56 +521,7 @@ STAB=function(){W({g:0})
 
 
 //space
-    GG=function(){W({g: 0}).Y()
 
-        w.gG(100,100); w.gG(200,200); w.gG(300,300)
-
-    }
-    GREEN=function(){W({w:'@',g:0})
-        y= w.y(400,200).K('pop')
-        w.gG(400,400)
-    }
-    COINWARP=function(){W({g:0, w:0}).Y()
-        y.warp()
-
-        score=0
-        badScore=0
-        // p = w.ship().K('player pop').warp()
-        //p= w.p(100,100, 'thrust').Y(200).horizCenter().aD( 10000 ).lD(0).K('pop').warp()
-
-
-        gg = w.gG( 300,300 ).warp()
-
-        _.ev(1,function(){
-            w.coin().sen(1)
-        })
-        /*
-         w.beg(function(cx){var fixt
-         cx.with('coin','player', function(){this.B().kill()
-         score++})
-         cx.with('coin','greenGuy', function(){
-         this.B().kill()
-         badScore++
-         })
-         })
-         */
-        // w.coll('coin','player', function(){this.B().kill(); score++})
-        // w.coll('coin','gg', function(){this.B().kill();badScore++})
-        /*
-         // w.class('coin')
-         //   .with('player', function(c){c.setDestroy();score++})
-         // .with('greenGuy', function(c){c.setDestroy();badScore++})
-         w.class('coin').with({
-         player: function(){score++; return true},
-         greenGuy: function(){badScore++; return true}
-         })
-
-         */
-        _.ev(3,function(){
-            w.pen( score + ' / '+ badScore)
-        })
-
-    }
     SPACEMAZE=function(){W({g:0,w:0})
         _.t(30, function(){w.D(R(1000,-500), R(800, - 400), 'w', 2).d(0).r(2)})
         grid= w.grid([

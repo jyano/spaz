@@ -1,5 +1,3 @@
-
-
 f.bS = function(){
     var f = this, b = f.B(), w = b.W(), s = f.S(), g = G(arguments), o, j
 
