@@ -69,7 +69,7 @@ df.oDef=   function(o){
     return o
 }
 df.grad=function(o){
-    alert('b2d.grad')
+
     o=o||{}
     o.c1 = oO('c',o.c1||'z')
     o.c2 = oO('c',o.c2||'w')

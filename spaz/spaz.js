@@ -23,7 +23,6 @@ b.C = function (c) {
     this._col = c
     return this
 }
-
 b._gx=function(){
     this.gx = this.gx || w.g.ct();
     return this
@@ -217,8 +216,6 @@ b.cir= function(){var b=this,g=G(arguments), o= g.f, fd,  h,  f
     }
     return f
 }
-
-
 f.dot=function(c){var f=this, w=f.B().W(),v
 
     v=f.cen()
@@ -247,8 +244,6 @@ b.dot= function(){var b=this,  w= b.W(),  g= G(arguments)
     return b
 
 }
-
-
 b.f=function(){var b=this,g=G(arguments), o,
     ag=g[0],
     l= g.L,
@@ -281,4 +276,458 @@ b.f=function(){var b=this,g=G(arguments), o,
         // $a(b,'rec', g.g)
     }
     return b.d(1)
+}
+anim()
+spr()
+function spr() {
+
+    f.bS = function () {
+        var f = this, b = f.B(), w = b.W(), s = f.S(), g = G(arguments), o, j
+
+        if (g.S_) {
+            Q(function () {
+                var bm = Q.b(g.f)
+                f.bS(
+                    $Ct().A(
+                        bm.XY(f.pos().x, f.pos().y).rC())
+                )
+            })
+            return f
+        }
+
+        o = cjs.iDO(g.f) ?
+
+        {j: g.f, rt: g.s, x: g.t, y: g[3], o: g[4]} : g.O ? g.f : {}
+
+        f.sprites = f.sprites || []
+
+        o.x = N(o.x, 0)
+        o.y = N(o.y, 0)
+        o.rt = N(o.rt, 0)
+        o.o = N(o.o, 1)
+
+        o.al = N(o.al, 1)
+        j = o.j.al(o.al)
+        w.g.A(j)
+        f.sprites.push(j)
+
+        T.t(function () {
+
+            j.XY(b.X() + o.x, b.Y() + o.y)
+            j.rt(b.rt() + o.rt)
+
+        })
+        return f
+    }
+    f.bI = function () {
+        var f = this, b = f.B(), w = b.W(),
+            g = G(arguments), o
+
+        this.gx = this.gx || w.g.ct()
+        o = cjs.iDO(g.f) ? {i: g.f} : g.O ? g.f :
+        {i: g.f || 'me', sc: g.s, x: g.t, y: g[3], r: g[4], al: g[5]}
+
+        if (S(o.i)) {
+            o.i = Q.b(o.i)
+        }
+        o.sc = N(o.sc, ( cjs.iH(o.i) ? 1 : .4 ));
+        if (!A(o.sc)) {
+            o.sc = [o.sc, o.sc]
+        }
+
+
+        _xyr(o)
+        o.al = N(o.al, 1)
+
+
+        if (!g.n && !cjs.iH(o.i) && !cjs.iCt(o.i)) {
+            o.i.rC()
+        }
+
+        this.gx.A(o.i.sXY(o.sc).XY(o.x, o.y).rt(o.r).al(o.al))
+
+        return this
+    }
+    b.fSp = function () {
+        return this.f().sprites[0]
+    }
+    b.Sp = function () {
+        var g = G(arguments),
+            sp, o
+        o = _xyr({sp: g.f, x: g.s, y: g.t, sX: g[3], sY: g[4], r: g[5]})
+
+        o.sX = N(o.sX, 1)
+        o.sY = N(o.sY, o.sX)
+        o.sp = o.sp || Mummy
+
+        this._gx().gx.A(sp = $Sp(o.sp || Mummy))
+
+        sp.rC().XY(o.x, o.y).sXY(o.sX, o.sY).rt(o.r)
+        return sp
+    }
+    b.bS = function () {
+        var b = this, w = b.W(), g = G(arguments), o, i, a, sc
+        //pass it a display object (which i guess implies its already loaded)
+
+        o = cjs.iDO(g.f) ? {i: g.f, bm: g.f} : g.O ? g.f :
+        {i: g.f, sc: g.s, x: g.t, y: g[3], r: g[4], al: g[5]}
+
+
+        //if not loaded, async loads and passes it back as a data object
+        //next time, then, when loaded it can bypass async
+        if (S(o.i)) {
+            w.g.bm(o.i, function (bm) {
+                b.bS(_.x(o, {i: bm, bm: bm}))
+            })
+            return this
+        }
+
+        _xyr(o)
+        _sc(o)
+        _im(o)
+
+
+        //they can pass in a formed shapeer
+        if (!g.n && !cjs.iH(o.bm) && !cjs.iCt(o.bm)) {
+            o.bm.rC()
+        }//regCent
+
+        //can not center things that dont have dimensions!
+        // scale, position and place the bm in the ct (which is on the stage)
+
+        o.bm.sXY(o.sc).XY(o.x, o.y).rt(o.r).al(o.al).a2(this._gx().gx)
+        return this
+    }
+    b.sp = function () {
+        var b = this, g = G(arguments), ch
+        if (b.gx && b.gx.children) {
+            ch = g.p ? b.gx.children :
+                g.n ? b.gx.children[0] :
+                    _.l(b.gx.children)
+            if (g.u) {
+                return ch
+            }
+            if (g.F_) {
+                _.e(ch, g.f);
+                return this
+            }
+        }
+    }
+    b.Bm = function (iS, x, y, sX, sY, rt) {
+        var b = this, w = b.W(), g = G(arguments);
+        b.gx = b.gx || w.g.ct()
+        if (S(iS)) {
+            this.gx.bm(iS, fn)
+        }
+        if (O(iS)) {
+            fn(iS);
+            return iS
+        }
+        return b
+        function fn(bm) {
+            bm.rC().XY(N(x, 0), N(y, 0)).sXY(N(sX, 1), N(sY, sX || 1)).rt(N(rt, 0))
+        }
+    }
+//death to sprites
+    f.xSp = f.Xx = f.removeSprites = function () {
+        var f = this
+        this._sp = this._sp || []
+        this.SP = this.SP || []
+        this.sprites = this.sprites || []
+        _.e(f.sprites, function (s) {
+            if (O(s) && s.parent) {
+                s.remove()
+            }
+        })
+
+        this.sprites = []
+        this_sp = []
+        this.SP = []
+        return f
+    }
+    f.xx = f.kill = f.remove = function () {
+        if (this) {
+            this.removeSprites();
+            if (this.B()) {
+                this.B().xF(this)
+            }
+        }
+    }
+    f.xB = f.xX = f.XX = function () {
+        if (this && this.B()) {
+            this.B().xx()
+        }
+    }
+    b.xx = b.kill = b.destroy = function () {
+        var b = this, v = b.pos()
+        if (b.sprite) {
+            b.sprite.rm()
+        }
+        if (b.sp()) {
+            b.sp().rm()
+        }
+        b.fs(function (f) {
+            f.removeSprites()
+        })     //if(f.sprite){f.sprite.remove()}
+        b.sprite = null
+        b.SetActive(false)
+        b.W().DestroyBody(b)
+        return v
+    }
+
+}
+function anim(){
+
+
+
+    w.ps =  tw.pos
+    w.iGP= tw.ignore
+
+
+    w.th= w.thrust=function(c,x,y,r){
+        return this.D(N(x,600), N(y,500), c|| 'b', N(r,40)).cn('thrust')
+    }
+    w.PackThruster= w.pack=function(ani){
+
+        var th = w.th(600, 500,'b',100).C("X")
+            .r(1).fR()
+
+        th.Sp( Pack, 0, 0, .8 )
+
+        return th.p(ani||'f1')
+    }
+    b.p= b.play = function (a, b, c, d) {
+        if(O(this.sp())){this.sp().p(a, b, c, d)}
+        return this
+    }
+    b.s= b.stop=function (a, b, c, d) {
+        if(O(this.sp())){ this.sp().s(a,b,c,d) }
+        return this
+    }
+
+
+    //alert
+    b.dr=function(dr){alert('b.dr')
+        if(U(dr)){return this.direction}
+        this.direction=dr; return this
+    }
+    i.dr=function(dr){alert('i.dr')
+        if(U(dr)){return this.direction}
+        this.direction=dr; return this
+    }
+    i.nm=function(dr){
+        alret('i.nm')
+        if(U(dr)){return this.name}
+        this.name=dr; return this
+    }
+// Hit testing the screen width, otherwise our sprite would disappear //
+// We've reached the right side of our screen
+// We need to walk left now to go back to our initial position
+//sS.addFlipped(true, false, false)// walk_h has been generated by addFlippedFrames and// contained the right facing animations
+//T.f(40)
+    ct.reset = function () {
+        alert('ct.reset')
+        this.St().removeAllChildren()
+        T.removeAllListeners()
+    }
+//sprite.shadow = new createjs.Shadow("#454", 10, 15, 14)
+//spriteUrl = "/assets/sprites/metalslug_mummy37x45.png"
+//sprite always assumed to start facing right (and flipping it horizontqlly is the left) - so i must draw facing right
+
+
+}
+W=b2d.W=function(){var g=G(arguments),o
+    o = g.A_? _.x(g.s||{}, {W:g.f[0], H:g.f[1], wW:g.f[2], wH:g.f[3]}) :
+        N(g.f) && U(g.s)? { g: g.f }:
+            g.$N? {W:g.f,H:g.s, wW:g.t, wH:g[3]}:
+                g.S? {w:g.f }: g.f || {} //W([], [{}]) //W(1000)//W(1200,600,[N],[N])//W('U')
+
+    _w = o.w
+    o.g = N(o.g) ? V(0, o.g) : O(o.g) ? V(o.g) : V(0, 10)
+    o.sl = U(o.sl) ? true : o.sl
+    w = new b2d.World(o.g, o.sl)
+
+    if(o.xx!==0){z()}
+    w.W = N(o.W,1200); w.H = N(o.H,600);w.w = N(o.wW, w.W);     w.h = N(o.wH, w.H);
+    w.Ww = w.W/w.w; w.wW = w.w/w.W; w.Hh = w.H/ w.h; w.hH = w.h/ w.H;
+    w.mZ = w.hH > w.wW? w.hH : w.wW; w.mS = w.Ww > w.Hh ? w.Ww : w.Hh;
+    w.hW = w.W/2; w.hH = w.H/2; w.z=1; w.SCALE=1
+    //handling
+    w.bH=   []; w.pH=   []; w.PH=   []; w.eH=   []  //l.P=  l.post=  function (fn) {this.PostSolve = fn; return this}
+//l.b=  l.beg=  function (fn) {this.BeginContact = fn; return this}
+//l.e=  l.end= function (fn) {this.EndContact = fn; return this}
+//l.p=  l.pre=  function (fn) {this.PreSolve=fn;return this}
+//w.listen = w.setContactListener = w.sCL = w.SetContactListener
+    b2d.L= b2d.listener = b2d.contactListener = function () {return new b2d.Dynamics.b2ContactListener}
+    w.SetContactListener(_.x(w.ln=new b2d.Dynamics.b2ContactListener,{
+
+        BeginContact : function(cx){_.e(w.bH, function(fn){
+            $.do(function(){fn(cx)})  })},
+
+        EndContact : function(cx){_.e(w.eH, function(fn){
+            $.do(function(){ fn( cx ) })   })},
+
+        PreSolve : function(cx, i){_.e(w.pH, function(fn){
+            fn(cx,i)})},
+
+        PostSolve : function(cx, pam2){_.e(w.PH, function(fn){
+            $.do(function(){fn(cx,pam2)})})}
+
+    }))
+    //grpx
+    w.I = $St('z', w.W, w.H ,0, 0)
+    w.s= $St('X', w.W, w.H, 0, 0)//.aC(0)
+    w.canvas = w.s.canvas; w.can= $(w.canvas); w.ctx = w.can.ctx('2d')
+    w.bg= w.s.ct();w.g=  w.s.ct();w.fg= w.s.ct()
+    w.i =  $St('X', w.W, w.H, 0, 0)
+    if(o.i){ w.s.bm(o.i) }
+    w.lG($r())
+    if(o.aC==1){
+        //w.i.aC(0)
+        // if(g.O){; return w}
+        // return g.u? w.i.aC(!w.i.aC()): g.s? w.i.aC(w):
+    }
+
+    w.walls(_w)
+    keys()
+    mouse()
+    T.t(function(){
+
+
+        if(w.mj){w.mj.tg(w.mx, w.my)}
+        w.step(1/60)
+        if(F(o.cb)){o.cb()}
+        if(!T.iP()){ w.I.u(); w.s.u(); w.i.u()}
+
+        //  w.DrawDebugData()
+
+        w.e(function(b){
+            b.wX = b.X(); b.wY= b.Y()
+            b.sX = w.wTS(b.wX, b.wY).x
+            b.sY= w.wTS(b.wX, b.wY).y
+            if(O(b.gx)){
+                b.gx.XY(b.X(), b.Y()).rt(b.rt())
+            }
+        })
+
+    })
+    if(o.t!==0){
+
+        w.t =  w._t = w._t || w.S(w.hW, w.hH, 'w', [[20,2,'-'] ]).r(.8) //trackee
+
+        w.i.A( w.tSpr=  $Ct().XY(w.t.X(), w.t.Y()) ) //  w.tSpr.bm('guy', function(g){  g.sXY(.2)}) // w.tSpr.A(g)
+
+        T.t(function(){
+
+            if(F(w.t.cb)){w.t.cb()} else if(F(w.tCb)){w.tCb()}
+
+            w.s.x = -w.sXCap( (w.t.X()-w.hW+ w.hW)*w.z - w.hW  )
+
+            w.s.y = -w.sYCap( (w.t.Y()-w.hH+ w.hH)*w.z - w.hH  )
+
+            if(w.t == w._t){
+                w.t.XY(w.tSpr.X(), w.tSpr.Y())
+                w.s.rot(w.tSpr.rot())
+            }
+        })
+    }
+    w.o=o //w.stats()
+    return w
+
+}
+function mouse() {
+    w.mm(logMXY)
+    w.md(function (o) {
+
+        logMXY(o)
+
+        w.q(o.x, o.y, function (f) {
+
+            //if(!f.iD()){return true}
+
+
+            if (f.of(w.o.m)) {
+
+
+                w.mj = w.mJ(f.B(), o.x, o.y)
+            }
+
+
+        })
+    })
+    //world mouse functions are great//they demonstrates md, q, m, and ofClass //but it has a real purpose too!//anytime mousedown..
+    // because that implies there was a mouse up //so there should be no current mouse joint.. smart!
+    w.mu(function () {
+        if (w.mj) {
+            w.j(w.mj);
+            w.mj = 0
+        }
+    })
+
+
+    function logMXY(e) {
+        var p = w.sToW(e.X, e.Y);
+        w.mx = p.x;
+        w.my = p.y
+    }
+}
+function keys(){
+    $.kD('l',function(){
+        if ($.test) {$l('left pressed')}
+        K.l = cjs.Keys.l = cjs.Keys.left = true
+        cjs.Keys.dir = 'left'
+        K.l = 1;
+        K.L = 0
+    })
+    $.kU('l',function(){if ($.test) { $l('left lifted') }
+        K.l = cjs.Keys.l = cjs.Keys.left = false
+        K.l = 0;
+        K.L = 1
+    })
+
+    $.kD('r',function(){if ($.test) {$l('right pressed')}
+        K.r = cjs.Keys.r = cjs.Keys.right = true
+        cjs.Keys.dir = 'right'
+        K.r = 1;
+        K.R = 0
+    })
+    $.kU('r',function(){if ($.test) {
+        $l('right lifted')
+    }
+        cjs.Keys.r = cjs.Keys.right = false
+        K.r = 0;
+        K.R = 1
+    })
+    $.kD('u',function(){if ($.test) {
+        $l('up pressed')
+    }
+        cjs.Keys.u = cjs.Keys.up = true
+        K.u = 1;
+        K.U = 0
+    })
+    $.kU('u',function(){if ($.test) {
+        $l('up lifted')
+    }
+        cjs.Keys.u = cjs.Keys.up = false
+        K.u = 0;
+        K.U = 1
+    })
+
+    $.kD('d',function(){if ($.test) {
+        $l('down pressed')
+    }
+        cjs.Keys.d = cjs.Keys.down = true
+        K.d = 1;
+        K.D = 0
+    })
+
+    $.kU('d',function(){if ($.test) {
+        $l('down lifted')
+    }
+        cjs.Keys.d = cjs.Keys.down = false
+        K.d = 0;
+        K.D = 1
+    })
+
+    K._loaded = 1
 }

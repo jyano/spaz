@@ -744,9 +744,8 @@ w.clr = w.wXx = function(){var w=this
     })
     return w
 }
-
 w._ = function(fn){Q(function(){fn(w)})}
-    w.tE=function(fn){var w=this
+w.tE=function(fn){var w=this
         T.t(function(){  w.e(fn)  })
         return this
     } // TICKER !!!!!
