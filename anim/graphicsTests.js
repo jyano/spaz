@@ -136,21 +136,14 @@ BMF1 = function () {
 }
 
 
-
-BFREC = function () {
-    W()
-
-    w.i.h(200, 300).dg()
-        .bf('me',
-        function (h) {
-            h.rec({w: 500, h: 200})
-        })
-    w.i.h().dg().bf('me',
-        function (h) {
-            h.rec({w: 500, h: 200})
+BFREC = function () {W()
+    w.i.h(200, 300).dg().bf('me', function (h) {h.rec({w: 500, h: 200})})
+    w.i.h().dg().bf('me', function (h) {h.rec({w: 500, h: 200})
             w.D(600, 300, 'b', 500, 200).bS(h)
         })
 }
+
+
 POL = function () {
     W()
 

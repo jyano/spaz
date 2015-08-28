@@ -3,18 +3,26 @@ w._D=function(o){
     return this.D(o.x, o.y, o.c, o.w, o.h)
 }
 
+
 w.bfR = function () {
     var w = this, g = G(arguments), b, h, o
-    o = _.x({x: g.f, y: g.s},S(g.t) ?
-    {i: g.t, w: g[3], h: g[4], c: g[5]} :
-    {w: g.t, h: g[3], c: g[4]})
+
+
+    o = _.x({x: g.f, y: g.s},
+        S(g.t) ? {i: g.t, w: g[3], h: g[4], c: g[5]} :
+        {w: g.t, h: g[3], c: g[4]})
     o.i = o.i || 'sun'
     o.c = o.c || 'y' // can be removed
+
     b = w._D(o)
+
     h = w.g.h().al(.5)
     if (o.c) {h.c(o.c)}
     h.bf(o.i)
     h.rec(o.w, o.h)
+
+
+
     b.bS(h)
     return b
 }
@@ -23,21 +31,14 @@ w.bfR = function () {
 
 BFR = function () {
     W(1000,1000,1000,1000)._(function () {
-
         //h.bC
-
-
         w.i.h(50, 200, '+')
             .bf('chicks')
-
             .dc({r: 80}, {r: 50, x: 100}, {r: 100, x: 400})
-
-
         //h.bf
         w.i.h(800, 100, '+')
             .bf('guy')
             .dc([80], [90, 0, 68])
-
         //h.bV
         w.D(200, 300).pol({
             v: [[0, 100], [0, -100], [200, -150], [200, 150]], // c: 'y',C: 'w',l: 5,
