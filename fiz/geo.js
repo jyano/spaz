@@ -1,11 +1,5 @@
 b2d.p()
 b2d.mini()
-WT=function(){W()
-    b0= w.S(600,300,'y',300,100,0,0,30)
-    b= w.S(600,300,'r',300,100).rot(-30)
-}
-
-
 ps.n= ps.num = ps.numPoints=function(){return this.getNumPoints()}
 ps.vs= function(){var p=this,vs=[]
     _.t(p.n(), function(i){
@@ -17,8 +11,6 @@ ps.g=function(n){
 ps.nP=function(){var pD=this,n
     n= pD.getNumInnerPoly()
     return n}
-
-
 b2d.iB=b2d.isBody
 b2d.tF=function(f){
     return  b2d.iB(f)?f.f():f
@@ -115,15 +107,11 @@ xx.drawPolys=function(poly,c,ox,oy){var x=this//if more than one poly produced, 
 
     return x
 }
-
-
-
 //it expects worldVerts....
 //it works with worldVerts...
 //it was designed with
 //that in
 //mind
-
 M.p= function(){var g=G(arguments),
     p,b,fs,vs
     b2d.mini()
@@ -138,8 +126,6 @@ M.p= function(){var g=G(arguments),
     p.A(vs)
     return p
 }
-
-
 pD.D=function(){var pD=this, gg=G(arguments)
     b2d.mini()
 
@@ -157,8 +143,6 @@ pD.D=function(){var pD=this, gg=G(arguments)
 
     return pD
 }
-
-
 b2d.vs=function(){
     //all this does is to 'scale down' a series of points
     //can pass in pts naked OR in an array
@@ -166,11 +150,9 @@ b2d.vs=function(){
     if(g[1]){return _.m(g, b2d.div)   }//passed in verts ([],[],[])
     return _.m(g[0], b2d.div) //passed an array [[],[],[]]
 }
-
 b2d.hV= b2d.hasVerts = function (poly) {
     return poly.m_List.get(0)
 }
-
 b2d.ol= b2d.overlapping = function (b1, b2) {
     var v1 = M.p(b1),//wont work yet
         v2 = M.p(b2)
@@ -178,38 +160,6 @@ b2d.ol= b2d.overlapping = function (b1, b2) {
     return !(_.isEqual(p.vs(), v1.vs()) || _.isEqual(p.vs(), v2.vs()))
 }
 b2d.iG= b2d.iGP=b2d.isGPoly=function(a){return O(a) && F(a.isHole)}
-
-
-
-
-
-UNI=b2d.u=function me(){var g=G(arguments),p
-    if(g.A){
-        return g.ap(UNI)
-        //return $a(UNI,g.f)
-    }
-    p=M.p(g[0])
-    g.eR(function(pol){
-        p = p.U(  M.p(pol) )
-    })
-    return p
-}
-
-
-DIF=function(){var g=G(arguments),
-//not each of the ps?
-
-    p = M.p( g[0] )
-
-    g.eR(function(p1){
-
-        p=p.D(p1)
-
-    })
-
-    return p
-}
-
 pD.A=pD.addPoints=function(pts){var p=this
     if(A(pts)){
         _.e(pts,function(pt){
@@ -217,12 +167,9 @@ pD.A=pD.addPoints=function(pts){var p=this
         })
     }
     return p}
-
 pD.n=pD.num = pD.numPoints=function(){
     return this.getNumPoints()
 }
-
-
 pD.vs=function(fn){var p=this,g=G(arguments),
     vs=[]
 
@@ -252,7 +199,6 @@ pD.vs=function(fn){var p=this,g=G(arguments),
 
     return vs
 }
-
 PSS=function(){W()
 
     b=w.S(300,500,'r',100,20)
@@ -261,14 +207,8 @@ PSS=function(){W()
 
 
 }
-
 b2d.recV=function(x,y,w,h){var hW=w/2,hH=h/2
     return [[x-hW,y-hH],[x+hW,y-hH],[x+hW, y+hH],[x-hW,y+hH]]}
-
-
-
-
-
 ps.reg=  function(b){var p=this,g=G(arguments),
     vs=p.vs(),b,o
 
@@ -281,9 +221,6 @@ ps.reg=  function(b){var p=this,g=G(arguments),
 
     return M.p(vs)
 }
-
-
-
 ps.n=ps.num = ps.numPoints=function(){return this.getNumPoints()}
 ps.vs= function(){var p=this,vs=[]
 
@@ -296,9 +233,6 @@ ps.g=function(n){
 ps.nP=function(){var pD=this,n
     n= pD.getNumInnerPoly()
     return n}
-
-
-
 pD.g=function(n){
     return this.getInnerPoly(n||0)}
 pD.nP=function(){var pD=this,n
@@ -323,7 +257,6 @@ pD.U=function(){var pD=this, g=G(arguments),
 }
 pD.I=pD.intersection
 pD.X=pD.xor
-
 pD.reg= pD.rel=function(b){var p=this,g=G(arguments),
     vs=p.vs(),b,o
 
@@ -336,8 +269,6 @@ pD.reg= pD.rel=function(b){var p=this,g=G(arguments),
 
     return M.p(vs)
 }
-
-
 pD.ps=function(){var p=this,
     g=G(arguments),
     fn,
@@ -378,34 +309,22 @@ pD.ps=function(){var p=this,
     return ps
 
 }
-
-
-
-
 pD.hH=function(){var pD=this
     var h
     pD.ps(function(p){if(p.isHole()){h=true}})
     return h
 }
-
-
-
 b2d.tA=function(vs){
     return _.m(vs, function tVs(v){
         return v.tA(v)})}
-
 b2d.rot=function(vs, b){var rot=b.rot()
     return _.m(vs, function(v){
         return v.rot(rot)
     })}
-
 b2d.m=function(vs){ return _.m(vs, b2d.mult) }
-
-
 f._vs=function(f){var f=this,
     h=f.H()
     if(h){return h.m_vertices}}
-
 f.vs=f.rV=function(){var f=this, b=f.B(),g=G(arguments),
 
     vs=b2d.m( f._vs() )
@@ -414,26 +333,16 @@ f.vs=f.rV=function(){var f=this, b=f.B(),g=G(arguments),
 
     return b2d.tA(vs)
 }
-
-
-
-
 f.wV= function(){var f=this,b=f.B(),g=G(arguments),
     vs
     vs = g.n? f.vs():f.vs('+')
     return b2d.tA( _.m(vs, function(v){return V(v).add(b)}))
 }
-
-
 f.A=  f.area = function () {
     return M.p( this ).getArea()
 }
-
 //f.wVerts=f.V=
 //give world verts of fixt rotated (or optionally, not rotated for some reason)
-
-
-
 f.dots=function(){var f=this;
 
     b2d.pD=b2d.polyDot = function (vs) {
@@ -460,10 +369,6 @@ f.dots=function(){var f=this;
 
     return f
 }
-
-
-
-
 f.uni=function(){var f=this,
     b=f.B(), g=G(arguments), p,n
 
@@ -485,17 +390,9 @@ f.uni=function(){var f=this,
     //if it receives a body, i should uni all thatbody's fixs against it
     //dont worry about rebuilding the body first? hmm....
 }
-
-
-
-
-
-
-
 b.wV=function(){var b=this,g=G(arguments)
     return b.pD().vs()
 }
-
 b.rV= function(){var b=this,
     r=M.tR(b.rot()),
     vs,r,x,y
@@ -506,22 +403,12 @@ b.rV= function(){var b=this,
     return vs
     //this returns [V,V,V...]
 }
-
 b2d.add=function(vs,p){
     return _.m(vs, function(v){
         return V(v).add(p)
     })
 }
-
-
-
-
 b.pos=function(){return this.tf().position.m()}
-
-
-
-
-
 b.ps=function(fn){var b=this,
     arr=[],
     p=b.uni()
@@ -530,13 +417,10 @@ b.ps=function(fn){var b=this,
     p.ps(b, function(v){arr.push(v)})
     return arr
 }
-
-
 //return this.union()
 //it used to just get from the FIRST fixt,
 //but now it unions them all together :)
 //b.verts = function(){ return this.fixt().verts() }
-
 b.P= b.pD= function(){var b=this, p,
     fs=b.fs()
 
@@ -546,8 +430,6 @@ b.P= b.pD= function(){var b=this, p,
     return p//p.reg(b)
     //this returns a gPoly
 }
-
-
 b.reg=b.rel= function(p){var b=this
     //my poly operations can only work with POSITIVE vertices
     //but box2d needs fixt vertices specified relative to a body
@@ -564,8 +446,6 @@ b.reg=b.rel= function(p){var b=this
     })
     //this returns [V,V,V...]
 }
-
-
 pD.plus=function(x,y){var p=this,
     vs=p.vs()
 
@@ -575,26 +455,12 @@ pD.plus=function(x,y){var p=this,
 
     return M.p(vs)
 }
-
 pD.minus=function(x,y){var p=this,
     vs=p.vs()
     vs = _.m(vs, function(v){
         v=V(v)
         return v.sub(x||0, y||0)})
     return M.p(vs)
-}
-
-
-VS=function(){W()
-
-    b = w.S(400,200, 'r', 300,200).rot(-20)//.dot()
-
-
-
-    w.pDraw(b.P(),50,10).dot()
-
-
-
 }
 pD.dot=function(){var p=this
 
@@ -611,8 +477,6 @@ w.pDraw=function(p,x,y){var w=this,
 
 
     return p}
-
-
 b2d.pC=function(){var g=G(arguments), //b2d.polyCirc =
     vs=[],
     r=N(g[0],20),
@@ -624,7 +488,6 @@ b2d.pC=function(){var g=G(arguments), //b2d.polyCirc =
             M.s(a*i)*r)
         vs.push(g.p?v:[v.x, v.y])}) //returns an arr of rel verts
     return vs}
-
 b2d.polyCirc=function(r,n){var g=G(arguments),vs=[],a
     r = N(r,20)
     n = N(n,20)
@@ -636,9 +499,6 @@ b2d.polyCirc=function(r,n){var g=G(arguments),vs=[],a
 
     return vs
 }
-
-
-
 b.pC=function(){var b=this,g=G(arguments), o,
     vs=[],p
 
@@ -757,8 +617,6 @@ b.sum=function(b1){var b=this
 
     return UNI(b,b1).vs(b,'-')
 }
-
-
 b.sub=function(){var b=this, gg=G(arguments),
     c = b.c()
     b2d.mini()
@@ -788,10 +646,6 @@ b.sub=function(){var b=this, gg=G(arguments),
     return b
 
 }
-
-
-
-
 f.dif= function(){var f=this, b=f.B(), g=G(arguments),p
     b2d.mini()
 //f.dif does the math and returns the answer (vs)
@@ -883,7 +737,6 @@ w.cxBul = function (k, fn) {
     })
 
 }
-
 w.polS=function (){var w=this,g=G(arguments), b,o
     if(g.jA){return w.pol.apply(w, g.f)}
 
@@ -929,150 +782,6 @@ f.pC=function(n){var f=this,g=G(arguments),pC
 
     return g.m? M.p(pC): pC
 }
-
-
-
-
-RDP = function () {
-
-    function RDPsd(points, epsilon) {
-        var firstPoint = points[0];
-        var lastPoint = points[points.length - 1];
-        if (points.length < 3) {
-            return points;
-        }
-        var index = -1;
-        var dist = 0;
-        for (var i = 1; i < points.length - 1; i++) {
-            var cDist = distanceFromPointToLine(points[i], firstPoint, lastPoint);
-
-            if (cDist > dist) {
-                dist = cDist;
-                index = i;
-            }
-        }
-        if (dist > epsilon) {
-            // iterate
-            var l1 = points.slice(0, index + 1);
-            var l2 = points.slice(index);
-            var r1 = RDPsd(l1, epsilon);
-            var r2 = RDPsd(l2, epsilon);
-            // concat r2 to r1 minus the end/startpoint that will be the same
-            var rs = r1.slice(0, r1.length - 1).concat(r2);
-            return rs;
-        } else {
-            return [firstPoint, lastPoint];
-        }
-    }
-
-// this is the implementation with perpendicular Distance
-    function RDPppd(points, epsilon) {
-        var firstPoint = points[0];
-        var lastPoint = points[points.length - 1];
-        if (points.length < 3) {
-            return points;
-        }
-        var index = -1;
-        var dist = 0;
-        for (var i = 1; i < points.length - 1; i++) {
-            var cDist = findPerpendicularDistance(points[i], firstPoint, lastPoint);
-            if (cDist > dist) {
-                dist = cDist;
-                index = i;
-            }
-        }
-        if (dist > epsilon) {
-            // iterate
-            var l1 = points.slice(0, index + 1);
-            var l2 = points.slice(index);
-            var r1 = RDPppd(l1, epsilon);
-            var r2 = RDPppd(l2, epsilon);
-            // concat r2 to r1 minus the end/startpoint that will be the same
-            var rs = r1.slice(0, r1.length - 1).concat(r2);
-            return rs;
-        } else {
-            return [firstPoint, lastPoint];
-        }
-    }
-
-    function findPerpendicularDistance(p, p1, p2) {
-
-        // if start and end point are on the same x the distance is the difference in X.
-        var result;
-        var slope;
-        var intercept;
-        if (p1[0] == p2[0]) {
-            result = Math.abs(p[0] - p1[0]);
-        } else {
-            slope = (p2[1] - p1[1]) / (p2[0] - p1[0]);
-            intercept = p1[1] - (slope * p1[0]);
-            result = Math.abs(slope * p[0] - p[1] + intercept) / Math.sqrt(Math.pow(slope, 2) + 1);
-        }
-
-        return result;
-    }
-
-// code as suggested by Edward Lee
-    var distanceFromPointToLine = function (p, a, b) {
-        // convert array to object to please Edwards code;
-        p = {x: p[0], y: p[1]};
-        a = {x: a[0], y: a[1]};
-        b = {x: b[0], y: b[1]};
-        return Math.sqrt(distanceFromPointToLineSquared(p, a, b));
-    }
-
-//This is the difficult part. Commenting as we go.
-    var distanceFromPointToLineSquared = function (p, i, j) {
-        var lineLength = pointDistance(i, j);//First, we need the length of the line segment.
-        if (lineLength == 0) {	//if it's 0, the line is actually just a point.
-            return pointDistance(p, a);
-        }
-        var t = ((p.x - i.x) * (j.x - i.x) + (p.y - i.y) * (j.y - i.y)) / lineLength;
-
-        //t is very important. t is a number that essentially compares the individual coordinates
-        //distances between the point and each point on the line.
-
-        if (t < 0) {	//if t is less than 0, the point is behind i, and closest to i.
-            return pointDistance(p, i)
-        }	//if greater than 1, it's closest to j.
-        if (t > 1) {
-            return pointDistance(p, j)
-        }
-        return pointDistance(p, {x: i.x + t * (j.x - i.x), y: i.y + t * (j.y - i.y)});
-        //this figure represents the point on the line that p is closest to.
-    }
-
-//returns distance between two points. Easy geometry.
-    var pointDistance = function (i, j) {
-        return sqr(i.x - j.x) + sqr(i.y - j.y)
-    }
-
-    function sqr(x) {
-        return x * x
-    }
-
-} //not used yet
-//b.wPolygon = function () {var b=this; return M.p( b.wV() )}
-//b.polyVerts = function () {var b=this; return M.p( b.rV() )}
-//f.poly = f.polyVerts = function () {return  Math.pol(this.wV())}
-///
-///
-///
-///
-///
-///
-///
-///
-///
-///
-///
-///
-///
-///
-///
-
-
-
 b2d.sep= b2d.fig=b2d.conc=b2d.separator=function(body, verts, scale){
 
 
@@ -1373,13 +1082,41 @@ b2d.sep= b2d.fig=b2d.conc=b2d.separator=function(body, verts, scale){
 
     return U(body)? Separate : Separate(body, verts, scale)
 }
+circ=function(v,r,n){var a,pX,pY
+    n=N(n,20)
+    a=2*M.PI/n
+    arr = []
+    _.t(n, function (i) {
+        pX=v.x+r * M.c(a * i)
+        pY=v.y+r * M.s(a * i)
+        arr.push(V(pX, pY))})
+    return arr
+}
+w.ter=function(){var w=this,ter= []
+    _.t(13, function (i) {
+        _.t(8, function (j) {
+            var b = w.brick(i * 25 + 420, j * 25 + 200, 20, 20)
+            ter.push({
+                b: b,
+                vs: b.f().rV(),
+                p: M.p([
+                    V(i * 25 + 410, j * 25 + 210),
+                    V(i * 25 + 410, j * 25 + 190),
+                    V(i * 25 + 430, j * 25 + 190),
+                    V(i * 25 + 430, j * 25 + 210)])
+            })
+        })
+    })
+    return ter
+
+}
+
+
 //my poly operations can only work with POSITIVE vertices
 //but box2d needs fixt vertices specified relative to a body
 //so this allows the body that the operation was based on to take responsibility
 //for converting them back
 //you can pass in the verts, or the gPoly itself!
-
-
 old = function () {
 
     b2d.fixtPamsx = function (o) {
@@ -1611,40 +1348,8 @@ old = function () {
 
 
 }
-
-
 //union of 2 non overlapping fixtures,
 // can just result in a body with two fixtures..
 // yea, why are unions not just creating bodies with all the fixtures?
 // no need combine two fixtures into one, right???!
 //b.dif(o ) is shortcut for: b2d.d(b,o).rel(b)
-circ=function(v,r,n){var a,pX,pY
-    n=N(n,20)
-    a=2*M.PI/n
-    arr = []
-    _.t(n, function (i) {
-        pX=v.x+r * M.c(a * i)
-        pY=v.y+r * M.s(a * i)
-        arr.push(V(pX, pY))})
-    return arr
-}
-
-w.ter=function(){var w=this,ter= []
-    _.t(13, function (i) {
-        _.t(8, function (j) {
-            var b = w.brick(i * 25 + 420, j * 25 + 200, 20, 20)
-            ter.push({
-                b: b,
-                vs: b.f().rV(),
-                p: M.p([
-                    V(i * 25 + 410, j * 25 + 210),
-                    V(i * 25 + 410, j * 25 + 190),
-                    V(i * 25 + 430, j * 25 + 190),
-                    V(i * 25 + 430, j * 25 + 210)])
-            })
-        })
-    })
-    return ter
-
-}
-

@@ -76,93 +76,6 @@ $.tap=function(func){this('body').on('keydown mousedown', func); return this}
 _z=function z(a,b,c){return U(b)?_.size(a)
     :N(b)?_z(a)==b
     :_z(a)==_z(b)}
-K=  function(k,fn) {var g = G(arguments), o,key
-    if(g.u){
-        if (K._loaded) {return}
-        $.kD('l', function () {
-            if ($.test) {
-                $l('left pressed')
-            }
-            K.l = cjs.Keys.l = cjs.Keys.left = true
-            cjs.Keys.dir = 'left'
-            K.l = 1;
-            K.L = 0})
-        $.kU('l', function () {
-            if ($.test) {
-                $l('left lifted')
-            }
-            K.l = cjs.Keys.l = cjs.Keys.left = false
-            K.l = 0;
-            K.L = 1
-        })
-        $.kD('r', function () {
-            if ($.test) {
-                $l('right pressed')
-            }
-            K.r = cjs.Keys.r = cjs.Keys.right = true
-            cjs.Keys.dir = 'right'
-            K.r = 1;
-            K.R = 0
-        })
-        $.kU('r', function () {
-            if ($.test) {
-                $l('right lifted')
-            }
-            cjs.Keys.r = cjs.Keys.right = false
-            K.r = 0;
-            K.R = 1
-        })
-        $.kD('u', function () {
-            if ($.test) {
-                $l('up pressed')
-            }
-            cjs.Keys.u = cjs.Keys.up = true
-            K.u = 1;
-            K.U = 0
-        })
-
-        $.kU('u', function () {
-            if ($.test) {
-                $l('up lifted')
-            }
-            cjs.Keys.u = cjs.Keys.up = false
-            K.u = 0;
-            K.U = 1
-        })
-        $.kD('d', function () {
-            if ($.test) {$l('down pressed')}
-            cjs.Keys.d = cjs.Keys.down = true
-            K.d = 1;
-            K.D = 0
-        })
-
-        $.kU('d', function () {
-            if ($.test) {
-                $l('down lifted')
-            }
-            cjs.Keys.d = cjs.Keys.down = false
-            K.d = 0;
-            K.D = 1
-        })
-
-        K._loaded = 1
-
-        return
-    }
-    if(O(k)){
-        if(g.p){
-            if(F(k.u)){z(function(){if(K.u){k.u(K.u)}})}
-            if(F(k.d)){z(function(){if(K.d){k.d(K.d)}})}
-            if(F(k.l)){z(function(){if(K.l){k.l(K.l)}})}
-            if(F(k.r)){z(function(){if(K.r){k.r(K.r)}})}}
-        else {_.e(k, function(fn,k){K(k,fn)})}
-        return}
-    o = s$(k).isUpper()?  {on:'keyup', k:k.toLowerCase()}:  {on:'keydown', k:k}
-    if(g.p){   return z(function(){if(K[k]){ fn( )  }})}
-    key=Key(o.k)
-    return $('body').on( o.on , function(e){    if( e.which==key ){  fn(e) }    })
-    function Key(k){var ob={u:38,d:40,l:37,r:39,s:32,e:13}; return ob[k]? ob[k]: k}
-}
 $.update=function(curr, update, g){var res
     if(g.p){res = curr + update}
     else if(g.n){res = curr - update}
@@ -172,15 +85,11 @@ $.update=function(curr, update, g){var res
     return res
 }
 
-cjs.rulers = function () {
+
+$.fn.a2=function(el){el.A(this); return this}
+
+$.rulers = function () {
     $.d('b', 100, 100).al(.3).dg()
     $.d('r', 100, 300).al(.3).dg()
 }
-
-cjs.toColor =toColor = tCl=function(n1,n2,n3,n4){
-    return n2? "rgba("+n1+","+n2+","+""+n3+","+(n4||1)+")"
-        :
-        $r('c', n1)}
-
-
-$.fn.a2=function(el){el.A(this); return this}
+$.toColor = function(n1,n2,n3,n4){return n2? "rgba("+n1+","+n2+","+""+n3+","+(n4||1)+")" : $r('c', n1)}
