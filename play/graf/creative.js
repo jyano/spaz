@@ -122,7 +122,7 @@ FANCYEDIT = function (x, y) {
 
 
 }
-TEXT = function () {W()
+TEXT = function(){W()
     w.S(300, 100, 'z', 1500, 1)
     w.d('r', 300, 100)
     w.i.T('top').XY(300, 100).bl('+')  // should become + (counterintuitive i know.. but i noticed and fixed it!)
@@ -426,110 +426,6 @@ function spaz(){
 
     }
 
-    TFSET= function(){W()._(function(){
-        w.i.qB('me').grow().drag()
-
-        i= w.i.qB('me').XY(200,200)
-
-        ball = w.ball()
-
-        _.in(3, function(){
-
-            w.C('b'); ball.bS(i)
-
-        })
-
-        //  me.startMoving(10, 10)
-
-        T.t(function(){iS = i.inStage()
-            $l(iS)
-        })
-        b= w.i.qB('me')
-
-
-        b.setTransform(0,0,2,.5,0,40,4,2,3)
-
-        //m = b.getMatrix()
-        function tf(a,b,c,d,e,f,g,h,i){
-            return this.x=a||0,
-                this.y=b||0,
-                this.scaleX=null==c?1:c,
-                this.scaleY=null==d?1:d,
-                this.rotation=e||0,
-                this.skewX=f||0,
-                this.skewY=g||0,
-                this.regX =h||0,
-                this.regY =i||0,
-                this}
-
-    })}
-
-
-    BFREC = function () {W()
-        w.i.h(200, 300).dg().bf('me', function (h) {h.rec({w: 500, h: 200})})
-        w.i.h().dg().bf('me', function (h) {h.rec({w: 500, h: 200})
-            w.D(600, 300, 'b', 500, 200).bS(h)
-        })
-    }
-    BS = function () {
-        W()._(function () {
-            x = w.D(600, 300, 'x', 200, 100)
-            f = x.cir({r: 100, x: 300, c: 'r'})
-            me = Q.b('me').rC()
-            f.bS(me, 0, f.pX(), f.pY())
-        })
-
-    }
-    DEV=function(){ W([1200, 600, 1400, 800], {g: 50, t: 0}).stats()
-        //  w.dr(100, 100, 100, 100, '-')
-        //  w.dr(100, 200, 100, 100, '+')
-
-        w.dl('r', 0, 100, 5000, 5000, '-')
-
-        w.dl('p', 0, 200, 5000, 2000)
-
-        w.dl('b', 0, 300, 5000, 3000, '+')
-
-        wh = w.S(400, 350, 'w', [[300, 220, '-']])
-
-        or = w.S(400, 200, 'o', 300, 50)
-
-        pi = w.S(400, 500, 'x', 300, 50)
-
-        y = w.ship(150, 200).damp(1, 10).rot(90).lD(0).rot(120).lV(1);
-
-        w.track(y, 600, 300, '!')
-
-        b = w.D(700, 200, 'b', 100)
-
-        me = w.me()
-
-
-
-
-    }
-    CHICKBALLS=function(){
-
-        W(1200,1200)._(function(){
-
-            _.t(14, function(){
-
-                w.D(R(1100,50),R(1100,50))
-                    .cir({
-                        bf:'chicks',
-
-                        r: R(180, 50)
-                    })
-
-            })
-
-
-            w.y()
-            w.p()
-        })
-
-
-    }
     FALLINGMES=function(){W([],{w:0})// what took me so long to make this?
         w.C('y')
         _.ev(1, function(){
@@ -633,37 +529,7 @@ function spaz(){
             w.i.T(200, 100, '$$ me')
         })
     }
-    META = AWESOMESAUCE = function () {
-        W([400, 400], {w: 'U'}).C('w')._(function () {
-            //cjs.rulers()
-            w.p(0, 0, 10).stat()
-            _.t(8, function () {
-                w.D(R(100, 50), R(100, 50), 'b', 30)
-            })
-
-            _.ev(3, function () {
-
-                var b = w.D(200, 200, 'b', 80)
-                b.$h('x', 'X', 1).c('x', 'X', 1).bf(
-                    w.s.cv0,
-                    cjs.m2d(
-                        .6, .1, .1, .6, -40, 180
-                    )
-                ).cir(80)
-
-            })
-        })
-    }
-    TEXTBALLS = function () {
-        W([400, 400], {}).C('w')._(function () {
-            b = w.D(200, 200, 'b', 80)
-            b.gx = b.gx || w.g.ct()
-            b.gx.qB('chicks').rC().sXY(.1).Y(30)
-            nice = w.i.T(0, 140, 'nice', 100, 'o')
-            b.bS(nice)
-        })
-    }
-    STATUSBALL=function(){W({  grav:0 })
+   STATUSBALL=function(){W({  grav:0 })
         b = w.D(500,300,'r',60).bS( w.s.h(500,300)  )
         num = 0
         dif = .1

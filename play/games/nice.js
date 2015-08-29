@@ -1,4 +1,206 @@
+TX= function (){
 
+    W( {W:2000, H:1000, wW:4000, wH:2000, g:1000})._(onReady)
+
+
+    //.stats();
+    w.Z(.1).G(10);
+    //w.bg.bm('earth', onReady)
+    function onReady(w){ //, m: 'm'
+        w.$$(function(){ w.showOff() })
+        //platforms
+
+        _.t(10, function (i) {w.S(   R(5000), 1000+R(500), 'r', R(250,50),  R(60, 15)).K('rr')})
+
+        y = w.y(2600,1500,6).K('p')
+        // p = Player().XY(2200, w.h-300).K('p')
+
+        p = w.p(2200, w.h-300, 3).K('p')
+
+        bike = x = Bike().K('p')
+
+        but = b = Butterfly().aD(1000000).r(0).XY(500,200).K('p');
+
+        _.in(1, function(){b.cn('thrust', 500)}) // b.track()
+
+
+
+        pol = w.D(2500, 300).pol({
+
+            v: [[[5, 100], [0, -100], [200, -150], [200, 150]], [[-50, 50], [-50, -100], [450, -50], [450, 50]]],
+
+
+            c: {c:'r', C:'y', l:10, bf:'me'},
+
+            bf: 'me'
+
+        })[0].B()
+
+
+
+
+
+
+
+
+
+        b.XY(pol.X(), pol.Y())
+        j= w.dJ(b, pol ).l(600).fq(55).d(.1)
+        flub = g=   w.D(3500,160).K('flub').K('m').K('p')
+        flub.cir(
+            { r:120, rf:{c1:'r',c2:'g'}  },
+            { r:100, C:'y', l:2, bf:'chicks'  })
+        flub.r(5).fr(1).lD(5)
+        flub.fR().cn('pow')
+        flub.bS('me', 1)
+        flub.warp()
+        r=w.D(300, 400, 'r', 250).r(.5).cl('p', function(f){
+
+            if(f.B()== w.t){  }
+
+            else {
+
+                r.C($r())
+                w.C($r())
+
+                w.y( r.X(), 400 ).C('b')
+
+                //  f.B().track()
+
+            }
+
+
+        })
+        destWall = t=DestWall()
+
+        curtain = w.i.h(-300,-200,'+').bf('me').rec(  {w:150,h:500}, {w:150,h:500,x:200}, {w:150,h:500,x:400}, {w:150,h:500,x:600} )
+
+        p.track()
+        y.track()
+    }
+
+
+    function Player(){var p = w.p(200,400,5).cn('j')
+        w.S(100, w.h-100, 'r', R(70,150),  R(30,15)).K('rr')
+        w.S(100, w.h-400, 'r', R(70,150),  R(30,15)).K('rr')
+
+        _.t(10, function (i) {
+
+            w.S(   R(5000), 1000+R(500),
+                'r', R(250,50),  R(60, 15)).K('rr')
+        })
+
+
+        p.webs=[]
+        p.canW=1
+        p.wb=p.web=function(K){
+            return p.Web(p.X(),p.Y()-100, K)
+        }
+        p.iCn=function(){return p.webs && _.fW(p.webs,{cn:1})}
+        p.shR=function(){var f=p.sw('-'); w.D(p.X()+80, p.Y()-20, 'w', 6).I( 2- f/50 , 0 - f/40);return p}
+
+        p.shL=p.shootLeft=function(){
+            var f=p.sw('-'); w.D(p.X()+80, p.Y()-20, 'w', 6).I( 2+ f/50, 0+f/40); return p
+        }
+
+        p.lWeb=function(){return _.l(_.wh(p.webs,{cn:1}))}
+        p.detach=function(){if(p.iCn()){p.lWeb().die()};return p}
+        $.k({l: function(){p.lV(-40, 0)}, r: function(){p.lV(40, 0)},
+            u: function(){if(p.webs[0]){_.l(p.webs).die()}},
+            d: function(){if(!p.iCn()){ p.web().b.I(0, -100000) }}})
+        w.b(function (cx) {cx.w('wbB', 'rr', function(f){var web= _.fW(p.webs,{b:this.B()}); if(!web.cn){web.attach(f.B())}})})
+        return p
+
+    }
+    function Butterfly(){
+        //BLUE BUTTERFLY
+        var  b=  w.D(500, 800,[  [300,100],   [100,200]]  ).C('z')//.track()
+        b.i.rec('r', 'z',0,-45,20,150,'+')//gun
+        b.i.rec('y','z', 0,0,300,100,'+') //wings
+        b.i.rec('o','z', 0,20,320,10,'+')//stripes
+        b.i.rec('o', 'z',0,-20,320,10,'+')
+        b.i.rec('b','z', 0,0,100,200,'+')//top
+        b.i.al(.9)
+        //a little square snow
+        //    _.ev(20, function(){w.D(R(1000),-300,$r(),60).g().al(.9).rec('w','z',0,0,180,180).al(.7)})
+        return b
+    }
+    function Bike() {
+        car = w.D(2300, 300, 'r', [[200, 20], [20, 165, -50, -50, 45], [20, 165, 50, -50, -45]])
+        dir = 12
+        car.fr(5)
+        car.track()
+
+        j = w.rJ(
+            wh = wheel(2250, 300).C('b'), car, 0, 0, 100, 0)
+
+        wh.bS('me')
+        w.rJ(
+            wh2 = wheel(2250, 300, 50, 10).C('g'), car, 0, 0, -100, 0)
+        w.rJ(
+            wh3 = wheel(2250, 300, 25, 6).C('y').aD(10), car, 0, 0, 0, -100)
+
+
+        wh2.bS('me')
+        wh3.bS('me')
+
+
+
+        z(function () {
+            var K = cjs.Keys
+
+            if (K.u) {
+                wh.ApplyTorque(150000)
+                wh3.ApplyTorque(-50000)
+            }
+
+            if (K.r) {
+                wh.ApplyTorque(150000)
+                wh3.ApplyTorque(15000)
+            }
+
+            if (K.l) {
+                wh.ApplyTorque(-50000)
+            }
+
+            if (K.d) {
+                wh2.ApplyTorque(-50000)
+                wh3.ApplyTorque(150000)
+            }
+        })
+
+
+
+        function wheel(x, y, r, n) {
+            r = N(r, 80)
+            n = N(n, 15)
+            pC = [b2d.pC(r, n)]
+            return w.D(x, y, 'w', pC).d(5)
+        }
+
+        return car
+    }
+    function DestWall(){
+
+
+        var  t=w.S(3000, 1450,'x',300,900)
+
+        t.cl('bul', function(bu){var v,p
+
+            bu=bu.B()
+
+            v=bu.XY()
+            bu.kill()
+            // v=bu.kill()
+            p=M.p([[0,100],[-100,0],[0,-100],[100,0]]  ).ger(v)
+            w.rad(v.x, v.y, 15,function(f){f.sub(p)})//t.fs(function(f){f.sub(p)})
+            t.fs(function(f){f.C($r())})
+        })
+
+
+        return t
+    }
+}
 CHEM = function () {
 
     w.rec = function (x, y, W, H, c) {
@@ -503,210 +705,6 @@ SCROLLGAME=function(){
 
 
 }
-
-TX= function (){
-
-    W( {W:2000, H:1000, wW:4000, wH:2000, g:1000})._(onReady)
-
-
-    //.stats();
-    w.Z(.1).G(10);
-    //w.bg.bm('earth', onReady)
-    function onReady(w){ //, m: 'm'
-        w.$$(function(){ w.showOff() })
-        //platforms
-
-        _.t(10, function (i) {w.S(   R(5000), 1000+R(500), 'r', R(250,50),  R(60, 15)).K('rr')})
-
-        y = w.y(2600,1500,6).K('p')
-        // p = Player().XY(2200, w.h-300).K('p')
-
-        p = w.p(2200, w.h-300, 3).K('p')
-
-        bike = x = Bike().K('p')
-
-        but = b = Butterfly().aD(1000000).r(0).XY(500,200).K('p');
-
-        _.in(1, function(){b.cn('thrust', 500)}) // b.track()
-
-
-
-        pol = w.D(2500, 300).pol({
-
-            v: [[[5, 100], [0, -100], [200, -150], [200, 150]], [[-50, 50], [-50, -100], [450, -50], [450, 50]]],
-
-
-            c: {c:'r', C:'y', l:10, bf:'me'},
-
-            bf: 'me'
-
-        })[0].B()
-
-
-
-
-
-
-
-
-
-        b.XY(pol.X(), pol.Y())
-        j= w.dJ(b, pol ).l(600).fq(55).d(.1)
-        flub = g=   w.D(3500,160).K('flub').K('m').K('p')
-        flub.cir(
-            { r:120, rf:{c1:'r',c2:'g'}  },
-            { r:100, C:'y', l:2, bf:'chicks'  })
-        flub.r(5).fr(1).lD(5)
-        flub.fR().cn('pow')
-        flub.bS('me', 1)
-        flub.warp()
-        r=w.D(300, 400, 'r', 250).r(.5).cl('p', function(f){
-
-            if(f.B()== w.t){  }
-
-            else {
-
-                r.C($r())
-                w.C($r())
-
-                w.y( r.X(), 400 ).C('b')
-
-                //  f.B().track()
-
-            }
-
-
-        })
-        destWall = t=DestWall()
-
-        curtain = w.i.h(-300,-200,'+').bf('me').rec(  {w:150,h:500}, {w:150,h:500,x:200}, {w:150,h:500,x:400}, {w:150,h:500,x:600} )
-
-        p.track()
-        y.track()
-    }
-
-
-    function Player(){var p = w.p(200,400,5).cn('j')
-        w.S(100, w.h-100, 'r', R(70,150),  R(30,15)).K('rr')
-        w.S(100, w.h-400, 'r', R(70,150),  R(30,15)).K('rr')
-
-        _.t(10, function (i) {
-
-            w.S(   R(5000), 1000+R(500),
-                'r', R(250,50),  R(60, 15)).K('rr')
-        })
-
-
-        p.webs=[]
-        p.canW=1
-        p.wb=p.web=function(K){
-            return p.Web(p.X(),p.Y()-100, K)
-        }
-        p.iCn=function(){return p.webs && _.fW(p.webs,{cn:1})}
-        p.shR=function(){var f=p.sw('-'); w.D(p.X()+80, p.Y()-20, 'w', 6).I( 2- f/50 , 0 - f/40);return p}
-
-        p.shL=p.shootLeft=function(){
-            var f=p.sw('-'); w.D(p.X()+80, p.Y()-20, 'w', 6).I( 2+ f/50, 0+f/40); return p
-        }
-
-        p.lWeb=function(){return _.l(_.wh(p.webs,{cn:1}))}
-        p.detach=function(){if(p.iCn()){p.lWeb().die()};return p}
-        $.k({l: function(){p.lV(-40, 0)}, r: function(){p.lV(40, 0)},
-            u: function(){if(p.webs[0]){_.l(p.webs).die()}},
-            d: function(){if(!p.iCn()){ p.web().b.I(0, -100000) }}})
-        w.b(function (cx) {cx.w('wbB', 'rr', function(f){var web= _.fW(p.webs,{b:this.B()}); if(!web.cn){web.attach(f.B())}})})
-        return p
-
-    }
-    function Butterfly(){
-        //BLUE BUTTERFLY
-        var  b=  w.D(500, 800,[  [300,100],   [100,200]]  ).C('z')//.track()
-        b.i.rec('r', 'z',0,-45,20,150,'+')//gun
-        b.i.rec('y','z', 0,0,300,100,'+') //wings
-        b.i.rec('o','z', 0,20,320,10,'+')//stripes
-        b.i.rec('o', 'z',0,-20,320,10,'+')
-        b.i.rec('b','z', 0,0,100,200,'+')//top
-        b.i.al(.9)
-        //a little square snow
-        //    _.ev(20, function(){w.D(R(1000),-300,$r(),60).g().al(.9).rec('w','z',0,0,180,180).al(.7)})
-        return b
-    }
-    function Bike() {
-        car = w.D(2300, 300, 'r', [[200, 20], [20, 165, -50, -50, 45], [20, 165, 50, -50, -45]])
-        dir = 12
-        car.fr(5)
-        car.track()
-
-        j = w.rJ(
-            wh = wheel(2250, 300).C('b'), car, 0, 0, 100, 0)
-
-        wh.bS('me')
-        w.rJ(
-            wh2 = wheel(2250, 300, 50, 10).C('g'), car, 0, 0, -100, 0)
-        w.rJ(
-            wh3 = wheel(2250, 300, 25, 6).C('y').aD(10), car, 0, 0, 0, -100)
-
-
-        wh2.bS('me')
-        wh3.bS('me')
-
-
-
-        z(function () {
-            var K = cjs.Keys
-
-            if (K.u) {
-                wh.ApplyTorque(150000)
-                wh3.ApplyTorque(-50000)
-            }
-
-            if (K.r) {
-                wh.ApplyTorque(150000)
-                wh3.ApplyTorque(15000)
-            }
-
-            if (K.l) {
-                wh.ApplyTorque(-50000)
-            }
-
-            if (K.d) {
-                wh2.ApplyTorque(-50000)
-                wh3.ApplyTorque(150000)
-            }
-        })
-
-
-
-        function wheel(x, y, r, n) {
-            r = N(r, 80)
-            n = N(n, 15)
-            pC = [b2d.pC(r, n)]
-            return w.D(x, y, 'w', pC).d(5)
-        }
-
-        return car
-    }
-    function DestWall(){
-
-
-        var  t=w.S(3000, 1450,'x',300,900)
-
-        t.cl('bul', function(bu){var v,p
-
-            bu=bu.B()
-
-            v=bu.XY()
-            bu.kill()
-            // v=bu.kill()
-            p=M.p([[0,100],[-100,0],[0,-100],[100,0]]  ).ger(v)
-            w.rad(v.x, v.y, 15,function(f){f.sub(p)})//t.fs(function(f){f.sub(p)})
-            t.fs(function(f){f.C($r())})
-        })
-
-
-        return t
-    }
-}
 JETJUMP  =function(){W([1200,600, 1200,1000], {  g:200}).P().Y();y.tr()
 
 
@@ -799,9 +797,6 @@ TAPSHOOT=function(){W({g: 0}) // u cant shoot when ur dead!
     //to do:  maybe u only get 10 buls ever.. so u must chase them :) (only way to kill badguys)
 
 }
-
-
-
 FLAPPY=function(){W({w:0,g:50})
     w.S( 800,500,'o',100,600).K('plat')
     w.S( 1200,0,'o',100,600).K('plat')
@@ -821,8 +816,138 @@ FLAPPY=function(){W({w:0,g:50})
 
     w.$(function(){ p.I(0,-180) })
 }
+TFSET= function(){W()._(function(){
+    w.i.qB('me').grow().drag()
+
+    i= w.i.qB('me').XY(200,200)
+
+    ball = w.ball()
+
+    _.in(3, function(){
+
+        w.C('b'); ball.bS(i)
+
+    })
+
+    //  me.startMoving(10, 10)
+
+    T.t(function(){iS = i.inStage()
+        $l(iS)
+    })
+    b= w.i.qB('me')
 
 
+    b.setTransform(0,0,2,.5,0,40,4,2,3)
+
+    //m = b.getMatrix()
+    function tf(a,b,c,d,e,f,g,h,i){
+        return this.x=a||0,
+            this.y=b||0,
+            this.scaleX=null==c?1:c,
+            this.scaleY=null==d?1:d,
+            this.rotation=e||0,
+            this.skewX=f||0,
+            this.skewY=g||0,
+            this.regX =h||0,
+            this.regY =i||0,
+            this}
+
+})}
+BFREC = function () {W()
+    w.i.h(200, 300).dg().bf('me', function (h) {h.rec({w: 500, h: 200})})
+    w.i.h().dg().bf('me', function (h) {h.rec({w: 500, h: 200})
+        w.D(600, 300, 'b', 500, 200).bS(h)
+    })
+}
+BS = function () {
+    W()._(function () {
+        x = w.D(600, 300, 'x', 200, 100)
+        f = x.cir({r: 100, x: 300, c: 'r'})
+        me = Q.b('me').rC()
+        f.bS(me, 0, f.pX(), f.pY())
+    })
+
+}
+DEV=function(){ W([1200, 600, 1400, 800], {g: 50, t: 0}).stats()
+    //  w.dr(100, 100, 100, 100, '-')
+    //  w.dr(100, 200, 100, 100, '+')
+
+    w.dl('r', 0, 100, 5000, 5000, '-')
+
+    w.dl('p', 0, 200, 5000, 2000)
+
+    w.dl('b', 0, 300, 5000, 3000, '+')
+
+    wh = w.S(400, 350, 'w', [[300, 220, '-']])
+
+    or = w.S(400, 200, 'o', 300, 50)
+
+    pi = w.S(400, 500, 'x', 300, 50)
+
+    y = w.ship(150, 200).damp(1, 10).rot(90).lD(0).rot(120).lV(1);
+
+    w.track(y, 600, 300, '!')
+
+    b = w.D(700, 200, 'b', 100)
+
+    me = w.me()
+
+
+
+
+}
+CHICKBALLS=function(){
+
+    W(1200,1200)._(function(){
+
+        _.t(14, function(){
+
+            w.D(R(1100,50),R(1100,50))
+                .cir({
+                    bf:'chicks',
+
+                    r: R(180, 50)
+                })
+
+        })
+
+
+        w.y()
+        w.p()
+    })
+
+
+}
+META = AWESOMESAUCE = function () {
+    W([400, 400], {w: 'U'}).C('w')._(function () {
+        //cjs.rulers()
+        w.p(0, 0, 10).stat()
+        _.t(8, function () {
+            w.D(R(100, 50), R(100, 50), 'b', 30)
+        })
+
+        _.ev(3, function () {
+
+            var b = w.D(200, 200, 'b', 80)
+            b.$h('x', 'X', 1).c('x', 'X', 1).bf(
+                w.s.cv0,
+                cjs.m2d(
+                    .6, .1, .1, .6, -40, 180
+                )
+            ).cir(80)
+
+        })
+    })
+}
+TEXTBALLS = function () {
+    W([400, 400], {}).C('w')._(function () {
+        b = w.D(200, 200, 'b', 80)
+        b.gx = b.gx || w.g.ct()
+        b.gx.qB('chicks').rC().sXY(.1).Y(30)
+        nice = w.i.T(0, 140, 'nice', 100, 'o')
+        b.bS(nice)
+    })
+}
 GEMS = function () {
     W()
     //h.bR

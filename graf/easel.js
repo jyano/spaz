@@ -188,7 +188,30 @@ i.warp = function (n) {alert('i.warp')
     i.warpY(0, s.H(), n)
     return i
 }
+i.toFront = function () {
+    return this.ix(this.sib().length - 1)
+}
+i.within = i.inStage = function () {
+    var i = this, g = G(arguments), s = i.S(), wthnS
 
+    wthnS = i.x > 0 && i.y > 0
+
+    && i.x < (s.W() - 100) && i.y < ( s.H() - 100 )
+
+    if (g.n && !wthnS) {
+        s.rm()
+    }
+
+    return wthnS
+}
+i.belowStg = function () {
+    return this.y > this.S().H()
+}
+
+i.RT = function () {var i = this;
+    RT(i);
+    return i
+}
 ct.rec = function () {
     var ct = this, g = G(arguments), o, ct2, h
     if (g.OO_) {
