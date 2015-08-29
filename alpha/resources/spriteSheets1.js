@@ -1264,11 +1264,6 @@ cjs.gunner=function(){
 
 }
 df={}
-$.inx = function(){}
-_.eR=function(g,fn){_.e(_.r(g),fn)}
-_.fW=_.findWhere
-_.wh=_.where
-_.rj=_.reject
 T = function(times,func){var timeout
 
     if(N(times)){return _.t(times, function(i){func(i+1)})}
@@ -1280,7 +1275,6 @@ T = function(times,func){var timeout
     return setTimeout(func,timeout)
 
 }
-$.evx=function(a){return a}
 $.space = function (fn){
     return $.kD('space',fn)}
 $.in=function(){var g=G(arguments),o,n=1,

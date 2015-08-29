@@ -375,7 +375,7 @@ old=function(){
         return s.t(fn)}
 }
 
-function balls(){
+
 
     CHICKBALLS=function(){
         W(1200,1200)._(function(){
@@ -657,8 +657,7 @@ function balls(){
         } )
     }
 
-}
-
+ 
 
 
 
@@ -1665,23 +1664,7 @@ JOY=function(){W()//.P()
     p.r(.8)
 
 }
-$t= cjs.time=function(){return new Date().getTime()}
-$sw= cjs.sw= cjs.stopWatch=function(){var t=$t()
-    return function self(){var g=G(arguments),
-        d=$t()-t
 
-        if(g.d){t=$t()}
-        if(g.n){var f=cjs.cap(
-            (self('/')-500)/20,
-            0,
-            100
-        )
-
-            return f
-        }
-        return d}
-
-}
 
 oC = function (c) {
     return oO('c', c)

@@ -37,19 +37,7 @@ function dispObwillNeed(){
         return this.y > this.S().H()
     }
 
-    i.tickX = function (fn) {
-        var i = this
-        cjs.t(function () {i.X(fn())})
-        return i
-    }
-    i.tickY = function (fn) {
-        var i = this
-        cjs.t(function () {
-            i.Y(fn())
-        })
-        return i
-    }
-    i.RT = function () {var i = this;
+   i.RT = function () {var i = this;
         RT(i);
         return i
     }

@@ -120,11 +120,19 @@ b.fs=b.e=function(fn){var b=this,  g=G(arguments),
      */
 
 }
-b.wC=   function(){var b=this,w=b.W(),g=G(arguments)
+
+b.wC=   function(){var b=this,
+    w=b.W(),
+    g=G(arguments)
     //gives {x,y}, but of its CENTER-OF-MASS
+
     if(g.p){return b.XY(w.hW, w.hH) }
+
     return b.GetWorldCenter().m()
 }
+
+
+
 b.lC=   function(){var b=this,w=b.W(),g=G(arguments)
     //gives {x,y}, but of its CENTER-OF-MASS
     if(g.p){return b.XY(w.hW, w.hH) }

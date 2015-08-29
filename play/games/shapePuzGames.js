@@ -979,7 +979,29 @@ QUERY=function(){W().Y()
     )
 
 }
-CHEM = function(){W({ w: 0//, g:50
+CHEM = function(){
+
+    w.rec=  function (x, y, W, H, c) {var w=this, g=G(arguments), b,o
+
+
+        o = g.O?g.f:
+            N(g.s)?{x:g.f,y:g.s,w:g.t,h:g[3],c:g[4]}:
+            {w:g.f}
+
+        o.x  = N(o.x, w.hW)
+        o.y  = N(o.y, w.hH)
+        o.w  = N(o.w, 40)
+        o.h  = N(o.h, o.w)
+        o.c  = o.c || $r()
+
+        b=w.D(o.x,o.y,o.c,o.w,o.h).K('box').DFB(.5,.5,0)
+        if(g.n){b.sen(true)}
+        return b
+
+    }
+
+
+    W({ w: 0//, g:50
 })
 
 

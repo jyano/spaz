@@ -1,5 +1,5 @@
-
 //dist
+
 DISTY1=function(){W([600,600,600,1200])
     b= w.D(300,200, 'b', 150).tr()
     x=  w.D(200,100,'x', 20).cn('thrust').bS('me').aD(100).fR()
@@ -220,11 +220,19 @@ SPG = function () {W([2000,1300],{g:1000}) .P(300, 320)
 
 
 }
-SPOLL=function(){W({g:0,w:0});Q(function(){
-    s=w.s
-    e=w.S(200,200,'p',100)
+
+
+SPOLL=function(){
+
+    W({g:0,w:0});
+
+    Q(function(){
+
+        s=w.s
+
+        e=w.S(200,200,'p',100)
         .d(1).r(2)
-        .bS({i:q.bm('earth'),sc:.13})
+        .bS({i:q.b('sun'),sc:.13})
         .K('earth'); eI= e.ch()
 
 
@@ -318,7 +326,7 @@ SPOOM=function(){Q(function(){W({g:0, w:0});
 RAGD=function(){W({})
 
 
-    w.spring(
+    w.spg(
         b1 = w.D(100, 100,'b', 30),
         w.D(100, 200,'r', 40))
 
@@ -328,8 +336,8 @@ RAGD=function(){W({})
     )
     p = w.me(500,200)
 
-    w.spring(b1, p)
-    w.spring(b2, p)
+    w.spg(b1, p)
+    w.spg(b2, p)
 
 }
 VINE=function(){W(250).Y().P()
@@ -641,6 +649,7 @@ LUMP=function(){W(5)//.Y()
 
 
 
+
 //pris
 PJ=function(){W([1200, 600, 2400,1200], {}).P(100, w.h-200)
 
@@ -703,9 +712,7 @@ PJ=function(){W([1200, 600, 2400,1200], {}).P(100, w.h-200)
 
 
 }
-
-
-ELV=function(){W([1200,600,3600,800])
+SWITCH=function(){W([1200,600,3600,800])
 
 
     w.Z(1.2)
@@ -799,7 +806,6 @@ ELV=function(){W([1200,600,3600,800])
 
     })
 }
-
 BUMPER=function(){W().P(800)
 
 
@@ -835,8 +841,6 @@ BUMPER=function(){W().P(800)
 
 }
 
-
-
 MARIOACO =function(){W([1200,600,2400,1200],{g:400})
     w.p(100,300,'+')
 
@@ -851,7 +855,6 @@ MARIOACO =function(){W([1200,600,2400,1200],{g:400})
 
 
 }
-
 JTRAN=function(){W({g:300}).P()
 
     p.XY(100, 550).track()

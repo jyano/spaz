@@ -172,3 +172,12 @@ M.warp = function(lowBound,highBound,cushion){//wrp=
             :num
     }
 }
+
+
+_.inx = function(){}
+_.eR=function(g,fn){_.e(_.r(g),fn)}
+_.fW=_.findWhere
+_.wh=_.where
+_.rj=_.reject
+
+_.evx=function(a){return a}

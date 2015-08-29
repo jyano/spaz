@@ -914,7 +914,7 @@ prisJ=function(){
         return pJ
     }
     pJ.uL= pJ.U=function(uL){var j=this
-        if(U(u)){return j.GetUpperLimit()*30}
+        if(U(uL)){return j.GetUpperLimit()*30}
         j.lm(j.lL(),uL)
         return j}
     pJ.lL= pJ.L=function(l){var j=this

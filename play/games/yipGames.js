@@ -341,6 +341,8 @@ STAB=function(){W({g:0})
             p.track()
             y.track()
         }
+
+
         function Player(){var p = w.p(200,400,5).cn('j')
             w.S(100, w.h-100, 'r', R(70,150),  R(30,15)).K('rr')
             w.S(100, w.h-400, 'r', R(70,150),  R(30,15)).K('rr')
@@ -359,7 +361,11 @@ STAB=function(){W({g:0})
             }
             p.iCn=function(){return p.webs && _.fW(p.webs,{cn:1})}
             p.shR=function(){var f=p.sw('-'); w.D(p.X()+80, p.Y()-20, 'w', 6).I( 2- f/50 , 0 - f/40);return p}
-            p.shL=p.shootLeft=function(){var f=p.sw('-'); w.D(p.X()+80, p.Y()-20, 'w', 6).I( 2+ f/50, 0+f/40); return p}
+
+            p.shL=p.shootLeft=function(){
+                var f=p.sw('-'); w.D(p.X()+80, p.Y()-20, 'w', 6).I( 2+ f/50, 0+f/40); return p
+            }
+
             p.lWeb=function(){return _.l(_.wh(p.webs,{cn:1}))}
             p.detach=function(){if(p.iCn()){p.lWeb().die()};return p}
             $.k({l: function(){p.lV(-40, 0)}, r: function(){p.lV(40, 0)},
