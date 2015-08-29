@@ -481,6 +481,10 @@ function ctxExamples() {
             x.a(x1, y1, 10).s()
         })
     })
+
+    $.fn.xPrp=function(){
+        this.on('mousedown', function(e){  e.stopPropagation()  })
+        return this}
     $.dg = $.dragFrame = function (d) {
         var oD
         oD = $.d('y').pad(20).drag()
@@ -489,7 +493,10 @@ function ctxExamples() {
         d.oD = oD
         oD.XY(40, 40)
         return oD
+
     }
+
+
 //Uncaught TypeError: d.xPrp is not a function
     DGC = function () {
         Q(function () {

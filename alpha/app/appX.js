@@ -1237,9 +1237,7 @@ fun=function(){
                             success: function (result){$(that).parent().rm()}})}))
                 top += 220})})
     }
-    $.fn.xPrp=function(){
-        this.on('mousedown', function(e){  e.stopPropagation()  })
-        return this}
+
 
     $.imagesDiv=function(stage) {
         $.getJSON('/img',  function(img){theDiv = $.d().A().drag().C('y')

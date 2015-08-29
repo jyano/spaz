@@ -13,16 +13,24 @@ NEWSTG=function(){z()
 }
 
 
-ONOFFTICK=function(){W({w:0})
+ONOFFTICK=function(){W({w:0}) // or text?
     //will break if u change it
     fun = w.s.t(ball)
-    $.in(3, function(){
+    _.in(3, function(){
         w.s.xT(fun)
     })
-    function ball(){if(R(5)<1){ w.ball()}}
+    function ball(){
+        if(R(5)<1){ w.ball()}
+    }
 
 
 }
+$.dragStage = function (x, y) {
+    s = $St('v', '+')
+    return $.dragFrame($(s.canvas))
+}
+
+
 DRAG=function(){z()
     $.dragStage()
 }
@@ -34,7 +42,7 @@ TFSET= function(){W()._(function(){
 
     ball = w.ball()
 
-    $.in(3, function(){
+    _.in(3, function(){
 
         w.C('b'); ball.bS(i)
 
@@ -92,7 +100,7 @@ SPEECH=function(){W()._(function(){
     ct = w.i.ct().drag()
     ct.h(200, 150).cir(130,'w').cir(100,50,100,'w')
     ct.T(250,150, 'yoyoyoo', 60, 'd')
-    $.in(10, function(){ct.rm()})
+    _.in(10, function(){ct.rm()})
     //ct.tw( [{   sxy:.1, x:x-250, y:y-250 }, 20000])
 })}
 
@@ -301,8 +309,8 @@ ICEN=function(){Q(['guy','me'],function(){//z()
     s.qB('guy').XY(300,300).spin()
     s.qB('guy').XY(300,300).sXY( .5, .3).spin()
     T.t(function(){ s.u() })
-    $.in(3, function(){   T.f(1)   })
-    $.in(9, function(){  T.f(1000)  })
+    _.in(3, function(){   T.f(1)   })
+    _.in(9, function(){  T.f(1000)  })
 })}
 
 
@@ -335,45 +343,6 @@ old=function(){
 
 
 
-
-
-old=function(){
-
-    q.mf = q.manifest = function () {var q=this,g=G(arguments)
-        q.loadManifest(cjs.mf.apply(null, g))
-        return q}
-    cjs.lQDep= cjs.lqDep=cjs.loadQueueDep=function(mf,fn){
-        var q = new cjs.LoadQueue(true)
-        if(A(mf)){q.loadManifest(cjs.mf.apply(null, mf))}
-        if(F(fn)){q.complete(function () {fn(function (i) {return q.getResult(i)})})}
-        return q}
-    cjs.mfDep = cjs.manifestDep = function(a){var g=G(arguments), mf=[]
-        _.e(g, function (v) {
-            mf.push({
-                src: cjs.src(v),
-                id: v})})
-        return mf
-    }
-
-    //cjs.handleFileLoad = function (e) {if (e.item.type == "image") {images[e.item.id] = e.result}}
-//cjs.makeManifest = cjs.makeMan=function(a) {return cjs.manifest.apply(null, _.m(a.images, function (i) {return Graphics.fromSource(i)}))}
-
-    QDep=function(i,fn){
-        q=cjs.lQ(),
-            mf=[]
-        _.e(i,function(v) {mf.push({src: cjs.src(v), id: v})})
-        q.mf(mf)
-        q.c(function(){fn(q)})
-        return q}
-
-    tickX=function(e){j.Y(e.delta/1000*100,'-' )}
-    timeStamp2 = function(s, j, pxPerSec){
-        var fn=function(s,e){
-            if(!N(j.ts)){j.ts=0;j.lts=e.ts}
-            else{j.ts= e.ts-j.lts;j.lts=e.ts
-                j.y((j.ts/1000) * pxPerSec,'-')  }}
-        return s.t(fn)}
-}
 
 
 
@@ -459,7 +428,8 @@ old=function(){
             b.bS(nice)
         })
     }
-    RADIANTBALLS=function(){s=cjs.S('a')
+
+    RADIANTBALLS=function(){s=$St('a')
         b1=s.cannonBall(100,200)
         b2=s.basketBall(100,100)
         b3=s.beachBall(50,50)
@@ -484,14 +454,14 @@ old=function(){
 
     }
     STATUSBALL=function(){W({  grav:0 })
-        b = w.D(500,300,'r',60).bS( w.s.shape(500,300)  )
+        b = w.D(500,300,'r',60).bS( w.s.h(500,300)  )
         num = 0
         dif = .1
         shape = b.sprite
         shape.rG(['r','y'],[0, num],
             0,0,0,0,0,60)
             .dc(0, 0, 60)
-        $.ev(.1,function(){
+        _.ev(.1,function(){
             num += dif
             if(num>=1){ num=.9; dif= -.1 }
             if(num<=0){ dif = .1 }
@@ -530,7 +500,7 @@ old=function(){
 
         curr=0
 
-        $.ev(1,function(){
+        _.ev(1,function(){
             b.draw( frames [curr] )
             curr++
             if(curr == 9){curr=0} })
@@ -550,7 +520,7 @@ old=function(){
 
 
         switchBall1=function(x,y){var  dif=.1,n1=0,n2= 0,
-            b=w.ball(x,y, 60).bindSprite2( w.s.shape(x,y) )
+            b=w.ball(x,y, 60).bindSprite2( w.s.h(x,y) )
 
             I(function(){n2 = advanceN(n2); drawGrad()}, 100)
             function drawGrad(){
@@ -566,7 +536,7 @@ old=function(){
 
 
         switchBall2=function(x, y){
-            var   ball= w.ball(x,y, 60).bindSprite2( w.s.shape(x,y) )
+            var   ball= w.ball(x,y, 60).bindSprite2( w.s.h(x,y) )
 
 
 
@@ -630,7 +600,7 @@ old=function(){
     }
     TRIPLESTAGE= function(){w=b2d.W({  grav:0 })
         b = w.ball(500,300,60)
-        b.bindSprite2( w.s.shape(500,300)  )
+        b.bindSprite2( w.s.h(500,300)  )
         num = 0
         dif = .1
         shape = b.sprite
@@ -652,86 +622,16 @@ old=function(){
         badGuy=w.badGuy(
             400, 200).warp().den(.1)
 
-        $.ev(.2, function(){
+        _.ev(.2, function(){
             w.s.pen('badGuy health: ' + badGuy.health)
         } )
     }
 
- 
 
 
 
 
-old=function(){
 
-// s.B = function(x,y){return this.ct(x,y).drag() }
-    /*
-     $a1=function(ob, g, c){
-
-     ob.apply(c||ob,  g)
-
-     }
-
-
-     $a = function(gx, met, g){
-
-     gx[met].apply(gx, g)
-
-     }
-
-
-     $a(gx, 'dc',  N(y)?[x,y,_.tN(r,100)] : [0,0,N(x)?x:100] )
-
-     gx.dc.apply(gx, N(y)?[x,y,_.tN(r,100)] : [0,0,N(x)?x:100] )
-
-     gx.app=function(met,g){var gx=this
-
-     gx.dc.apply(gx, N(y)?[x,y,_.tN(r,100)] : [0,0,N(x)?x:100] )
-
-     }
-     */
-
-
-    cjs.RECTx= function(c, W, H, x, y, a){var  g=G(arguments),    ct = cjs.ct(), h, o; if(O(c)){o=c} else if(S(c)){o={ c:c, w:W, h:H, x:x, y:y, a:a } }
-        o = b2d.oDef(o)
-        h = ct.h(o.x, o.y).c(o.c, o.C, o.l).rot( o.a )
-        if(o.bm){h.bm('me', function(){h.dr2(o.x, o.y, o.w, o.h)}); return h}
-        if(o.rg){h.rg(o.c,o.C)}
-        if(o.lg){h.lg(o.c,o.C)}
-        h.dr2(o.x, o.y, o.w, o.h)
-        cjs.recx=cjs.rectx= function self(wd, ht, c, C){var h,hW,hH
-            wd=_.tN(wd,100)
-            ht=_.tN(ht,wd)
-            hW=wd/2
-            hH=ht/2
-            h=$h().c(c||'g',C||'w').mt(-hW,-hH)
-                .lt(-hW,hH).lt(hW,hH).lt(hW,-hH).lt(-hW,-hH)
-            return h
-        }
-        ct.artx = function(x,y,c,C){var g=G(arguments),ct=this,h
-
-            y= N(g[1])?g[1]:x
-            c= S(g[2])?oO('c',g[2]):null
-            C= S(g[2])?oO('c',g[3]):c
-
-            h = $h(x,y,c,C).a2(ct)
-
-            if(g.p){h.drag()}
-            return h}
-        return h}
-
-//b2d.colMap=function(C){return _.map(C,function(c){return oO('c',c)})}
-//cjs.chalk=function(t,c){if(O(t)){alert('check code'); t='x: '+t.x+', '+'y: '+ t.y}; return cjs.T(t,"26px Arial", c||"w").XY(550,150)}
-    /*
-     w.i.bm('me', function(bm){
-     bm.XY(300).sXY(.2)
-     w.i.dot(300,300)
-     })*/
-//third wheel, wagon hitch
-
-
-
-}
 
 
 function createStuff(){
@@ -877,11 +777,11 @@ drawHalf=function(c,i){c.dI(i, -i.width/2, -i.h/2)}
 
 //parallax!!!
 function CanvasLayer(bg){
-    var can = $.canvas('y',500,500).P('a').width('100%').H(256)
+    var can = $.c('y',500,500).P('a').width('100%').H(256)
     if(bg){can.background(bg)}
     return can}
 function DivLayer(bg){
-    var div = $.div('y',500,500).P('a').width('100%').H(256)
+    var div = $.d('y',500,500).P('a').width('100%').H(256)
     if(bg){div.background(bg)}
     return div}
 function transparent(img, num){
@@ -1641,7 +1541,7 @@ TESTKEYBOARD=function(){z()
 MES=function(){W([],{w:0})// what took me so long to make this?
     w.C('y')
 
-    $.ev(1, function(){w.me(R(1000,100), R(-100) )})
+    _.ev(1, function(){w.me(R(1000,100), R(-100) )})
 
     w.me(600,300,14).stat()
     w.l('z', 600,0,600,600)
@@ -1665,30 +1565,138 @@ JOY=function(){W()//.P()
 
 }
 
+function alpha() {
+    oC = function (c) {
+        return oO('c', c)
+    }
+    oK = function (a) {
+        return oO('k', a)
+    }
+    oT = function (a) {
+        return oO('t', a)
+    }
+    oE = function (a) {
+        return oO('e', a)
+    }
+    oI = function (a) {
+        return oO('i', a)
+    }
+    oS = function (a) {
+        return oO('s', a)
+    }
+    $o = function o(a, b, c) {
+        return _.isUndefined(b) ? _p(o, a) : G(arguments).N ? oO(a, b, c) : Oo(a, b, c)
+    }
+    oQ = function (f, m) {
+        $(function () {
+            Q(m || mf, f)
+        })
+    }
+}
+old=function(){
 
-oC = function (c) {
-    return oO('c', c)
+    q.mf = q.manifest = function () {var q=this,g=G(arguments)
+        q.loadManifest(cjs.mf.apply(null, g))
+        return q}
+    cjs.lQDep= cjs.lqDep=cjs.loadQueueDep=function(mf,fn){
+        var q = new cjs.LoadQueue(true)
+        if(A(mf)){q.loadManifest(cjs.mf.apply(null, mf))}
+        if(F(fn)){q.complete(function () {fn(function (i) {return q.getResult(i)})})}
+        return q}
+    cjs.mfDep = cjs.manifestDep = function(a){var g=G(arguments), mf=[]
+        _.e(g, function (v) {
+            mf.push({
+                src: cjs.src(v),
+                id: v})})
+        return mf
+    }
+
+    //cjs.handleFileLoad = function (e) {if (e.item.type == "image") {images[e.item.id] = e.result}}
+//cjs.makeManifest = cjs.makeMan=function(a) {return cjs.manifest.apply(null, _.m(a.images, function (i) {return Graphics.fromSource(i)}))}
+
+    QDep=function(i,fn){
+        q=cjs.lQ(),
+            mf=[]
+        _.e(i,function(v) {mf.push({src: cjs.src(v), id: v})})
+        q.mf(mf)
+        q.c(function(){fn(q)})
+        return q}
+
+    tickX=function(e){j.Y(e.delta/1000*100,'-' )}
+    timeStamp2 = function(s, j, pxPerSec){
+        var fn=function(s,e){
+            if(!N(j.ts)){j.ts=0;j.lts=e.ts}
+            else{j.ts= e.ts-j.lts;j.lts=e.ts
+                j.y((j.ts/1000) * pxPerSec,'-')  }}
+        return s.t(fn)}
 }
-oK = function (a) {
-    return oO('k', a)
-}
-oT = function (a) {
-    return oO('t', a)
-}
-oE = function (a) {
-    return oO('e', a)
-}
-oI = function (a) {
-    return oO('i', a)
-}
-oS = function (a) {
-    return oO('s', a)
-}
-$o = function o(a, b, c) {
-    return _.isUndefined(b) ? _p(o, a) : G(arguments).N ? oO(a, b, c) : Oo(a, b, c)
-}
-oQ = function (f, m) {
-    $(function () {
-        Q(m || mf, f)
-    })
+old=function(){
+
+// s.B = function(x,y){return this.ct(x,y).drag() }
+    /*
+     $a1=function(ob, g, c){
+
+     ob.apply(c||ob,  g)
+
+     }
+
+
+     $a = function(gx, met, g){
+
+     gx[met].apply(gx, g)
+
+     }
+
+
+     $a(gx, 'dc',  N(y)?[x,y,_.tN(r,100)] : [0,0,N(x)?x:100] )
+
+     gx.dc.apply(gx, N(y)?[x,y,_.tN(r,100)] : [0,0,N(x)?x:100] )
+
+     gx.app=function(met,g){var gx=this
+
+     gx.dc.apply(gx, N(y)?[x,y,_.tN(r,100)] : [0,0,N(x)?x:100] )
+
+     }
+     */
+
+
+    cjs.RECTx= function(c, W, H, x, y, a){var  g=G(arguments),    ct = cjs.ct(), h, o; if(O(c)){o=c} else if(S(c)){o={ c:c, w:W, h:H, x:x, y:y, a:a } }
+        o = b2d.oDef(o)
+        h = ct.h(o.x, o.y).c(o.c, o.C, o.l).rot( o.a )
+        if(o.bm){h.bm('me', function(){h.dr2(o.x, o.y, o.w, o.h)}); return h}
+        if(o.rg){h.rg(o.c,o.C)}
+        if(o.lg){h.lg(o.c,o.C)}
+        h.dr2(o.x, o.y, o.w, o.h)
+        cjs.recx=cjs.rectx= function self(wd, ht, c, C){var h,hW,hH
+            wd=_.tN(wd,100)
+            ht=_.tN(ht,wd)
+            hW=wd/2
+            hH=ht/2
+            h=$h().c(c||'g',C||'w').mt(-hW,-hH)
+                .lt(-hW,hH).lt(hW,hH).lt(hW,-hH).lt(-hW,-hH)
+            return h
+        }
+        ct.artx = function(x,y,c,C){var g=G(arguments),ct=this,h
+
+            y= N(g[1])?g[1]:x
+            c= S(g[2])?oO('c',g[2]):null
+            C= S(g[2])?oO('c',g[3]):c
+
+            h = $h(x,y,c,C).a2(ct)
+
+            if(g.p){h.drag()}
+            return h}
+        return h}
+
+//b2d.colMap=function(C){return _.map(C,function(c){return oO('c',c)})}
+//cjs.chalk=function(t,c){if(O(t)){alert('check code'); t='x: '+t.x+', '+'y: '+ t.y}; return cjs.T(t,"26px Arial", c||"w").XY(550,150)}
+    /*
+     w.i.bm('me', function(bm){
+     bm.XY(300).sXY(.2)
+     w.i.dot(300,300)
+     })*/
+//third wheel, wagon hitch
+
+
+
 }

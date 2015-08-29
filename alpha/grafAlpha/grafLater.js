@@ -170,14 +170,7 @@ function disObAlpha(){
     }
 
 }
-function stgAlpha() {
-    $.dragStage = function (x, y) {
-        s = $St('v', '+')
-        return $.dragFrame($(s.canvas))
-    }
 
-
-}
 
 function alpha(){
     function easPhys(){
