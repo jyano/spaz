@@ -1,4 +1,11 @@
-$PT()
+
+sS = ss = cjs.SpriteSheet.prototype
+sSB=      cjs.SpriteSheetBuilder.prototype
+sp=s=cjs.Sprite.prototype
+mc=cjs.MovieClip.prototype
+tw = cjs.Tween.prototype
+
+tl= cjs.Timeline.prototype
 tween()
 spriteApps()
 movie()
@@ -100,7 +107,7 @@ meSprite=function(){return $Sp( $SS ).XY(10).drag()}
 function tween(){
 
 
-    $PT()
+
     p = tw
     cjs.ww =ww=function(o){var w={}
         if(N(o.x)){w.x=o.x}
@@ -489,7 +496,7 @@ function tween(){
 
 }
 function movie(){
-    $PT()
+
     cjs.Tl = function (args) {
         var tl = new cjs.Timeline()
         if (args) {

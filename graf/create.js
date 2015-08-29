@@ -1,9 +1,10 @@
 cjs= createjs;
-
 keys()
 load()
 ticker()
-
+dOb()
+cntr()
+shap()
 function keys(){
     KEYOB = {
         up: 38, u: 38,
@@ -301,41 +302,41 @@ function keys(){
     }
 }
 function load(){
-q = cjs.LoadQueue.prototype
-_MF = ['me', 'guy', 'chicks', 'sun', 'flame', 'earth']
-Q=function(){var g=G(arguments),  o=g.F?{c:g.f}: {m:g.f,c:g.s}
-    o.m = o.m || _MF
-    Q = (new cjs.LoadQueue).c(o.c).m(o.m)
-}
-WQ = function(){
-    var g = G(arguments), o = _.x({ob:g.f||{}},
-        F(g.t)?{fn0: g.s, fn: g.t}: {fn: g.s})
-    o.fn = o.fn || function(){}
+    q = cjs.LoadQueue.prototype
+    _MF = ['me', 'guy', 'chicks', 'sun', 'flame', 'earth']
+    Q=function(){var g=G(arguments),  o=g.F?{c:g.f}: {m:g.f,c:g.s}
+        o.m = o.m || _MF
+        Q = (new cjs.LoadQueue).c(o.c).m(o.m)
+    }
+    WQ = function(){
+        var g = G(arguments), o = _.x({ob:g.f||{}},
+            F(g.t)?{fn0: g.s, fn: g.t}: {fn: g.s})
+        o.fn = o.fn || function(){}
 
-    w = W(o.ob)
-    if (o.fn0) {o.fn0(w)}
-    Q(o.ob.I||_MF ,
-        function(){o.fn(w)
-        })
+        w = W(o.ob)
+        if (o.fn0) {o.fn0(w)}
+        Q(o.ob.I||_MF ,
+            function(){o.fn(w)
+            })
 
-}
-q.f= q.l= function(fn){var q=this
-    q.on("fileload", fn)
-    return q}
-q.c= function (fn) {var q=this
-    if(F(fn)){ q.on("complete", fn) }
-    return q
-}
-q.b=  q.bm =function(i, ct, x, y){
-    var bm = $Bm( this.r(i) );
-    if(ct){bm.a2(ct,x,y)}; return bm
-}
-q.i=  q.r= function(i){i  = this.getResult(i); i.w= i.width;i.h = i.height; return i}
-q.$=function(i){
-    return $(this.i(i))
-}
-q.m = function(){var q=this, g=G(arguments), _mf, mf
-    // q.m:
+    }
+    q.f= q.l= function(fn){var q=this
+        q.on("fileload", fn)
+        return q}
+    q.c= function (fn) {var q=this
+        if(F(fn)){ q.on("complete", fn) }
+        return q
+    }
+    q.b=  q.bm =function(i, ct, x, y){
+        var bm = $Bm( this.r(i) );
+        if(ct){bm.a2(ct,x,y)}; return bm
+    }
+    q.i=  q.r= function(i){i  = this.getResult(i); i.w= i.width;i.h = i.height; return i}
+    q.$=function(i){
+        return $(this.i(i))
+    }
+    q.m = function(){var q=this, g=G(arguments), _mf, mf
+        // q.m:
 // protosig:
 //
 // 'me',..
@@ -344,14 +345,14 @@ q.m = function(){var q=this, g=G(arguments), _mf, mf
 //
 // [ {src:*, id:*}, 'me',.. ]
 
-    if(g.u){return q}
-    _mf = g.A ? g.f : g
-    mf = _.m(_mf,  function(item){
-        return S(item)? {src: _.src(item),id:item} : item
-    })
-    q.loadManifest( mf )
-    return q
-}
+        if(g.u){return q}
+        _mf = g.A ? g.f : g
+        mf = _.m(_mf,  function(item){
+            return S(item)? {src: _.src(item),id:item} : item
+        })
+        q.loadManifest( mf )
+        return q
+    }
 }
 function ticker() {
     T = cjs.Ticker
@@ -452,292 +453,412 @@ function ticker() {
         return this
     }
 }
-function maybe(){
-    eD.init=function(){alert('eD.init')
-        var eD=this
-        eD.initialize.apply(eD, arguments)
-        return eD
+function dOb() {
+
+    cjs.iDO= function(i){return O(i)&&F(i.getStage)} //cjs.isOb = function (s) {return O(s) && s.parent}
+    cjs.rmOb = function (s) {if (
+
+        cjs.iDO(s)//    cjs.isOb(s)
+
+    ) {s.remove()}}
+    cjs.iCt = function (ct) {
+//haha only a ct can impl addContainer( ha! //MOMENT OF BRILLIANCE
+        return O(ct) && ct.addContainer
+    }
+    i = cjs.DisplayObject.prototype
+    i.St = i.S = i.st = function () {
+        return this.getStage()
+    }
+    i.P = function () {
+        return this.parent
+    }
+    i.X = function (x, dur) {
+        var i = this, g = G(arguments)
+        if (U(x)) {
+            return i.x
+        }
+        i.x = g.p ? i.x + x
+            : g.n ? i.x - x
+            : g.m ? i.x * x
+            : g.d ? i.x / x
+            : x
+
+        return i
+        //if (N(dur)) {tw([i], [{x: x}, dur]); return i}
+    }
+    i.Y = function (y, dur) {
+        var i = this, g = G(arguments)
+        if (U(y)) {
+            return this.y
+        }
+        if (g.p) {
+            y = this.y + y
+        }
+        else if (g.n) {
+            y = this.y - y
+        }
+        else if (g.m) {
+            y = this.y * y
+        }
+        else if (g.d) {
+            y = this.y / y
+        }
+
+
+        if (N(dur)) {
+            tw([this], [{y: y}, duration])
+        }
+
+        else {
+            this.y = y
+        }
+        return this
+    }
+    i.XY = function (x, y) {
+        var i = this, g = G(arguments), v
+        if (U(g[0])) {
+            return {x: i.x, y: i.y}
+        }
+        v = V(g[0], g[1])
+        x = v.x
+        y = _.tN(v.y, v.x)
+        return i.X(x).Y(y)
+    }
+    i.W = function (a) {
+        var i = this
+        if (U(a)) {
+            return i.getBounds().width * i.scaleX
+        }
+
+        i.sX(i.scaleX * a / i.W())
+
+        return i
+    }
+    i.H = function (a) {
+        var i = this
+
+        if (U(a)) {
+            return this.getBounds().height * this.scaleY
+        }
+
+        this.sY(this.scaleY * a / this.H())
+
+        return this
+
+    }
+    i.WH = function (w, h) {
+        var i = this
+        return this.W(w).H(h || w)
+    }
+    i.sX = function (n) {
+        var i = this
+        if (U(n)) {
+            return i.scaleX
+        }
+        i.scaleX = n
+        return i
+    }
+    i.sY = function (n) {
+        var i = this
+        if (U(n)) {
+            return i.scaleY
+        }
+        i.scaleY = n
+        return i
+    }
+    i.kX = function (skewX) {
+        if (U(skewX)) {
+            return this.skewX
+        }
+        this.skewX = skewX;
+        return this
+    }
+    i.kY = function (skewY) {
+        if (U(skewY)) {
+            return this.skewY
+        }
+        this.skewY = skewY;
+        return this
+    }
+    i.kXY = function (x, y) {
+
+        y = N(y) ? y : x
+
+        return this.kX(x).kY(y)
+    }
+    i.rX = function () {
+        var i = this, g = G(arguments), rX = g[0]
+        if (U(rX)) {
+            return i.regX
+        }
+        i.regX = g.p ? i.regX + rX : rX
+        return i
+    }
+    i.rY = function () {
+        var i = this, g = G(arguments), rY = g[0]
+        if (g.p) {
+            i.Y(i.y + (rY - i.regY))
+        }
+        if (U(rY)) {
+            return i.regY
+        }
+        i.regY = rY
+        return i
+    }
+    i.rXY = function () {
+        var i = this, g = G(arguments),
+            x = _.tN(g[0]),
+            y = _.tN(g[1], x)
+        return i.rX(x).rY(y)
+    }
+    i.rt = i.rot = function () {
+        var i = this, g = G(arguments), a = g[0]
+        if (g.p) {
+            return i.rT(i.rotation + _.tN(a, 1))
+        }
+        if (g.n) {
+            return i.rT(i.rotation - _.tN(a, 1))
+        }
+        if (U(a)) {
+            return i.rotation
+        }
+        i.rotation = a
+        return i
+    }
+    i.al = function (al) {
+        var i = this
+        if (U(al)) {
+            return i.alpha
+        }
+        i.alpha = al;
+        return i
+    }
+    i.a2 = function (ct, x, y) {
+
+        ct.A(this)
+        if (N(x)) {
+            this.X(x)
+        }
+        ;
+        if (N(y)) {
+            this.Y(y)
+        }
+        return this
+    }
+    i.of = function (k) {
+        this._K = this._K || []
+        return !k || this == k || _.ct(this._K, k)
+    }
+    i.K = function () {
+        var i = this, g = G(arguments)
+        this._K = this._K || []
+
+        if (g.u) {
+            return this._K.join(' ')
+        }
+
+        if (g.O) {
+            this._K(g.f.k);
+            return this
+        }
+
+
+        _.eW(g.f, function (k) {
+
+
+            if (!i.of(k)) {
+                i._K.push(k)
+            }
+
+
+        })
+
+        return this
+    }//i.of=function(k){return this.K()==k || this.K()==''}
+    i.dg = i.drag = function () {
+        var i = this;
+        SL(i);
+        return i
+    } // ~ scroll
+    i.sXY = function (x, y) {
+
+        var i = this,
+            g = G(arguments), v
+
+        if (U(g[0])) {
+            return i
+            return {x: i.sX(), y: i.sY()}
+        }
+
+        v = V(g[0], g[1])
+        x = _.tN(v.x)
+        y = _.tN(v.y, v.x)
+        i.sX(x)
+        i.sY(y)
+        return i
+    }
+    i.$ = function (fn) {
+        return this.on('click', fn)
+    }
+    i.$$ = function (fn) {
+        return this.on('dblclick', fn)
+    }
+    i.rm = i.xx = i.remove = function () {
+        var i = this
+        i.parent.removeChild(i)
+        return i
+    } //cant delete 'remove' quite yet
+
+    comp()
+    function comp(){
+
+
+        i.o=function(o){this.compositeOperation = o;return this}
+
+        i.Ds= i.dO=function(){this.o('destination-out'); return this}
+        i.dS= i.dI=function(){return this.o('destination-in')}
+        i.sD= i.sI=function(){this.o('source-in'); return this }
+        i.Sd= i.sO=function(){this.o('source-out'); return this } // why use this ??x.sd = x.sV= function(){ this.o('source-over'); return this }
+        i.ds= i.dV= function(){ this.o('destination-over'); return this }
+        i.SD= i.sT= i.sA= function(){ this.o('source-atop'); return this }
+        i.DS= i.dT= i.dA= function(){ this.o('destination-atop'); return this }
+
+        i.li=function(){ this.o('lighter'); return this }
+        i.co=function(){ this.o('copy'); return this }
+        i.xo=function(){ this.o('xor'); return this }
+
+
+
+
+
+
+
     }
 }
-function alpha(){
-    $.fn.keyControls = function (num) {
-        var args = G(arguments), that = this
+function cntr(){
+    ct = cjs.Container.prototype // st = s = cjs.Stage.prototype
 
-        this.P('a')
-        if (args.P) {
-            $.kD('left', function () {
-                that.toL(num)
-            })
-            $.kD('right', function () {
-                that.toR(num)
-            })
+
+    ct.u = function () {
+        this.update();
+        return this
+    }
+    ct.W = function (w) {
+        var can = this.St().canvas
+        if (U(w)) {
+            return can.width
         }
-        if (args.N) {
-            $.kD('up', function () {
-                that.toU(num)
-            })
-            $.kD('down', function () {
-                that.toD(num)
-            })
+        can.width = w
+        return this
+    }
+    ct.H = function (w) {
+        var can = this.getStage().canvas
+        if (U(w)) {
+            return can.height
         }
-    }// o.keyControls(num) should deprecate use of key(o)
-
-    cjs.bulletHit = function (bullet, inWhat) {alert('bullletHit')
-        var x = bullet.centerX(),
-            y = bullet.centerY()
-        var res = M.pointInCircle(x, y, {
-            x: inWhat.x,
-            y: inWhat.y,
-            radius: inWhat.H() / 2
-        })
-
-        if (res == true) {$l('hit!')}
-
-        return res
+        can.height = w
+        return this
     }
 
-    cjs.M = function (a) {
-        var m = new cjs.Matrix2D()
-        if (N(a)) {
-            m.rotate(a)
-        }
-        return m
+    ct.noAuCl = function () {
+        this.autoClear = false;
+        return this
     }
-
-    cjs.bindReverseSlide = LS = function (b, b2) {
-        var g = G(arguments),
-            b = g[0],
-
-            b2 = g[1],
-            d = oE('d'),
-            pm = oE('pm'),
-            b2 = b2 || b
-
-        return b.on(d, function (e) {
-            var bx = b2.x + e.rawX, by = b2.y + e.rawY
-
-            b.on(pm, function (e) {
-
-                if (g.P) {
-                    b2.x = bx - e.rawX
-                }
-                if (g.N) {
-                    b2.y = by - e.rawY
-                }
-
-            })
+    ct.au = function (au) {
+        this.autoClear = au ? true : false;
+        return this
+    }
+    ct.clr =   ct.E = function () {
+        return this.e(function (i) {i.rm()
         })
     }
-    cjs.bindRotate = RT = function (b, b2) {
-
-
-        //b = what the control is
-        //b2 what it should control (default = itself!)
-        //if(g.p){  //b.rgc( '+' )   }
-
-        var g = G(arguments), b = g[0], b2 = g[1] || b
-
-        return b.on('mousedown',
-
-            function (e) {
-
-                var X = e.rawX, Y = e.rawY, r = b2.rotation
-
-                b.on('pressmove', function (e) {
-
-
-                    b2.rotation = r - (   (e.rawY - Y) / 500   ) - (   e.rawX - X  )
-
-
-                })
-            })
-
+    ct.N = function (n) {
+        var s = this;
+        if (U(n)) {return s.nextStage}
+        s.nextStage = n;
+        return s
     }
-    cjs.bindRotate2 = RTT = function (b, b2) {
+    ct.C = ct.backgroundColor = function (c) {
+        var ct = this
+        $(ct.canvas).C(c)
+        return ct
+    }
+}
+function shap() {
+    cjs.Gx = cjs.gx = function (a) {
+    return new cjs.Graphics(a)}
+    cjs.iH = function (h) {
+        return O(h) && h.graphics
+    }
+    gx = cjs.Graphics.prototype
+    h = cjs.Shape.prototype
 
+    gx.poly = function (verts, f, s, width) {
+        var that = this
+        //  _.each(arguments,function(vert){that.lt(vert[0],vert[1])});this.cp()
+        if (N(verts[0])) {
 
-        //b = what the control is
-        //b2 what it should control (default = itself!)
-
-
-        var g = G(arguments), b = g[0], b2 = g[1] || b
-
-
-        if (g.p) {  // b.rgc( '+' )
+            _.each(arguments, function (vert) {
+                that.lt(vert[0], vert[1])
+            });
+            this.cp()
         }
-
-        return b.on('mousedown',
-
-            function (e) {
-
-                var X = e.rawX, Y = e.rawY, r = b2.rotation
-
-                b.on('pressmove', function (e) {
-
-
-                    b2.rotation = r + (   (e.rawY - Y) / 500   ) + (   e.rawX - X  )
-
-
-                })
-            })
-
-    }
-    cjs.bindScale = SC = function (b, b2) {
-        var g = G(arguments), b = g[0], b2 = g[1],
-            d = oE('d'), pm = oE('pm'), b2 = b2 || b,
-            cp = function (n) {
-                return n < .2 ? .2 : n > 2 ? 2 : n
-            }
-
-        return b.on(d,
-
-            function (e) {
-                var X = e.rawX, Y = e.rawY,
-                    sx = b2.scaleX,
-                    sy = b2.scaleY
-
-                b.on(pm,
-
-                    function (e) {
-                        if (g.n) {
-                            b2.sXY(cp(sx + (
-                                (e.rawX - X) / 200)),
-                                cp(sy - ((e.rawX - X) / 200))
-                            )
-
-                        }
-
-                        else if (g.p) {
-                            cXY(b2, sx + ((e.rawX - X) / 50), sy - ((e.rawY - Y) / 50))
-                            cXY(b2, sy - ((e.rawY - Y) / 50)), sx + ((e.rawX - X) / 50)
-                        }
-
-                        else {
-                            b2.sXY(sx - ((e.rawX - X) / 50), sy - ((e.rawY - Y) / 50))
-                        }
-                    })
-            }
-        )
-    }
-    cjs.bindSkew = SK = function (b) {
-        var g = G(arguments), b = g[0], b2 = g[1], d = oE('d'), pm = oE('pm'), b2 = b2 || b
-
-        return b.on(d,
-            function (e) {
-                var X = e.rawX, Y = e.rawY
-                b.on(pm, function (e) {
-
-
-                    b2.kXY(
-                        (e.rawY - Y) * .5, (e.rawX - X) * .5
-                    )
-
-                })
-            })
-    }
-    cjs.bindTransform = TR = function TR(b, b2, m) {
-
-        var g = G(arguments),
-            b = g[0],
-            b2 = g[1],
-
-            b2 = b2 || b, m = g[2] || 'SL'
-
-        if (m == 'SL') {
-            cjs.bindSlide(b, b2);
-            m = 'SC'
+        else {
+            this.fs(f, s, width)
+            _.each(verts, function (vert) {
+                that.lt(vert[0], vert[1])
+            });
+            this.cp()
         }
-
-        else if (m == 'SC') {
-            cjs.bindScale(b, b2);
-            m = 'RT'
-        }
-
-        else if (m == 'RT') {
-            cjs.bindRotate(b, b2);
-            m = 'SL'
-        }
-
-        return b.on('pressup', function (e) {
-
-            b.removeAllEventListeners();
-
-            TR(b, b2, m)
-
-        })
+        return this
     }
-    cjs.reggy = reggy = function (o, s) {
+    gx.fC = gx.fs = function (c, C, l) {
+        var gx = this
+        gx.f(oO('c', c || 'z'))
+        gx.s(oO('c', C || null))
+        gx.ss(N(l) ? l : 2)
+        return gx
+    }
+    gx.sC = function (s, w) {
+        var gx = this
+        w = N(w) ? w : 2
+        s = O(s) ? s : oO('c', s || null)
+        gx.s(s)
+        gx.ss(w)
+        return gx
+    }
+    h.bs = function (i) {
+        var h = this;
+        h.graphics.bs(i);
+        return h
 
-        s = s || o.parent
+    }
+    h.ef = function () {
+        var h = this, gx = h.graphics
 
-        s.bm('me', function (b) {
-
-            b.W(40).H(40)
-
-            I(function () {
-                b.XY(o.x + o.regX, o.y + o.regY)
-            }, 100)
-
-        })
+        gx.f()
+        return h
 
 
     }
-    cjs.bindSlideAndRotate = KK = function (b, b2) {
+    h.es = function () {
+        var h = this, gx = h.graphics
+        gx.es()
+        return h
 
-        var g = G(arguments), b = g[0],
-            b2 = g[1] || b
-        cjs.bindSlide(b);
-        cjs.bindRotate(b, b2)
-        if (g.p) {
-
-            b.rgc('+')
-        }
-
-        if (g.N) {
-            //    reggy(b,b2)
-        }
     }
-    cjs.bindRotateThenSkew = RK = function (b, b2, m) {
-        var g = G(arguments), b = g[0], b2 = g[1],
-            d = oE('d'),
-            pm = oE('pm'),
-            b2 = b2 || b,
-            m = g[2] || 'RT'
-
-
-        //if(g.p){var s=St('y',1000)
-        //    _t(b||5,function(i){s.a().bm(
-        //        function(bm){bm.xy(i*50);TR(bm)})});return s}
-
-        if (m == 'RT') {
-            RT(b, b2);
-            m = 'SK'
-        }
-
-        else if (m == 'SK') {
-            SK(b, b2);
-            m = 'RT'
-        }
-
-        return b.on(oE('pu'),
-            function (e) {
-                Do(b).O();
-                RK(b, b2, m)
-            })
+    h.cp = function () {
+        this.graphics.cp();
+        return this
     }
 
-    $.scroll = function (a) {
-        return $(window).scroll(a || function () {
-            $('body').C('*')
-        })
-    }
-    $.click = m$ = function (f) {
-        return $(document).on('click', _v(f))
-    }
-    $.dblclick = m$$ = function (f) {
-        return $(document).on('dblclick', _v(f))
-    }
 
+}
+
+cjs.iT = function (t) {
+    if (O(t)) {
+        return (t.textBaseline)
+    }
 }
 cjs.m2d = function (a, b, c, d, e, f) {
     if (U(c)) {return new cjs.Matrix2D(1, 0, 0, 1, N(a, 0), N(b, 0))}
@@ -763,24 +884,4 @@ cjs.bindSlide = SL = function () {
             })
 
         })
-}
-
-$PT =  function(){
-    c = HTMLCanvasElement.prototype
-    x=  ctx=  xx=CanvasRenderingContext2D.prototype
-    xGr = CanvasGradient.prototype
-    var c=cjs
-    eD=cjs.EventDispatcher.prototype
-    gx=cjs.Graphics.prototype
-    h =  cjs.Shape.prototype
-    i=    cjs.DisplayObject.prototype
-    mc=cjs.MovieClip.prototype
-    q = cjs.LoadQueue.prototype
-    st= s=  cjs.Stage.prototype
-    sS = ss = cjs.SpriteSheet.prototype
-    sSB=      cjs.SpriteSheetBuilder.prototype
-    sp=s=cjs.Sprite.prototype
-    tl= cjs.Timeline.prototype
-    t=cjs.Text.prototype
-    tw = cjs.Tween.prototype
 }
