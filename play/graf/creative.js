@@ -59,132 +59,144 @@ function preload() {
     // its how i can preload someone's mug as 'mug' !//  mug= s.bData( qu.gR("mug") ).drag()
 
 }
-BS=function(){W()._(function(){
-    x= w.D(600,300,'x',200,100)
-    f = x.cir({r:100, x:300, c:'r'})
-    me = Q.b('me').rC()
-    f.bS(me, 0, f.pX(), f.pY())
-})
 
+function cool() {
+    BFREC = function () {W()
+        w.i.h(200, 300).dg().bf('me', function (h) {h.rec({w: 500, h: 200})})
+        w.i.h().dg().bf('me', function (h) {h.rec({w: 500, h: 200})
+            w.D(600, 300, 'b', 500, 200).bS(h)
+        })
+    }
+    BS = function () {
+        W()._(function () {
+            x = w.D(600, 300, 'x', 200, 100)
+            f = x.cir({r: 100, x: 300, c: 'r'})
+            me = Q.b('me').rC()
+            f.bS(me, 0, f.pX(), f.pY())
+        })
+
+    }
+    DEV=function(){ W([1200, 600, 1400, 800], {g: 50, t: 0}).stats()
+        //  w.dr(100, 100, 100, 100, '-')
+        //  w.dr(100, 200, 100, 100, '+')
+
+        w.dl('r', 0, 100, 5000, 5000, '-')
+
+        w.dl('p', 0, 200, 5000, 2000)
+
+        w.dl('b', 0, 300, 5000, 3000, '+')
+
+        wh = w.S(400, 350, 'w', [[300, 220, '-']])
+
+        or = w.S(400, 200, 'o', 300, 50)
+
+        pi = w.S(400, 500, 'x', 300, 50)
+
+        y = w.ship(150, 200).damp(1, 10).rot(90).lD(0).rot(120).lV(1);
+
+        w.track(y, 600, 300, '!')
+
+        b = w.D(700, 200, 'b', 100)
+
+        me = w.me()
+
+
+
+
+    }
 }
-SHADOW=function(){W().P()
+function err(){
+    SHADOW=function(){W().P()
 
 
-    p.lD(1).warp()
-    badGuy=w.badGuy(400, 200).d(.1).warp()
-    _.in(1, function(){
-        p.sprite.shad("y", 0, 150, 300)
-        badGuy.sprite.shad('o', 40, 40, 40)
-    })
-    $.space(function(){
-        p.polyBul()
-    })
-    _.ev(.2,function(){
-        // w.s.pen('badGuy health: ' + badGuy.health)
-    })
-    $(w.s.back.canvas).C('p')
-    s= w.s.back
-    s.bm('me' , function(bm){
-        bm.drag().shad('blue', 125,  125,  50)
-            .XY(100,100).sXY(.6)
-    })
+        p.lD(1).warp()
+        badGuy=w.badGuy(400, 200).d(.1).warp()
+        _.in(1, function(){
+            p.sprite.shad("y", 0, 150, 300)
+            badGuy.sprite.shad('o', 40, 40, 40)
+        })
+        $.space(function(){
+            p.polyBul()
+        })
+        _.ev(.2,function(){
+            // w.s.pen('badGuy health: ' + badGuy.health)
+        })
+        $(w.s.back.canvas).C('p')
+        s= w.s.back
+        s.bm('me' , function(bm){
+            bm.drag().shad('blue', 125,  125,  50)
+                .XY(100,100).sXY(.6)
+        })
 
-    s.bm('guy', function(bm){
-        bm.drag().shad('r', 100,100,10)
-            .XY(300,200).sXY(.6)})
-    s.bm('me' , function(bm){
-        bm.drag().shad("z", 25, 25, 50)
-            .XY(500,100).sXY(.6)
-    })
+        s.bm('guy', function(bm){
+            bm.drag().shad('r', 100,100,10)
+                .XY(300,200).sXY(.6)})
+        s.bm('me' , function(bm){
+            bm.drag().shad("z", 25, 25, 50)
+                .XY(500,100).sXY(.6)
+        })
+    }
 }
+
 COL=function(){W();
     b=w.S(600,300,'w',200);
     _.in(function(){
         b.dyn().f().C('z')
     })
 }
-DEV=function(){ W([1200, 600, 1400, 800], {g: 50, t: 0}).stats()
-    //  w.dr(100, 100, 100, 100, '-')
-    //  w.dr(100, 200, 100, 100, '+')
+function fiz(){
+    BMF1 = function () {
+        W()
 
-    w.dl('r', 0, 100, 5000, 5000, '-')
-
-    w.dl('p', 0, 200, 5000, 2000)
-
-    w.dl('b', 0, 300, 5000, 3000, '+')
-
-    wh = w.S(400, 350, 'w', [[300, 220, '-']])
-
-    or = w.S(400, 200, 'o', 300, 50)
-
-    pi = w.S(400, 500, 'x', 300, 50)
-
-    y = w.ship(150, 200).damp(1, 10).rot(90).lD(0).rot(120).lV(1);
-
-    w.track(y, 600, 300, '!')
-
-    b = w.D(700, 200, 'b', 100)
-
-    me = w.me()
+        //h.bC
+        w.i.h(50, 200, '+')
+            .bC({hs: [{r: 80}, {r: 50, x: 100}, {r: 100, x: 400}]})
 
 
+        //h.bf
+        w.i.h(800, 100, '+')
+            .bf('me', function (h) {
+                h.dc([80], [90, 0, 68])
+            })
 
 
-}
-BMF1 = function () {
-    W()
-
-    //h.bC
-    w.i.h(50, 200, '+')
-        .bC({hs: [{r: 80}, {r: 50, x: 100}, {r: 100, x: 400}]})
-
-
-    //h.bf
-    w.i.h(800, 100, '+')
-        .bf('me', function (h) {
-            h.dc([80], [90, 0, 68])
+        //h.bV
+        w.D(200, 300).pol({
+            v: [[0, 100], [0, -100], [200, -150], [200, 150]],
+            c: 'y', C: 'w', l: 5,
+            bm: 1
         })
 
 
-    //h.bV
-    w.D(200, 300).pol({
-        v: [[0, 100], [0, -100], [200, -150], [200, 150]],
-        c: 'y', C: 'w', l: 5,
-        bm: 1
-    })
+        /*
+         b =   w.D(600,300, 'r', 100,300)
+         h= w.i.h().bR({hs:[{w:100,h:300}]})
+         b.bS(h)
+         */
+
+        w.bmR(600, 300, 'b', 100, 300)
+
+        w.bmR(300, 300, 100, 300)
 
 
-    /*
-     b =   w.D(600,300, 'r', 100,300)
-     h= w.i.h().bR({hs:[{w:100,h:300}]})
-     b.bS(h)
-     */
+        w.i.h(350, 150, '+')
+            .pol({v: v1, bf: 'me'})
+        w.D(950, -200)
+            .pol({c: 'o', C: 'z', l: 25, bm: 1, v: v1})
+        w.D(500, 200)
+            .pol({v: [[-100, 0], [0, -100], [100, -50], [0, -50]], c: 'y', C: 'r', l: 5, bm: 1})
+        //h.bV //w.pol
 
-    w.bmR(600, 300, 'b', 100, 300)
+        w.pol(400, 500, [[-100, 0], [0, -100], [100, -50], [0, -50]])
+        w.bg.bm('me', 6.2, function (bm) {
+            bm.X(500)
+        })
 
-    w.bmR(300, 300, 100, 300)
-
-
-    w.i.h(350, 150, '+')
-        .pol({v: v1, bf: 'me'})
-    w.D(950, -200)
-        .pol({c: 'o', C: 'z', l: 25, bm: 1, v: v1})
-    w.D(500, 200)
-        .pol({v: [[-100, 0], [0, -100], [100, -50], [0, -50]], c: 'y', C: 'r', l: 5, bm: 1})
-    //h.bV //w.pol
-
-    w.pol(400, 500, [[-100, 0], [0, -100], [100, -50], [0, -50]])
-    w.bg.bm('me', 6.2, function (bm) {
-        bm.X(500)
-    })
+    }
 
 }
-BFREC = function () {W()
-    w.i.h(200, 300).dg().bf('me', function (h) {h.rec({w: 500, h: 200})})
-    w.i.h().dg().bf('me', function (h) {h.rec({w: 500, h: 200})
-        w.D(600, 300, 'b', 500, 200).bS(h)
-    })
-}
+
+
 POLLL = function () {
     W()
 
@@ -595,13 +607,7 @@ ICEN=function(){Q(['guy','me'],function(){//z()
     _.in(3, function(){   T.f(1)   })
     _.in(9, function(){  T.f(1000)  })
 })}
- CHICKBALLS=function(){
-    W(1200,1200)._(function(){
-        _.t(14, function(){
-            w.D(R(1100,50),R(1100,50))
-                .cir({bf:'chicks',r: 120})
-        })})
-}
+
 HAIRBALLS = function () {
     W(400, 400)._(function () {
 
@@ -1030,4 +1036,34 @@ JOY=function(){W()//.P()
     p= w.p(100,100,'power')
     p.r(.8)
 
+}
+awesome()
+
+
+
+function awesome(){
+
+
+    CHICKBALLS=function(){
+
+        W(1200,1200)._(function(){
+
+            _.t(14, function(){
+
+                w.D(R(1100,50),R(1100,50))
+                    .cir({
+                        bf:'chicks',
+
+                        r: R(180, 50)
+                    })
+
+            })
+
+
+            w.y()
+            w.p()
+        })
+
+
+    }
 }

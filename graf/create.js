@@ -1,4 +1,6 @@
 cjs= createjs;
+_MF = ['me', 'guy', 'chicks', 'sun', 'flame', 'earth']
+
 keys()
 load()
 ticker()
@@ -303,23 +305,6 @@ function keys(){
 }
 function load(){
     q = cjs.LoadQueue.prototype
-    _MF = ['me', 'guy', 'chicks', 'sun', 'flame', 'earth']
-    Q=function(){var g=G(arguments),  o=g.F?{c:g.f}: {m:g.f,c:g.s}
-        o.m = o.m || _MF
-        Q = (new cjs.LoadQueue).c(o.c).m(o.m)
-    }
-    WQ = function(){
-        var g = G(arguments), o = _.x({ob:g.f||{}},
-            F(g.t)?{fn0: g.s, fn: g.t}: {fn: g.s})
-        o.fn = o.fn || function(){}
-
-        w = W(o.ob)
-        if (o.fn0) {o.fn0(w)}
-        Q(o.ob.I||_MF ,
-            function(){o.fn(w)
-            })
-
-    }
     q.f= q.l= function(fn){var q=this
         q.on("fileload", fn)
         return q}
@@ -331,11 +316,10 @@ function load(){
         var bm = $Bm( this.r(i) );
         if(ct){bm.a2(ct,x,y)}; return bm
     }
-    q.i=  q.r= function(i){i  = this.getResult(i); i.w= i.width;i.h = i.height; return i}
-    q.$=function(i){
-        return $(this.i(i))
-    }
-    q.m = function(){var q=this, g=G(arguments), _mf, mf
+    q.i=  q.r= function(i){
+        i  = this.getResult(i); i.w= i.width;i.h = i.height; return i}
+    q.$= function(i){return $(this.i(i))}
+    q.m = q.mf= function(){var q=this, g=G(arguments), _mf, mf
         // q.m:
 // protosig:
 //
@@ -352,6 +336,25 @@ function load(){
         })
         q.loadManifest( mf )
         return q
+    }
+
+    Q=function(){  var g=G(arguments),  o
+
+        //starts off as a fn (obviously)
+        //but ends up as an obj
+        // (can use his info to test if its been ran)
+        o=g.F? {c:g.f}:  {m:g.f,c:g.s}
+        o.m = o.m || _MF
+        Q=(new cjs.LoadQueue).c(o.c).m(o.m)
+    }
+
+    WQ = function(){var g = G(arguments), o
+        o = _.x({ob:g.f||{}},
+            F(g.t)?{fn0: g.s, fn: g.t}: {fn: g.s})
+        o.fn = o.fn || function(){}
+        w = W(o.ob)
+        if (o.fn0) {o.fn0(w)}
+        Q(o.ob.I||_MF , function(){o.fn(w)})
     }
 }
 function ticker() {

@@ -192,3 +192,17 @@ $.click = m$ = function (f) {
 $.dblclick = m$$ = function (f) {
     return $(document).on('dblclick', _v(f))
 }
+
+$.fn.xPrp=function(){
+    this.on('mousedown', function(e){  e.stopPropagation()  })
+    return this}
+$.dg = $.dragFrame = function (d) {
+    var oD
+    oD = $.d('y').pad(20).drag()
+    d = d || $.d('r').mar(20)
+    d.xPrp().a2(oD)
+    d.oD = oD
+    oD.XY(40, 40)
+    return oD
+
+}

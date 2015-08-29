@@ -62,7 +62,10 @@ b.cir= function(){var b=this,g=G(arguments), o= g.f, fd,  h,  f
     f.K(o.k)
 
     if(o.c!=0){
-        f.bS(f.g= w.g.h().cir(o))
+        f.bS(
+
+            f.g = w.g.h().cir(o)
+        )
     }
     return f
 

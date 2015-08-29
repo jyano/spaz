@@ -400,28 +400,7 @@ h.dc= function(x,y,r){
     o = g.O?g.f: g.$?{r:g.f}: {x:g.f,y:g.s,r:g.t}
     return h._dc(o)
 }
-h.cir= function () {
-    var h = this, gx = h.graphics, g = G(arguments), o
 
-    o = g.O ? g.f :
-        N(g.t) ?  {x:g.f,y:g.s,r:g.t, c: g[3], C: g[4], l: g[5]} :
-            N(g.s) ? {x: g.f, y: g.s, c: g.t, C: g[3], l: g[4]} :
-                g.N_ ? {r: g.f, c: g.s, C: g.t, l: g[3]}:
-                {c:g.f,C:g.s,l:g.t}
-
-    h.c(o)
-    if(o.bf){
-        if(N(o.bf)){o.bm = 'me'}
-        if(F(Q)){h.bf(o.bf, function(){h.dc(o)})}
-        else {o.tf = o.tf || null; h.bf(o.bf, o.tf).dc(o)}
-    }
-    else {h.dc(o)}
-    h.alpha = N(o.al, 1)
-    return h
-    // 'h.cp()': i kinda like how it stroke-connects my cirs
-//h.ef().es() //if (g.O_ && A(g.s)) {_.e(g.s, function(c){h.cir(_.x(c, g.f))}); return h }
-
-}
 h.dr = function () {var h = this, gx = h.graphics, g = G(arguments),
     o = g.O ? g.f : N(g.t) ? {x: g.f, y: g.s, w: g.t, h: g[3]} : {w: g.f, h: g.s}
     o.x = N(o.x, 0)
@@ -506,36 +485,38 @@ h.bV = function (o) {
     return h
 
 }
-h.bf = function () {
-    var h = this, gx = h.graphics, g = G(arguments), tf
+
+
+h.bf = function () {var h = this, gx = h.graphics, g = G(arguments),
+
+    tf
 
     if (!F(Q)) {
+        $l('!F(Q)')
 
-        if (A(g.s)) {
-            g.s = cjs.m2d.apply(cjs, g.s)
-        }
+        if (A(g.s)) {g.s = cjs.m2d.apply(cjs, g.s)}
+
         tf = g.s || cjs.m2d(R(500), R(300))
 
-        if (S(g.f)) {
-            gx.bf(Q.i(g.f), null, tf)
-        }
-
-        else if (O(g.f)) {
-            gx.bf(g.f, null, tf)
-        }
-
+        if (S(g.f)) {gx.bf(Q.i(g.f), null, tf)}
+        else if (O(g.f)) {gx.bf(g.f, null, tf)}
         return h
     }
 
-    if (S(g.f)) {
+    if (g.S_){
+
+        $l('yes F(Q)')
+
         $.i(g.f, function (i) {
+
             gx.bf(i[0])
-            if (F(g.s)) {
-                g.s(h)
-            }
+
+            if (F(g.s)) { g.s(h) }
         })
     }
+
     else if (g.O_ && A(g.f.hs)) {
+        $l('g.O_ && A(g.f.hs)')
         $.i(g.f.i || 'me', function (i) {
             gx.bf(i[0])
             if (F(g.s)) {
@@ -543,12 +524,20 @@ h.bf = function () {
             }
         })
     }
-    else {
+
+    else {$l('..else')
         gx.bf(g.f, null, g.s)
     }
     //h.ef()
     return h
 }  // BITMAP FILL  !!!!!!
+
+
+
+
+
+
+
 h.bC = function (o) {
     var h = this;
     return h.bf(o, function (h1) {
@@ -856,3 +845,38 @@ cjs.dia = function self(width, height, fc, sc) {
         .lt(halfwidth, 0).lt(0, -halfheight)
     return h
 }
+
+
+
+
+h.cir= function () {
+    var h = this, gx = h.graphics, g = G(arguments), o
+    o = g.O ? g.f :
+        N(g.t) ?  {x:g.f,y:g.s,r:g.t, c: g[3], C: g[4], l: g[5]} :
+            N(g.s) ? {x: g.f, y: g.s, c: g.t, C: g[3], l: g[4]} :
+                g.N_ ? {r: g.f, c: g.s, C: g.t, l: g[3]}:
+                {c:g.f,C:g.s,l:g.t}
+    h.c(o)
+    if(o.bf){
+        if(N(o.bf)){o.bm = 'me'}
+
+        if(F(Q)){ //async
+            h.bf(o.bf, function(){
+                h.dc(o)
+            })
+        }
+        else { //sync
+            o.tf = o.tf || null;
+            h.bf(o.bf, o.tf).dc(o)
+        }
+    }
+
+    else {h.dc(o)}
+    h.alpha = N(o.al, 1)
+    return h
+
+}
+
+
+// 'h.cp()': i kinda like how it stroke-connects my cirs
+//h.ef().es() //if (g.O_ && A(g.s)) {_.e(g.s, function(c){h.cir(_.x(c, g.f))}); return h }
