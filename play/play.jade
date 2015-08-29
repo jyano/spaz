@@ -8,23 +8,24 @@ html(lang="en")
           _app = wappyApp = '#{app}'
           _pam = wappyPam = '#{pam}'
 
+
         +S(['us','string', 'both', 'jq','objects','qq','jqfn','html','ctx', 'can', 'frontExtension'])
-
-
         +S(['cjs','cjsMC'])
-
-        +S([ 'create', 'easel',  'shape',  'anim'])
-
+        +S([ 'create', 'easel',  'shape',  'anim', 'anims'])
         //box
         +S(['gpcas',  'polyMath', 'bx', 'box', 'sep'])
-
         //fiz
         +S(['fiz', 'fizBod', 'coll', 'joint',  'ray' , 'co',  'geo'])
-
         //SPAZ
         +S(['spaz', 'wall', 'world', 'bodFixt', 'player', 'yip', 'scrolling'])
-        +S(['anims', 'canApps', 'betaGames','coGames', 'cxGames','geoGames'])
-        +S(['jointGames','webman',   'blocks', 'arcade' ])
-        +S(['loadApps', 'graphicsTests','balls', 'nice', 'play'])
 
+
+
+
+        //play
+        +S([ 'painter','balls','preload','sketch','spray'])
+        +S([  'blocks', 'bones', 'contact', 'controller', 'geometry'  ])
+        +S(['arcade','webman', 'nice' ])
+        +S([ 'play'])
+        
         body
