@@ -1,6 +1,4 @@
-best()
-function best(){
-    GCOMP=function(){Q(function(){$.C()
+GCOMP=function(){Q(function(){$.C()
 
     x.d('me', 100, 100)
 
@@ -164,7 +162,7 @@ PATH = function () {
         })
     })
 }
-PIXEL=function(){
+PIX=function(){
 
     c = $.can('y',900,500).A()
 
@@ -186,21 +184,20 @@ PIXEL=function(){
 
 }
 _ADBE = function (fn) {
-        return function () {
-            Q(function () {
-                $.C()
-                j = x.d('me', 100, 300)
-                i = x.d('chicks', 600, 300)
-                fn()
-            })
-        }
-    }
-ADBE = _ADBE(function () {
-        c.$(function (x1, y1) {
-            x.a(x1, y1, 10).s()
+    return function () {
+        Q(function () {
+            $.C()
+            j = x.d('me', 100, 300)
+            i = x.d('chicks', 600, 300)
+            fn()
         })
-    })
+    }
 }
+ADBE = _ADBE(function () {
+    c.$(function (x1, y1) {
+        x.a(x1, y1, 10).s()
+    })
+})
 CROP = function () {
     //$.C()
     c = $.c('X', 1200, 600, 100, 100, '+')
@@ -315,21 +312,6 @@ FLOATCV = function () {
     x.mt(100, 100, 300, 300, '*')
     x.b('b', 'r', 50).a(100, 75, 50, '*')
 }
-FLOATCVQ = function () {
-    Q(function () {
-        $.C()
-        x.b(400, 100, 'r', 'o', 30).l(600, 400)
-        x.b(10, 500).at(150, 20, 150, 170, 50).l(150, 120)
-        x.b().a(400, 75, 50, 0, 340, '-')
-        x.tl(-100, 0, R(30), 2)
-            .b(400, 100, 'x', 'b', 30)
-            .l(600, 400)
-        x.d('me').d(x, 300, 300).d(x, 300, 300)
-        //x.scICen('guy', .7)
-
-        //Uncaught TypeError: Cannot read property 'd' of undefined
-    })
-}
 LINRAD = function () {
     $.C()
     x = c.ctx()
@@ -361,7 +343,7 @@ CVQLOADER = function () {
         c.pD(imgData, 10, 70)
     })
 }
-PIXELS = function () {
+PIXEL = function () {
     c = $.c();
     Q(['me'], function (q) {
         me = Q.i('me')
@@ -379,9 +361,27 @@ PIXELS = function () {
         $l('zeros: ' + zeros + ' - nums: ' + nums)
     })
 }
-
-
 function notWorking(){
+    FLOATCVQ = function () {
+        Q(function () {
+            $.C()
+            x.b(400, 100, 'r', 'o', 30).l(600, 400)
+            x.b(10, 500).at(150, 20, 150, 170, 50).l(150, 120)
+            x.b().a(400, 75, 50, 0, 340, '-')
+            x.tl(-100, 0, R(30), 2)
+                .b(400, 100, 'x', 'b', 30)
+                .l(600, 400)
+
+            x.d('me')
+
+            x.d(x, 300, 300)
+
+            x.d(x, 300, 300)
+            //x.scICen('guy', .7)
+
+            //Uncaught TypeError: Cannot read property 'd' of undefined
+        })
+    }
     RADGRAD = function () {
         z()
         d = $.c('y', 500)
