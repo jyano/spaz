@@ -902,4 +902,9 @@ function rarelyUsed(){  w.dance=function(){var w=this
 
 
 
+$W=function(){
+    W()
+    w.y()
+    w.p()
+}
 

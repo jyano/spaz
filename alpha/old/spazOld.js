@@ -1,4 +1,21 @@
+function old() {
+    f._vs = function (f) {
+        var h = this.H();
+        if (h) {
+            return h.m_vertices
+        }
+    }
 
+    f.vs = f.rV = function () {
+        var f = this, b = f.B(), g = G(arguments),
+
+            vs = b2d.m(f._vs())
+        return b2d.tA(
+            g.p ? b2d.rot(vs, b) : vs
+        )
+
+    }
+}
 
 T.tx=function(){}
 b.sp=function(){var b=this, g=G(arguments),o

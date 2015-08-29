@@ -1,11 +1,6 @@
 x=  ctx=  xx=CanvasRenderingContext2D.prototype
-
 c = HTMLCanvasElement.prototype
-
 xGr = CanvasGradient.prototype
-
-
-
 x.S= function(){this.save();return this}
 x.R= function(){this.restore();return this}
 x.c= x.fs  =function(c,C,l){
@@ -106,8 +101,7 @@ x.lt= function(){var g=G(arguments),x=this
     if(g.A_ && A(g.f[0])){x.lt.apply(x, g.f)}
     else if(O(g.s)){g.e(function(pt){x.lt(pt[0], pt[1])})}
     else{x.lineTo(g.f, g.s)}
-    return g.n? x.s(): g.p? x.f(): g.m? x.D(): x}
-//x.$=function(){return this.s().f() }
+    return g.n? x.s(): g.p? x.f(): g.m? x.D(): x} //x.$=function(){return this.s().f() }
 
 comp=function(){
 
@@ -146,10 +140,6 @@ comp=function(){
     })}
 
 }; comp()
-
-
-
-
 tran=function(){
     x.tl=  x.trans=function(tX,tY,rt,sX,sY){
         this.translate(tX,tY)
@@ -399,14 +389,8 @@ draw=function(){
         return cv
     }
 };draw()
-
-
-
-
-
 ctxExamples()
-
-function ctxExamples() {
+function ctxExamples(){
     CLIP = function () {
         Q(fn)
 
@@ -539,4 +523,3 @@ function ctxExamples() {
         })
     }
 }
-
