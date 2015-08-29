@@ -1,10 +1,6 @@
 
 
 
-canData()
-canApps()
-function canData() {
-
     tictactoe = [
         [[200, 0], [200, 600]],
         [[400, 0], [400, 600]],
@@ -13,8 +9,7 @@ function canData() {
     ]
     sh1 = [[10, 0], [19, 19], [10, 9], [9, 9], [0, 19], [9, 0]]
     sh2 = [[[10, 0], [19, 19], [10, 9], [9, 9], [0, 19], [9, 0]], [[8, 13], [12, 13]], [[9, 14], [9, 18]], [[10, 14], [10, 18]]]
-}
-function canApps(){
+
 
     CC=function(){
         //$.C()
@@ -22,22 +17,13 @@ function canApps(){
         c.fit()
         c.draw('me')
         c.ln(tictactoe)
-        $.in(2, function(){
+        _.in(2, function(){
             c.crop(100,100,900,500)
         })
     }
-    TXC=function(){$.C()
 
 
-
-        c.dr('me')
-
-        c.paperBag()
-
-
-    }
-
-    CAN=function(){
+    CANN=function(){
 
         var picHolder
 
@@ -154,16 +140,17 @@ function canApps(){
 
             fo ='bold 16px Arial',
 
-            x = $.c('p',W(), H()).A()
+            x = $.c('p',$('body').W(),$('body').H() ).A()
 
-        // x.fs( x.lg().a(0,'y').a(1,'z') ).fr().fs('y').fo(fo).ftc(s, 30)
+       // x.fs( x.lg().a(0,'y').a(1,'z') ).fr().fs('y').fo(fo).ftc(s, 30)
 
 
         $.i('me',function(image){
 
             var origW= image.W()
 
-            image.W( Math.round( (50 * cW()) / 100 ) )
+            image.W( Math.round( (50 * $('body').W()) / 100 ) )
+
             image.H( Math.round( (image.W() * image.H() )/ origW) )
 
 
@@ -179,8 +166,6 @@ function canApps(){
 
 
     }
-
-
 
     FAN=function(){
         x=$.c('y',1000,800).A()
@@ -268,99 +253,3 @@ function canApps(){
         m= $.c(800).fit('me')
         g= $.c('b',600).fit('guy')
     }
-}
-muggy()
-function muggy(){
-
-    cv.drawMug = cv.me = function me(interval){
-        //randomly draw my face
-
-        var that = this, g=G(arguments), args= g,
-
-            interval = args[0] || 200
-
-        if(that.drawMug.shouldDrawId){
-
-            clearInterval(that.drawMug.shouldDrawId)
-
-            that.drawMug.shouldDrawId = false}
-
-        else{
-
-            that.drawMug.shouldDrawId =  setInterval(function(){
-
-                that.draw(  window['mug']||'me',  _.random( that.W()-200 ),  _.random( that.W()-200 )  )
-
-            }, interval)}
-
-        return this}
-    cv.drawMug.shouldDrawId = false
-    cv.fitMug = cv.mug= function(user){var that=this
-
-        $.post('/mug', { u: user },  function(userMug){  that.fit(userMug)  })
-        return this
-    }
-
-
-
-}
-function beta(){
-    cv.sun = function (a, b, s) {
-
-        s = s || 1;
-
-        this.rG(
-            [[a || 0, b || a || 0], s * 100, s * 500],
-
-            {'y': 0, 1: tCl('p', 0)},
-
-            600,
-
-            600
-        )
-
-
-    }
-    cv.paperBag = function (x, y, width, height, blowX, blowY) {
-        x = x || 100
-        y = y || 100
-        width = width || 100
-        height = height || 100
-        blowX = blowX || 100
-        blowY = blowY || 100
-
-        var lx, ly;
-
-        this.ctx().strokeStyle = 'Red'
-        this.ctx().beginPath();
-        this.ctx().moveTo(x, y);
-
-        this.ctx().quadraticCurveTo(x + width / 2 | 0, y + height * blowY | 0, x + width, y);
-        this.ctx().quadraticCurveTo(x + width - width * blowX | 0, y + height / 2 | 0, x + width, y + height);
-        this.ctx().quadraticCurveTo(x + width / 2 | 0, y + height - height * blowY | 0, x, y + height);
-        this.ctx().quadraticCurveTo(x + width * blowX | 0, y + height / 2 | 0, x, y);
-
-        return this
-
-    }
-}
-old=function(){
-
-
-    cv.ball=function(b){b=b||{}
-
-        var dir = b.d||false,
-
-            px  = b.x||100, py  = b.y||100, rad = b.r||100,
-
-            per = b.p||Math.PI* 2,
-
-            ss = $r('c', b.s) ,
-            fs = $r('c', b.f),
-            lw = D(b.l)? b.l: 4
-
-        return x.com('b',['a',px,py,rad,0,per,dir], {f:fs,s:ss,w:lw},'f','s')
-    }
-
-
-}
