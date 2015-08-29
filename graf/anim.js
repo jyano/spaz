@@ -1,5 +1,5 @@
 sS = ss = cjs.SpriteSheet.prototype
-sSB=      cjs.SpriteSheetBuilder.prototype
+sSB=  cjs.SpriteSheetBuilder.prototype
 sp=s=cjs.Sprite.prototype
 mc=cjs.MovieClip.prototype
 tw = cjs.Tween.prototype
@@ -438,8 +438,10 @@ function tween(){
         //get time of tween in ms
         //duration:read only
 
-        if(U(a)){return this.duration}
+        if(U(a)){
+            return this.duration}
     }
+
     tw.tkXXX=function(a){
         this.tick(a);
         return this

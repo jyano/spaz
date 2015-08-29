@@ -358,6 +358,28 @@ DRAWEDG = function () {
     //w.end(function(cx){cx.w('pf', function(){$l('end')})})
 
 }
+META = AWESOMESAUCE = function () {
+    W([400, 400], {w: 'U'}).C('w')._(function () {
+        //cjs.rulers()
+        w.p(0, 0, 10).stat()
+        _.t(8, function () {
+            w.D(R(100, 50), R(100, 50), 'b', 30)
+        })
+
+        _.ev(3, function () {
+
+            var b = w.D(200, 200, 'b', 80)
+            b.$h('x', 'X', 1).c('x', 'X', 1).bf(
+                w.s.cv0,
+                cjs.m2d(
+                    .6, .1, .1, .6, -40, 180
+                )
+            ).cir(80)
+
+        })
+    })
+}
+
 CHEM = function () {
 
     w.rec = function (x, y, W, H, c) {
@@ -1075,27 +1097,7 @@ CHICKBALLS=function(){
 
 
 }
-META = AWESOMESAUCE = function () {
-    W([400, 400], {w: 'U'}).C('w')._(function () {
-        //cjs.rulers()
-        w.p(0, 0, 10).stat()
-        _.t(8, function () {
-            w.D(R(100, 50), R(100, 50), 'b', 30)
-        })
 
-        _.ev(3, function () {
-
-            var b = w.D(200, 200, 'b', 80)
-            b.$h('x', 'X', 1).c('x', 'X', 1).bf(
-                w.s.cv0,
-                cjs.m2d(
-                    .6, .1, .1, .6, -40, 180
-                )
-            ).cir(80)
-
-        })
-    })
-}
 TEXTBALLS = function () {
     W([400, 400], {}).C('w')._(function () {
         b = w.D(200, 200, 'b', 80)

@@ -48,10 +48,6 @@ function mouseJoint(){
 
         return w.J(mJD)
     }
-
-
-
-
 }
 jD.A=  function(a){this.bodyA=a; return this}
 jD.B= function(b){this.bodyB=b; return this}
@@ -328,7 +324,6 @@ w.spg=  function (a,b){var w=this;
 w.brg=  function(x,y){var w=this,b1,b2,b3,b4,b5,b6,b7,b8,b9,b10
     x = N( x,400 );
     y = N( y,100)
-
     FIRST= w.S(x,y,10)
     LAST = w.S(x+700,y,'b',10)
 
@@ -1055,7 +1050,6 @@ prisJ=function(){
         elv.cl(function(p){ p.B().lV(0) })
     }
 
-
     old=function(){
 
         PRISM0=function(){W(5)
@@ -1136,7 +1130,6 @@ prisJ=function(){
 
 
     }
-
     /*
 
 
@@ -1151,8 +1144,6 @@ prisJ=function(){
      maxMotorForce - the maximum allowable force the motor can use
 
      */
-
-
     function JointGetJointTranslation(){
         var axis = this.m_bodyA.GetWorldVector(this.m_localXAxis1),
             p1 = this.m_bodyA.GetWorldPoint(this.m_localAnchor1),

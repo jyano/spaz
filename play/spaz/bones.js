@@ -63,6 +63,12 @@ function dist(){
         // w.dJ(x,b)
 
         w.dot('z', 1310, 400)
+
+
+        w.brg(900,500);
+        _.in(3, function(){
+            w.p(900,100)
+        })
     }
     DJ = function () {
         W([1400, 800], {g: 1000}).Y(500, 300);
@@ -911,7 +917,6 @@ function rev(){
 
 
         }
-
     }
     function pinball() {
 

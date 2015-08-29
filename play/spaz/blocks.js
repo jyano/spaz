@@ -1121,7 +1121,7 @@ function magic() {
 
     }
 }
-function mouseJ() {
+function mouseJ(){
     STACK = function () {
         W({m: 'ball', w: 0})
         w.S(500, 600, 'y', 1000, 20)
@@ -1139,7 +1139,6 @@ function mouseJ() {
         w.S(1000, 400, 'x', 200, 200)
         w.S(1200, 200, 'x', 200, 200)
     }
-
     MJ = function () {
         W([1200, 600, 2400, 600], {g: 10, m: 'm'}).Y('+')
 

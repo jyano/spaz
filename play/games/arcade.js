@@ -757,9 +757,7 @@ function space() {
 }
 terr()
 function terr() {
-    works()
-    function works() {
-        MEET = function () {
+    MEET = function () {
             W([1200, 600, 1200, 600], {g: 10})
 
 
@@ -901,7 +899,7 @@ function terr() {
              ['u', 30,40, 75,-12 ,'-']])
              */
         }
-    }
+
 
     SEB = function () {
         W({g: 1})//w.show(function(){return b.num()})
