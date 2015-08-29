@@ -59,6 +59,20 @@ function aco(){
         function rm(){w.C('r');added=0; co.xB(b) }
     }
 
+    MARIOACO =function(){W([1200,600,2400,1200],{g:400})
+        w.p(100,300,'+')
+
+        w.elev(300,100,300)
+        w.elev(600,100,500)
+        w.elev(900,300,400)
+        w.elev(200,500,300)
+        w.elev(400,800,200)
+        w.elev(600,600,500)
+        w.elev(750,700,300)
+        w.elev(900,900,300)
+
+
+    }
     STICKY = function () {
         W([1200, 600, 2400, 600], {g: 50})
         x = w.S(600, 300, 'w', 280, 370, '-').K('sen').al(.4)
