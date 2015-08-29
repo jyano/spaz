@@ -1,4 +1,3 @@
-
 f.initSp=function(){
     this._sp = this._sp || []; this.SP = this.SP || []; this.sprites = this.sprites || []
     return this
@@ -74,8 +73,6 @@ b._bS=function(j,o){var b=this
         j.XY(b.X() + o.x,
             b.Y() + o.y).rt(b.rt() + o.rt)})
 }
-
-
 b.bS = function () {var b = this, w = b.W(), g = G(arguments), o, i, a, sc //pass it a display object (which i guess implies its already loaded)
 
 
@@ -96,14 +93,9 @@ b.bS = function () {var b = this, w = b.W(), g = G(arguments), o, i, a, sc //pas
     }
     return this
 }
-
-
-
 cjs.hasDim=function(bm){
     return   !cjs.iH(bm) && !cjs.iCt(bm)
 }
-
-
 b._Sp=function(sp,o){
 
     this._gx(sp)
@@ -113,9 +105,6 @@ b._Sp=function(sp,o){
         .sXY(o.sX, o.sY).rt(o.r)
     return sp
 }
-
-
-
 b.Sp = function () {var g = G(arguments), o,
     sp
 
@@ -138,8 +127,6 @@ b.Sp = function () {var g = G(arguments), o,
     return b._Sp(sp,o)
 
 }
-
-
 b.sp = function () {var b = this, g = G(arguments),
 
     ch
@@ -150,7 +137,6 @@ b.sp = function () {var b = this, g = G(arguments),
         if (g.F_) {_.e(ch, g.f);return this}
     }
 }
-
 b.Bm = function (iS, x, y, sX, sY, rt) {
     var b = this, w = b.W(), g = G(arguments);
     b.gx = b.gx || w.g.ct()
@@ -172,9 +158,6 @@ b.Bm = function (iS, x, y, sX, sY, rt) {
     }
 
 }
-
-
-
 f.clrSp=function(){
     this.sprites = []
     this_sp = []
@@ -194,14 +177,9 @@ w._preKill= function(b) {
 
 }
 w._fPreKill=function(f){f.rmSp()}
-
-
-
 w._D=function(o){
     return this.D(o.x, o.y, o.c, o.w, o.h)
 }
-
-
 w.bfR = function () {var w = this, g = G(arguments), b, h, o
 
 
@@ -221,13 +199,8 @@ w.bfR = function () {var w = this, g = G(arguments), b, h, o
     b.bS(h)
     return b
 }
-
-
 b2d.m=function(vs){ return _.m(vs, b2d.mult) }
 b2d.tA=function(vs){return _.m(vs, function(v){return v.tA(v)})}
-
-
-
 b._pol=function(o){
     var b=this, fs  = newFixts(b, o)
 
@@ -264,8 +237,6 @@ b.pol = function(){
 
 
 }
-
-
 function dressFs(fs,o){
 
     _.e(fs, function (f){
@@ -277,7 +248,6 @@ function dressFs(fs,o){
         if (o.rf) {  f.bS(w.s.h().rf(o).lt(o.v))  }
     })
 }
-
 function _passedVs(g){return  b2d.iGP(g.f) && U(g.s)}
 function _passedColAndVs(g){return S(g.f) && b2d.iGP(g.s) && U(g.t)}
 function fsRetVal(fs){
@@ -300,8 +270,6 @@ function bindS(b,o){
         b.bS(h)
     }
 }
-
-
 f.C = function () {
 
     var f = this,
@@ -323,9 +291,6 @@ f.C = function () {
 
     return f
 }
-
-
-
 function polyShapeArgs(g){
     var o= g.A ? (S(g.f[0]) ? {c: g.f[0], v: _.r(g.f)} : {v: g.f}) :
         g.O ? g.f : !g.S_ ?  {v:g} : _.x({c: g.f}, g.t ? {v: g.r} : {  v: g.s} )
@@ -361,8 +326,6 @@ f.vs =function(){var f=this, b=f.B(),g=G(arguments),
     }
     return b2d.tA(vs)
 } //=f.rV
-
-
 w.cen = w.cent = function () {
     var w = this, g = G(arguments),
         v = V(w.s.W() / 2, w.s.H() / 2)

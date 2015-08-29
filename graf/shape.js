@@ -846,7 +846,7 @@ cjs.diamond=cjs.dia = function self(width, height, fc, sc) {
     return h
 }
 
-
+h.same = function () {return $h(this)} // h.copy=
 
 
 h.cir= function () {

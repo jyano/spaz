@@ -677,4 +677,3 @@ function alpha(){
         return w
     }
 }
-

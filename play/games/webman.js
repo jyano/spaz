@@ -1,5 +1,4 @@
 b2d.p()
-
 b.net=function(K){
     //when a web is created it gets web.connected=false
     //when it hits certain things and forms a joint, then connected->true
@@ -25,7 +24,6 @@ b.net=function(K){
     b.webs.push(web)
     return web
 }
-
 w.net=function(b, K){var w=this,web//K=shouldKill
 
     web={player: b, connected: false, cn:0, pieces:[]}
@@ -60,16 +58,11 @@ w.net=function(b, K){var w=this,web//K=shouldKill
     return web
 
 }
-
-
-
 b.iCn=b.isConnected=function(){var res, b=this
     return A(b.webs) &&
         _.findWhere(b.webs, {connected:true} )
 
 }
-
-
 w.Webman = w.wbMan = function (x, y, sc) {
     var w = this,
         p = w.me(N(x, 394), N(y, 530), N(sc, 4)).fR().r(0).d(.14).fr(1).K('wbMan')
@@ -81,15 +74,12 @@ b.Web = function (K) {
     var b = this, w = b.W()
     return w.Web(this.X(), this.Y() - 100, this, K)
 }
-
-
 b.shR = function () {
     var f =  sw('-')
 
     w.D(this.X() + 80, this.Y() - 20, 'w', 6).I(2 - f / 50, 0 - f / 40)
     return this
 }
-
 b.shL = function () {
     var f =  sw('-')
 
@@ -210,7 +200,6 @@ w.js = function (fn) {
     }
     return arr
 }
-
 NETGUY = function(){W({ g:30 ,w:'_'}).C('r'); blocks=function() {
 
     w.goal(1800, 0)
@@ -359,7 +348,6 @@ WEBMAN = function () {
 
 
 }
-
 BEARD  = function () {
     W().randRects()
     p = w.Webman()

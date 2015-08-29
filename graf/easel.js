@@ -653,7 +653,10 @@ $.dragStage = function (x, y) {
 
     s = $St('v', '+')
 
-    return $.dragFrame($(s.canvas))
+
+    $.dragFrame($(s.canvas))
+
+    return s
 }
 
 
