@@ -967,3 +967,232 @@ GEMS = function () {
     })
     w.i.h(400, 300, '+').bV({v: v})
 }
+FLOCK = function () {
+    W({g: 0})//.P()
+    w.D(300, 100, 'r', 50)
+    w.D(500, 100, 'y', 50)
+    w.D(700, 100, 'b', 50)
+    w.D(900, 100, 'g', 50)
+    var n = 0
+    _.t(8, function () {
+        w.y('o'//,'-'
+        )//.push('+')
+    })
+    //y=w.y('b',100,100,5)
+    _.evx(.5, function () {
+        if (y.going()) {
+            // w.C('p')
+        }
+        else {
+            // w.C('z')
+        }
+    })
+}
+GRAV = function () {
+    W({g: 10}).Y()
+    balls = function () {
+        w.D(100, 100, 'a', 50).d(1)
+        w.D(100, 200, 'c', 40).d(1)
+        w.D(100, 100, 'd', 50).d(1)
+        w.D(100, 200, 'e', 40).d(1)
+        w.D(100, 100, 'f', 50).d(1)
+        w.D(100, 200, 'h', 40).d(1)
+        w.D(100, 100, 'i', 50).d(1)
+        w.D(100, 200, 'j', 40).d(1)
+        w.D(100, 100, 'k', 50).d(1)
+        w.D(100, 200, 'l', 40).d(1)
+    };
+    balls()
+    range = w.pJ(
+        w.S(600, 300, 'q', 220, 20),
+        w.D(600, 300, 's', 20, 250).lD(10),
+        V(1, 0)).lm(-100, 100)
+    w.show(function () {
+        return 'Welcome to Gravity Range: Current gravity is ' + range.val()
+    })
+
+    cjs.t(function () {
+        w.G(range.val())
+        w.e(function (b) {
+            b.I(0, .1)
+        })
+    })
+
+}
+CAVEMAZE = function () {
+
+    W([1200, 600, 1500, 600], {g: 10}).Y()
+
+    w.S(0, 0, 'z', [
+        [500, 500, 600, 100],
+        [500, 400, 500, 100],
+        [500, 300, 500, 100],
+        [500, 350, 450, 100],
+        [320, 400, 50, 600]
+    ])
+
+    y.track()
+    w.y(100, 300).stat().rt(1, 10)
+
+    maze = [
+        [1, 0, 1, 1, 1, 1, 1, 1, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 0, 1],
+        [1, 0, 0, 0, 1, 0, 0, 0, 1],
+        [1, 0, 1, 0, 1, 0, 1, 1, 1],
+        [1, 0, 1, 0, 1, 0, 0, 0, 1],
+        [1, 0, 1, 1, 1, 1, 1, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1]
+    ]
+
+    w.grid(maze, 900, 200, 20, 30)
+
+}
+STAB = function () {
+    W({g: 0})
+    w.S(200, 200, 'b', 50, 260)
+    w.S(140, 200, 'd', 140, 50)
+
+
+    co = w.tCo();
+    _.t(10, function () {
+        co.B(
+            w.D(R(1000, 100), 300, 'x', 30).lV(10, 20).lD(0))
+    })
+
+    hits = 0
+
+    y = w.y().K('ship').lD(5)
+
+    bg = w.y('b', 500, 300, '-').d(3).lD(2).K('bg').aD(.2)
+
+    bg.rotTowards = function (y) {
+        var b = this, a
+        a = -M.tD(M.atan((y.X() - b.X()) / (y.Y() - b.Y())))
+        if (y.Y() > b.Y()) {
+            a += 180
+        }
+        b.rt(R(40, a - 20))
+    }
+
+    _.ev(.5, function () {
+        bg.aV(0);
+        bg.rotTowards(y)
+    })
+
+    bg.push(50, '+')
+
+    T.t(function () {
+        _.t(20, function () {
+            bg.I()
+        })
+    })
+
+
+    w.b(function (cx) {
+        var i
+        if (cx.w('ship', 'bg')) {
+
+            i = cx.m().m_points[0].m()
+
+            _.in(.1,
+                (
+                M.lD(V(i.x, i.y), V(y.X(), y.Y())) >
+                M.lD(V(i.x, i.y), V(bg.X(), bg.Y()))
+                ) ?
+                    function () {
+                        hits++;
+                        w.C('g');
+                        bg.XY(300, 300);
+                        y.XY(700, 400)
+                    }
+                    :
+                    function () {
+                        w.C('p');
+                        bg.XY(700, 400);
+                        y.XY(100)
+                    })
+        }
+    })
+    //w.show(function(){return 'hits: '+ hits})
+}
+TRAP = function () {
+    W(0).C('r')
+    co = w.tCo()
+    _.t(3, function () {
+        co.B(
+            w.y('z', R(500, 50), R(300, 50), '-').lV(10, 20).lD(0)
+            //  w.D(400,300, 'z',10,10)
+        )
+    })
+    y = w.y()
+    rot = 45
+    bg = w.y('b', 500, 300, '-').shtEv().stat()
+    z(function () {
+        bg.rTow(y)
+    })
+}
+TOW = function () {
+    W({g: 0}).C('z')
+    b = w.D(500, 300, 'r', 100)
+    y = w.ship()
+    cjs.t(function () {
+        b.towards(y.X(), y.Y(), 9)
+    })
+
+    _.t(10, function () {
+        w.ship('b', R(500, 50), R(500, 50))
+    })
+    w.b(function (cx) {
+        cx.w('ship', 'bul', function (bul, cx) {
+            this.kill()
+        })
+    })
+
+    w.D(200, 200, 'b', 80).d(1).K('bad')
+    w.D(200, 200, 'r', 150, 150).d(1).K('bad')
+
+    y = w.y('b', 100, 200, 6, '-').aD(1).lD(1)
+        .r(0).fr(1).K('guy')
+        .shootOnInt(.2)
+        .cn('thrust')
+
+    w.cl('bul', 'bad', function (b) {
+
+        if (this.B()) {
+            this.B().kill()
+        }
+        if (b.B()) {
+            b.B().kill()
+        }
+    })
+}
+COLORSHIP = function () {
+    W().G(1)//.C('z').pen('welcome to tensor (damping) controller - the timing here is amazing!')
+
+    co = w.tCo()
+
+    co.B(
+        r = w.D(100, 100, 'r', 100).lV(10, 20).grp(-1).lD(.2),
+        b = w.D(500, 500, 'b', 90).lV(-10, -20).grp(-1).lD(.2),
+        y = w.D(300, 300, 'y', 70).lV(-10, -20).grp(-1).lD(.2)
+    )
+
+    o = w.D(300, 300, 'o', 70).lV(-10, -20).grp(-1).lD(.2)
+
+
+    _.t(30, function () {
+        var b = w.D(400, 300, 'o', 20)//.lV(10,20).lD(0)//.L(10,20,0)
+        b.f().grp(-1)
+
+        co.B(b)
+    })
+    w.y().grp('-1')
+
+    // w.r_.cl(function(f){f.C('b'); co.xB(f)})
+
+    l = w.m_controllerList.GetBodyList()
+
+
+}
