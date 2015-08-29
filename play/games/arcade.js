@@ -494,8 +494,6 @@ function yip() {
 
 
 }
-
-
 function space() {
     SPACEMAZE = function () {
         W({g: 0, w: 0})

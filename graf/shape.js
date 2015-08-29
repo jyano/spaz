@@ -831,7 +831,7 @@ h.dr2 = function (x, y, W, H) {var h = this, g = G(arguments), o
 
 }
 
-cjs.dia = function self(width, height, fc, sc) {
+cjs.diamond=cjs.dia = function self(width, height, fc, sc) {
     fc = fc || 'green'
     sc = sc || 'white'
     width = width || 100
