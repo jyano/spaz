@@ -120,7 +120,7 @@ b.Sp = function () {var g = G(arguments), o,
     sp
 
 
-    o = _xyr({
+    o = $df.xyr({
         sp: g.f,
         x: g.s,
         y: g.t,

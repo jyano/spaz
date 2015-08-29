@@ -201,7 +201,7 @@ TX= function (){
         return t
     }
 }
-SWITCH = function () {
+CHARSWITCH = function () {
     W([1200, 600, 3600, 800])
 
 
@@ -308,6 +308,55 @@ SWITCH = function () {
         })
 
     })
+}
+DRAWEDG = function () {
+    W([1200, 600, 2400, 600]);
+    var p1, p2, d, l
+    p = w.p(400, 400, '+')
+    w.S(200, 200, 'r', 400, 20)
+    w.$(function (v) {
+        if (!p1) {
+            p1 = v;
+            return
+        }
+        if (!p2) {
+            p2 = v
+        } else {
+            p1 = p2;
+            p2 = v
+        }
+        w.edg(p1.x, p1.y, p2.x, p2.y).K('pf')
+        w.rC(function (f) {
+            f.B().dot()
+        }, p1, p2)
+    })
+    p.IsBullet(true)
+    w.pre('pf', function (f, cx) {
+        if (p.shall) {
+            cx.en(0)
+        }
+    })
+    w.b(function (cx) {
+        p.shall = false
+        if (!cx.pt().y && p.lV().y < 0) {
+            return
+        }
+        cx.w(p, 'pf', function () {
+            c = cx
+            v = cx.pt()
+            if (cx.pt().y) {
+                dif = (p.Y()) - cx.pt().y
+                $l(dif)
+                if (dif > -10) {
+                    p.shall = true
+                }
+            }
+        })
+    })
+
+
+    //w.end(function(cx){cx.w('pf', function(){$l('end')})})
+
 }
 CHEM = function () {
 
@@ -569,7 +618,7 @@ WORLDPAN=function(){W([1200, 600, 2400, 600],{g:0})
     w.pan('*')
 
 }
-R1=function(){
+ADVENTURE=function(){
     W([1200,600,2400,1200] )//.P('+')
 
     //$.test=true
@@ -961,13 +1010,13 @@ TFSET= function(){W()._(function(){
             this}
 
 })}
-BFREC = function () {W()
+BMRECS = function () {W()
     w.i.h(200, 300).dg().bf('me', function (h) {h.rec({w: 500, h: 200})})
     w.i.h().dg().bf('me', function (h) {h.rec({w: 500, h: 200})
         w.D(600, 300, 'b', 500, 200).bS(h)
     })
 }
-BS = function () {
+BINDSP = function () {
     W()._(function () {
         x = w.D(600, 300, 'x', 200, 100)
         f = x.cir({r: 100, x: 300, c: 'r'})
@@ -1558,4 +1607,173 @@ PINBALL = function () {
         }
     )
 
+}
+TRICYCLE = function () {
+    W([1200, 600, 10000, 600], {})
+
+    //yy=w.y().aD(5000)//.fixRot()
+    dir = 12
+
+    car = w.D(300, 300, 'r', [
+        [200, 20],
+        [20, 165, -50, -50, 45],
+        [20, 165, 50, -50, -45]
+    ]).fr(5).track()
+
+    _.t(30, function () {
+        w.me(R(9000, 500), 100, R(2, .5))
+    })
+
+    wh = wheel(250, 300).C('b').bS('me', .7)
+
+    j = w.rJ(
+        wh, //.lD(100).aD(100).fr(100),
+        car,
+        0,
+        0,
+        100,
+        0
+    )
+
+
+    w.rJ(
+        wh2 = wheel(250, 300, 50, 10).C('g')
+            .bS('me', .4).aD(10).fr(2),
+        car, 0, 0, -100, 0
+    )
+
+    j = w.rJ(
+        wh3 = wheel(250, 300, 25, 6).C('y').bS('me', .2).lD(100).aD(100).fr(100),
+        car, 0, 0, 0, -100
+    )
+
+
+    function wheel(x, y, r, n) {
+        r = N(r, 80)
+        n = N(n, 15)
+        pC = [b2d.pC(r, n)]
+        return w.D(x, y, 'w', pC)//.d(5).r(0).lD(100).aD(100).fr(100)
+    }
+
+
+    // j.mt(-50)
+    T.t(function () {
+        var K = cjs.Keys
+        car.I(0, 5000)
+
+        if (K.r) {
+            wh.ApplyTorque(3500)
+            wh2.ApplyTorque(3500)
+            wh3.ApplyTorque(150)
+        }
+
+        if (K.l) {
+            wh.ApplyTorque(-3500)
+            wh2.ApplyTorque(-3500)
+            wh3.ApplyTorque(-150)
+        }
+
+
+        if (K.u) {
+            wh.ApplyTorque(1500)
+            wh3.ApplyTorque(-500)
+        }
+
+        if (K.d) {
+            wh2.ApplyTorque(-500)
+            wh3.ApplyTorque(1500)
+        }
+    })
+
+    //car.aD(1000).lD(1000)
+}
+SPERCH = function () {
+    W([1200, 600, 1200, 1200], {}).P()
+    p.tr()
+    w.perch()
+    w.seesaw(600, 1100)
+    w.seesaw(600, 700)
+    w.seesaw(600, 500)
+    w.spinner(400, 900)
+    w.spinner(800, 900, '-')
+}
+ELEVS = function () {
+    W([1200, 600, 2400, 1200], {}).P(100, w.h - 200)
+
+    //p.d(.1).fr(1)
+
+    p.K('p').track()
+
+    speed = 10
+
+    j = w.pJ({
+
+        a: w.S(400, w.h - 200, 's', [[40, 40, '-']]).d(1).fr(1),
+        b: w.D(500, w.h - 300, 'd', 200, 40).d(.1).K('elv'),
+        lm: [-250, 100]
+
+    }).mt(speed)
+
+    w.cl('elv', _.db(function () {
+        j.mt(speed *= -1)
+    }, 200, true))
+
+
+    speed2 = -100
+    j2 = w.pJ({
+        a: w.S(800, 300, 's', 40, 40).d(1).fr(1),
+        aV: [-30, 2],
+        b: w.D(800, 200, 'd', 200, 40).d(1).K('box'),
+        ax: V(0, 1),
+        rA: 45
+
+    }).mt(speed2)
+
+    w.cl('box', 'p', function () {
+        speed2 *= -1
+        j2.mt(speed2)
+    })
+
+
+    w.p(500, 200, 'thrust').K('p').d(.02)
+
+
+    w.pJ(
+        w.S(1000, 800, 'y', 40, 40).d(1).fr(1),
+        w.D(1100, 900, 'b', 200, 40).d(1), [1, -.5], 25
+    ).L(-300).U(200).lm('+')
+
+    j3 = w.pJ({
+        a: w.S(240, 150, 's', 180, 90),
+        b: w.D(200, 200, 'd', 200, 20),
+        aV: V(100, 10),
+        rA: 5
+    })
+
+    j3.mt(-10)
+
+    _.in(2, function () {
+        j3.mt('-')
+    })
+    _.in(4, function () {
+        j3.mt('+')
+    })
+
+
+}
+ZIL = function () {
+    W({g: 0, w: 0})
+    health = 100
+
+    y = w.ship().warp().cl(function () {
+        health -= 5
+    })
+
+
+    z = w.zilla(600, 300).fireBallsAtInt(4000)
+
+
+    w.show(function () {
+        return 'health: ' + health + ', hits: ' + z.hits
+    })
 }

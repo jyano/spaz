@@ -23,22 +23,16 @@ tco()
 bco()
 function aco(){
     HOVER=  function(){W([1200,1200,1200,1200],{g:130 })//.C('w')
-
         p= w.p(500,100)
-
         sen =  w.S(1200,800, 'w', [[2400,200,'-']]).K('sen').al(.2)
         aCo = w.aCo(150, -250)
-
-
         aCo.do(sen)    //<- sen.do(aCo) //  <- sen.cl(function(f){if(!f.by(aCo)){aCo.B(f)}}, function(f){if(f.by(aCo)){aCo.xB(f)}})
-
         w.show(function(){return aCo.n()})
         y = w.y(400, 40).fR().rt(90).lD(2).tr()
         w.D(300,100, 'r', 20);
         w.D(400,100, 'r', 120,120); w.D(500,100, 'r', 45);
         w.D(600,100, 'r', 80);
         w.D(700,100, 'r', 200,100)
-
         /*
          _.ev(2,  function(){   if(R()){
 
@@ -54,11 +48,9 @@ function aco(){
          $l('tog')
          // if(added){rm()} else {add()}
          }*/
-
         function add(){w.C('g');added=1; co.B(b)}
         function rm(){w.C('r');added=0; co.xB(b) }
     }
-
     MARIOACO =function(){W([1200,600,2400,1200],{g:400})
         w.p(100,300,'+')
 

@@ -1,6 +1,5 @@
 dist()
 rev()
-
 pris()
 function dist(){
     DIST = function () {
@@ -419,10 +418,6 @@ function dist(){
 
     }
 }
-
-
-
-
 function rev(){
     games()
     wheel()
@@ -533,7 +528,7 @@ function rev(){
         }
     }
     function link() {
-        BL = function () {
+        REVROPE = function () {
             W(300).C('z')
 
 
@@ -563,7 +558,7 @@ function rev(){
             link.rJ(w.p().cn('jump'))
             j = js[3]
         }
-        LRJ = function () {
+        LILROPE = function () {
             W({m: 0, g: 0}).Y()
 
             b = w.S(600, 100, 'b', 10)
@@ -576,7 +571,7 @@ function rev(){
             w.rJ(link,
                 link = w.D(600, 170, 'b', 10))
         }
-        REVROPE = function () {
+        REDROPE = function () {
             W([1200, 600], {g: 0})
 
             // anchor = w.S(600,300,'z',50,50)
@@ -674,86 +669,8 @@ function rev(){
 
             //car.aD(1000).lD(1000)
         }
-        TRICYCLE = function () {
-            W([1200, 600, 10000, 600], {})
 
-            //yy=w.y().aD(5000)//.fixRot()
-            dir = 12
-
-            car = w.D(300, 300, 'r', [
-                [200, 20],
-                [20, 165, -50, -50, 45],
-                [20, 165, 50, -50, -45]
-            ]).fr(5).track()
-
-            _.t(30, function () {
-                w.me(R(9000, 500), 100, R(2, .5))
-            })
-
-            wh = wheel(250, 300).C('b').bS('me', .7)
-
-            j = w.rJ(
-                wh, //.lD(100).aD(100).fr(100),
-                car,
-                0,
-                0,
-                100,
-                0
-            )
-
-
-            w.rJ(
-                wh2 = wheel(250, 300, 50, 10).C('g')
-                    .bS('me', .4).aD(10).fr(2),
-                car, 0, 0, -100, 0
-            )
-
-            j = w.rJ(
-                wh3 = wheel(250, 300, 25, 6).C('y').bS('me', .2).lD(100).aD(100).fr(100),
-                car, 0, 0, 0, -100
-            )
-
-
-            function wheel(x, y, r, n) {
-                r = N(r, 80)
-                n = N(n, 15)
-                pC = [b2d.pC(r, n)]
-                return w.D(x, y, 'w', pC)//.d(5).r(0).lD(100).aD(100).fr(100)
-            }
-
-
-            // j.mt(-50)
-            T.t(function () {
-                var K = cjs.Keys
-                car.I(0, 5000)
-
-                if (K.r) {
-                    wh.ApplyTorque(3500)
-                    wh2.ApplyTorque(3500)
-                    wh3.ApplyTorque(150)
-                }
-
-                if (K.l) {
-                    wh.ApplyTorque(-3500)
-                    wh2.ApplyTorque(-3500)
-                    wh3.ApplyTorque(-150)
-                }
-
-
-                if (K.u) {
-                    wh.ApplyTorque(1500)
-                    wh3.ApplyTorque(-500)
-                }
-
-                if (K.d) {
-                    wh2.ApplyTorque(-500)
-                    wh3.ApplyTorque(1500)
-                }
-            })
-
-            //car.aD(1000).lD(1000)
-        }
-        WAG = function () {
+        WAGON = function () {
             W([1200, 600, 4000, 600], {}).P()
 
 
@@ -897,7 +814,7 @@ function rev(){
         }
     }
     function games() {
-        WHL = function () {
+        WALLWHEELS = function () {
             W(0).Y()
 
             x = w.S(600, 300, 'r', 500, 500, '-')
@@ -960,7 +877,7 @@ function rev(){
             })
 
         }
-        MECH = function () {
+        MOTORS = function () {
             W().P().P().P().Y()
             w.rJ(
                 w.D(800, 300, 'r', 20, 300),
@@ -994,16 +911,7 @@ function rev(){
 
 
         }
-        SPERCH = function () {
-            W([1200, 600, 1200, 1200], {}).P()
-            p.tr()
-            w.perch()
-            w.seesaw(600, 1100)
-            w.seesaw(600, 700)
-            w.seesaw(600, 500)
-            w.spinner(400, 900)
-            w.spinner(800, 900, '-')
-        }
+
     }
     function pinball() {
 
@@ -1174,73 +1082,7 @@ function rev(){
 
     }
 }
-
-
-
-
 function pris(){
-    PJ = function () {
-        W([1200, 600, 2400, 1200], {}).P(100, w.h - 200)
-
-        p.d(.1).fr(1).K('p').track()
-
-        speed = 10
-
-        j = w.pJ({
-
-            a: w.S(400, w.h - 200, 's', [[40, 40, '-']]).d(1).fr(1),
-            b: w.D(500, w.h - 300, 'd', 200, 40).d(.1).K('elv'),
-            lm: [-250, 100]
-
-        }).mt(speed)
-
-        w.cl('elv', _.db(function () {
-            j.mt(speed *= -1)
-        }, 200, true))
-
-
-        speed2 = -100
-        j2 = w.pJ({
-            a: w.S(800, 300, 's', 40, 40).d(1).fr(1),
-            aV: [-30, 2],
-            b: w.D(800, 200, 'd', 200, 40).d(1).K('box'),
-            ax: V(0, 1),
-            rA: 45
-
-        }).mt(speed2)
-
-        w.cl('box', 'p', function () {
-            speed2 *= -1
-            j2.mt(speed2)
-        })
-
-
-        w.p(500, 200, 'thrust').K('p').d(.02)
-
-
-        w.pJ(
-            w.S(1000, 800, 'y', 40, 40).d(1).fr(1),
-            w.D(1100, 900, 'b', 200, 40).d(1), [1, -.5], 25
-        ).L(-300).U(200).lm('+')
-
-        j3 = w.pJ({
-            a: w.S(240, 150, 's', 180, 90),
-            b: w.D(200, 200, 'd', 200, 20),
-            aV: V(100, 10),
-            rA: 5
-        })
-
-        j3.mt(-10)
-
-        _.in(2, function () {
-            j3.mt('-')
-        })
-        _.in(4, function () {
-            j3.mt('+')
-        })
-
-
-    }
     BUMPER = function () {
         W().P(800)
 

@@ -1,34 +1,4 @@
 b2d.p()
-$sw= cjs.sw= cjs.stopWatch=function(){var t=$t()
-    return function self(){var g=G(arguments),
-        d=$t()-t
-
-        if(g.d){t=$t()}
-        if(g.n){var f=cjs.cap(
-            (self('/')-500)/20,
-            0,
-            100
-        )
-
-            return f
-        }
-        return d}
-
-}
-$t= cjs.time=function(){return new Date().getTime()}
-i=cjs.DisplayObject.prototype
-i.tickX = function (fn) {
-    var i = this
-    cjs.t(function () {i.X(fn())})
-    return i
-}
-i.tickY = function (fn) {
-    var i = this
-    cjs.t(function () {
-        i.Y(fn())
-    })
-    return i
-}
 
 b.net=function(K){
     //when a web is created it gets web.connected=false
@@ -98,8 +68,6 @@ b.iCn=b.isConnected=function(){var res, b=this
         _.findWhere(b.webs, {connected:true} )
 
 }
-
-
 
 
 w.Webman = w.wbMan = function (x, y, sc) {

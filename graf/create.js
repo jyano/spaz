@@ -455,6 +455,25 @@ function ticker() {
         this.off('tick', fn)
         return this
     }
+
+    $sw= cjs.sw= cjs.stopWatch=function(){var t=$t()
+        return function self(){var g=G(arguments),
+            d=$t()-t
+
+            if(g.d){t=$t()}
+            if(g.n){var f=cjs.cap(
+                (self('/')-500)/20,
+                0,
+                100
+            )
+
+                return f
+            }
+            return d}
+
+    }
+    $t= cjs.time=function(){return new Date().getTime()}
+
 }
 function dOb() {
 
@@ -892,3 +911,4 @@ cjs.bindSlide = SL = function () {
 
         })
 }
+

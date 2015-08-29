@@ -1069,8 +1069,6 @@ function magic() {
             }
         }
     }
-
-
     QUERY = function () {
         W().Y()
 
@@ -1235,55 +1233,7 @@ function edge() {
             }, p1, p2)
         })
     }
-    DRAWEDG = function () {
-        W([1200, 600, 2400, 600]);
-        var p1, p2, d, l
-        p = w.p(400, 400, '+')
-        w.S(200, 200, 'r', 400, 20)
-        w.$(function (v) {
-            if (!p1) {
-                p1 = v;
-                return
-            }
-            if (!p2) {
-                p2 = v
-            } else {
-                p1 = p2;
-                p2 = v
-            }
-            w.edg(p1.x, p1.y, p2.x, p2.y).K('pf')
-            w.rC(function (f) {
-                f.B().dot()
-            }, p1, p2)
-        })
-        p.IsBullet(true)
-        w.pre('pf', function (f, cx) {
-            if (p.shall) {
-                cx.en(0)
-            }
-        })
-        w.b(function (cx) {
-            p.shall = false
-            if (!cx.pt().y && p.lV().y < 0) {
-                return
-            }
-            cx.w(p, 'pf', function () {
-                c = cx
-                v = cx.pt()
-                if (cx.pt().y) {
-                    dif = (p.Y()) - cx.pt().y
-                    $l(dif)
-                    if (dif > -10) {
-                        p.shall = true
-                    }
-                }
-            })
-        })
 
-
-        //w.end(function(cx){cx.w('pf', function(){$l('end')})})
-
-    }
 }
 function sports(){
     HOOPS = function () {
@@ -1403,7 +1353,7 @@ function random(){
 
     }
 //query games
-    CM=function(){W({g:0, w:0}).Y().C('z')
+   DONTKNOW=function(){W({g:0, w:0}).Y().C('z')
         x = w.S(100,100,'x',500)
         b =   w.S(600,300,'w', [ [80], [100,300,140,0,46] ])
         //w.d(r.wC())

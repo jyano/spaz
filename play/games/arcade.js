@@ -526,22 +526,7 @@ function space() {
         })
     }
 
-    ZIL = function () {
-        W({g: 0, w: 0})
-        health = 100
 
-        y = w.ship().warp().cl(function () {
-            health -= 5
-        })
-
-
-        z = w.zilla(600, 300).fireBallsAtInt(4000)
-
-
-        w.show(function () {
-            return 'health: ' + health + ', hits: ' + z.hits
-        })
-    }
     TALK = function () {
         W({g: 0, w: 0})
         score = 0
@@ -713,7 +698,6 @@ function space() {
             }, 300)
             return b
         }
-
         GG = function () {
             W({g: 0}).Y()
 

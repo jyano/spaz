@@ -212,6 +212,22 @@ i.RT = function () {var i = this;
     RT(i);
     return i
 }
+
+
+//i=cjs.DisplayObject.prototype
+i.tickX = function (fn) {
+    var i = this
+    cjs.t(function () {i.X(fn())})
+    return i
+}
+i.tickY = function (fn) {
+    var i = this
+    cjs.t(function () {
+        i.Y(fn())
+    })
+    return i
+}
+
 ct.rec = function () {
     var ct = this, g = G(arguments), o, ct2, h
     if (g.OO_) {
