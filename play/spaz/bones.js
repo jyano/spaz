@@ -1,11 +1,9 @@
 dist()
 rev()
-wed()
+
 pris()
-function dist() {
-
-
-    DISTY1 = function () {
+function dist(){
+    DIST = function () {
         W([600, 600, 600, 1200])
         b = w.D(300, 200, 'b', 150).tr()
         x = w.D(200, 100, 'x', 20).cn('thrust').bS('me').aD(100).fR()
@@ -15,7 +13,7 @@ function dist() {
         jD.Initialize(x, b, wAncA, wAncB)  // dJD.collideConnected = true;
         j = w.J(jD)
     }
-    DISTY = function () {
+    DISTROPE = function () {
         W([1000, 600], {})
         //p.lD(2).fR()//.r(1.6)
 
@@ -41,7 +39,7 @@ function dist() {
 
         chain.d(.4).f(12).l(40)
     }
-    LOCDJ = function () {
+    DISTDOT = LOCDJ = function () {
         W([2000, 1400], {})
 
         x = w.S(300, 400, 'r', 100, 100)
@@ -238,117 +236,6 @@ function dist() {
 
 
     }
-
-    SPOLL = function () {
-
-        W({g: 0, w: 0});
-
-        Q(function () {
-
-            s = w.s
-
-            e = w.S(200, 200, 'p', 100)
-                .d(1).r(2)
-                .bS({i: q.b('sun'), sc: .13})
-                .K('earth');
-            eI = e.ch()
-
-
-            // p= w.player(200,200,2.5, 'thrust').d(.4).aD(8).lD(.8)
-
-            p = w.D(200, 200).cn('thrust').Bm('me', 0, 0, 0.25 * sc)
-
-            w.dJ({a: p, b: e, l: 50, f: 100.15, cl: 1})
-
-            T.t(function () {
-                var sp,
-                    dx = e.X() - p.X(),
-                    dy = e.Y() - p.Y(),
-                    sc = cjs.cap(300 /
-                    M.sqrt(dx * dx + dy * dy), .3, 2)
-                s.X(300 - sc * (p.X() - 300))
-                s.Y(150 - sc * (p.Y() - 150))
-            })
-
-
-        })
-    }
-    SPOOM = function () {
-        Q(function () {
-            W({g: 0, w: 0});
-
-            SCALE = 1//W:600, H:300,
-
-            w.can.C('z')
-            s = w.s
-
-            _.t(80, function () {
-                w.cir(R(2000, -750), R(1600, -600), 4, 'w').d(0).r(2).K('star')
-            })
-
-            s.rXY(300, 150)
-
-            e = w.S(600, 300, 'p', 100).d(1).r(2).K('earth')
-
-            e.gx = e.gx || w.g.ct()
-
-            e.gx.A(Q.b('earth').rC().sXY(.13))
-
-
-            eI = e.ch()
-
-            //  p= w.me(200,200, 2.5).cn('thrust').d(.4).aD(8).lD(.8)
-
-            p = w.D(200, 200, 'x', 100, 200)
-            p.cn('thrust')
-            p.Bm('me')
-
-            j = w.dJ({
-                a: p,
-                b: e,
-                l: 600,
-                f: 2,
-                d: 2,
-                cl: 1
-            })
-
-
-            T.t(function () {
-                var sp,
-                    wd = 300
-                ht = 150
-                dx = e.X() - p.X(),
-                    dy = e.Y() - p.Y(),
-                    sc = cjs.cap(300 / M.sqrt(dx * dx + dy * dy), .3, 2)
-                s.X(wd - sc * (p.X() - wd))
-                s.Y(ht - sc * (p.Y() - ht))
-                s.sXY(sc)
-                s.al(sc * 2);
-                eI.al(sc)
-            })
-
-
-            s.twL(
-                [{kx: 8}, 1000],
-                [{kx: 0}, 1000],
-                [{ky: 8}, 1000],
-                [{ky: 0}, 1000])
-            eI.twL([{r: 360}, 10000])
-            eI.twL([{kx: 16}, 3000], [{kx: 0}, 3000])
-            p.cl('star', function () {
-                p.ch().tw(
-                    [{kx: 40}, 100],
-                    [{ky: 40}, 100],
-                    [{kx: 0, ky: 0}, 100])
-            })
-            e.cl('star', function () {
-                w.pop('star hit earth!!')
-            })
-
-        })
-
-
-    }
     RAGD = function () {
         W({})
 
@@ -492,109 +379,57 @@ function dist() {
 
 
     }
-    BIO = function () {
-
-        W().randRects()
-
-        var dJ
-
-        p = w.D(320, 460, 'b', 40, 80)
-            .Bm('me', 0, 0, .2)
-            .fR()
-
-        var l, node
-
-        w.mu(function () {
-
-            dJ = dJ && w.j(dJ) // ??
-            node = null
-        })
+    function err() {
 
 
-        w.md(function (o) {
-            if (o.f) {
+        SPOLL = function () {
 
-                var cen = p.wC()
+            W({g: 0, w: 0});
 
-                dJ = w.dJ(p, o.b,
-                    cen.x, cen.y,
-                    o.x, o.y)
+            Q(function () {
 
-                node = o.b
+                s = w.s
 
-
-            }
-
-        })
+                e = w.S(200, 200, 'p', 100)
+                    .d(1).r(2)
+                    .bS({i: q.b('sun'), sc: .13})
+                    .K('earth');
+                eI = e.ch()
 
 
-        T.t(function () {
+                // p= w.player(200,200,2.5, 'thrust').d(.4).aD(8).lD(.8)
 
-            if (dJ) {
-                // $l(dJ.l())
-                p.wake()
-                dJ.l(dJ.l() * 0.97)
+                p = w.D(200, 200).cn('thrust').Bm('me', 0, 0, 0.25 * sc)
 
-                if (l) {
-                    l.rm();
-                    l = null
-                }
-                l = w.l('w',
-                    p.X(), p.Y(), node.X(), node.Y()
-                )
+                w.dJ({a: p, b: e, l: 50, f: 100.15, cl: 1})
 
-
-            }
-        })
+                T.t(function () {
+                    var sp,
+                        dx = e.X() - p.X(),
+                        dy = e.Y() - p.Y(),
+                        sc = cjs.cap(300 /
+                        M.sqrt(dx * dx + dy * dy), .3, 2)
+                    s.X(300 - sc * (p.X() - 300))
+                    s.Y(150 - sc * (p.Y() - 150))
+                })
 
 
-    }
-    KILL = function () {
-        W()//.Y()
-        y = w.y()
-
-        w.randRects()
-
-        l = w.S(255, 50, 'g', 60, 15)
-        for (var i = 1; i <= 10; i++) {
-            w.rJ(l, b = w.D(255, i * 30 + 30, 'w', 3, 15).DFB(1, 0, 0));
-            l = b
+            })
         }
-        w.rJ(l, w.D(255, 330, 'd', 20).DFB(1, 0, 1.1))
-        l = w.S(900, 50, 'g', 60, 15)
-        for (var i = 1; i <= 10; i++) {
-            w.rJ(l, b = w.D(900, i * 30 + 30, 'w', 3, 15).DFB(1, 0, 0));
-            l = b
-        }
-        w.rJ(l, w.D(900, 330, 'd', 20).DFB(1, 0, 1.1))
-
-        // _.t(8,function(){w.me(700, 400)})
-        _.t(4, function () {
-            w.me(700, 300)
-        })
-        // _.t(1,function(){w.me(700, 200)})
-
-        w.cl('bul', function (f) {
-            if (f.of(y)) {
-                alert('f.of y')
-            }
-            else {
-                f.B().kill()
-            }
-        })
-
 
     }
 }
-function rev() {
+
+
+
+
+function rev(){
     games()
     wheel()
     demo()
     link()
     pinball()
     function demo() {
-
-
         RJ = function () {
             W({m: 0, g: 0}).Y()
             //  p1 = V(300,300) ;w.dot(p1)
@@ -616,8 +451,6 @@ function rev() {
 
 
         }
-
-
         REVJ = function () {
             W().C('z')
 
@@ -664,7 +497,6 @@ function rev() {
             ).mt(7)
 
         }
-
         ROUL = function () {
             W()
 
@@ -700,7 +532,6 @@ function rev() {
 
         }
     }
-
     function link() {
         BL = function () {
             W(300).C('z')
@@ -760,9 +591,7 @@ function rev() {
 
         }
     }
-
     function wheel() {
-
         BIKE = function () {
             W([1200, 600, 2000, 600], {})
 
@@ -845,8 +674,6 @@ function rev() {
 
             //car.aD(1000).lD(1000)
         }
-
-
         TRICYCLE = function () {
             W([1200, 600, 10000, 600], {})
 
@@ -926,7 +753,6 @@ function rev() {
 
             //car.aD(1000).lD(1000)
         }
-
         WAG = function () {
             W([1200, 600, 4000, 600], {}).P()
 
@@ -1070,7 +896,6 @@ function rev() {
 
         }
     }
-
     function games() {
         WHL = function () {
             W(0).Y()
@@ -1169,8 +994,6 @@ function rev() {
 
 
         }
-
-
         SPERCH = function () {
             W([1200, 600, 1200, 1200], {}).P()
             p.tr()
@@ -1181,10 +1004,7 @@ function rev() {
             w.spinner(400, 900)
             w.spinner(800, 900, '-')
         }
-
-
     }
-
     function pinball() {
 
         w.flips = w.flippers = function (x, y, x2, y2) {
@@ -1231,9 +1051,9 @@ function rev() {
             var rightJoint = w.S(x, y, 'r', 20),
                 rightFlip = w.D(x, y, 'b', 100, 25).DBF(1, .5, 0),
 
-                flipper = w.rev(
+                flipper = w.rJ(
                     rightJoint, rightFlip, 0, 0, 40, 0
-                ).lim(-70, 30)
+                ).lm(-70, 30)
 
 
             flipper.flip = function () {
@@ -1246,11 +1066,11 @@ function rev() {
 
             var fl = w.D(x, y, 'b', 100, 25).DBF(1, .5, 0),
 
-                flipper = w.rev(
+                flipper = w.rJ(
                     w.S(x, y, 'r', 20), fl,
 
                     0, 0, 40, 0
-                ).lim(150, 250)
+                ).lm(150, 250)
 
             flipper.flip = function () {
                 fl.I(1000, 0)
@@ -1258,36 +1078,8 @@ function rev() {
 
             return flipper
         }
-        PINBALL = function () {
-            W([420, 600], {})
-            w.floor.kill()
-
-
-            w.S(215, 520, 'r', 30).K('bump').DBF(10, .8, 0)
-            w.S(215, 100, 'b', 100, 10).K('shelf')
-
-
-            w.D(215, 90, 'r', 20)
-                .bS('sun', .24)
-                .K('sun')
-                .rot(10, 100)
-
-            flip = w.flips(100, 430)
-
-            $.tap(function () {
-                    var b = w.B(R(300, 40), 160, 'g', 20).DBF(1, .2, 2)
-                    if (!R(10)) {
-                        b.bS('me', .24)
-                    }
-                    flip()
-                }
-            )
-
-        }
-
 
     }
-
     function err() {
         BINOTAFUNCTION = DEMOREV = function () {
             W()
@@ -1382,126 +1174,11 @@ function rev() {
 
     }
 }
-function wed() {
 
 
-    WED = function () {
-        W([1500, 1000], {g: 0})
-
-        w.wed(
-            w.D(300, 300, 'r', 130),
-            w.D(300, 650, 'b', 130, 400)
-        )
-
-        w.wed(w.S(200, 100, 'x', 30),
-            w.D(200, 100, 'v', 30), 0, 10)
-        w.wed(w.S(300, 100, 'l', 30),
-            w.D(300, 200, 'x', 30), 0, -10)
-
-        w.wed(w.S(400, 100, 'g', 30),
-            w.D(400, 300, 'x', 30), 10, 10)
 
 
-        w.wed(w.S(500, 100, 'x', 30), w.D(500, 100, 'v', 30), 10, -10)
-        w.wed(w.S(600, 100, 'x', 30), w.D(600, 100, 'v', 30), 10, -20)
-        w.wed(w.S(700, 100, 'x', 30), w.D(700, 100, 'v', 30), 10, -30)
-        w.wed(w.S(800, 100, 'x', 30), w.D(800, 100, 'v', 30), -10, -40)
-        w.wed(w.S(900, 100, 'x', 30), w.D(900, 100, 'v', 30), -10, -50)
-        /*
-         w.wed(w.S(100,200,'x',30), w.S(100,200,'v',30),0,0)
-         w.wed(w.S(200,200,'x',30), w.S(200,200,'v',30),0,10)
-         w.wed(w.S(300,200,'x',30), w.S(300,200,'v',30),0,-10)
-         w.wed(w.S(400,200,'x',30), w.S(400,200,'v',30),10,10)
-         w.wed(w.S(500,200,'x',30), w.S(500,200,'v',30),10,-10)
-         w.wed(w.S(600,200,'x',30), w.S(600,200,'v',30),10,-20)
-         w.wed(w.S(700,200,'x',30), w.S(700,200,'v',30),10,-30)
-         w.wed(w.S(800,200,'x',30), w.S(800,200,'v',30),-10,-40)
-         w.wed(w.S(900,200,'x',30), w.S(900,200,'v',30),-10,-50)
-
-         w.wed(w.D(100,500,'x',30), w.S(100,500,'v',30),0,0)
-
-         w.wed( w.D(200,500,'x',30), w.S(200,500,'v',30) )
-
-
-         w.wed(
-         w.D(300,500, 'o', 30),
-         w.D(300,500,'g', 50,50),
-
-         V(0,-10)
-         )
-
-         w.wed(w.D(400,500,'x',30), w.S(400,500,'v',30), V(10,10))
-         w.wed(w.D(500,500,'x',30), w.S(500,500,'v',30),V(10,-10))
-         w.wed(w.D(600,500,'x',30), w.S(600,500,'v',30),10,-20)
-         w.wed(w.D(700,500,'x',30), w.S(700,500,'v',30),10,-30)
-         w.wed(w.D(800,500,'x',30), w.S(800,500,'v',30),-10,-40)
-         w.wed(w.D(900,500,'x',30), w.S(900,500,'v',30),-10,-50)
-         */
-    }
-    CRUSHREWED = function () {
-        W([1200, 600, 1400, 600], {}).C('p').P().P().P().P().P()
-        n = 0
-        p.track().cir({r: 10, c: 'y'}).bS('sun')
-        j = w.wed(
-            w.D(100, 200, 'x', 100, 200).r(1.5),
-            w.D(200, 100, 'u', 200, 100))
-        _.ev(2, function () {
-            if (!j.destroyed) {
-                j.destroy()
-            }
-            else {
-                j = j.W().wed(j.A(), j.B())
-            }
-        })
-    }
-    LUMP = function () {
-        W(5)//.Y()
-        w.D(600, 200, 'w', 180).bit(1, [1]).r(.5)
-
-        w.D(400, 0, 'g', 100).bit(2, [1, 2, 4, 8]).r(.8)
-        w.D(300, 0, 'g', 183, 183).bit(2, [1, 2, 4, 8]).r(.8)
-
-        _.t(38, function () {
-            w.D(R(1100, 100), R(300, -2500), 'w', 20).bit(1, [1])
-        })
-
-        y = w.y(100, 100).rt(40).bit(8, [1, 2, 4])
-
-        fn = _.th(function () {
-            var xx = y.X(),
-                yy = y.Y()
-            _.in(1, function () {
-                w.S(xx, yy, 'b', 15)
-            })
-        }, 100)
-        y.cl(fn)
-        _.e([[400, 500], [300, 500], [400, 300],
-            [300, 100], [400, 200], [100, 300],
-            [300, 300]
-        ], function glb(v) {
-            return w.D(v[0], v[1], 'z', 20).K('glb')
-        })
-        y.cl('glb', function (f) {
-            var glb = f.B()
-            if (!glb.j()) {
-                glb.glu(y)
-            }
-        })
-        w.wed(
-            w.D(100, 200, 'x', 100, 200).r(1),
-            w.D(200, 100, 'u', 200, 100).r(1))
-        w.wed(
-            w.D(300, 400, 'w', 50, 100),
-            w.D(300, 400, 'v', 100, 50))
-
-        w.t_.bit(1, [8])
-
-
-    }
-}
-function pris() {
-
-
+function pris(){
     PJ = function () {
         W([1200, 600, 2400, 1200], {}).P(100, w.h - 200)
 
@@ -1564,114 +1241,6 @@ function pris() {
 
 
     }
-    SWITCH = function () {
-        W([1200, 600, 3600, 800])
-
-
-        w.Z(1.2)
-        w.Elv()
-        sen = w.S(1200, 300, 'w', [[2400, 200, '-']]).K('sen')
-        aCo = w.aCo(-50, -150)
-        aCo.do(sen)
-        //<- sen.do(aCo) //  <- sen.cl(
-        // function(f){if(!f.by(aCo)){aCo.B(f)}},
-        // function(f){if(f.by(aCo)){aCo.xB(f)}
-        // })
-
-
-        p = w.p(300, 400, '+').K('char')
-
-        statMar = w.p(2600, 150).stat().K('mario')
-
-        statBird = w.y(2350, 450, 2, '-').rt(90).stat().K('bird')
-
-
-        statBird.cl('char', function () {
-            p.kill()
-            p = w.y(2350, 550, 2, '+').fR().rt(90).lD(2).K('char')
-            w.Z(1.6)
-
-        })
-
-        statMar.cl('char', function () {
-            p.kill()
-            p = w.p(2400, 250).tr().K('char')
-            w.Z(1.2)
-        })
-
-
-        //.tr()
-
-
-        w.D(300, 100, 'r', 20);
-        w.D(400, 100, 'r', 40);
-        w.D(500, 100, 'r', 45);
-        w.D(600, 100, 'r', 180);
-        w.D(700, 100, 'r', 10)
-
-
-        _.ev(2, function () {
-            if (R()) {
-
-                // tog()
-            }
-        })
-
-        // Imagine that you have gusts of wind blowing sideways…
-        // you can add your objects to a Contoller and have them pushed sideways…
-        // then when the wind passes you could remove them from that controller.
-        // now just add and remove bodies to the controller!!
-
-        function tog() {
-
-            $l('tog')
-            // if(added){rm()} else {add()}
-        }
-
-        function add() {
-            w.C('g');
-            added = 1;
-            co.B(b)
-        }
-
-        function rm() {
-            w.C('r');
-            added = 0;
-            co.xB(b)
-        }
-
-
-        w.pJ(
-            w.D(1200, 500, 'z', 60).K('ride'),
-            w.S(1200, 500, 's', 40, 150).K('cart'))//.lm(-30, 60).speed(-100).motor(1).maxForce(1000)
-            .lm(-30, 60).mt(-10)//.speed(-100).maxForce(1000)
-
-        w.pJ(w.D(1400, 500, 'z', 110).K('ride'),
-            w.S(1400, 500, 's', 40, 300).K('cart'))
-            .lm(-30, 60).mt(10)//.speed(-100).maxForce(1000)
-
-        w.pJ(
-            w.D(1600, 500, 'z', 80).K('ride'),
-            w.S(1600, 500, 's', 40, 250).K('cart')
-        ).lm(-30, 60).mt(-100)//.speed(-100).maxForce(1000)
-
-
-        w.b(function (cx) {
-
-            cx.w('cart', function () {
-
-                w.e(function (b) {
-
-                    if (b.of('ride')) {
-                        b.I(0, -1000)
-                    }
-
-                })
-
-            })
-
-        })
-    }
     BUMPER = function () {
         W().P(800)
 
@@ -1708,6 +1277,59 @@ function pris() {
 
 
     }
+}
+WED = function () {
+    W([1500, 1000], {g: 0})
+
+    w.wed(
+        w.D(300, 300, 'r', 130),
+        w.D(300, 650, 'b', 130, 400)
+    )
+
+    w.wed(w.S(200, 100, 'x', 30),
+        w.D(200, 100, 'v', 30), 0, 10)
+    w.wed(w.S(300, 100, 'l', 30),
+        w.D(300, 200, 'x', 30), 0, -10)
+
+    w.wed(w.S(400, 100, 'g', 30),
+        w.D(400, 300, 'x', 30), 10, 10)
+
+
+    w.wed(w.S(500, 100, 'x', 30), w.D(500, 100, 'v', 30), 10, -10)
+    w.wed(w.S(600, 100, 'x', 30), w.D(600, 100, 'v', 30), 10, -20)
+    w.wed(w.S(700, 100, 'x', 30), w.D(700, 100, 'v', 30), 10, -30)
+    w.wed(w.S(800, 100, 'x', 30), w.D(800, 100, 'v', 30), -10, -40)
+    w.wed(w.S(900, 100, 'x', 30), w.D(900, 100, 'v', 30), -10, -50)
+    /*
+     w.wed(w.S(100,200,'x',30), w.S(100,200,'v',30),0,0)
+     w.wed(w.S(200,200,'x',30), w.S(200,200,'v',30),0,10)
+     w.wed(w.S(300,200,'x',30), w.S(300,200,'v',30),0,-10)
+     w.wed(w.S(400,200,'x',30), w.S(400,200,'v',30),10,10)
+     w.wed(w.S(500,200,'x',30), w.S(500,200,'v',30),10,-10)
+     w.wed(w.S(600,200,'x',30), w.S(600,200,'v',30),10,-20)
+     w.wed(w.S(700,200,'x',30), w.S(700,200,'v',30),10,-30)
+     w.wed(w.S(800,200,'x',30), w.S(800,200,'v',30),-10,-40)
+     w.wed(w.S(900,200,'x',30), w.S(900,200,'v',30),-10,-50)
+
+     w.wed(w.D(100,500,'x',30), w.S(100,500,'v',30),0,0)
+
+     w.wed( w.D(200,500,'x',30), w.S(200,500,'v',30) )
+
+
+     w.wed(
+     w.D(300,500, 'o', 30),
+     w.D(300,500,'g', 50,50),
+
+     V(0,-10)
+     )
+
+     w.wed(w.D(400,500,'x',30), w.S(400,500,'v',30), V(10,10))
+     w.wed(w.D(500,500,'x',30), w.S(500,500,'v',30),V(10,-10))
+     w.wed(w.D(600,500,'x',30), w.S(600,500,'v',30),10,-20)
+     w.wed(w.D(700,500,'x',30), w.S(700,500,'v',30),10,-30)
+     w.wed(w.D(800,500,'x',30), w.S(800,500,'v',30),-10,-40)
+     w.wed(w.D(900,500,'x',30), w.S(900,500,'v',30),-10,-50)
+     */
 }
 JOINTTRANSLATION=function(){W({g:300}).P()
 
