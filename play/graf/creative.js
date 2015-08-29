@@ -4,7 +4,7 @@ FANCYEDIT = function (x, y) {
     z()
 
     canvas = $.canvas('g', 400)
-    stage = new cjs.Stage(canvas[0]).tick()
+    stage = new cjs.Stage(canvas[0]).t()
     frame = $.dragFrame(theSpan = $.span())
 
     theSpan.A(
@@ -122,43 +122,6 @@ FANCYEDIT = function (x, y) {
 
 
 }
-TFSET= function(){W()._(function(){
-    w.i.qB('me').grow().drag()
-
-    i= w.i.qB('me').XY(200,200)
-
-    ball = w.ball()
-
-    _.in(3, function(){
-
-        w.C('b'); ball.bS(i)
-
-    })
-
-    //  me.startMoving(10, 10)
-
-    T.t(function(){iS = i.inStage()
-        $l(iS)
-    })
-    b= w.i.qB('me')
-
-
-    b.setTransform(0,0,2,.5,0,40,4,2,3)
-
-    //m = b.getMatrix()
-    function tf(a,b,c,d,e,f,g,h,i){
-        return this.x=a||0,
-            this.y=b||0,
-            this.scaleX=null==c?1:c,
-            this.scaleY=null==d?1:d,
-            this.rotation=e||0,
-            this.skewX=f||0,
-            this.skewY=g||0,
-            this.regX =h||0,
-            this.regY =i||0,
-            this}
-
-})}
 TEXT = function () {W()
     w.S(300, 100, 'z', 1500, 1)
     w.d('r', 300, 100)
@@ -181,101 +144,13 @@ TEXT = function () {W()
     hello = 'fasdafsafsdfadsafafdsfadsafdsafdsfsd'
     w.show('hello')
 }
-BFREC = function () {W()
-    w.i.h(200, 300).dg().bf('me', function (h) {h.rec({w: 500, h: 200})})
-    w.i.h().dg().bf('me', function (h) {h.rec({w: 500, h: 200})
-        w.D(600, 300, 'b', 500, 200).bS(h)
-    })
-}
-BS = function () {
-    W()._(function () {
-        x = w.D(600, 300, 'x', 200, 100)
-        f = x.cir({r: 100, x: 300, c: 'r'})
-        me = Q.b('me').rC()
-        f.bS(me, 0, f.pX(), f.pY())
-    })
-
-}
-DEV=function(){ W([1200, 600, 1400, 800], {g: 50, t: 0}).stats()
-    //  w.dr(100, 100, 100, 100, '-')
-    //  w.dr(100, 200, 100, 100, '+')
-
-    w.dl('r', 0, 100, 5000, 5000, '-')
-
-    w.dl('p', 0, 200, 5000, 2000)
-
-    w.dl('b', 0, 300, 5000, 3000, '+')
-
-    wh = w.S(400, 350, 'w', [[300, 220, '-']])
-
-    or = w.S(400, 200, 'o', 300, 50)
-
-    pi = w.S(400, 500, 'x', 300, 50)
-
-    y = w.ship(150, 200).damp(1, 10).rot(90).lD(0).rot(120).lV(1);
-
-    w.track(y, 600, 300, '!')
-
-    b = w.D(700, 200, 'b', 100)
-
-    me = w.me()
-
-
-
-
-}
-CHICKBALLS=function(){
-
-    W(1200,1200)._(function(){
-
-        _.t(14, function(){
-
-            w.D(R(1100,50),R(1100,50))
-                .cir({
-                    bf:'chicks',
-
-                    r: R(180, 50)
-                })
-
-        })
-
-
-        w.y()
-        w.p()
-    })
-
-
-}
-//
 COL=function(){W();
     b=w.S(600,300,'w',200);
     _.in(function(){
         b.dyn().f().C('z')
     })
 }
-POLLL = function () {
-    W()
-
-    w.D(500, 400, [-100, 0], [0, -100], [100, 50], [0, -70])
-
-    w.D(500, 430).pol('r', [[-100, 0], [0, -20], [40, 50]])
-
-}
-CENH=function(){W()
-
-    h.rec(100,100,100,100,'y')
-    h.rec(200,200,100,100,'b')
-
-    h.c('o').polyStar(300,100,
-        50,5,0.6,-90)
-
-    h.c('w','z')
-        .roundRectComplex(400,300,
-        300,300, 20,20,30,40 )
-
-    h.cir(500,200,40,'b','x',10)
-}
-OVS=function(){St()
+GRADOVALS=function(){St()
     h=s.h(40, 10,'b',16).drag()
     h.c({C:['o',5],lf:{c1:'g',c2:'r',x2:100,y2:400}}).de(100, 400)
 
@@ -287,67 +162,6 @@ OVS=function(){St()
     h.ls('r','w',300,100,400,140).de(300,0,300,500)
 
     s.u()
-}
-GRAPHTEST=function(){
-
-
-
-    St(); img = $.i('me',function(){s.ct().h().bfS(img).ss(32).dr(20,20,920,360); _.each([
-
-            function(){return $h(12,10)
-                .lf('b','g',130).dr(130)},
-
-            function(){return $h(40, 10,'b',16)
-                .ls('r','w',70,140).de(70,140)},
-
-            function(){return $h(80,80)
-                .C('b',8).rf('w','y',40).dc(40)} ,
-
-            function(){return $h(12,10,18)
-                .bf(img, cjs.M(1) ).rs('b','g',30,130).dr(130)},
-
-
-
-
-
-
-            function(){return $h(12,12,'g','r',8)
-                .rr(130,30)}, //w(h) and r
-
-
-            function lt(){return $h().C('o')
-                .ss(16,'round','round')
-                .mt([40,10],[90,90],[90,140])},
-
-            function star(){return $h(80,85,'y','b',3)
-                .pStr(0,0,80,5,.8,-95)},
-
-
-
-            function hex(){return $h(80,40,'p')
-                .pStr(40,6).pStr(0,75,40,6).pStr(45,45,20,6)}
-
-
-        ],
-
-        function(cont,i){var W=155, H=155, P= 5, C=4 //pad, cols
-            s.A(tile(cont()).XY(
-                42+(W+P)*(i%C),
-                42+(i/C|0)*(H+P)))})})[0]
-
-
-
-
-    tile=createTile=function(x,y){var bg,til
-        bg = $h().c('t').dr(0, 0, 155, 155).ef().op(.2)
-        til = cjs.ct().A(bg)
-        if(N(x)){  til.X(x) }
-        if(N(y)){  til.Y(y)  }
-        if(O(x)){ til.A(x) }
-
-        return til}
-
-
 }
 ROUNDREC = function () {
     St()
@@ -367,14 +181,14 @@ ROUNDREC = function () {
 }
 NEWSTG=function(){z()
     //three ways to make a new stage
-    s = cjs.s('r',100 ).A().bm('me')
+    s = $St('r',100 ).A().bm('me')
     s.can.drag()
     c= $.canvas('b',100).A().drag().XY(400)
-    s1=cjs.s(c)
+    s1=$St(c)
     s1.A().bm('me')
     c2= $.canvas('b',100).A().id('someId').drag().XY(300,100)
-    s2=  cjs.s(['someId'])
-    s2.tick().bm('me')
+    s2=  $St(['someId'])
+    s2.t().bm('me')
 
 }
 ONOFFTICK=function(){W({w:0}) // or text?
@@ -389,7 +203,7 @@ ONOFFTICK=function(){W({w:0}) // or text?
 
 
 }
-DRAG=function(){z()
+DRAGST=function(){z()
     $.dragStage()
 }
 TIMTIMSPIN=function(){Q(['guy','me'],function(){//z()
@@ -401,34 +215,6 @@ TIMTIMSPIN=function(){Q(['guy','me'],function(){//z()
     _.in(3, function(){   T.f(1)   })
     _.in(9, function(){  T.f(1000)  })
 })}
-TRIPLESTAGE= function(){w=b2d.W({  grav:0 })
-    b = w.ball(500,300,60)
-    b.bindSprite2( w.s.h(500,300)  )
-    num = 0
-    dif = .1
-    shape = b.sprite
-    shape.rG(['r','y'],[0, num], 60)
-        .dc(0, 0, 60)
-    w.s.HUD.bm('me', function(b){   b.XY(300).drag()   })
-    w.s.back.bm('guy', function(b){   b.XY(200).drag()  })
-    w.s.back.linGrad('b','z')
-}
-RADIANT=function(){W().P()
-
-    p.lD(1).warp()
-
-    $.space(
-        function(){
-            p.polyBul()}
-    )
-
-    badGuy=w.badGuy(
-        400, 200).warp().den(.1)
-
-    _.ev(.2, function(){
-        w.s.pen('badGuy health: ' + badGuy.health)
-    } )
-}
 preload()
 function preload() {
     TXWQ = function () {
@@ -628,36 +414,132 @@ function ui(){
                 self(opacity)}, 30)
         }
     }
-
 }
+spaz()
 function spaz(){
-    MES=function(){W([],{w:0})// what took me so long to make this?
+    POLLL = function () {
+        W()
+
+        w.D(500, 400, [-100, 0], [0, -100], [100, 50], [0, -70])
+
+        w.D(500, 430).pol('r', [[-100, 0], [0, -20], [40, 50]])
+
+    }
+
+    TFSET= function(){W()._(function(){
+        w.i.qB('me').grow().drag()
+
+        i= w.i.qB('me').XY(200,200)
+
+        ball = w.ball()
+
+        _.in(3, function(){
+
+            w.C('b'); ball.bS(i)
+
+        })
+
+        //  me.startMoving(10, 10)
+
+        T.t(function(){iS = i.inStage()
+            $l(iS)
+        })
+        b= w.i.qB('me')
+
+
+        b.setTransform(0,0,2,.5,0,40,4,2,3)
+
+        //m = b.getMatrix()
+        function tf(a,b,c,d,e,f,g,h,i){
+            return this.x=a||0,
+                this.y=b||0,
+                this.scaleX=null==c?1:c,
+                this.scaleY=null==d?1:d,
+                this.rotation=e||0,
+                this.skewX=f||0,
+                this.skewY=g||0,
+                this.regX =h||0,
+                this.regY =i||0,
+                this}
+
+    })}
+
+
+    BFREC = function () {W()
+        w.i.h(200, 300).dg().bf('me', function (h) {h.rec({w: 500, h: 200})})
+        w.i.h().dg().bf('me', function (h) {h.rec({w: 500, h: 200})
+            w.D(600, 300, 'b', 500, 200).bS(h)
+        })
+    }
+    BS = function () {
+        W()._(function () {
+            x = w.D(600, 300, 'x', 200, 100)
+            f = x.cir({r: 100, x: 300, c: 'r'})
+            me = Q.b('me').rC()
+            f.bS(me, 0, f.pX(), f.pY())
+        })
+
+    }
+    DEV=function(){ W([1200, 600, 1400, 800], {g: 50, t: 0}).stats()
+        //  w.dr(100, 100, 100, 100, '-')
+        //  w.dr(100, 200, 100, 100, '+')
+
+        w.dl('r', 0, 100, 5000, 5000, '-')
+
+        w.dl('p', 0, 200, 5000, 2000)
+
+        w.dl('b', 0, 300, 5000, 3000, '+')
+
+        wh = w.S(400, 350, 'w', [[300, 220, '-']])
+
+        or = w.S(400, 200, 'o', 300, 50)
+
+        pi = w.S(400, 500, 'x', 300, 50)
+
+        y = w.ship(150, 200).damp(1, 10).rot(90).lD(0).rot(120).lV(1);
+
+        w.track(y, 600, 300, '!')
+
+        b = w.D(700, 200, 'b', 100)
+
+        me = w.me()
+
+
+
+
+    }
+    CHICKBALLS=function(){
+
+        W(1200,1200)._(function(){
+
+            _.t(14, function(){
+
+                w.D(R(1100,50),R(1100,50))
+                    .cir({
+                        bf:'chicks',
+
+                        r: R(180, 50)
+                    })
+
+            })
+
+
+            w.y()
+            w.p()
+        })
+
+
+    }
+    FALLINGMES=function(){W([],{w:0})// what took me so long to make this?
         w.C('y')
-
-        _.ev(1, function(){w.me(R(1000,100), R(-100) )})
-
+        _.ev(1, function(){
+            w.me(R(1000,100), R(-100) )})
         w.me(600,300,14).stat()
         w.l('z', 600,0,600,600)
-
     }
-    JOY=function(){W()//.P()
-        $.joystick  =function(){
-            $('#left').on('mousedown mouseover touchenter', function(e){K.left = true ;e.preventDefault()})
-            $('#left').on('mouseup mouseout touchleave', function(){K.left = false})
-            $('#jump').on('mousedown mouseover touchenter', function(){  K.up = true   })
-            $('#jump').on('mouseup mouseout touchleave', function(){  K.up = false  })
-            $('#right').on('mousedown mouseover touchenter', function(){ K.right = true})
-            $('#right').on('mouseup mouseout touchleave', function(){K.right = false })}
-        w.brick(200,400, 80,20)
-        w.brick(300,200,80,20)
 
-        $.joystick()
 
-        p= w.p(100,100,'power')
-        p.r(.8)
-
-    }
-    BMF1 = function () {
+   RANDSPAZ = function () {
         W()
 
         //h.bC
@@ -751,7 +633,7 @@ function spaz(){
             w.i.T(200, 100, '$$ me')
         })
     }
-    CANTFBALLS2 = function () {
+    META = AWESOMESAUCE = function () {
         W([400, 400], {w: 'U'}).C('w')._(function () {
             //cjs.rulers()
             w.p(0, 0, 10).stat()
@@ -759,7 +641,7 @@ function spaz(){
                 w.D(R(100, 50), R(100, 50), 'b', 30)
             })
 
-            $.ev(3, function () {
+            _.ev(3, function () {
 
                 var b = w.D(200, 200, 'b', 80)
                 b.$h('x', 'X', 1).c('x', 'X', 1).bf(
@@ -780,30 +662,6 @@ function spaz(){
             nice = w.i.T(0, 140, 'nice', 100, 'o')
             b.bS(nice)
         })
-    }
-    RADIANTBALLS=function(){s=$St('a')
-        b1=s.cannonBall(100,200)
-        b2=s.basketBall(100,100)
-        b3=s.beachBall(50,50)
-        b3=s.snowBall(50,300)
-    }
-    DIRTYBALLS=function(){W({  grav:0 })
-
-        w.dirtyBall=function(x,y,stop1,stop2){
-            return  this.gradBall(x, y, 60,'z','w',  stop1, stop2 )
-
-        }
-
-        w.gradBall(200,100,60,'z','w'  )
-        w.dirtyBall(350,100,  0,  .9 )
-        w.gradBall(500,100,60,'z','w',  0,  .6 )
-        w.gradBall(650,100,60,'z','w',  0,  .3 )
-        w.gradBall(800,100,60,'z','w',  0,  .1 )
-        w.gradBall(350,300,60,'z','w',  .3,   1 )
-        w.dirtyBall(500,300,  .6,   1 )
-        w.dirtyBall(650,300,    .9,   1 )
-        w.dirtyBall(800,300 ,  1,   1 )
-
     }
     STATUSBALL=function(){W({  grav:0 })
         b = w.D(500,300,'r',60).bS( w.s.h(500,300)  )
@@ -862,96 +720,247 @@ function spaz(){
         W({g:0})
         w.badGuy(500,300)
     }
-    SWITCHBALLWORKSBUTTOOCOMPLICATED=function(){w=b2d.W({  grav:0 })
-
-        advanceN=function(n, dif){
-            n += dif
-            if(n>=1){n=.9; dif*= -1}
-            if(n<=0){n=0; dif*= -1}
-            return {n:n, dif:dif}}
 
 
-        switchBall1=function(x,y){var  dif=.1,n1=0,n2= 0,
-            b=w.ball(x,y, 60).bindSprite2( w.s.h(x,y) )
-
-            I(function(){n2 = advanceN(n2); drawGrad()}, 100)
-            function drawGrad(){
-                b.sprite.rG(['r','y'],[n1, n2],  60 ).dc(0, 0, 60)}
-
-            function advanceN(n2){
-
-                n2 += dif
-                if(n2>=1){n2=.9; dif*= -1}
-                if(n2<=0){n2=0; dif*= -1}; return n2}
+    function alpha(){
+        JOYSTICK=function(){W()//.P()
+            $.joystick  =function(){
+                $('#left').on('mousedown mouseover touchenter', function(e){K.left = true ;e.preventDefault()})
+                $('#left').on('mouseup mouseout touchleave', function(){K.left = false})
+                $('#jump').on('mousedown mouseover touchenter', function(){  K.up = true   })
+                $('#jump').on('mouseup mouseout touchleave', function(){  K.up = false  })
+                $('#right').on('mousedown mouseover touchenter', function(){ K.right = true})
+                $('#right').on('mouseup mouseout touchleave', function(){K.right = false })}
+            w.brick(200,400, 80,20)
+            w.brick(300,200,80,20)
+            $.joystick()
+            p= w.p(100,100,'power')
+            p.r(.8)
 
         }
+    }
+    function weak(){
+        DIRTYBALLS=function(){W({  grav:0 })
+
+            w.dirtyBall=function(x,y,stop1,stop2){
+                return  this.gradBall(x, y, 60,'z','w',  stop1, stop2 )
+
+            }
+
+            w.gradBall(200,100,60,'z','w'  )
+            w.dirtyBall(350,100,  0,  .9 )
+            w.gradBall(500,100,60,'z','w',  0,  .6 )
+            w.gradBall(650,100,60,'z','w',  0,  .3 )
+            w.gradBall(800,100,60,'z','w',  0,  .1 )
+            w.gradBall(350,300,60,'z','w',  .3,   1 )
+            w.dirtyBall(500,300,  .6,   1 )
+            w.dirtyBall(650,300,    .9,   1 )
+            w.dirtyBall(800,300 ,  1,   1 )
+
+        }
+        RADIANTBALLS=function(){s=$St('a')
+            b1=s.cannonBall(100,200)
+            b2=s.basketBall(100,100)
+            b3=s.beachBall(50,50)
+            b3=s.snowBall(50,300)
+        }
+
+        SWITCHBALLWORKSBUTTOOCOMPLICATED=function(){w=b2d.W({  grav:0 })
+
+            advanceN=function(n, dif){
+                n += dif
+                if(n>=1){n=.9; dif*= -1}
+                if(n<=0){n=0; dif*= -1}
+                return {n:n, dif:dif}}
 
 
-        switchBall2=function(x, y){
-            var   ball= w.ball(x,y, 60).bindSprite2( w.s.h(x,y) )
+            switchBall1=function(x,y){var  dif=.1,n1=0,n2= 0,
+                b=w.ball(x,y, 60).bindSprite2( w.s.h(x,y) )
 
+                I(function(){n2 = advanceN(n2); drawGrad()}, 100)
+                function drawGrad(){
+                    b.sprite.rG(['r','y'],[n1, n2],  60 ).dc(0, 0, 60)}
 
+                function advanceN(n2){
 
-            ball.drawGrad = function(n1,n2 ){return this.sprite.rG(['r','y'],
-                [n1, n2],  60 ).dc(0, 0, 60)}
-
-            ball.animGrad1=function(){
-
-                var that=this,
-                    dif=.1,  n2=1,  n1=0
-
-                I(function(){
-                        var res = advanceN(n1, dif)
-
-                        dif = res.dif
-
-                        n1 = res.n
-
-                        that.drawGrad(n1,n2)},
-
-                    300)}
-
-
-            ball.animGrad2=function(){
-
-                var that=this,  dif=.1
-
-                I(function(){
-                        var res = advanceN(n1, dif)
-                        dif = res.dif
-                        n1 = res.n
-                        that.drawGrad(n1)},
-                    300)
+                    n2 += dif
+                    if(n2>=1){n2=.9; dif*= -1}
+                    if(n2<=0){n2=0; dif*= -1}; return n2}
 
             }
 
 
-            ball.animGrad1()
+            switchBall2=function(x, y){
+                var   ball= w.ball(x,y, 60).bindSprite2( w.s.h(x,y) )
+
+
+
+                ball.drawGrad = function(n1,n2 ){return this.sprite.rG(['r','y'],
+                    [n1, n2],  60 ).dc(0, 0, 60)}
+
+                ball.animGrad1=function(){
+
+                    var that=this,
+                        dif=.1,  n2=1,  n1=0
+
+                    I(function(){
+                            var res = advanceN(n1, dif)
+
+                            dif = res.dif
+
+                            n1 = res.n
+
+                            that.drawGrad(n1,n2)},
+
+                        300)}
+
+
+                ball.animGrad2=function(){
+
+                    var that=this,  dif=.1
+
+                    I(function(){
+                            var res = advanceN(n1, dif)
+                            dif = res.dif
+                            n1 = res.n
+                            that.drawGrad(n1)},
+                        300)
+
+                }
+
+
+                ball.animGrad1()
+
+
+
+
+            }
+
+
+
+
+            switchBall1(100,100)
+
+
+            switchBall2(300,100)
+
+
+
+            w.s.back.linGrad('u','p')
+            w.s.HUD.bm('me', function(bm){  me= bm.sXY(.3).XY(1150, 550).drag()  })
 
 
 
 
         }
 
-
-
-
-        switchBall1(100,100)
-
-
-        switchBall2(300,100)
-
-
-
-        w.s.back.linGrad('u','p')
-        w.s.HUD.bm('me', function(bm){  me= bm.sXY(.3).XY(1150, 550).drag()  })
-
-
-
-
     }
 }
 function err(){
+    CENH=function(){W()
+
+        h.rec(100,100,100,100,'y')
+        h.rec(200,200,100,100,'b')
+
+        h.c('o').polyStar(300,100,
+            50,5,0.6,-90)
+
+        h.c('w','z')
+            .roundRectComplex(400,300,
+            300,300, 20,20,30,40 )
+
+        h.cir(500,200,40,'b','x',10)
+    }
+    GRAPHTEST=function(){
+
+
+
+        St(); img = $.i('me',function(){s.ct().h().bfS(img).ss(32).dr(20,20,920,360); _.each([
+
+                function(){return $h(12,10)
+                    .lf('b','g',130).dr(130)},
+
+                function(){return $h(40, 10,'b',16)
+                    .ls('r','w',70,140).de(70,140)},
+
+                function(){return $h(80,80)
+                    .C('b',8).rf('w','y',40).dc(40)} ,
+
+                function(){return $h(12,10,18)
+                    .bf(img, cjs.M(1) ).rs('b','g',30,130).dr(130)},
+
+
+
+
+
+
+                function(){return $h(12,12,'g','r',8)
+                    .rr(130,30)}, //w(h) and r
+
+
+                function lt(){return $h().C('o')
+                    .ss(16,'round','round')
+                    .mt([40,10],[90,90],[90,140])},
+
+                function star(){return $h(80,85,'y','b',3)
+                    .pStr(0,0,80,5,.8,-95)},
+
+
+
+                function hex(){return $h(80,40,'p')
+                    .pStr(40,6).pStr(0,75,40,6).pStr(45,45,20,6)}
+
+
+            ],
+
+            function(cont,i){var W=155, H=155, P= 5, C=4 //pad, cols
+                s.A(tile(cont()).XY(
+                    42+(W+P)*(i%C),
+                    42+(i/C|0)*(H+P)))})})[0]
+
+
+
+
+        tile=createTile=function(x,y){var bg,til
+            bg = $h().c('t').dr(0, 0, 155, 155).ef().op(.2)
+            til = cjs.ct().A(bg)
+            if(N(x)){  til.X(x) }
+            if(N(y)){  til.Y(y)  }
+            if(O(x)){ til.A(x) }
+
+            return til}
+
+
+    }
+    TRIPLESTAGE= function(){w=b2d.W({  grav:0 })
+        b = w.ball(500,300,60)
+        b.bindSprite2( w.s.h(500,300)  )
+        num = 0
+        dif = .1
+        shape = b.sprite
+        shape.rG(['r','y'],[0, num], 60)
+            .dc(0, 0, 60)
+        w.s.HUD.bm('me', function(b){   b.XY(300).drag()   })
+        w.s.back.bm('guy', function(b){   b.XY(200).drag()  })
+        w.s.back.linGrad('b','z')
+    }
+
+    RADIANT=function(){W().P()
+
+        p.lD(1).warp()
+
+        $.space(
+            function(){
+                p.polyBul()}
+        )
+
+        badGuy=w.badGuy(
+            400, 200).warp().den(.1)
+
+        _.ev(.2, function(){
+            w.s.pen('badGuy health: ' + badGuy.health)
+        } )
+    }
     SHADOW=function(){W().P()
 
 
