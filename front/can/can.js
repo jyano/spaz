@@ -2,8 +2,6 @@ cv = el = $.fn
 c = HTMLCanvasElement.prototype
 x=  ctx=  xx=CanvasRenderingContext2D.prototype
 xGr = CanvasGradient.prototype
-
-
 $.c = $.canvas= $.can = function(c, width, h, x,y){var g=G(arguments), o, el
     o = g.S_?
     {c: g.f, w: g.s, h: g.t, x:g[3], y:g[4]}:
@@ -19,10 +17,8 @@ $.c = $.canvas= $.can = function(c, width, h, x,y){var g=G(arguments), o, el
     el.A().al(.8)
     return superCanvas(el)
 }
-
 superCanvas=function(el){
     el = $(el)
-
 //to be called internally by $.c
 //works on FIRST canvas in jquery obj
     el.canvas = el[0]
@@ -112,7 +108,6 @@ superCanvas=function(el){
     el.URL = el.dataURL = el.toDataURL=function(){
         return el.canvas.toDataURL()
     }
-
     //wap specific
     el.snap = function (  func ){
 
@@ -217,24 +212,16 @@ superCanvas=function(el){
         })
     }
     return el
-
 }
-
 $.C=function(){ z();
     c = $.c('y').drag()
     x = c.ctx()
 }
-
-
-
 canEl=function(){
-
     c.u = function(){return this.toDataURL()}
     c.x = function(){return this.getContext('2d')}
-
 }//;canEl()
 paths=function(){
-
     cv.s = cv.ss = cv.strokeColor=setStrokeColor=function(c){
 
         this.ctx().strokeStyle =  oO('c', c)
@@ -492,7 +479,6 @@ cv.dots=function(){var cv=this
 
 }
 grads=function(){
-
     /*
      addColorStop = function rc( gr, stop, c ){
      // pass only a gr -> function with gr curried
@@ -533,7 +519,6 @@ grads=function(){
      }
 
      */
-
     cv.radGradSample=function(){
         var grd = this.rG()
         addColorStop(grd, 0, 'r')
@@ -580,8 +565,6 @@ grads=function(){
             that.fillStyle(pattern).fillRect()
         })
     }
-
-
     /*
      xGr.S=xGr.stop=function(n,c){var gr=this,g=G(arguments)
      if(N(n)){gr.cS(n, oO('c',c))}
@@ -589,16 +572,8 @@ grads=function(){
      return gr
      }
      */
-
-
-
-
-
 };grads()
 pixels=function(){
-
-
-
     cv.gD=cv.getData = function(x,y,w,h){
         //historic.. dont delete ! data = x('G', X, Y, w, h).res
         var g=G(arguments),
@@ -612,16 +587,12 @@ pixels=function(){
         // data.d = data.data
         return data
     }
-
-
-
     cv.pD=cv.putData=function(data,x,y){
         x=x||0
         y=y||0
         this.context.putImageData(data, x, y)
         return this
     }
-
     cv.gP=cv.getPut=function(a,x,y){
         var g=G(arguments),
             a=g[0],
@@ -680,7 +651,6 @@ pixels=function(){
         this.pD(imgData)
 
         return el}
-
     pixelTest=function(){canvasPlayground()
         get = function(){d = m.getData(0,0,400,200)}
         // g.putData(d, 0, 100)
@@ -693,8 +663,6 @@ pixels=function(){
             put()}
         anim=function(){num = 0; $.ev(.1, function(){change(num++)})}
     }
-
-
 //give scale cos(rads), skew:sin(rads)  ??
 };pixels()
 trans=function(){
@@ -922,7 +890,6 @@ shadow=function() {
 
 
 };shadow()
-
 $.imageSizeFuncCan = function(image, size, func){//xc=
     var x = $.c(100, 100).C('X')
     if(image){ x.fit(image) }
@@ -930,7 +897,6 @@ $.imageSizeFuncCan = function(image, size, func){//xc=
     if(func){  x.click(func) }
     return x
 }
-
 cv.fitEx=function(){
     this.ln([0,0],
         [this.W(),this.H()],

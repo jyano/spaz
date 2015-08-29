@@ -1,5 +1,7 @@
 
-iso=function(){
+
+iso()
+function iso(){
     Tile = function(){
 
         var that =this
@@ -115,20 +117,7 @@ iso=function(){
         kD('l',function(){player.left()})
         kD('r',function(){player.right()})
         return player}
-    ISO=function(levNum){z()
-        stage = createjs.stage(900,500).tick().A()
-        grid = isoGrid(10,10,0,240)
-        kD('s',function(){location=location})
-        if(levNum){ window['lev'+levNum]()}
-        else if( window['_pam']){window['lev'+ _pam]()}
-        else{lev1()}
-        stage.bm0('me', function(me){
-            player = tilePlayer(me).sXY(.2).drag().to(5,5)})
 
-
-
-
-    }
     killTile=function(a,b){
         grid[a][b].container.remove()
         grid[a][b].wasOn=true
@@ -248,7 +237,18 @@ iso=function(){
         grid[r+1] &&grid[r+1][c] && grid[r+1][c].wasOn
         ){return true}
     }
+    ISO=function(levNum){z()
+        stage = createjs.stage(900,500).tick().A()
+        grid = isoGrid(10,10,0,240)
+        kD('s',function(){location=location})
+        if(levNum){ window['lev'+levNum]()}
+        else if( window['_pam']){window['lev'+ _pam]()}
+        else{lev1()}
+        stage.bm0('me', function(me){
+            player = tilePlayer(me).sXY(.2).drag().to(5,5)})
 
 
-};iso()
 
+
+    }
+}

@@ -530,3 +530,71 @@ function pixels(){
 }
 
 
+parallax()
+function parallax() {
+    PARALLAX = function () {
+        z()
+
+        CanvasLayer(
+            transparent('me', 10)).A()
+        CanvasLayer(
+            transparent('guy', 300)).A()
+
+
+    }
+    PARALLAXBYMOUSE = function () {
+        //awesome!!!!!
+        z()
+
+        back = DivLayer(transparent('me')).A()
+        front = DivLayer(transparent('guy')).A()
+
+        speed = 0
+        xp = 0
+
+        $('body').mousemove(function (e) {
+
+            speed = e.pageX - ( W() / 2 )
+
+            speed /= ( W() / 2 )
+
+            $l(speed)
+        })
+
+        $('body').mouseout(function (e) {
+            speed = 0
+        })
+
+
+        setInterval(function () {
+            xp += speed
+
+            back.backgroundPosition(xp + 'px 0px')
+
+            front.backgroundPosition((xp * 3) + 'px 0px')
+
+        }, 30)
+    }
+    function CanvasLayer(bg) {
+        var can = $.c('y', 500, 500).P('a').width('100%').H(256)
+        if (bg) {
+            can.background(bg)
+        }
+        return can
+    }
+
+    function DivLayer(bg) {
+        var div = $.d('y', 500, 500).P('a').width('100%').H(256)
+        if (bg) {
+            div.background(bg)
+        }
+        return div
+    }
+
+    function transparent(img, num) {
+        if (!N(num)) {
+            return 'transparent url(' + img + '.png)'
+        }
+        return 'transparent url(' + img + '.png)' + num + '% 0px'
+    }
+}

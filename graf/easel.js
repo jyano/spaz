@@ -25,7 +25,11 @@ $St = function(){var st, g = G(arguments), cv
         return s
     }
 }
-
+St=function(){z()
+    s = $St(1200,600).A()
+    h = $h(0,0).a2(s)
+    SL(h)
+}
 i = cjs.DisplayObject.prototype
 ct = cjs.Container.prototype // st = s = cjs.Stage.prototype
 t=cjs.Text.prototype
@@ -448,6 +452,7 @@ ct.qB = ct.bQ = function (name, x, y, sX, sY, rt) {
     return b
 }
 
+
 // TEXT !!!
 t.lW = _.gS('linewidth')
 t.lH = _.gS('lineHeight') //o.lineHeight = this.lineHeight || this.getMeasuredLineHeight();
@@ -569,4 +574,106 @@ ct.T = function () {
      if(N(g[3])){ tO.XY(g[3], g[4]) }
      return tO
      }*/
+}
+
+ct.abs = function (x, y) {
+    var s = this
+    alert('ct.abs')
+    ct.can.abs(x, y)
+    return s
+}
+s=cjs.Stage.prototype
+s.cannonBall=function(x,y){var s=this,h
+    h=s.h(x,y)
+    h.rf('a', 'z',18 ).dc(18).ef()
+    return h}
+s.basketBall=function(x,y){var s=this
+    return this.h(x,y).rf('w', 'o',18 ).dc(18).ef()
+}
+s.beachBall=function(x,y){var s=this
+    return s.h(x,y)
+        .rf('b','r',18).dc(18).ef()
+}
+s.snowBall=function(x,y){var s=this
+    return s.h(x,y).rf('a','w',18).dc(18).ef()
+}
+
+//
+
+
+$.fn.hideOnKeyDown = function(a){
+    var that = this
+    $('body').keydown(function(ev){e=ev
+        $l(e.which)
+        if(e.which == 40){ that.hide()  }
+        if(e.which == 38){ that.show()  }
+    })
+}
+
+$.dragStage = function (x, y) {
+    s = $St('v', '+')
+    return $.dragFrame($(s.canvas))
+}
+
+
+
+
+drag = drg=function(element){
+
+    var q= $b( qq(element).q ).css({ position: 'absolute' }).on('mousedown', function(e){
+
+        var offset = $(this).offset(),
+
+            deltaX = e.pageX - offset.left, deltaY = e.pageY - offset.top
+
+        $('html').on( 'mousemove' , function( e ){ q.css({ left:  e.pageX - deltaX , top: e.pageY - deltaY }) })
+            .on( 'mouseup' , function(){  $(this).off() })
+
+    })
+
+    touchDrg(element)
+    return qq(element)
+
+}
+$.fn.toR = $.fn.moveRight=function(num){
+    num=num||20
+    if(this.left()=='auto'){this.left(0)}
+    this.left( parseInt(this.left()) + num)
+    return this}
+$.fn.toL = $.fn.moveLeft=function(num){
+    num=num||20
+    if(this.left()=='auto'){this.left(0)}
+    this.left( parseInt(this.left()) - num)
+    return this}
+$.fn.toU =$.fn.moveDown=function(num){num=num||20
+    if(this.top()=='auto'){this.top(0)}
+    this.top( this.top()  - num  )
+    return this}
+$.fn.toD =$.fn.moveDown=function(num){num=num||20
+    if(this.top()=='auto'){this.top(0)}
+    this.top( this.top()  + num  )
+    return this}
+drawHalf=function(c,i){c.dI(i, -i.width/2, -i.h/2)}
+$.joystick  =function(){
+    $('#left').on('mousedown mouseover touchenter', function(e){cjs.Keys.left = true ;e.preventDefault()})
+    $('#left').on('mouseup mouseout touchleave', function(){cjs.Keys.left = false})
+    $('#jump').on('mousedown mouseover touchenter', function(){  cjs.Keys.up = true   })
+    $('#jump').on('mouseup mouseout touchleave', function(){  cjs.Keys.up = false  })
+    $('#right').on('mousedown mouseover touchenter', function(){ cjs.Keys.right = true})
+    $('#right').on('mouseup mouseout touchleave', function(){cjs.Keys.right = false })}
+function createStuff(){
+    $El = cjs.el = function (a) {
+        a = $(a)[0]
+        return new cjs.DOMElement(a)
+    }
+    ELM = function () {
+        z()
+        d = $.d('r', 400, 400).A($.ip()).drag()
+        el = $El(d)
+        s = $St('y').t()
+        s.A(el)
+        // tw(el, [{x:300,y:300},2000])
+        // tw([el,'l'],[{r:360, sx:.5, sy:.5},8000],{r:0},[{r:360, sx:1, sy:1},8000])
+    }
+
 }
