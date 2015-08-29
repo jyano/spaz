@@ -1,52 +1,5 @@
 
 
-
-WT=function(){W()
-    b0= w.S(600,300,'y',300,100,0,0,30)
-    b= w.S(600,300,'r',300,100).rot(-30)
-}
-
-
-
-
-UNI=b2d.u=function me(){var g=G(arguments),p
-    if(g.A){
-        return g.ap(UNI)
-        //return $a(UNI,g.f)
-    }
-    p=M.p(g[0])
-    g.eR(function(pol){
-        p = p.U(  M.p(pol) )
-    })
-    return p
-}
-
-
-DIF=function(){var g=G(arguments),
-//not each of the ps?
-
-    p = M.p( g[0] )
-
-    g.eR(function(p1){
-
-        p=p.D(p1)
-
-    })
-
-    return p
-}
-
-VS=function(){W()
-
-    b = w.S(400,200, 'r', 300,200).rot(-20)//.dot()
-
-
-
-    w.pDraw(b.P(),50,10).dot()
-
-
-
-}
 RDP = function () {
 
     function RDPsd(points, epsilon) {

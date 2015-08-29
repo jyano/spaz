@@ -1,16 +1,3 @@
-
-
-MAT2D=function(){
-    /*
-     a Scales the drawing horizontally
-     b Skew the the drawing horizontally
-     c Skew the the drawing vertically
-     d Scales the drawing vertically
-     e Moves the the drawing horizontally
-     f Moves the the drawing vertically
-     */
-
-}
 BS=function(){W()._(function(){
     x= w.D(600,300,'x',200,100)
     f = x.cir({r:100, x:300, c:'r'})
@@ -20,19 +7,20 @@ BS=function(){W()._(function(){
 
 }
 
+
 SHADOW=function(){W().P()
 
 
     p.lD(1).warp()
     badGuy=w.badGuy(400, 200).d(.1).warp()
-    $.in(1, function(){
+    _.in(1, function(){
         p.sprite.shad("y", 0, 150, 300)
         badGuy.sprite.shad('o', 40, 40, 40)
     })
     $.space(function(){
         p.polyBul()
     })
-    $.ev(.2,function(){
+    _.ev(.2,function(){
         // w.s.pen('badGuy health: ' + badGuy.health)
     })
     $(w.s.back.canvas).C('p')
@@ -53,7 +41,7 @@ SHADOW=function(){W().P()
 
 COL=function(){W();
     b=w.S(600,300,'w',200);
-    $.in(function(){
+    _.in(function(){
         b.dyn().f().C('z')
     })
 }
@@ -144,7 +132,7 @@ BFREC = function () {W()
 }
 
 
-POL = function () {
+POLLL = function () {
     W()
 
     w.D(500, 400, [-100, 0], [0, -100], [100, 50], [0, -70])
@@ -153,8 +141,141 @@ POL = function () {
 
 }
 
+h=cjs.Shape.prototype
+h.arc = function (x, y, r, startA, endA, aCW) {
+    var h = this, gx = h.graphics
+    /*
+     Draws an arc defined by the radius, startAngle and endAngle arguments, centered at the position (x, y).
+     For example, to draw a full circle with a radius of 20 centered at (100, 100):
+     arc(100, 100, 20, 0, Math.PI*2)
+     */
 
-//more:
+    h.arc(x, y, r, startA, endA, aCW)
+
+    return h
+}
+h.arc2 = function (x, y, X, Y, r) {
+    var h = this, gx = h.graphics
+//Draws an arc with the specified control points and radius.
+    gx.arcTo(x, y, X, Y, r)
+    return h
+}
+
+h.rc = h.roundRectComplex = function () {
+    var h = this, gx = h.graphics
+    gx.drawRoundRectComplex.apply(gx, arguments)
+    return h
+}
+h.pStr = h.dp = h.polyStar = function (x, y, r, sides, ptSiz, ang) {
+    var h = this, gx = h.graphics,
+
+        g = G(arguments), o //,  x=g[0],  y=g[1], r=g[2],  sides=g[3], ptSiz=g[4], ang=g[5]
+
+    o = N(g[3]) ? {
+        x: g[0], y: g[1], r: g[2], s: g[3], p: g[4], a: g[5]} :
+
+        N(g[0]) ? {r: g[0], s: g[1], p: g[2], a: g[3]} :
+
+            O(g[0]) ? g[0] : {}
+
+    o.a = _.tN(o.a)
+    o.x = _.tN(o.x)
+    o.y = _.tN(o.y)
+    o.p = cjs.cap(o.p, 0, .99)
+
+    gx.drawPolyStar(o.x, o.y, o.r, o.s, o.p, o.a)
+    return h
+}
+
+h.de = h.ell = function () {
+    var h = this,
+        gx = h.graphics,
+        g = G(arguments),
+        o = N(g[2]) ? {x: g[0], y: g[1], w: g[2], h: g[3]} :
+            N(g[0]) ? {w: g[0], h: g[1]} :
+                O(g[0]) ? g[0] : {}
+    o.x = _.tN(o.x)
+    o.y = _.tN(o.y)
+    o.w = _.tN(o.w, 100)
+    o.h = _.tN(o.h, o.w)
+    gx.drawEllipse(o.x, o.y, o.w, o.h)
+    return h
+}
+h.de2 = function (x, y, W, H, r) {
+    var h = this
+    h.de(-W / 2 + x, -H / 2 + y, W, H, r)
+    return h
+}
+h.rr = function () {
+    var h = this,
+        gx = h.graphics,
+        g = G(arguments),
+
+        o = N(g[3]) ? {x: g[0], y: g[1], w: g[2], h: g[3], r: g[4]} :
+            N(g[1]) ? {w: g[0], r: g[1]} :
+                N(g[0]) ? {w: g[0], h: g[1], r: g[2]} :
+                    O(g[0]) ? g[0] : {}
+
+
+    o.x = _.tN(o.x)
+    o.y = _.tN(o.y)
+    o.w = _.tN(o.w, 100)
+    o.h = _.tN(o.h, o.w)
+
+    gx.drawRoundRect(o.x, o.y, o.w, o.h, o.r)
+    return h
+}
+h.rr2 = function (x, y, W, H, r) {
+    var h = this
+    h.rr(-W / 2 + x, -H / 2 + y, W, H, r)
+    return h
+}
+
+h.bez = h.bt = function (x, y, r, startA, endA, aCW) {
+    var h = this, gx = h.graphics
+    h.bezierCurveTo(x, y, r, startA, endA, aCW)
+    return h
+}
+h.qt=    function (x, y, r, startA, endA, aCW) {
+    var h = this, gx = h.graphics
+    gx.quadraticCurveTo(x, y, r, startA, endA, aCW)
+    return h
+}
+
+
+h.dr2 = function (x, y, W, H) {var h = this, g = G(arguments), o
+
+    if(g.OO_){g.e(function(g){h.dr2(g)});return h}
+
+    o=g.O?g.f:
+        U(g.t)? {w: g.f, h: g.s} :
+        {x: g.f, y: g.s, w: g.t, h: g[3]}
+
+    o.x = N(o.x,0)
+    o.y = N(o.y,0)
+    o.w = N(o.w, 50)
+    o.h = N(o.h, o.w)
+    h.dr(-o.w / 2 + o.x, -o.h / 2 + o.y, o.w, o.h)
+    return h
+
+}
+
+cjs.dia = function self(width, height, fc, sc) {
+    fc = fc || 'green'
+    sc = sc || 'white'
+    width = width || 100
+    height = height || width
+    halfwidth = width / 2
+    halfheight = height / 2
+    var h = new createjs.Shape()
+    h.graphics.f(fc).s(sc)
+        .mt(0, -halfheight)
+        .lt(-halfwidth, 0).lt(0, halfheight)
+        .lt(halfwidth, 0).lt(0, -halfheight)
+    return h
+}
+
+
 
 CENH=function(){W()
 
@@ -170,6 +291,27 @@ CENH=function(){W()
 
     h.cir(500,200,40,'b','x',10)
 }
+St=function(){z()
+    s = $St(1200,600).A()
+    h = $h(0,0).a2(s)
+    SL(h)
+}
+
+
+w.bmR= w.bR= w.bfR=function(){var w=this, g=G(arguments), b, h,o
+    o = S(g.t)? {x: g.f, y: g.s, i: g.t, w: g[3], h:g[4], c:g[5]} :
+    {x: g.f, y: g.s,  w: g.t, h:g[3], c:g[4]}
+    o.i = o.i || 'sun'
+    o.c = o.c || 'y' // can be removed
+    b =   w.D(o.x, o.y, o.c, o.w, o.h)
+    h= w.g.h().al(.5)
+    if(o.c){h.c(o.c)}
+    h.bf(o.i)
+    h.rec(o.w, o.h)
+    b.bS(h)
+    return b
+}
+
 OVS=function(){St()
     h=s.h(40, 10,'b',16).drag()
     h.c({C:['o',5],lf:{c1:'g',c2:'r',x2:100,y2:400}}).de(100, 400)
@@ -181,9 +323,13 @@ OVS=function(){St()
         .de(100, 200, 500,300)
     h.ls('r','w',300,100,400,140).de(300,0,300,500)
 
+    s.u()
 }
+GRAPHTEST=function(){
 
-GRAPHTEST=function(){St(); img = $.img('me',function(){s.ct().h().bmS(img).ss(32).dr(20,20,920,360); _.each([
+
+
+    St(); img = $.i('me',function(){s.ct().h().bfS(img).ss(32).dr(20,20,920,360); _.each([
 
         function(){return $h(12,10)
             .lf('b','g',130).dr(130)},
@@ -253,4 +399,20 @@ ROUNDREC = function () {
     s.dot(500, 200)
     s.dot(500, 200)
     s.dot(500, 200)
+
+    s.u()
+}
+
+function edu() {
+    MAT2D = function () {
+        /*
+         a Scales the drawing horizontally
+         b Skew the the drawing horizontally
+         c Skew the the drawing vertically
+         d Scales the drawing vertically
+         e Moves the the drawing horizontally
+         f Moves the the drawing vertically
+         */
+
+    }
 }

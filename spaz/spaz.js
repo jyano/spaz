@@ -381,7 +381,7 @@ function bPoly(){
 
 
     function sep(b, o){
-        if (O(o.v[0][0])) {
+        if (O(o.v) && O(o.v[0][0])) {
             _.e(o.v, function (v) {b2d.sep(b, v)})
         }
         else {

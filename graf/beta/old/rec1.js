@@ -285,22 +285,6 @@ h.dr = function () {
     gx.dr(o.x, o.y, o.w, o.h)
     return h
 }
-h.dr2 = function (x, y, W, H) {var h = this, g = G(arguments), o
-
-    if(g.OO_){g.e(function(g){h.dr2(g)});return h}
-
-    o=g.O?g.f:
-        U(g.t)? {w: g.f, h: g.s} :
-        {x: g.f, y: g.s, w: g.t, h: g[3]}
-
-    o.x = N(o.x,0)
-    o.y = N(o.y,0)
-    o.w = N(o.w, 50)
-    o.h = N(o.h, o.w)
-    h.dr(-o.w / 2 + o.x, -o.h / 2 + o.y, o.w, o.h)
-    return h
-
-}
 h.rec = function (c, C, x, y, w, H, l) {var h = this, g = G(arguments), o
     o = g.O?g.f:
         S(g.s)? {c: g.f, C: g.s, x: g.t, y: g[3], w: g[4], h: g[5], l: g[6]} :

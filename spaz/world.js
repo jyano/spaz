@@ -1,7 +1,7 @@
 f.S = f.stg = function () {return this.W().s}
 b.St = b.S = b.stg = function () {return this.W().s}
 b.horizCenter = function () {var b = this; b.X(b.W().hW); return b}   //-> b.X('hC')//b.g=function(){ return this.f().g }
-b.C = function (c) {
+b.c= b.C = function (c) {
     this.fs(function (f) {
         f.C(c)
     })
@@ -556,7 +556,7 @@ w.$h = function () {
 } // h = $h().a2(s).rXY(100, 300).XY(100,300).drag()
 //  h.rec( 'r','b',600, 200,  600, 200)
 // h.rec( 'g',100, 100,  100, 20)
-w.C = function (c) {
+ w.C = function (c) {
     var w = this
     w.bg.h().c(c || $r()).dr(0, 0, w.w, w.h)
     return w

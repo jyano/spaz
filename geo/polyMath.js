@@ -5,7 +5,6 @@ ps.g=function(n){return this.getInnerPoly(n||0)}
 ps.nP=function(){var pD=this,n
     n= pD.getNumInnerPoly()
     return n}
-
 ps.n=ps.num = ps.numPoints=function(){return this.getNumPoints()}
 ps.vs= function(){var p=this,vs=[]
 
@@ -18,17 +17,14 @@ ps.g=function(n){
 ps.nP=function(){var pD=this,n
     n= pD.getNumInnerPoly()
     return n}
-
 pD.g=function(n){
     return this.getInnerPoly(n||0)}
 pD.nP=function(){var pD=this,n
     n= pD.getNumInnerPoly()
 
     return n}
-
 pD.I=pD.intersection
 pD.X=pD.xor
-
 pD.hH=function(){var pD=this
     var h
     pD.ps(function(p){if(p.isHole()){h=true}})
@@ -37,3 +33,4 @@ pD.hH=function(){var pD=this
 pD.n=pD.num = pD.numPoints=function(){
     return this.getNumPoints()
 }
+

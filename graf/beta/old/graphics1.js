@@ -606,19 +606,10 @@ h.bfR= h.bmR= h.bR=function(o){var h=this;
 
     return h
 }
-w.bfR=function(){var w=this, g=G(arguments), b, h,o
-    o = S(g.t)? {x: g.f, y: g.s, i: g.t, w: g[3], h:g[4], c:g[5]} :
-    {x: g.f, y: g.s,  w: g.t, h:g[3], c:g[4]}
-    o.i = o.i || 'sun'
-    o.c = o.c || 'y' // can be removed
-    b =   w.D(o.x, o.y, o.c, o.w, o.h)
-    h= w.g.h().al(.5)
-    if(o.c){h.c(o.c)}
-    h.bf(o.i)
-    h.rec(o.w, o.h)
-    b.bS(h)
-    return b
-}
+
+
+
+
 BMF1=function() {W()
 
     //h.bC
@@ -1878,7 +1869,7 @@ more=function(){
         return h
     }
 
-    h.copy=h.same=function(){return $h(this)}
+
     //******** here is the problem.. gotta let h.poly also defer to rect (and circ?)
     h.rc = h.roundRectComplex = function () {
         var h = this, gx = h.graphics
@@ -2051,11 +2042,7 @@ more=function(){
     }
 
     //b2d.colMap=function(C){return _.map(C,function(c){return oO('c',c)})}
-    St=function(){z()
-        s = cjs.stg(1200,600).A()
-        h = $h(0,0).a2(s)
-        SL(h)
-    }
+
     cjs.RECTx= function(c, W, H, x, y, a){var  g=G(arguments),    ct = cjs.ct(), h, o; if(O(c)){o=c} else if(S(c)){o={ c:c, w:W, h:H, x:x, y:y, a:a } }
         o = b2d.oDef(o)
         h = ct.h(o.x, o.y).c(o.c, o.C, o.l).rot( o.a )

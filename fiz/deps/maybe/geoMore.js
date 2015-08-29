@@ -23,86 +23,9 @@ f.killIfSmall = function (f) {
     }
 }
 //b2d.iB=b2d.isBody
-xx.pol=function(vs,ox,oy){var x = this,i
-    ox=N(ox,0);
-    oy=N(oy,0)
-    x.b()
-    x.mt(_.f(vs)[0]+ox, _.f(vs)[1]+oy)
-    _.e(_.r(vs), function(v){x.lt(v[0]+ox, v[1]+oy)})
-    x.closePath()
-    x.stroke()
-    x.fill()
-    return x
-}
-xx.drP=xx.drawPoly=function(vs,c,hole,ox,oy){var x=this, g=G(arguments), o,
-    i
 
-    if(b2d.iGP(g[0])){
 
-        o = {
-            vs: g[0].vs(),
-            ss: c || 'b',
-            l: 2,
-            fs: hole ? 'w' : 'p',
-            ox: ox,
-            oy: oy
-        }
-    }
 
-    else if(A(g[0])){
-
-        o = {
-            vs: vs,
-            ss: c || 'b',
-            l: 2,
-            fs: hole ? 'w' : 'p',
-            ox: ox,
-            oy: oy
-        }
-
-    }
-
-    else{
-        o = O(g[0]) ? g[0]
-            : {}
-    }
-
-    /* o={}
-     o.vs=vs
-     o.ss=c||'b'
-     o.l=2
-     o.fs= hole?'w':'p'
-     o.ox=ox
-     o.oy=oy
-     */
-
-    x.lineWidth= o.l
-    x.ss(o.ss)
-    x.fs(o.fs)
-    x.pol(o.vs, o.ox, o.oy)
-    return x
-
-}
-xx.drawPolys=function(poly,c,ox,oy){var x=this//if more than one poly produced, use multiple color to display
-
-    var n=poly.nP()
-
-    _.t(n, function(i){
-        var p=poly.g(i)
-        if(i){ c=['r','g','b','y'][i%n] }
-
-        ppp=p
-        x.drP(
-            p.vs(),
-            c,
-            p.isHole(),
-            ox,
-            oy
-        )
-    })
-
-    return x
-}
 //f.wVerts=f.V=
 //give world verts of fixt rotated (or optionally, not rotated for some reason)
 

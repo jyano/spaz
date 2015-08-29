@@ -169,43 +169,7 @@ MOVCIR=function(){w=b2d.W({g:0})
 
 
 //err
-    SUGAR =function(){
-        W([800,1000],{g:0})
-        w.roof.kill()
-        w.floor.kill()
 
-
-
-
-        // glider = w.D(300, 500, 'b', 100,200, 50, 50, 20)
-
-
-        w.S(300, 500, 'b', [-100,0],[0,-100],[100,20]).K('b')
-
-
-        w.S(500, 500, 'r', [-100,0],[0,-100],[100,20], '-').K('r')
-
-
-        w.left.K('b')
-
-
-        w.dot(300,500)
-
-
-
-        i = -20
-        //cjs.t(function(){glider.I(i,0)})
-        // w.$(function(){glider.I(i*-12,0)})
-        // w.$$(function(){i = ( i * -1  )})
-
-
-        y=w.ship()
-
-
-
-        y.col(function(f){if (f.of('b')) {f.B().kill()}})
-
-    }
     SCALE = function () {W()
 
         bb=w.D(600,400,'o',150,150)
@@ -312,3 +276,45 @@ MOVCIR=function(){w=b2d.W({g:0})
         w.show(function(){return 'health: '+ health + ', hits: ' + z.hits})
 
     }
+
+//OK
+SUGARWEASEL =function(){
+    W([800,1000],{g:0})
+    w.roof.kill()
+    w.floor.kill()
+
+
+
+
+    glider = w.D(300, 500, 'b', 100,200, 50, 50, 20)
+
+
+    w.S(300, 500, 'b', [-100,0],[0,-100],[100,20]).K('b')
+
+
+    w.S(500, 500, 'r', [-100,0],[0,-100],[100,20], '-').K('r')
+
+
+    w.left.K('b')
+
+
+    w.dot(300,500)
+
+
+
+    i = -20
+    cjs.t(function(){glider.I(i,0)})
+    w.$(function(){glider.I(i*-12,0)})
+    w.$$(function(){i = ( i * -1  )})
+
+
+    y=w.ship()
+
+
+
+    y.C(function(f){if (f.of('b')) {f.B().kill()}})
+
+}
+
+
+

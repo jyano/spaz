@@ -9,12 +9,7 @@ $.St = function () {alert('$.St')
 }
 
 
-St = function () {alert('St')
-    z()
-    s = cjs.stg(1200, 600).A()
-    h = $h(0, 0).a2(s)
-    SL(h)
-}
+
 ct.abs = function (x, y) {
     var s = this
     alert('ct.abs')

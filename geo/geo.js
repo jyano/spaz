@@ -1,10 +1,10 @@
-
-
 b2d.vs=function(){ var g=G(arguments)
     //all this does is to 'scale down' a series of points
     //can pass in pts naked OR in an array
+
     if(g.s){return _.m(g, b2d.div)}
     //passed in verts ([],[],[])
+
     return _.m(g.f, b2d.div) //passed an array [[],[],[]]
    //b2d.div <- function div(v){return V(v).div()}
 }
@@ -184,6 +184,8 @@ pD.dot=function(){var p=this
         w.dot('o', v)
     })
     return p}
+
+
 b2d.tF=function(f){return  b2d.iB(f)?f.f():f}
 
 b2d.hV= b2d.hasVerts = function (poly) {
@@ -207,6 +209,7 @@ b2d.glu = function (a, b) {return a.glu(b)}
 
 
 b2d.p()
+
 f.wV= function(){var f=this,b=f.B(),g=G(arguments),
     vs
     vs = g.n? f.vs():f.vs('+')
@@ -320,7 +323,7 @@ b.rV= function(){var b=this,
         return V(x,y)})
     return vs
     //this returns [V,V,V...]
-}
+} //b.vs????
 
 b.pos=function(){return this.tf().position.m()}
 b.ps=function(fn){var b=this,
@@ -410,7 +413,7 @@ b.clone = function (x, y, a) {
             }
 
             else {
-                b1.pol({c: $r(), v: f.rV()})
+                b1.pol({c: $r(), v: f.vs()})
             }
         })
     })
@@ -424,7 +427,7 @@ b.polyClone = function (x, y, a) {
     a = N(a, b.rot())
     b1 = w.B(x, y).type(b.type()).rot(a)
     b.fs(function (f) {
-        b1.pol(_.m(f.rV(), function (v) {
+        b1.pol(_.m(f.vs(), function (v) {
             return [v.x, v.y]
         }))
     })
@@ -583,7 +586,7 @@ w.ter = function () {
             var b = w.brick(i * 25 + 420, j * 25 + 200, 20, 20)
             ter.push({
                 b: b,
-                vs: b.f().rV(),
+                vs: b.f().vs(),
                 p: M.p([
                     V(i * 25 + 410, j * 25 + 210),
                     V(i * 25 + 410, j * 25 + 190),
@@ -604,7 +607,6 @@ w.md1=function(fn){
         self.used=1
     })}//
 polyCir()
-
 function polyCir(){
     b2d.pC=function(){var g=G(arguments), //b2d.polyCirc =
         vs=[],
@@ -678,3 +680,145 @@ function polyCir(){
         return g.m? M.p(pC): pC
     }
 }
+
+UNI=b2d.u=function me(){var g=G(arguments),p
+    if(g.A){
+        return g.ap(UNI)
+        //return $a(UNI,g.f)
+    }
+    p=M.p(g[0])
+    g.eR(function(pol){
+        p = p.U(  M.p(pol) )
+    })
+    return p
+}
+DIF=function(){var g=G(arguments),
+//not each of the ps?
+
+    p = M.p( g[0] )
+
+    g.eR(function(p1){
+
+        p=p.D(p1)
+
+    })
+
+    return p
+}
+
+xx=CanvasRenderingContext2D.prototype
+xx.pol=function(vs,ox,oy){var x = this,i
+    ox=N(ox,0);
+    oy=N(oy,0)
+    x.b()
+    x.mt(_.f(vs)[0]+ox, _.f(vs)[1]+oy)
+    _.e(_.r(vs), function(v){x.lt(v[0]+ox, v[1]+oy)})
+    x.closePath()
+    x.stroke()
+    x.fill()
+    return x
+}
+xx.drP=xx.drawPoly=function(vs,c,hole,ox,oy){var x=this, g=G(arguments), o,
+    i
+
+    if(b2d.iGP(g[0])){
+
+        o = {
+            vs: g[0].vs(),
+            ss: c || 'b',
+            l: 2,
+            fs: hole ? 'w' : 'p',
+            ox: ox,
+            oy: oy
+        }
+    }
+
+    else if(A(g[0])){
+
+        o = {
+            vs: vs,
+            ss: c || 'b',
+            l: 2,
+            fs: hole ? 'w' : 'p',
+            ox: ox,
+            oy: oy
+        }
+
+    }
+
+    else{
+        o = O(g[0]) ? g[0]
+            : {}
+    }
+
+    /* o={}
+     o.vs=vs
+     o.ss=c||'b'
+     o.l=2
+     o.fs= hole?'w':'p'
+     o.ox=ox
+     o.oy=oy
+     */
+
+    x.lineWidth= o.l
+    x.ss(o.ss)
+    x.fs(o.fs)
+    x.pol(o.vs, o.ox, o.oy)
+    return x
+
+}
+xx.drawPolys=function(poly,c,ox,oy){var x=this
+
+
+//if more than one poly produced, use multiple color to display
+
+    var n=poly.nP()
+
+    _.t(n, function(i){
+        var p=poly.g(i)
+        if(i){ c=['r','g','b','y'][i%n] }
+
+        ppp=p
+        x.drP(
+            p.vs(),
+            c,
+            p.isHole(),
+            ox,
+            oy
+        )
+    })
+
+    return x
+}
+h=cjs.Shape.prototype
+h.drawPolygon = function (V, c, C, l) {var h = this, //h.drawConnectedLines =
+
+    n = V.length
+    h.c(c, C, l)
+
+    _.e(V, function (v) {
+        v.X = v.x
+        v.Y = v.y
+    })
+
+    if (n >= 3) {
+        h.mt(V[0]) //move to the FIRST//lineTo the REST
+        _.in(n, function (i) {h.lt(V[i % n])})
+    }
+
+    //just a clever way to start from 1
+
+    return h
+}
+h.drawPolygons = function (paths, C, c) {
+    var h = this
+    h.C(C)
+    if (c) {
+        h.c(c)
+    }
+    _.each(paths, function (p) {
+        h.drawPolygon(p)
+    })
+    return h
+}
+

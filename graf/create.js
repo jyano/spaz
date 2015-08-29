@@ -703,9 +703,13 @@ function dOb() {
     i.$$ = function (fn) {
         return this.on('dblclick', fn)
     }
+
     i.rm = i.xx = i.remove = function () {
         var i = this
-        i.parent.removeChild(i)
+        if(O(i) && O(i.parent) ){
+            i.parent.removeChild(i)
+        }
+
         return i
     } //cant delete 'remove' quite yet
 
