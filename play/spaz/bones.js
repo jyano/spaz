@@ -221,7 +221,6 @@ SPG = function () {W([2000,1300],{g:1000}) .P(300, 320)
 
 }
 
-
 SPOLL=function(){
 
     W({g:0,w:0});
@@ -541,10 +540,6 @@ KILL = function(){W()//.Y()
 
 }
 
-
-
-
-
 //wed
 WED=function(){W([1500,1000 ],{g:0})
 
@@ -646,9 +641,6 @@ LUMP=function(){W(5)//.Y()
 
 
 }
-
-
-
 
 //pris
 PJ=function(){W([1200, 600, 2400,1200], {}).P(100, w.h-200)
@@ -869,9 +861,6 @@ JTRAN=function(){W({g:300}).P()
 
 
 }
-
-
-
 
 rev()
 function rev() {
