@@ -352,12 +352,10 @@ function alpha(){
         return [pos.x, pos.y, col1.x, col1.y, col2.x, col2.y]
     }
 
-    w.left=function(n){var w=this;n=N(n,4)//w.horiz=
-        w.e(function(b){b.X(n,'-')})}
-    w.up=function(n){var w=this;n = N(n,4)//w.vert=
-        w.e(function(b){b.Y(n,'-')})}
+
 
 }
+
 function mouse() {
     w.md = function (fn) {
         var w = this

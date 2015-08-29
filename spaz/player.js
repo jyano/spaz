@@ -1,4 +1,21 @@
 b2d.p()
+
+    w.left = function (n) {
+        var w = this;
+        n = N(n, 4)//w.horiz=
+        w.e(function (b) {
+            b.X(n, '-')
+        })
+    }
+    w.up = function (n) {
+        var w = this;
+        n = N(n, 4)//w.vert=
+        w.e(function (b) {
+            b.Y(n, '-')
+        })
+    }
+
+
 w.p= function(x,y,sc,cn){var w=this,g=G(arguments),
     p
     sc = N(sc, 1)

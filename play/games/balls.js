@@ -105,9 +105,6 @@ SPEECH=function(){W()._(function(){
 })}
 
 
-
-
-
 WHYQ = function () {
     cjs.Keys.l = cjs.Keys.left = false
     cjs.Keys.r = cjs.Keys.right = false
@@ -312,8 +309,6 @@ ICEN=function(){Q(['guy','me'],function(){//z()
     _.in(3, function(){   T.f(1)   })
     _.in(9, function(){  T.f(1000)  })
 })}
-
-
 
 
 touchEnable = function (s) {
@@ -1332,11 +1327,9 @@ $.joystick  =function(){
     $('#jump').on('mouseup mouseout touchleave', function(){  cjs.Keys.up = false  })
     $('#right').on('mousedown mouseover touchenter', function(){ cjs.Keys.right = true})
     $('#right').on('mouseup mouseout touchleave', function(){cjs.Keys.right = false })}
-
 TESTWATCHKEYS=function(){z()
     $.test=true
     cjs.watchKeys()}
-
 function utils() {
     Utils = {}
     Utils.isNested = isArrayWhoseFirstObjIsAlsoAnArray = Utils.isDataUrl = Du = function (a) {
@@ -1469,7 +1462,6 @@ function utils() {
     }
 
 }
-
 function yano() {
     Yano.func = function () {
         $('body').C('*')
@@ -1536,8 +1528,6 @@ TESTKEYBOARD=function(){z()
     b.controlMe('basic')
 
 }
-
-
 MES=function(){W([],{w:0})// what took me so long to make this?
     w.C('y')
 

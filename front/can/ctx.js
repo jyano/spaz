@@ -116,28 +116,7 @@ comp=function(){
     x.co=function(){ this.o('copy'); return this }
     x.xo=function(){ this.o('xor'); return this }
 
-    GOP=function(){Q(function(){$.C()
 
-        x.d('me', 100, 100)
-
-        x.d('me', 200, 100)
-        x.d('me', 300, 100)
-
-        x.d('me', 400, 100)
-        x.d('me', 500, 100)
-
-        x.d('me', 150,150) //  x.sO(); x.dO()
-
-        x.xo()
-
-        c.$(function(){var g=G(arguments), o
-            o = {x: g.f, y: g.s}
-            x.d('guy', o.x, o.y)
-        })
-
-
-
-    })}
 
 }; comp()
 tran=function(){
@@ -198,25 +177,7 @@ grad=function(){
 
         return gr
     }
-    TESTGRAD=function(){$.C(); x= c.ctx()
 
-
-        x.lg(
-            {cS:{r:0, r:.1, b:.15, r:.2, y:.5, b:1},
-                x1: 50, x2:500, y2:100}).fr(0,0,300)
-
-        x.lg({cS:{o:.2, r:.6, g:.8} , x1:50,x2: 500, y2:100}).fr(300,0,300)
-
-
-        //black to white
-        // x.lg({cS:{z:0, w:1}, x2: x.W(), y2:0 }).fr()
-
-    }
-    LINRAD=function(){$.C()
-        x= c.ctx()
-        x.lg({x1:50,  y1:500, y2: 100, cS: {o:.2, r:.6, g:.8} })
-        x.fr(0,0,100,100)
-    }
     gr = CanvasGradient.prototype
     gr.cS= gr.s = gr.c= function(n, c){var g=G(arguments), gr=this
         if(g.O){_.e(g.f, function(n, c){ gr.cS(n,c)})}
@@ -262,11 +223,7 @@ text = function(){
         if(o.f){g.n? x.F(  o.f ,'-' ): x.F(  o.f  )}
         x.fillText(o.t, o.x, o.y)
         return x}
-    XT=function(){$.C()
-        x.b('b','g',30)
-        x.T(100,'Jason Yanofski', 10, 150)
-        x.lg({x1:0,y1:0,x2:x.W(),y1:0,cS:{m:0,b:.5,r:1}})
-        x.T('Jason Yanofski',10, 290, '-')}
+
 }; text()
 draw=function(){
 
@@ -389,137 +346,3 @@ draw=function(){
         return cv
     }
 };draw()
-ctxExamples()
-function ctxExamples(){
-    CLIP = function () {
-        Q(fn)
-
-        //just draws green circ?
-
-
-        function fn() {
-
-            $.C()
-
-            x = c.ctx()
-
-            x.Star = function (r) {
-                var ctx = this
-                r = N(r, R(4, 2))
-                ctx.b(r, 0, 'w') // first point drawn is the right most point
-                _.t(9, x9)
-                return ctx.f()
-
-                function x9(i) {
-                    x.rt(36).lt(i % 2 == 0 ? (r / 0.5) * 0.2 : r, 0)
-                }
-            }
-
-            x.tl(75, 75).a(60).cl()
-            x.lg({cS: {g: 0, z: 1}, y1: -75, y2: 75}).fr(-75, -75, 250)
-
-            _.t(10, x10)
-
-        }
-
-
-        function x10() {
-            x._(function () {
-                x.tl(R(150, -75), R(150, -75)).Star()
-            })
-        }
-    }
-    TL = function () {
-        Q(function () {
-            $.C()
-            x.b(400, 100, 'r', 'o', 30).l(600, 400)
-            x.b(10, 500).at(150, 20, 150, 170, 50).l(150, 120)
-            x.b().a(400, 75, 50, 0, 340, '-')
-            x.tl(-100, 0, R(30), 2)
-                .b(400, 100, 'x', 'b', 30)
-                .l(600, 400)
-            x.d('me').d(x, 300, 300).d(x, 300, 300)
-            //x.scICen('guy', .7)
-
-            //Uncaught TypeError: Cannot read property 'd' of undefined
-        })
-    }
-    CTX = function () {
-        $.C()
-        x.b('r', 'b', 50)
-        x.mt(100, 100, 300, 300, '*')
-        x.b('b', 'r', 50).a(100, 75, 50, '*')
-    }
-    _ADBE = function (fn) {
-        return function () {
-            Q(function () {
-                $.C()
-                j = x.d('me', 100, 300)
-                i = x.d('chicks', 600, 300)
-                fn()
-            })
-        }
-    }
-    ADBE = _ADBE(function () {
-        c.$(function (x1, y1) {
-            x.a(x1, y1, 10).s()
-        })
-    })
-
-    $.fn.xPrp=function(){
-        this.on('mousedown', function(e){  e.stopPropagation()  })
-        return this}
-    $.dg = $.dragFrame = function (d) {
-        var oD
-        oD = $.d('y').pad(20).drag()
-        d = d || $.d('r').mar(20)
-        d.xPrp().a2(oD)
-        d.oD = oD
-        oD.XY(40, 40)
-        return oD
-
-    }
-
-
-//Uncaught TypeError: d.xPrp is not a function
-    DGC = function () {
-        Q(function () {
-            c = $.c('g', 600, 300)
-            f = $.dragFrame(c)
-            x = c.ctx()
-            x.d('me', 100, 100)
-            c.$(function (x1, y1) {
-                x.a(x1, y1, 2).s()
-            })
-        })
-    }
-    PTH = function () {
-        Q(function () {
-            s = c = $.c('g', 200, 200)
-            d = $.c('x', 200, 200)
-            f = $.dragFrame(c)
-            f1 = $.dragFrame(d).X(300)
-            x = c.ctx()
-            xx = d.ctx()
-            x.c('X', 'X').fr(0, 0, 1000, 1000)
-            x.b(10, 30, 'r', 'X')
-            x.lt([[30, 10], [160, 20], [50, 200]]).x()//.D()
-            x.cl()
-            x.d('me', 50, 50)
-            d.ctx().d('me', 0, 0)
-            $.in(function () {
-                xx.d(d, 35, 15)
-                xx.d(d, 35, 15)
-                xx.d(d, 35, 15)
-                xx.d(d, 35, 15)
-                $.in(function () {
-                    x.d(d, 0, 0)
-                    $.in(function () {
-                        xx.c('X').clearRect(0, 0, 200, 200)
-                        xx.d(c)
-                    })
-                })
-            })
-        })
-    }
-}

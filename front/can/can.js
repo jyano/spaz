@@ -593,16 +593,6 @@ grads=function(){
 
 
 
-    RADGRAD=function(){z()
-        d= $.c('y', 500)
-        c = $.c('y', 500).A()
-        c.context.f(
-            c.context.radGrad(50, 50, 50, 50,50,200).stop([.2,'o'],[.6, 'r'],[ .8,'g'])
-        )
-        c.fr()
-    }
-
-
 
 };grads()
 pixels=function(){
@@ -690,51 +680,7 @@ pixels=function(){
         this.pD(imgData)
 
         return el}
-    PIXELS=function(){
 
-        c = $.can('y',900,500).A()
-
-        c.draw('me', 100,100)
-
-        $.in(.2,function(){
-
-            c.pD( c.gD(100,100,500,500), 120,120)
-
-            c.f("r").fr(10,10,50,50)
-
-            imgData = c.gD(10,10,50,50)
-
-            c.pD(imgData,10,70)
-
-
-        })
-
-
-    }
-    CANVASQLOADER=function(){$.C()
-
-        Q(['me'], function(q){me=Q.i('me')
-            c.drawImage(me,100,100)
-
-            c.pD( c.gD(100,100,500,500), 120, 120 )
-
-            c.f("r").fr(10,10,50,50)
-
-            imgData = c.gD(10, 10, 50, 50)
-
-            c.pD(imgData,10,70) })
-    }
-    PIXELTEST=function(){
-        c=$.C();
-        Q(['me'],function(q){me=Q.i('me')
-            c.drawImage(me,100,100)
-            d = c.gD(100,100,500,500)
-            // c.pD(d , 120, 120 )
-            zeros=nums=0
-            _.e(d.data, function(d){ if(d==0){zeros++} else {nums++} })
-            $l('zeros: '+ zeros + ' - nums: '+ nums )
-        })
-    }
     pixelTest=function(){canvasPlayground()
         get = function(){d = m.getData(0,0,400,200)}
         // g.putData(d, 0, 100)
@@ -788,39 +734,6 @@ trans=function(){
         return this
     }
 
-
-
-    TRANS=function(){
-
-        z()
-
-        x = $.c('y', 1000,800)
-        y = $.c('u', 400)
-
-        x.$$(function(){  x.fit('me')  })
-
-        x.fit('me')
-
-        identity=function(x){ x.stf(1,0,0,1,0,0) }
-
-
-        rotate=function(x,a){ identity(x); x.rt(tRad(a))  }
-
-        rotateByAngle=function(px,py,a){var x,y
-            x=(px*cos(a))-(py*sin(a))
-            y=(py*cos(a))+(px*sin(a))
-        }
-
-        rotateAroundZero=function(px,py,r){var x, y,a='angle'
-            x=(px * cos(PI/4))-(py*(sin(PI/4)))
-            y=(py * cos(PI/4))+(px*(sin(PI/4)))}
-
-        transformEquations=['x=ax+cy+e','y=bx+dy+f']
-
-        //if a=1,b=0,c=0,d=1 then args e,f rep pure translation
-        //x=x+e,y=y+f
-        //to scale, use a,d and set others to 0
-    }
 
 };trans()
 texty=function(){
@@ -1007,19 +920,6 @@ shadow=function() {
         return cv
     }
 
-    SHAD = function () {$.C()
-        c.dr('me', 100, 100)
-        c.shdC('b').shdBl(100).shdX(200).shdY(100)
-        c.dr('me', 200, 200)
-        c.shdC('r')
-            .shdBl(100)
-            .shdX(200)
-            .shdY(100)
-        c.shdC('g')
-        c.dr('me', 0, 300)
-        c.shd('p', 30, 200, 20)
-        c.dr('guy', 400, 200)
-    }
 
 };shadow()
 

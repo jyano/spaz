@@ -181,3 +181,14 @@ _.wh=_.where
 _.rj=_.reject
 
 _.evx=function(a){return a}
+$.scroll = function (a) {
+    return $(window).scroll(a || function () {
+        $('body').C('*')
+    })
+}
+$.click = m$ = function (f) {
+    return $(document).on('click', _v(f))
+}
+$.dblclick = m$$ = function (f) {
+    return $(document).on('dblclick', _v(f))
+}
