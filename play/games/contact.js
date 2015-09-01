@@ -67,7 +67,14 @@ function angle(){
             .K('o').r(.9).I(n.x, n.y)})
         w.D(600, 300,'o',70).r(.8)
             .cl(function(f,cx){
-                if(cx.nX()||cx.nY()){Ball(cx.n(10000))}})
+                if(cx.nX()||cx.nY()){
+
+                    if(O(cx) && F(cx.n)){
+                        Ball(cx.n(10000))
+                    }
+
+
+                }})
 
         /*
          //just copies lV
@@ -133,7 +140,16 @@ function angle(){
             .K('o').r(.9).I(n.x, n.y)})
         w.D(600, 300,'o',70).r(.8)
             .cl(function(f,cx){
-                if(cx.nX()||cx.nY()){Ball(cx.n(10000))}})
+
+                if(cx.nX()||cx.nY()){
+
+                    if(O(cx)&&F(cx.n)){
+                        Ball(cx.n(10000))
+                    }
+
+                }
+
+            })
 
         /*
          //just copies lV

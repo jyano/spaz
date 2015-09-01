@@ -59,7 +59,7 @@ PIT=BALLPIT=function(){
 }
 PEEP=PEEPHOLE=WIND  = function () {
     W()._(function () {
-        $.header().A($.h1('grahics winding')).A()
+        $.hdr().A($.h1('grahics winding')).A()
         bm = w.i.qB('chicks').X(470).drag()
         h = w.i.h()
         h.graphics.f("pink").dr(20, 20, 450, 360)
@@ -69,9 +69,9 @@ PEEP=PEEPHOLE=WIND  = function () {
     })}
 FANCY  = function(x,y){
     z()
-    canvas = $.canvas('g', 400)
+    canvas = $.c('g', 400)
     stage = new cjs.Stage(canvas[0]).t()
-    frame = $.dragFrame(theSpan = $.span())
+    frame = $.dragFrame(theSpan = $.sp())
 
     theSpan.A(
         $.button('X', function () {
@@ -134,7 +134,7 @@ FANCY  = function(x,y){
         $.button('clone', function () {
 
 
-            var newSpan = $span()
+            var newSpan = $.sp()
 
             var newStage = dragStage(newSpan)
 
@@ -224,10 +224,10 @@ NEWSTG=function(){ $W();
     //three ways to make a new stage
     s = $St('r',100 ).A().bm('me')
     s.can.drag()
-    c= $.canvas('b',100).A().drag().XY(400)
+    c= $.c('b',100).A().drag().XY(400)
     s1=$St(c)
     s1.A().bm('me')
-    c2= $.canvas('b',100).A().id('someId').drag().XY(300,100)
+    c2= $.c('b',100).A().id('someId').drag().XY(300,100)
     s2=  $St(['someId'])
     s2.t().bm('me')
 
@@ -966,19 +966,19 @@ function anim() {
         }).A().drag().A($.sp(' '),
             $.bt('spin', function () {
                 co.spin()
-            }), $.span(' '),
+            }), $.sp(' '),
             $.bt('jump', function () {
                 co.jump()
-            }), $.span(' '),
+            }), $.sp(' '),
             $.bt('explode', function () {
                 co.explode()
-            }), $.span(' '),
+            }), $.sp(' '),
             $.bt('play', function () {
                 co.play()
-            }), $.span(' '),
+            }), $.sp(' '),
             $.bt('stop', function () {
                 co.stop()
-            }), $.span(' '),
+            }), $.sp(' '),
             $.bt('meta', function () {
                 SPRITE()
             })
@@ -1360,7 +1360,7 @@ function anim() {
 
         flashFunction(lib = lib || {}, images = images || {}, createjs = createjs || {})
 
-        $.canvas('y', 550, 400).id('canvas').A()
+        $.c('y', 550, 400).id('canvas').A()
 
         canvas = document.getElementById("canvas")
 

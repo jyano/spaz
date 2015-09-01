@@ -53,7 +53,9 @@ cx.pX= function(){return parseInt(this.m().m_points[0].m().x)}
 cx.pY= function(){return parseInt(this.m().m_points[0].m().y)}
 cx.pt= cx.cen=function(){return V(this.pX(), this.pY())}
 cx.lP=function(b){return b.lP(this.pX(),this.pY())}
-cx.n=  function(n){return this.m().m_normal.toFixed(2).m( N(n,1) )}
+cx.n=  function(n){
+    return this.m().m_normal.toFixed(2).m( N(n,1) )}
+
 cx.nX= function(n){return this.n(n).x}
 cx.nY= function(n){return this.n(n).y}
 cx.t=function(){}//what about tangent?

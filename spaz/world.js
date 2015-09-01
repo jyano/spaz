@@ -904,7 +904,7 @@ W=b2d.W=function(){var g=G(arguments),o
             if(F(w.t.cb)){w.t.cb()} else if(F(w.tCb)){w.tCb()}
             w.s.x = -w.sXCap( (w.t.X()-w.hW+ w.hW)*w.z - w.hW  )
             w.s.y = -w.sYCap( (w.t.Y()-w.hH+ w.hH)*w.z - w.hH  )
-            if(w.t == w._t){w.t.XY(w.tSpr.X(), w.tSpr.Y()); w.s.rot(w.tSpr.rot())}
+            if(w.t == w._t){w.t.XY(w.tSpr.X(), w.tSpr.Y()); w.s.rt(w.tSpr.rt())}
         })
     }
 

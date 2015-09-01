@@ -5891,3 +5891,15 @@ function graf(){
 
     }
 }
+
+
+//extend:
+$.dragStage = function (x, y) {
+
+    s = $St('v', '+')
+
+
+    $.dragFrame($(s.canvas))
+
+    return s
+}

@@ -812,8 +812,7 @@ function above(){
     AA = function (a) {return A(a) && A(a[0])}
 }
 M.tN = _.tN = function (what, aNum) {return N(what) ? what : aNum || 0}
-_.gS = function (pop) {
-//for gen
+_.gS = function (pop) {//for gen
     var g = G(arguments), that = this
     return function (val) {
         if (U(val)) {
@@ -821,8 +820,7 @@ _.gS = function (pop) {
         }
         this[pop] = val
         return this
-    }
-}
+    }}
 $a = function (ob, met, arr) {
     var g = G(arguments)
     if (g.t) {
