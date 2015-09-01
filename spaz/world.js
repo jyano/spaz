@@ -789,18 +789,7 @@ function rarelyUsed(){  w.dance=function(){var w=this
     w.brcks= w.boxesStat = function () {var w = this,g=G(arguments)
         _.e(g, function (g) {w.brick.apply(w, g)})
         return w}
-    w.rR = w.randRects = function (ob) {
-        var w = this, g = G(arguments),
-            o = g.O ? g.f : {y: g.f, z: g.s}
-        o.y = N(o.y, 0)
-        o.z = N(o.z, 1)
-        _.t(20,
-            function (i) {
-                w.S(R(1100, 20), R(150, 40 + o.y), $r(),
-                    R(40, 15) * o.z, R(40, 15) * o.z).K('randomRect rR')
-            })
-        return w
-    }
+
     w.ten = w.addTenBalls = function (n) {
         var w = this
 
@@ -863,10 +852,10 @@ W=b2d.W=function(){var g=G(arguments),o
     w.SetContactListener(_.x(w.ln=new b2d.Dynamics.b2ContactListener,{
 
         BeginContact : function(cx){_.e(w.bH, function(fn){
-            $.do(function(){fn(cx)})  })},
+            _.in(0,function(){fn(cx)})  })},
 
         EndContact : function(cx){_.e(w.eH, function(fn){
-            $.do(function(){ fn( cx ) })   })},
+            _.in(0,function(){ fn( cx ) })   })},
 
         PreSolve : function(cx, i){_.e(w.pH, function(fn){
             fn(cx,i)})},

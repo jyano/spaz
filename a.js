@@ -1,25 +1,15 @@
 dirs=[
 
-
     '/front/front', '/front/can',
-
-
     '/graf', '/graf/deps',
-
     'fiz',    'fiz/deps',
-    'geo',
-    'fiz/joints', '/spaz',
-
+    'geo', 'fiz/joints', '/spaz',
     'play',  'play/graphics',
-
-
     '/play/graf',
     '/play/front',
     '/play/spaz',
     '/play/games'
-
 ]
-
 
 
 console.log('w'); both(); function both(){
@@ -69,11 +59,6 @@ _.e({port: process.env.PORT||4000, 'view engine' :'jade',
         views: __dirname + '/play/'},
     function(v,k){$a.set(k,v)})
 
-
-
-
-
-
 $a.g('/play/:a/:p?', function(q,p){
     p.render('play',{app:q.params.a,pam:q.params.p})})
 $a.use( $a.router )
@@ -82,8 +67,6 @@ _.e(dirs, function(dir){
     dir= __dirname +'/'+ dir
     $a.use($e.static(dir))
 })
-
-
 
 require('http').createServer($a).listen(80, function(){
     $l('game server listening on port 80')

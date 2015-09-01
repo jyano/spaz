@@ -639,7 +639,7 @@ function scrolling(){
         cY=N(cY,w.H/2)  //option to set based on t's CURRENT X/Y?
         if(bf=='!'){
 
-            z(function(){var sX,sY
+            T.t(function(){var sX,sY
 
                 sX = w.z*(t.X()-cX)
 
@@ -653,7 +653,7 @@ function scrolling(){
             })
         }
         else if(bf=='-'){
-            z(function(){
+            T.t(function(){
                 w.s.x =  (cX-t.X())* w.z     -   w.W*(w.z/2-.5)
                 w.s.y =  (cY-t.Y())*w.z     -   w.H*(w.z/2-.5)
             })
@@ -675,7 +675,7 @@ function scrolling(){
             w.S(bf.x, bf.y, 'z',  [ [ 10,10, '-' ]  ] )  //sensor works but ony for rect (or at least not for circ)
             w.S(bf.x, bf.y,'w',[[bf.w,bf.h,'-']]) //  w.dot(bf.x-bf.w/2, bf.y-bf.h/2  ,     '+')
 
-            z(function(){var sX,sY
+            T.t(function(){var sX,sY
                 // sX = (bf.x-w.hW)   + cjs.adj( (t.X()-bf.x),  bf.w/2)/w.z
                 sX =  bf.x - w.hW  + cjs.adj(t.X()-bf.x, bf.w/2)*bf.mX /// bf.mX //scaling not needed?
                 sY = (bf.y- w.hH)   + cjs.adj( t.Y()-bf.y,  bf.h/2)*bf.mX// /bf.mY
@@ -686,7 +686,7 @@ function scrolling(){
             //each tick, literally just sets w.sXY() based on:
             // world dimensions, world zoom, and trackee position
 
-            z(function(){var dX,dY
+            T.t(function(){var dX,dY
                 //run pre-scroll hook cb's
                 if(F(w.t.cb)){w.t.cb()}
                 if(w.track.cb&& F(w.track.cb)){  w.track.cb()  }
@@ -828,7 +828,7 @@ function scrolling(){
             return w.tX(x).tY(y)
         }
     w.tRightLeft=function(){var w=this, left
-            z(function(){
+            T.t(function(){
                 if(!left){
                     w.tX(10,'+')
                     if(w.tX() > 2000){left=1}
@@ -845,12 +845,10 @@ function scrolling(){
         w.i.A( w.tSpr=  $Ct().XY(w.t.X(), w.t.Y()) ) //  w.tSpr.bm('guy', function(g){  g.sXY(.2)}) // w.tSpr.A(g)
 
 
-        z(function(){
+        T.t(function(){
 
 
             if(F(w.t.cb)){w.t.cb()} else if(F(w.tCb)){w.tCb()} // actually calls the callbacks
-
-
             // i see w.sXCap and w.sYCap.. i think they limit the scroll distances
             //distances are simply calculated and assigned right to **** w.s *****
             //so it moves the actual stage... (dont worry, not the canvas)
@@ -1117,4 +1115,16 @@ function yip(){
     }
 
 
+}
+w.rR = w.randRects = function (ob) {
+    var w = this, g = G(arguments),
+        o = g.O ? g.f : {y: g.f, z: g.s}
+    o.y = N(o.y, 0)
+    o.z = N(o.z, 1)
+    _.t(20,
+        function (i) {
+            w.S(R(1100, 20), R(150, 40 + o.y), $r(),
+                R(40, 15) * o.z, R(40, 15) * o.z).K('randomRect rR')
+        })
+    return w
 }

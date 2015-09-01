@@ -1028,7 +1028,7 @@ prisJ=function(){
             lm: [-250, 100]
         }).mt(speed)
         elv.cl(
-            _.db(reverse, 200, true)
+            _.debounce(reverse, 200, true)
         )
         function reverse(){ j.mt(speed *= -1) }
     }

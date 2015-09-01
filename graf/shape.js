@@ -494,7 +494,8 @@ h.bf = function () {var h = this, gx = h.graphics, g = G(arguments),
     if (!F(Q)) {
         $l('!F(Q)')
 
-        if (A(g.s)) {g.s = cjs.m2d.apply(cjs, g.s)}
+        if (A(g.s)) {
+            g.s = cjs.m2d.apply(cjs, g.s)}
 
         tf = g.s || cjs.m2d(R(500), R(300))
 
