@@ -1,40 +1,6 @@
 b2d.p()
 
-b.vec= b.v=function(){var b = this, g = G(arguments), o
-
-    o = g.O ? g.f :
-        g.s ? {x: g.f, y: g.s} : //this not error
-        {y: g.f}
-
-
-
-
-        return g.m? b.GetWorldVector(V(0, -1).m( N(g.f, 100)))://used when shooting!
-
-            b.GetWorldVector(V(N(o.x, 0), N(o.y, -1)))
-
-}//the current direction of that vector in world coordinates
-
-
-
-b.inAir = function(){
-    var  b=this, onG= false
-    this.cxs(function(cx){
-        if(cx.IsTouching()){
-            cx.w('feet',
-                function(){ if(this.of(b) ){ onG=true } })
-        }
-    })
-    return !onG
-}
-
-
-b.wP = b.wPt = function (x, y) {
-
-    var b = this
-    return b.GetWorldPoint(V(x, y).div()).mult()
-}
-
+mario()
 
 b.cn=function(cn,o){var b=this, w=b.W()
     //stop a current 'controls', if any
@@ -45,252 +11,110 @@ b.cn=function(cn,o){var b=this, w=b.W()
         cn(b,o)})}
     return b
 }
-b2d.cn.j=b2d.cn.jump=function(p){
 
-    /* p.vX(
-     K.r?200 :
-     K.l?-200 :0)
-     if(K.u && p.onG){
-     p.vY(-1000)
-     }*/
 
-    var m= p.mass()
-    if(p.inAir()){
-        if(K.r){p.I(m/2, 0 )}
-        else if(K.l){p.I(-m/2, 0 )}
-        else {
 
-        }
-        p.I(0, m*3)
+function mario() {
+    w.p= function(x,y,sc,cn){var w=this,g=G(arguments),
+        p
+        sc = N(sc, 1)
+        cn= cn || 'jump'
+        p = w.D(x,y).fR()
+        p.cn(cn)
+        p.SetBullet(true)
+        p.rec({c:'r', l:5, C:'r', w:22*sc, h:40*sc}).d(5)
+        p.rec({
+
+            s: 1,
+            w: 8*sc, h:8*sc,
+            x: 0,
+            y: 20*sc,
+
+        }).K('feet').C('X')
+        p.Bm( 'me', 0, 0,  0.25*sc    )
+        // p.bS(   {i:'me', sc: .25*sc, x:-10,y:-110}  )
+        if(g.p){p.tr()}
+        p.r(.4)
+        p.lD(.5)
+        return p
     }
 
-    else {//on ground
-        if(K.u){//initiate a jump
-            if(K.r){p.lV(m,-m*4)}
-            else if(K.l){ p.lV(-m, -m*4) }
-            else {p.lV(0,-m*8)}
-        }
-        else {//not jumping, may be running
-            if(K.r){p.lV(m*2, 0)}
-            else if(K.l){p.lV(-m*2,0)}
-            else {p.lV(0,0) }
-        }
+    b.inAir = function () {
+        var b = this, onG = false
+        this.cxs(function (cx) {
+            if (cx.IsTouching()) {
+                cx.w('feet',
+                    function () {
+                        if (this.of(b)) {
+                            onG = true
+                        }
+                    })
+            }
+        })
+        return !onG
     }
 
-    if(K.d){
-        p.I(0, m*3)
-    }
-}
-b2d.cn.jet = function (p) {
-    var k = cjs.Keys, vec = p.GetWorldVector(V(0, -100))
 
-    p.fixRot()
+    b2d.cn.j=b2d.cn.jump=function(p){
 
-    if (k.left) {
-        p.rot(8, '-').I(0, -5)
-    }
+        /* p.vX(
+         K.r?200 :
+         K.l?-200 :0)
+         if(K.u && p.onG){
+         p.vY(-1000)
+         }*/
 
-    if (k.right) {
-        p.rot(8, '+').I(0, -5)
-    }
-    p.I(
-        k.up ? vec.div(1) : k.down ? vec.div(-100) : V(0, 0)
-    )
+        var m= p.mass()
+        if(p.inAir()){
+            if(K.r){p.I(m/2, 0 )}
+            else if(K.l){p.I(-m/2, 0 )}
+            else {
 
-}
-b2d.cn.t = b2d.cn.thrust = function (p, o) {
-
-    v = p.vec(-1)
-
-    if (U(o)) {
-        o = 5
-    }
-    if (N(o)) {
-        o = {n: o}
-    }
-    o = O(o) ? o : {}
-    o.n = N(o.n, 5)
-
-    if (K.u) {
-        p.I(v.m(o.n * 40))
-    }
-
-    if (K.d) {
-        p.I(-v)
-    } //.m(o.n?)
-    p.aV(K.r ? 15 : K.l ? -15 : 0)
-
-    if (K.l) {
-        p.rt(2, '-')
-    }
-    if (K.r) {
-        p.rt(2, '+')
-    }
-
-}
-b.thr = function () {this.cn('thrust')}
-w.p= function(x,y,sc,cn){var w=this,g=G(arguments),
-    p
-    sc = N(sc, 1)
-    cn= cn || 'jump'
-    p = w.D(x,y).fR()
-    p.cn(cn)
-    p.SetBullet(true)
-    p.rec({c:'r', l:5, C:'r', w:22*sc, h:40*sc}).d(5)
-    p.rec({
-
-        s: 1,
-        w: 8*sc, h:8*sc,
-        x: 0,
-        y: 20*sc,
-
-    }).K('feet').C('X')
-    p.Bm( 'me', 0, 0,  0.25*sc    )
-    // p.bS(   {i:'me', sc: .25*sc, x:-10,y:-110}  )
-    if(g.p){p.tr()}
-    p.r(.4)
-    p.lD(.5)
-    return p
-}
-shoot()
-w.y = w.ship = function () {
-    var w = this, g = G(arguments), hS, side, ship, y, o
-
-
-    o = g.O ? g.f : g.S_ ? {c: g.f, x: g.s, y: g.t, sc: g[3]} :
-    {x: g.f, y: g.s, sc: g.t}
-    o.c = o.c || 'y';
-    o.sc = N(o.sc, 4);
-    o.x = N(o.x, 100);
-    o.y = N(o.y, 100)
-
-    y = w.D(o.x, o.y);
-    hS = o.sc * 4;
-    side = hS * 2;
-    y.pol(oO('c', o.c), [[-hS, hS], [0, -side * 2], [hS, hS]])
-
-    y.push = function (frc) {
-        var y = this, g = G(arguments)
-
-        frc = N(g.f, 1)
-
-        if (g.p) {
-            _.ev(N(g.s, 100 * 1000), function () {
-                y.push(frc)
-            })
+            }
+            p.I(0, m*3)
         }
 
-        else {
-            y.I(y.vec().m(frc * 0.1))
+        else {//on ground
+            if(K.u){//initiate a jump
+                if(K.r){p.lV(m,-m*4)}
+                else if(K.l){ p.lV(-m, -m*4) }
+                else {p.lV(0,-m*8)}
+            }
+            else {//not jumping, may be running
+                if(K.r){p.lV(m*2, 0)}
+                else if(K.l){p.lV(-m*2,0)}
+                else {p.lV(0,0) }
+            }
         }
 
-        return y
+        if(K.d){
+            p.I(0, m*3)
+        }
     }
-    y.going = function () {
-        var y = this,
-            lv = y.lV()
-        return M.a(lv.x) > 0.5 || M.a(lv.y) > 0.5 || M.a(y.aV()) > 0.5
+    w.P=function (x, y,sc) {var w=this,
+        g=G(arguments)
+        p = w.p(N(g.f, w.hW), N(g.s, w.H-50), N(sc,2))
+        if(g.p){p.tr()}
+        return w
     }
-
-    if (!g.n) {
-        y.cn('thrust').shtSp()
-    }
-    if (g.p) {
-        y.tr()
-    }
-    //y.sht= _.b($.mo(.15,y.sht),y)
-
-    y.fixedRot(false)
-    y.aD(0)
-    y.r(.8)
-    y.SetBullet(true)
-
-    return y.K('ship yip y')
 }
-w.P=function (x, y,sc) {var w=this,
-    g=G(arguments)
-    p = w.p(N(g.f, w.hW), N(g.s, w.H-50), N(sc,2))
-    if(g.p){p.tr()}
-    return w
+
+b.wP = b.wPt = function (x, y) {
+
+    var b = this
+    return b.GetWorldPoint(V(x, y).div()).mult()
 }
-w.Y = function () {
-    var w = this, g = G(arguments)
 
-    y = $a(w, 'y', g)
 
-    if (g.p) {
-        y.track()
-    }
-    return w
 
-}
 
 scrolling()
 willAlert()
 badGuys()
 plats()
 goals()
-function shoot(){
-    b.bu = b.bul = function () {
-        var b = this, g = G(arguments)
-        if (g.p) {
-            b.SetSensor(true)
-        }
-        return b
-    }
-    w.bu = w.bul = function () {
-        var w = this, g = G(arguments), o, bu
 
-        o = O(g[0]) ? {x: g.f.x, y: g.f.y, r: g.s} : {x: g.f, y: g.s, r: g.t}
 
-        o.r = N(o.r, 8)
-
-        o.x = N(o.x, 100);
-        o.y = N(o.y, o.x)
-
-        bu = w.D(o.x, o.y, 'w', o.r).K('bul bu')
-        bu.lD(0).aD(0).fr(0).d(.1).r(.5)
-        bu.SetBullet(true)
-        bu.cl(function (f) {
-            if (!g.n) {
-                this.xB()
-            }
-            if (g.p) {
-                f.xB()
-            }
-        })
-
-        return bu
-    }
-    b.sht = function (vel) {
-        var b = this, g = G(arguments), dst, bu, o
-
-        o = g.S_ ? {k: g.f, v: g.s} : {v: g.f}
-        o.v = N(o.v, 50000)
-        //dst= this.vec().m(100) //bu=w.bu(b.X()+dst.x,  b.Y()+dst.y)
-        return w.bu(
-            this.wP(0, -200)  //just above b
-        )
-            .d(.5).lD(0).fR()
-            .lV(
-            this.vec(o.v, '*')
-        ).K(o)
-    }
-    b.shtSp = function (k) {
-        var b = this
-        $.space(function () {
-            b.sht(k)
-        })
-        return b
-    }
-    b.shtEv = b.shootOnInt = function (ms, k) {
-        $l('shootOnInt shtEv')
-        var b = this
-        _.ev(N(ms / 1000, 0.4), function () {
-            if (b.IsActive()) { b.sht(k) } })
-        return b
-    }
-}
 function badGuys(){
     w.fireBall=function(x,y,vX,vY){
         var v=8
@@ -1225,5 +1049,23 @@ b.rTow = function (y) {$l('b.rTow')
     }
     b.rt(a)
     return b
+
+}
+
+
+b2d.cn.jet = function (p) {
+    $l('jet')
+    var k = cjs.Keys, vec = p.GetWorldVector(V(0, -100))
+    p.fixRot()
+    if (k.left) {
+        p.rot(8, '-').I(0, -5)
+    }
+
+    if (k.right) {
+        p.rot(8, '+').I(0, -5)
+    }
+    p.I(
+        k.up ? vec.div(1) : k.down ? vec.div(-100) : V(0, 0)
+    )
 
 }
