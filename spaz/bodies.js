@@ -1,22 +1,15 @@
-
-
 b.__f=function(f){
     var b=this, g=G(arguments)
     if(g.u){ return b.GetFixtureList() }
     f = b.CreateFixture(f)
     return f
 }
-
-
-
 b._f= function(f,c){var b=this,g=G(arguments)
     if(g.u){ return b.GetFixtureList() }
     f = b.CreateFixture(f)
     if(c){f.C(c)}
     return f
 }
-
-
 b.cir= function(){var b=this,g=G(arguments), o= g.f, fd,  h,  f
 
     //if passed array, it assumes it is arguments for ONE cir
@@ -70,10 +63,6 @@ b.cir= function(){var b=this,g=G(arguments), o= g.f, fd,  h,  f
     return f
 
 }
-
-
-
-
 b.f=function(){var b=this,g=G(arguments), o; if(g.u){return b._f()}
 
     if(g.S_){g.L--}
@@ -126,10 +115,6 @@ b.f=function(){var b=this,g=G(arguments), o; if(g.u){return b._f()}
 
 
 }
-
-
-
-
 w.D=function(){var w=this, g=G(arguments,'k'),o,b
 
     if(g.u){return w.D(w.hW, w.hH)}
@@ -146,3 +131,62 @@ w.D=function(){var w=this, g=G(arguments,'k'),o,b
 
     return b
 } //w.sp=w.ct=function(x,y){var w=this;return w.hud.ct(x||w.hW,y||w.hH).drag()}
+b.sep=function(verts,scale){var body=this
+    if(!O(verts)){alert('o.v must be object'); return}
+
+    if (b2d.iGP(verts)) {verts = verts.vs()}
+
+    //needs array of verts.. or one vert (which is converted here to arr)
+    _.e(O(verts[0][0])? verts: [verts], function (v) {
+        b2d.sep(body,v, scale)
+    })  //  'sep' each of the verts onto the body
+    return this
+}
+b.pol = function(){var b = this, w = b.W(), g = G(arguments), o,
+    n=b.n(), fs, h, numFixtsAdded, newFixts; if (g.u) {  return b  }
+
+
+    //if passed verts:
+    if( b2d.iGP(g.f) && U(g.s)) {
+        return b.pol({v: g.f})  }
+    //if passed color and verts:
+    if(S(g.f) && b2d.iGP(g.s) && U(g.t)) {
+        return b.pol({c: g.f, v: g.s})}
+    if (b2d.iB(g.f)) {g.f.fs(b);return b}
+    if (b2d.iF(g.f)) {g.f = g.f.vs()}
+
+
+    o= g.A ? (
+        // pass in ['r',[],[],[]]
+        S(g.f[0]) ? {c: g.f[0], v: _.r(g.f)} :
+            // pass in [[],[],[]]
+        {v: g.f}
+    ) :
+
+        g.O ? g.f :
+            !g.S_ ?  {v:g} : //pass in [],[]
+                _.x({c: g.f},
+                    g.t ? {v: g.r} : // pass in 'r', [], []
+                    {  v: g.s}   //pass in  {c:'r', v:[[],[],[]]}
+                )
+    $df.h(o)
+
+    b.sep(o.v)
+
+    numFixtsAdded=b.n()-n
+    newFixts = _.f(b.fs(), numFixtsAdded)
+    _.e(newFixts, function dressFixture(f){
+        f.d(o.d).r(o.b).fr(o.f)
+        if (o.s) {f.m_isSensor = o.s ? true : false; f.sen(1) }
+        f.K(o.k)
+        f.C(o.c, o.C, o.l)
+        if (o.lf) {
+            f.bS(w.s.h().lf(o).lt(o.v)) }
+        if (o.rf) {
+            f.bS(w.s.h().rf(o).lt(o.v))  }
+    })
+
+    o.i = o.i || o.bf
+    if (o.i){ h = w.g.h(); h.bV(o); b.bS(h) }
+    return newFixts.length > 1 ? newFixts : newFixts[0]
+}

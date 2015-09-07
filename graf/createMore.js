@@ -514,38 +514,6 @@ ct.qB = ct.bQ = function (name, x, y, sX, sY, rt) {
     this.A(b);
     return b
 }
-ct.rec = function () {
-    var ct = this, g = G(arguments), o, ct2, h
-    if (g.OO_) {
-        g.e(this, 'rec');
-        return this
-    } //it doesnt know that's this! (scope talk)
-    o = g.S_ ? {c: g.f, w: g.s, h: g.t, x: g[3], y: g[4], rt: g[5]} :
-        g.N_ ? {w: g.f, h: g.s, x: g.t, y: g[3], rt: g[4]} : g.f
-    o.al = N(o.al, 1)
-    o.rt = N(o.rt, 0)
-    o.c = o.c || 'z';
-    o.C = o.C || 'w'
-    ct2 = ct.ct();
-    h = ct2.h(o.x, o.y);
-    h.rt(o.rt);
-    h.c(o).al(o.al)
-    if (o.lf) {
-        h.lf(o)
-    } else if (o.rf) {
-        h.rf(o)
-    }
-    if (o.bm) {
-        h.bR({i: 'me', hs: [o]})
-    }
-    else {
-        h.rec(o.w, o.h)
-    }
-    if (g.p) {
-        ct.drag()
-    }
-    return ct2
-}
 
 ct.pol = function () {
     var ct = this, g = G(arguments), p,
@@ -848,39 +816,39 @@ h.z = h.clr = function () {
     this.graphics.clear();
     return this
 }
-
-h.rec = function () {var h = this, g = G(arguments), o
-    if (g.OO_) {g.e(function (g) {h.rec(g)}); return h }
-
-    o = g.O ? g.f :
-        S(g.s) ? {c: g.f, C: g.s, x: g.t, y: g[3], w: g[4], h: g[5], l: g[6]} :
-            g.S_ ? {c: g.f, x: g.s, y: g.t, w: g[3], h: g[4], l: g[5]} :
-                N(g.t) ?
-                {x: g.f, y: g.s, w: g.t, h: g[3], c: g[4], C: g[5], l: g[6]} :
-                {w: g.f, h: g.s, c: g.t, C: g[3], l: g[4]}
-
-
-    o.x = N(o.x, 0)
-    o.y = N(o.y, 0)
-    o.w = N(o.w, 50)
-    o.h = N(o.h, o.w)
-    if (o.i) {
-        h.bf(o.i, function () {o.i = null; h.rec(o)})
-        return h
+ct.rec = function () {
+    var ct = this, g = G(arguments), o, ct2, h
+    if (g.OO_) {
+        g.e(this, 'rec');
+        return this
+    } //it doesnt know that's this! (scope talk)
+    o = g.S_ ? {c: g.f, w: g.s, h: g.t, x: g[3], y: g[4], rt: g[5]} :
+        g.N_ ? {w: g.f, h: g.s, x: g.t, y: g[3], rt: g[4]} : g.f
+    o.al = N(o.al, 1)
+    o.rt = N(o.rt, 0)
+    o.c = o.c || 'z';
+    o.C = o.C || 'w'
+    ct2 = ct.ct();
+    h = ct2.h(o.x, o.y);
+    h.rt(o.rt);
+    h.c(o).al(o.al)
+    if (o.lf) {
+        h.lf(o)
+    } else if (o.rf) {
+        h.rf(o)
     }
-    if (o.c) {h.c(o)}
-    if(o.lf){
-        h.lf({
-            c1: o.c1 || 'z', c2: o.c2 || 'w',
-            s1: 0, s2: 1,
-            x: o.x - o.w / 2, y: o.y - o.h / 2,
-            x2: o.x - o.w / 2, y2: o.y + o.h / 2
-        })
+    if (o.bm) {
+        h.bR({i: 'me', hs: [o]})
     }
-    h.dr(-o.w/2+o.x, -o.h/2+o.y, o.w, o.h)
-    return h
-
+    else {
+        h.rec(o.w, o.h)
+    }
+    if (g.p) {
+        ct.drag()
+    }
+    return ct2
 }
+
 
 h.dl = h.line = function () {
     var g = G(arguments), o
@@ -919,57 +887,6 @@ h.cir= function () {
     return h
 
 }
-
-
-
-
-h.bf = function () {var h = this, gx = h.graphics, g = G(arguments),
-
-    tf
-
-    if (!F(Q)) { ///// $l('!F(Q)') !!! only this gets logged
-
-        if (A(g.s)) {g.s = cjs.m2d.apply(cjs, g.s)}
-
-        tf = g.s || cjs.m2d(R(500), R(300))
-
-        if (S(g.f)) {
-
-            gx.bf(Q.i(g.f), null, tf)
-
-        }
-
-        else if (O(g.f)) {
-            gx.bf(g.f, null, tf)
-        }
-
-    }
-
-    else if (g.S_){ //  $l('yes F(Q)') not logged
-        $.i(g.f, function (i) {
-            gx.bf(i[0])
-            if (F(g.s)) { g.s(h) }
-        })
-    }
-
-    else if (g.O_ && A(g.f.hs)) {// $l('g.O_ && A(g.f.hs)') not logged
-        $.i(g.f.i || 'me', function (i) {
-            gx.bf(i[0])
-            if (F(g.s)) {
-                _.e(g.f.hs, g.s)
-            }
-        })
-    }
-
-    else {//$l('..else'); not logged
-
-        gx.bf(g.f, null, g.s) }
-
-    //h.ef()
-
-
-    return h
-}  // BITMAP FILL  !!!!!!
 
 
 
@@ -1209,7 +1126,7 @@ h.cirs=function(g){
 }
 
 
-h.bC = function (o) {
+h.bC= function (o) {
     var h = this;
     return h.bf(o, function (h1) {
         h.dc(h1)
@@ -1217,37 +1134,12 @@ h.bC = function (o) {
 }//calls bitmap fill and lets it load up the bitmap (my face)
 //then passes in a function to be called once the image has finished loading
 //in this case, the function draws a rectangle (and the bitmap is automatically used as the fill)
-h.bR = h.bfR = h.bmR = function (o){
-    var h = this;
-    if (F(Q)) {
-        h.bf(o, function (h1) {
-            h.rec(h1)
 
-        })
 
-        return h
-    }
-    /*
 
-     h.bmR1= function(o){var h=this;
-     o=df.b(o)
-     $.i(o.i,
-     function(i){_.e(o.hs,
-     function(g){
-     h.bf(i[0])
-     h.rec(g)
-     h.ef() })
-     })
-     return
-     }
-     */
-    h.bf(o.bf)
-    h.rec(o.hs)
-    _.e(o.hs, function (r){
-        w.rec(r.w, r.h)
-    })
-    return h
-}
+
+
+
 
 h.col = h.fs = function () {
     var h = this, gx = h.graphics, g = G(arguments)
@@ -1418,15 +1310,7 @@ h.dc= function(x,y,r){
     o = g.O?g.f: g.$?{r:g.f}: {x:g.f,y:g.s,r:g.t}
     return h._dc(o)
 }
-h.dr = function () {var h = this, gx = h.graphics, g = G(arguments),
-    o = g.O ? g.f : N(g.t) ? {x: g.f, y: g.s, w: g.t, h: g[3]} : {w: g.f, h: g.s}
-    o.x = N(o.x, 0)
-    o.y = N(o.y, 0)
-    o.w = N(o.w, 100);
-    o.h = N(o.h, o.w)
-    gx.dr(o.x, o.y, o.w, o.h)
-    return h
-}
+
 h.pol = function (V, c, C, l) {
     var h = this, g = G(arguments), o
 

@@ -565,10 +565,7 @@ function tween(){
         else{this.setPaused(true)}
         return this
     }
-    i.grow = function(){
-        this.tw([{sxy: 10}, 10000])
-        return this
-    }
+
     i.tw=     function () {var i = this, g = G(arguments), tw
         g.unshift(i)
         tw = $Tw.apply(null, g)
@@ -1546,11 +1543,17 @@ function spr(){
 
 
 }
-ob= cjs.DisplayObject.prototype
-ob.grow = function(){ this.tw( [{sxy:10},10000]); return this }
-ob.RT = function(){RT(this);return this}
-ob.TR = function(){TR(this);return this}
-ob.dg=ob.drag=ob.SL = function(){
+
+i.grow = function(){
+
+    $Tw(this, [{sxy:10},10000]); return this
+}
+
+
+
+i.RT = function(){RT(this);return this}
+i.TR = function(){TR(this);return this}
+i.dg=i.drag=i.SL = function(){
     SL(this);
     return this
 }

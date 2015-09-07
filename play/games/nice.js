@@ -1,37 +1,4 @@
 
-
-TOWARD = function () {
-
-    W({g: 0}).C('z')
-    b = w.D(500, 300, 'r', 100)
-    y = w.ship()
-    cjs.t(function () {
-        b.towards(y.X(), y.Y(), 9)
-    })
-    _.t(10, function () {
-        w.ship('b', R(500, 50), R(500, 50))
-    })
-    w.b(function (cx) {
-        cx.w('ship', 'bul', function (bul, cx) {
-            this.kill()
-        })
-    })
-    w.D(200, 200, 'b', 80).d(1).K('bad')
-    w.D(200, 200, 'r', 150, 150).d(1).K('bad')
-    y = w.y('b', 100, 200, 6, '-').aD(1).lD(1)
-        .r(0).fr(1).K('guy')
-        .shootOnInt(.2)
-        .cn('thrust')
-    w.cl('bul', 'bad', function (b) {
-
-        if (this.B()) {
-            this.B().kill()
-        }
-        if (b.B()) {
-            b.B().kill()
-        }
-    })
-}
 LUMP = function () {
     W(5)//.Y()
     w.D(600, 200, 'w', 180).bit(1, [1]).r(.5)
@@ -198,7 +165,7 @@ HEADACHE=function(){W().P()
 
     w.p(600,200).r(4)
 }
-WARP=function(){W().P()
+TRAMP=function(){W().P()
     w.S(500, 600, 's', 30, 200)
     w.S(600, 600, 's', 30, 200)
     w.S(550, 550, 'z', 100, 20).K('warp')
@@ -258,43 +225,7 @@ FLAPPY=function(){W({w:0,g:50})
 
     w.$(function(){ p.I(0,-180) })
 }
-TFSET= function(){W()._(function(){
-    w.i.qB('me').grow().drag()
 
-    i= w.i.qB('me').XY(200,200)
-
-    ball = w.ball()
-
-    _.in(3, function(){
-
-        w.C('b'); ball.bS(i)
-
-    })
-
-    //  me.startMoving(10, 10)
-
-    T.t(function(){iS = i.inStage()
-        $l(iS)
-    })
-    b= w.i.qB('me')
-
-
-    b.setTransform(0,0,2,.5,0,40,4,2,3)
-
-    //m = b.getMatrix()
-    function tf(a,b,c,d,e,f,g,h,i){
-        return this.x=a||0,
-            this.y=b||0,
-            this.scaleX=null==c?1:c,
-            this.scaleY=null==d?1:d,
-            this.rotation=e||0,
-            this.skewX=f||0,
-            this.skewY=g||0,
-            this.regX =h||0,
-            this.regY =i||0,
-            this}
-
-})}
 BMRECS = function () {W()
     w.i.h(200, 300).dg().bf('me', function (h) {h.rec({w: 500, h: 200})})
     w.i.h().dg().bf('me', function (h) {h.rec({w: 500, h: 200})
@@ -341,25 +272,7 @@ TEXTBALLS = function () {
         b.bS(nice)
     })
 }
-GEMS = function () {
-    W()
-    //h.bR
-    w.i.h(100, 300, '+').bR({
-        hs: [
-            {w: 150, h: 500},
-            {w: 150, h: 500, x: 200},
-            {w: 150, h: 500, x: 400},
-            {w: 150, h: 500, x: 600}]
-    })
-    w.D(200, 160).cir({r: 120, rf: {c1: 'r', c2: 'b'}}, {r: 100, C: 'y', l: 2, bf: 'me'})
-    w.D(800, 300).pol({
-        v: [[[5, 100], [0, -100], [200, -150], [200, 150]],
-            [[-50, 50], [-50, -100], [450, -50], [450, 50]]],
-        c: 'r', C: 'y', l: 10,
-        bm: 1
-    })
-    w.i.h(400, 300, '+').bV({v: v})
-}
+
 FLOCK = function () {
     W({g: 0})//.P()
     w.D(300, 100, 'r', 50)
@@ -1569,3 +1482,95 @@ COLORSHIP = function () {
 
 
 }
+
+
+
+TOWARD = function () {
+
+    W({g: 0}).C('z')
+    b = w.D(500, 300, 'r', 100)
+    y = w.ship()
+
+    cjs.t(function () {
+
+        b.towards(y.X(), y.Y(), 9)
+
+    })
+
+
+    _.t(5, function () {
+        w.ship('b', R(500, 50), R(500, 50))
+    })
+    w.b(function (cx) {
+        cx.w('ship', 'bul', function (bul, cx) {
+            this.kill()
+        })
+    })
+    w.D(200, 200, 'b', 80).d(1).K('bad')
+    w.D(200, 200, 'r', 150, 150).d(1).K('bad')
+    y = w.y('b', 100, 200, 6, '-').aD(1).lD(1)
+        .r(0).fr(1).K('guy')
+        .shootOnInt(.2)
+        .cn('thrust')
+
+    w.cl('bul', 'bad', function (b) {
+        if (this.B()) {
+            this.B().kill()
+        }
+        if (b.B()) {
+            b.B().kill()
+        }
+    })
+}
+
+
+TFSET= function(){W()._(function(){
+
+
+
+    me=   w.i.qB('me')
+    me.drag()
+
+    me.grow()
+
+
+
+
+
+
+    i= w.i.qB('me').XY(200,200)
+
+    ball = w.ball()
+
+
+    _.in(3, function(){
+        w.C('b'); ball.bS(i)
+    })
+
+    //  me.startMoving(10, 10)
+
+    T.t(function(){iS = i.inStage()
+        $l(iS)
+    })
+    b= w.i.qB('me')
+
+
+    b.setTransform(0,0,2,.5,0,40,4,2,3)
+
+    //m = b.getMatrix()
+    function tf(a,b,c,d,e,f,g,h,i){
+        return this.x=a||0,
+            this.y=b||0,
+            this.scaleX=null==c?1:c,
+            this.scaleY=null==d?1:d,
+            this.rotation=e||0,
+            this.skewX=f||0,
+            this.skewY=g||0,
+            this.regX =h||0,
+            this.regY =i||0,
+            this}
+
+})
+}
+
+

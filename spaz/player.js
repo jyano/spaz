@@ -1,89 +1,81 @@
 b2d.p()
-w.left = function (n) {
-        var w = this;
-        n = N(n, 4)//w.horiz=
-        w.e(function (b) {
-            b.X(n, '-')
-        })
-    }
-w.up = function (n) {
-        var w = this;
-        n = N(n, 4)//w.vert=
-        w.e(function (b) {
-            b.Y(n, '-')
-        })
-    }
-w.p= function(x,y,sc,cn){var w=this,g=G(arguments),
-    p
-    sc = N(sc, 1)
-    cn= cn || 'jump'
-    p = w.D(x,y).fR()
-    p.cn(cn)
-    p.SetBullet(true)
-    p.rec({c:'r', l:5, C:'r', w:22*sc, h:40*sc}).d(5)
-    p.rec({
 
-        s: 1,
-        w: 8*sc, h:8*sc,
-        x: 0,
-        y: 20*sc,
+b.vec= b.v=function(){var b = this, g = G(arguments), o
 
-    }).K('feet').C('X')
-    p.Bm( 'me', 0, 0,  0.25*sc    )
+    o = g.O ? g.f :
+        g.s ? {x: g.f, y: g.s} : //this not error
+        {y: g.f}
 
-    // p.bS(   {i:'me', sc: .25*sc, x:-10,y:-110}  )
 
-    if(g.p){p.tr()}
-    p.r(.4)
-    p.lD(.5)
-    return p
+
+
+        return g.m? b.GetWorldVector(V(0, -1).m( N(g.f, 100)))://used when shooting!
+
+            b.GetWorldVector(V(N(o.x, 0), N(o.y, -1)))
+
+}//the current direction of that vector in world coordinates
+
+
+
+b.inAir = function(){
+    var  b=this, onG= false
+    this.cxs(function(cx){
+        if(cx.IsTouching()){
+            cx.w('feet',
+                function(){ if(this.of(b) ){ onG=true } })
+        }
+    })
+    return !onG
 }
-w.P=function (x, y,sc) {var w=this,
-    g=G(arguments)
-    p = w.p(N(g.f, w.hW), N(g.s, w.H-50), N(sc,2))
-    if(g.p){p.tr()}
-    return w
+
+
+b.wP = b.wPt = function (x, y) {
+
+    var b = this
+    return b.GetWorldPoint(V(x, y).div()).mult()
 }
+
+
 b.cn=function(cn,o){var b=this, w=b.W()
     //stop a current 'controls', if any
     if( F(b._cn) ){   w.s.off('tick', b._cn)  }
     if(U(cn)){ return }
     if(S(cn)){ cn = b2d.cn[cn] }
     if(F(cn)){b._cn= w.s.t(  function(){
-            cn(b,o)})}
+        cn(b,o)})}
     return b
 }
 b2d.cn.j=b2d.cn.jump=function(p){
 
-   /* p.vX(
-        K.r?200 :
-        K.l?-200 :0)
-    if(K.u && p.onG){
-        p.vY(-1000)
-    }*/
+    /* p.vX(
+     K.r?200 :
+     K.l?-200 :0)
+     if(K.u && p.onG){
+     p.vY(-1000)
+     }*/
 
     var m= p.mass()
-        if(p.inAir()){
-            if(K.r){p.I(m/2, 0 )}
-            else if(K.l){p.I(-m/2, 0 )}
-            else {
+    if(p.inAir()){
+        if(K.r){p.I(m/2, 0 )}
+        else if(K.l){p.I(-m/2, 0 )}
+        else {
 
-            }
-            p.I(0, m*3)
         }
+        p.I(0, m*3)
+    }
 
-        else {//on ground
-            if(K.u){//initiate a jump
-                if(K.r){p.lV(m,-m*4)}
-                else if(K.l){ p.lV(-m, -m*4) }
-                else {p.lV(0,-m*8)}
-            }
-            else {//not jumping, may be running
-                if(K.r){p.lV(m*2, 0)}
-                else if(K.l){p.lV(-m*2,0)}
-                else {p.lV(0,0) }
-            }
+    else {//on ground
+        if(K.u){//initiate a jump
+            if(K.r){p.lV(m,-m*4)}
+            else if(K.l){ p.lV(-m, -m*4) }
+            else {p.lV(0,-m*8)}
         }
+        else {//not jumping, may be running
+            if(K.r){p.lV(m*2, 0)}
+            else if(K.l){p.lV(-m*2,0)}
+            else {p.lV(0,0) }
+        }
+    }
 
     if(K.d){
         p.I(0, m*3)
@@ -106,526 +98,489 @@ b2d.cn.jet = function (p) {
     )
 
 }
-b2d.cn.sl= b2d.cn.slidey = function(p){var k = cjs.Keys
+b2d.cn.t = b2d.cn.thrust = function (p, o) {
 
-    if (p.onG) {if (k.u) {
+    v = p.vec(-1)
 
-            if(k.r){p.I(20,-60)}
-            else if (k.l) {p.I(-20, -60)}
-            else {p.I(0, -100)}
+    if (U(o)) {
+        o = 5
+    }
+    if (N(o)) {
+        o = {n: o}
+    }
+    o = O(o) ? o : {}
+    o.n = N(o.n, 5)
+
+    if (K.u) {
+        p.I(v.m(o.n * 40))
     }
 
-    else {
-        if (k.l) {p.dir(0);p.I(-20, 0)}
-                if (k.r) {p.dir(1);p.I(20, 0)}
+    if (K.d) {
+        p.I(-v)
+    } //.m(o.n?)
+    p.aV(K.r ? 15 : K.l ? -15 : 0)
 
-
+    if (K.l) {
+        p.rt(2, '-')
     }
-
+    if (K.r) {
+        p.rt(2, '+')
     }
-
-    else {
-        if (k.l) {p.dir(0);p.I(-10, 0)}
-        if (k.r) {
-            p.dir(1);
-            p.I(10, 0)}
-    }
-
-    /*
-
-     p.I(p.onG&&k.u ? V(0, -70)
-
-     : k.r ? V(30, 0)
-     : k.l ? V(-30, 0)
-     : V(0, 0)  )*/
-
-    return p
-}
-b2d.cn.h=b2d.cn.hop = function (p) {var k = cjs.Keys
-    if (p.onGround) {
-        if (k.l) {p.I(-30,-120)}
-        if (k.r) {p.I(30,-120)}}
-    else {if(k.d){p.I(0,20)}}
-}
-w.me=function(x,y,Z){var w=this,p
-    Z= N(Z, 4)
-
-    p = w.D(x,y)
-
-    p.cir({c:'X',C:'X',l:0,r:1})
-
-    p.rec('X',Z*12, Z*22).K('head')
-
-
-    p.rec('X', Z*10, Z*20,  0, Z*10, '-').K('feet')
-
-
-    p.rec('X', Z*2, Z*6, 0, -Z*12, '-').K('hat')
-    p.rec('X', Z*8, Z*2, Z*8, 0, '-').K('right')
-    p.rec(Z*8, Z*2, -Z*8, 0, '-').K('left')
-
-    p.d(1).r(0).fr(.1).fixRot()
-
-    p.bS({
-        i:'me',
-        sc:Z/10
-    })
-
-    return p.K('p player')
 
 }
-w.p1=  w.player1=function(x,y,sc,cn){
-    var w=this, g=G(arguments), p,
-    o = g.S_?
-    {cn:g.f} :
-        N(g.t)? {x:g.f,y:g.s, sc:g.t,cn:g[3]} :
-        {x:g.f,y:g.s, cn:g.t}
-    o.x= N(o.x, w.hW)
-    o.y= N(o.y, w.hH)
-    o.sc= N(o.sc,4)
-    p = w.me(o.x,o.y,o.sc)
-    if(g.p){p.track()}
-    p.cn(o.cn)
-    p.speed=40
-    p._dir='r'
-    p.dir=function(d){var p=this
-        if(U(d)){return p._dir}
-        p._dir = d; return p}
-    p.moveInDir =  function(){var p=this,g=G(arguments)
-        if (g.n){  return p.move( - p.speed )}
-        //n = _.tN(g[0], p.speed)// ?
-        if (p.dir()){p.I(3,0)} else {p.I(-3,0)}
-        return p}
+b.thr = function () {this.cn('thrust')}
+w.p= function(x,y,sc,cn){var w=this,g=G(arguments),
+    p
+    sc = N(sc, 1)
+    cn= cn || 'jump'
+    p = w.D(x,y).fR()
+    p.cn(cn)
     p.SetBullet(true)
-    w.cl('feet',
-        function(f){
-            if(!f.sen()){p.onG  = 1}
-        }
-    )
+    p.rec({c:'r', l:5, C:'r', w:22*sc, h:40*sc}).d(5)
+    p.rec({
 
-    w.end(function(cx){
-        cx.w('feet', function(f){
-            if(!f.sen()){ p.onG =0 }})})
-    $.testJump=1
-    if($.testJump){
-        T.t(function(){
-                if(p.onG){$l('onG')}
-                else {$l('in air')} })
-        w.show(function(){return p.onG}) }
-    T.t(function(){
-        p.I(0,500)
-    })
+        s: 1,
+        w: 8*sc, h:8*sc,
+        x: 0,
+        y: 20*sc,
+
+    }).K('feet').C('X')
+    p.Bm( 'me', 0, 0,  0.25*sc    )
+    // p.bS(   {i:'me', sc: .25*sc, x:-10,y:-110}  )
+    if(g.p){p.tr()}
+    p.r(.4)
+    p.lD(.5)
     return p
-
 }
-b.jumping = function (y, x) {var b=this, k = cjs.Keys
-    if (k.u) {
-        if (k.r) {b.lV(x, -(y - x))}
-        else if (k.l) {
-           b.lV(-x, -(y - x))}
-        else {b.lV(0, -y)}}
-    return b
-}
-b.moveInCircle = function(rad, speed){
-
-        var g=G(arguments),rad=N(g[0])?g[0]:100,
-            speed=N(g[1])?g[1]:2,
-            toRad=Math.toRadians, cos=Math.cos,  sin=Math.sin,
-            b=this,
-            ang=0,
-            x=b.X(),
-            y=b.Y(),
-            bX,
-            bY
-
-        T.t(function(){
-            ang += toRad(speed)
-
-            bX= rad * cos(ang)
-            bY= rad * sin(ang)
-
-            if(g.p){bY*=2}
-            if(g.n){bX*=2}
+shoot()
+w.y = w.ship = function () {
+    var w = this, g = G(arguments), hS, side, ship, y, o
 
 
-            b.XY(bX+ x, bY+ y)
-        })
+    o = g.O ? g.f : g.S_ ? {c: g.f, x: g.s, y: g.t, sc: g[3]} :
+    {x: g.f, y: g.s, sc: g.t}
+    o.c = o.c || 'y';
+    o.sc = N(o.sc, 4);
+    o.x = N(o.x, 100);
+    o.y = N(o.y, 100)
 
-        return this}
-b.byI=b.byImp=function(i){var k=cjs.Keys
-        if(k.right){this.I(i,0)}
-        else if(k.left){this.I(-i,0)}
-        return this}
-b.byV=b.byVel=function(v){var k = cjs.Keys
-        if (k.right) { p.lV(v,0) }
-        else  if (k.left) { p.lV(-v,0) }
-        return this}
-b.arrowMove = function () {var b = this
-        $.key({
-            l: function () {
-                b.dir('l').move()},
-            r: function () {
-                b.dir('r').move()},
-            u: function () {
-                if (b.dir() == 'l') {
-                    b.I(5, -12)}
-                else if (b.dir() == 'r') {
-                    b.I(-5, -12)}}})
+    y = w.D(o.x, o.y);
+    hS = o.sc * 4;
+    side = hS * 2;
+    y.pol(oO('c', o.c), [[-hS, hS], [0, -side * 2], [hS, hS]])
 
-        return b
+    y.push = function (frc) {
+        var y = this, g = G(arguments)
 
-}
-b.relPos=function(){var b=this; return b.X() + b.S().X()}
-b.pWarping = function () {var p = this,b=this
-    cjs.t(function () {
-        if (p.Y() < 0) {p.Y(300)
+        frc = N(g.f, 1)
+
+        if (g.p) {
+            _.ev(N(g.s, 100 * 1000), function () {
+                y.push(frc)
+            })
         }
-        if (p.Y() > 300) {p.Y(0)
+
+        else {
+            y.I(y.vec().m(frc * 0.1))
         }
-        if (p.X() < 0) {p.X(600)
-        }
-        if (p.X() > 600) {p.X(0)
-        }
-    })
 
-    return b
-
-}
-b.warp =  function(p){var b=this,w=b.W()
-    cjs.t(function(){
-        if(b.Y()<0){b.Y(w.H)}
-        if(b.Y()>w.W){b.Y(0)}
-        if(b.X()<0){b.X(w.W)}
-        if(b.X()>w.W){b.X(0)}})
-    return b}
-b.diffx = b.difx = function (x, y) {var b=this// compare with DIF  - achtung!
-    return {
-            x: x - b.X(),
-            y: y - b.Y()}
-}
-b.cam = function (x, y) {var b=this,s= b.stg()
-        s.XY(b.diff(x, y))
-        return b}
-b.follow = function (x, y) {var b = this
-        cjs.t(function(){if (O(b.sprite)){b.cam(x, y)}})
-        return b}
-w.coin = function(x,y){var w=this,c
-
-    x=  _.tN(x, R(600))
-    y = _.tN(y, R(300))
-
-
-    c= w.D(x,y, 'y', 20).K('coin').bo(0).den(0).lD(0)
-
-    c.I(  R(15,-5),  R(15,-5)  )
-    c.warp()
-
-    return c}
-w.stars=function(n){var w=this
-    _.t(N(n,30),function(){w.D(R(1000,-500),R(800,-400),'w',2).den(0).rest(2)})
-    return w}
-w.sun=function(x,y){var w=this
-
-    //djd.init?? joint
-    x=N(x,300)
-    y=N(y,150)
-
-    return w.S(300,150, 20,'p',10).d(1).r(.5).bS('sun',.2)
-
-}
-w.tim=w.addTim=function(n){var w=this
-
-    if(U(n)){
-
-        return w.D(300,300,'w',15).K('tim').bS('guy', .3)
+        return y
+    }
+    y.going = function () {
+        var y = this,
+            lv = y.lV()
+        return M.a(lv.x) > 0.5 || M.a(lv.y) > 0.5 || M.a(y.aV()) > 0.5
     }
 
-    _.t(n, function(){w.addTim()})
+    if (!g.n) {
+        y.cn('thrust').shtSp()
+    }
+    if (g.p) {
+        y.tr()
+    }
+    //y.sht= _.b($.mo(.15,y.sht),y)
+
+    y.fixedRot(false)
+    y.aD(0)
+    y.r(.8)
+    y.SetBullet(true)
+
+    return y.K('ship yip y')
+}
+w.P=function (x, y,sc) {var w=this,
+    g=G(arguments)
+    p = w.p(N(g.f, w.hW), N(g.s, w.H-50), N(sc,2))
+    if(g.p){p.tr()}
     return w
 }
-w.plat=  function me(x,y,W,H){
-    var w=this, g=G(arguments)
-    if(A(g[0])){
-        _.e(g, function(g){me.apply(w,g)})
-        return w}
+w.Y = function () {
+    var w = this, g = G(arguments)
 
-    x = _.tN(x,60)
-    y = _.tN(y,x)
-    W = _.tN(W,30)
-    H = _.tN(H,W)
-    return w.S(x,y,'s',W,H)
-        .r(0.3)
-        .fr(2)
-        .K('plat')
-}
-w.fireBall=function(x,y,vX,vY){
-    var v=8
-    if(vX=='l'){vX=v;vY=0}
-    if(vX=='r'){vX=-v;vY=0}
-    if(vX=='u'){vX=0;vY=-v}
-    if(vX=='d'){vX=0;vY=v}
-    if(vX=='ul'){vX=v;vY=-v}
-    if(vX=='ur'){vX=-v;vY=-v}
-    if(vX=='dl'){vX=v;vY=v}
-    if(vX=='dr'){vX=-v;vY=v}
-    vX=N(vX)?vX:0
-    vY=N(vY)?vY:0
+    y = $a(w, 'y', g)
 
-    return this.D(x,y, 'r', 18)//.bS('sun',.2)
-        .lV(vX,vY)
-}
-w.clod= w.clouds=function(lX, y){var w=this
-    lX = N(lX,100)
-    y=N(y,75)
-    _.t(100,function(){
-        w.S(R(400)+lX,y,$r(),R(30))})
-    return w}
-w.rub= w.rubber=function(x,y,len){var w=this,rub
-    len=N(len,200)
-    x+=len/2
-    return w.S(x,y).rec({
-        w:len,h:20,c:'r',s:1
-    }).fr(.3).r(.7)
-}
-w.grass=function(x, y, len){var w=this
-    len=N(len,200)
-    x+=len/2
-   return w.S(x,y,'g',len,20).fr(.3).r(.3)}
-w.ice=function(x, y, len){var w=this
-    len=N(len,200)
-    x += len/2
-    return w.S(  x, y, 'w', len, 20).fr(0).r(0)}
-w.ramp=function me(x, y, W,H,a){var w=this, g=G(arguments)
-
-    if(A(g[0])){
-        _.e(g, function(g){
-            me.apply(w,g)})
-        return w}
-
-    o = O(g[0])?g[0]: {x:g[0],y:g[1],w:g[2],h:g[3],a:g[4]}
-    o.x = N(o.x, 300)
-    o.y = N(o.y, 300)
-    o.w = N(o.w, 100)
-    o.h = N(o.h, 100)
-    o.a = N(o.h, 10)
-    o.c = o.c || 'y'
-
-    return  w.S(o.x, o.y, o.c, o.w, o.h).rot(a).DFB(1,0,0)
-}
-w.grid = function(grid, x,y,len,spacing){var w=this, b
-    var gridDrawer=function(x,y,len, spacing){
-            b = w.D(x,y)
-            len = N(len,30);
-            spacing=N(spacing,20)
-            return function(x,y){
-                b.rec(len, len, x*spacing, y*spacing).C('r').d(1).fr(0.5).r(.2)
-                return b}},
-        drawWall=gridDrawer(x, y, len, spacing)
-    _.t(grid.length, function (row) {
-        _.t(grid[0].length, function (c) {
-            if (grid[c][row]){drawWall(row, c)}})})
-    return b.K('grid')
-}
-w.goal=function(x,y){
-    w.S(x-20,y-15, 'y',10,40)
-    w.S(x,y,'y',40,10)
-    w.S(x+20,y-15,'y',10,40)
+    if (g.p) {
+        y.track()
+    }
+    return w
 
 }
-w.buck= w.sensorBucket=function(x,y,k){var w=this, sens
 
-    x= N(x,320)
-    y= N(y,245)
-    k=k||'sensorBucket buck'
+scrolling()
+willAlert()
+badGuys()
+plats()
+goals()
+function shoot(){
+    b.bu = b.bul = function () {
+        var b = this, g = G(arguments)
+        if (g.p) {
+            b.SetSensor(true)
+        }
+        return b
+    }
+    w.bu = w.bul = function () {
+        var w = this, g = G(arguments), o, bu
 
-    w.S(x-150, y-15, 'r', 20, 200)
-    w.S(x+150, y-15, 'r', 20, 200 )
-    w.S(x-200, y-120 , 'r', 320, 20, 200,200 )
+        o = O(g[0]) ? {x: g.f.x, y: g.f.y, r: g.s} : {x: g.f, y: g.s, r: g.t}
 
-    return w.S(x,y,'d',[[280, 170 ,'-']]).K(k)
+        o.r = N(o.r, 8)
 
+        o.x = N(o.x, 100);
+        o.y = N(o.y, o.x)
 
-}
-w.zilla=function(x,y){var w=this
-
-    var z= w.S(x, y, 80, 140)  //make sensor?
-
-        .fR()
-        .bS('guy', [.8,1])
-        .moveInCircle('-')
-        .cl('bul',
-        function(bul){
-            bul.B().kill()
-            z.hits++
+        bu = w.D(o.x, o.y, 'w', o.r).K('bul bu')
+        bu.lD(0).aD(0).fr(0).d(.1).r(.5)
+        bu.SetBullet(true)
+        bu.cl(function (f) {
+            if (!g.n) {
+                this.xB()
+            }
+            if (g.p) {
+                f.xB()
+            }
         })
 
+        return bu
+    }
+    b.sht = function (vel) {
+        var b = this, g = G(arguments), dst, bu, o
 
+        o = g.S_ ? {k: g.f, v: g.s} : {v: g.f}
+        o.v = N(o.v, 50000)
+        //dst= this.vec().m(100) //bu=w.bu(b.X()+dst.x,  b.Y()+dst.y)
+        return w.bu(
+            this.wP(0, -200)  //just above b
+        )
+            .d(.5).lD(0).fR()
+            .lV(
+            this.vec(o.v, '*')
+        ).K(o)
+    }
+    b.shtSp = function (k) {
+        var b = this
+        $.space(function () {
+            b.sht(k)
+        })
+        return b
+    }
+    b.shtEv = b.shootOnInt = function (ms, k) {
+        $l('shootOnInt shtEv')
+        var b = this
+        _.ev(N(ms / 1000, 0.4), function () {
+            if (b.IsActive()) { b.sht(k) } })
+        return b
+    }
+}
+function badGuys(){
+    w.fireBall=function(x,y,vX,vY){
+        var v=8
+        if(vX=='l'){vX=v;vY=0}
+        if(vX=='r'){vX=-v;vY=0}
+        if(vX=='u'){vX=0;vY=-v}
+        if(vX=='d'){vX=0;vY=v}
+        if(vX=='ul'){vX=v;vY=-v}
+        if(vX=='ur'){vX=-v;vY=-v}
+        if(vX=='dl'){vX=v;vY=v}
+        if(vX=='dr'){vX=-v;vY=v}
+        vX=N(vX)?vX:0
+        vY=N(vY)?vY:0
 
-    z.hits=0
-
-
-    z.fireBalls=function(){
-        var x= this.X(),
-            y= this.Y()
-        w.fireBall(x+50, y-80,'ul')
-        w.fireBall(x+50, y+80,'dl')
-        w.fireBall(x-50, y-80,'ur')
-        w.fireBall(x-50, y+80,'dr')
-        w.fireBall(x, y-80,'u')
-        w.fireBall(x, y+80,'d')
-        w.fireBall(x-50, y,'r')
-        w.fireBall(x+50, y,'l')
+        return this.D(x,y, 'r', 18)//.bS('sun',.2)
+            .lV(vX,vY)
     }
 
+    w.zilla=function(x,y){var w=this
 
-    z.fireBallsAtInt=function(ms){var z=this
-        setInterval(function(){  z.fireBalls()  }, ms)
-        return this
-    }
+        var z= w.S(x, y, 80, 140)  //make sensor?
+
+            .fR()
+            .bS('guy', [.8,1])
+            .moveInCircle('-')
+            .cl('bul',
+            function(bul){
+                bul.B().kill()
+                z.hits++
+            })
 
 
-    return z}
-w.goomba=function(x,y){
-    x= _.tN(x,300)
-    y= _.tN(y,100)
-    return w.D(x,y,'w', 30,30).bS('guy').K('goomba')}
-w.bobom=function(x,y){var w=this,
-    bobom = w.D(x,y,'d', [
-        [40, 'body'],
-        [40, 5, 30,0, 'bobomSens', '-']])
 
-    w.b(function(cx){
-        cx.w( 'bobomSens', function(){
-            this.B().kill()})})
+        z.hits=0
 
-    body = bobom.rec(20,20).d(1).r(1)
 
-    sen =  bobom.rec({s:1 })
-
-    sen.cl('player',function(){w.B().kill()})
-
-    return bobom}
-b2d.cn.power=function(p){
-    var K=cjs.Keys
-    if(K.u){  p.I(0,-45)}
-    if(K.l){  p.I(-20, 0)}
-    if(K.r){  p.I(20, 0)}
-
-}
-w.xW=function(){
-    this.e('wall', function(b){b.kill()})
-    return this}
-b.inAir = function(){var  b=this,
-    onG= false
-    this.cxs(function(cx){
-        if(cx.IsTouching()){
-            cx.w('feet',
-                function(){ if(this.of(b) ){ onG=true } })
+        z.fireBalls=function(){
+            var x= this.X(),
+                y= this.Y()
+            w.fireBall(x+50, y-80,'ul')
+            w.fireBall(x+50, y+80,'dl')
+            w.fireBall(x-50, y-80,'ur')
+            w.fireBall(x-50, y+80,'dr')
+            w.fireBall(x, y-80,'u')
+            w.fireBall(x, y+80,'d')
+            w.fireBall(x-50, y,'r')
+            w.fireBall(x+50, y,'l')
         }
-    })
-    return !onG
-}
-b2d.cn.powX=function(p){
-    var K=cjs.Keys
-    if(K.u){  p.I(0,-4500)}
-    if(K.l){  p.I(-2000, 0)}
-    if(K.r){  p.I(2000, 0)}
-    if(K.d){  p.I(0,4500)}
-
-}
-w.gG = function (x, y) {
-    var w = this,
-
-        gG, core, shell, z
 
 
-    z = 40
-
-
-    gG = w.D(N(x, w.hW), N(y, w.hH)).K('gG')
-
-    core = gG.cir({c: 'o', C: 'z', l: 10, r: 20}).K('core')
-
-    shell = gG.rec({c: 'g', C: 'g', l: 5, w: z, h: z, s: 1, al: .5})
-
-    core.cl('bul', function (bulF) {
-        gG.lV(0).aV(0);
-        z = 40;
-    })
-
-    _.ev(2, function () {
-        z += 4
-
-        if (shell) {
-            shell.kill()
+        z.fireBallsAtInt=function(ms){var z=this
+            setInterval(function(){  z.fireBalls()  }, ms)
+            return this
         }
+
+
+        return z}
+    w.goomba=function(x,y){
+        x= _.tN(x,300)
+        y= _.tN(y,100)
+        return w.D(x,y,'w', 30,30).bS('guy').K('goomba')}
+    w.bobom=function(x,y){var w=this,
+        bobom = w.D(x,y,'d', [
+            [40, 'body'],
+            [40, 5, 30,0, 'bobomSens', '-']])
+
+        w.b(function(cx){
+            cx.w( 'bobomSens', function(){
+                this.B().kill()})})
+
+        body = bobom.rec(20,20).d(1).r(1)
+
+        sen =  bobom.rec({s:1 })
+
+        sen.cl('player',function(){w.B().kill()})
+
+        return bobom}
+    w.gG = function (x, y) {
+        var w = this,
+
+            gG, core, shell, z
+
+
+        z = 40
+
+
+        gG = w.D(N(x, w.hW), N(y, w.hH)).K('gG')
+
+        core = gG.cir({c: 'o', C: 'z', l: 10, r: 20}).K('core')
 
         shell = gG.rec({c: 'g', C: 'g', l: 5, w: z, h: z, s: 1, al: .5})
 
-        //shell=gG.rec('g',z,z,'-')//.bS( shell.img=w.s.rec('g',z,z) )
-        //w.back(sh)
+        core.cl('bul', function (bulF) {
+            gG.lV(0).aV(0);
+            z = 40;
+        })
 
-    })
+        _.ev(2, function () {
+            z += 4
+
+            if (shell) {
+                shell.kill()
+            }
+
+            shell = gG.rec({c: 'g', C: 'g', l: 5, w: z, h: z, s: 1, al: .5})
+
+            //shell=gG.rec('g',z,z,'-')//.bS( shell.img=w.s.rec('g',z,z) )
+            //w.back(sh)
+
+        })
 
 
-    return gG
+        return gG
 
-}
-w.badGuy = function (x, y) {
-    var that = this, w = this
-    b = w.D(x, y, 'd', 60).K('badGuy').bS(
-        w.s.h(x, y)
-    )
-    b.draw = function (frame) {
-        var b = this
-        b.sp().rf(['r', 'g'],
-            [frame[0], frame[1]], 60).dc(60)
     }
-    b.h = b.health = 100
-    b.cl(function () {
-        b.h--
-    })
-    funcId = I(function () {
-        b.draw(frameByHealth(b))
-        if (b.h <= 0) {
-            clearInterval(funcId);
-            b.kill()
+
+    w.badGuy = function (x, y) {
+        var that = this, w = this
+        b = w.D(x, y, 'd', 60).K('badGuy').bS(
+            w.s.h(x, y)
+        )
+        b.draw = function (frame) {
+            var b = this
+            b.sp().rf(['r', 'g'],
+                [frame[0], frame[1]], 60).dc(60)
         }
-        function frameByHealth(b) {
-            if (b.h < 0) {
-                b.h = 0
+        b.h = b.health = 100
+        b.cl(function () {
+            b.h--
+        })
+        funcId = I(function () {
+            b.draw(frameByHealth(b))
+            if (b.h <= 0) {
+                clearInterval(funcId);
+                b.kill()
             }
-            if (b.h > 100) {
-                b.h = 100
+            function frameByHealth(b) {
+                if (b.h < 0) {
+                    b.h = 0
+                }
+                if (b.h > 100) {
+                    b.h = 100
+                }
+                if (b.h < 50) {
+                    return [1 - ((b.h / 50)), 1]
+                }
+                else {
+                    return [0, 1 - ((b.h - 50) / 50)]
+                }
             }
-            if (b.h < 50) {
-                return [1 - ((b.h / 50)), 1]
-            }
-            else {
-                return [0, 1 - ((b.h - 50) / 50)]
-            }
-        }
-    }, 300)
-    return b
+        }, 300)
+        return b
+    }
+
 }
-w.ramps=function(){var w=this
-    w.ramp(
-        [400, 350, 200, 300, 100],
-        [500, 350, 300, 300, 60],
-        [600, 350, 200, 300, 100],
-        [700, 350, 300, 300, 60],
-        [800, 350, 200, 300, 100],
-        [1000, 350, 300, 300, 60],
-        [1030, 350, 200, 300, 100],
-        [1200, 350, 300, 300, 60])
-    return w
+function plats(){
+    w.ramps=function(){var w=this
+        w.ramp(
+            [400, 350, 200, 300, 100],
+            [500, 350, 300, 300, 60],
+            [600, 350, 200, 300, 100],
+            [700, 350, 300, 300, 60],
+            [800, 350, 200, 300, 100],
+            [1000, 350, 300, 300, 60],
+            [1030, 350, 200, 300, 100],
+            [1200, 350, 300, 300, 60])
+        return w
+    }
+    w.bricks=function(){var w=this,g=G(arguments)
+        _.e(g, function(g){w.S.apply(w,g)})
+        return w
+    }
+    w.grid = function(grid, x,y,len,spacing){var w=this, b
+        var gridDrawer=function(x,y,len, spacing){
+                b = w.D(x,y)
+                len = N(len,30);
+                spacing=N(spacing,20)
+                return function(x,y){
+                    b.rec(len, len, x*spacing, y*spacing).C('r').d(1).fr(0.5).r(.2)
+                    return b}},
+            drawWall=gridDrawer(x, y, len, spacing)
+        _.t(grid.length, function (row) {
+            _.t(grid[0].length, function (c) {
+                if (grid[c][row]){drawWall(row, c)}})})
+        return b.K('grid')
+    }
+    w.rR = w.randRects = function (ob) {
+        var w = this, g = G(arguments),
+            o = g.O ? g.f : {y: g.f, z: g.s}
+        o.y = N(o.y, 0)
+        o.z = N(o.z, 1)
+        _.t(20,
+            function (i) {
+                w.S(R(1100, 20), R(150, 40 + o.y), $r(),
+                    R(40, 15) * o.z, R(40, 15) * o.z).K('randomRect rR')
+            })
+        return w
+    }
+
+    w.plat=  function me(x,y,W,H){
+        var w=this, g=G(arguments)
+        if(A(g[0])){
+            _.e(g, function(g){me.apply(w,g)})
+            return w}
+
+        x = _.tN(x,60)
+        y = _.tN(y,x)
+        W = _.tN(W,30)
+        H = _.tN(H,W)
+        return w.S(x,y,'s',W,H)
+            .r(0.3)
+            .fr(2)
+            .K('plat')
+    }
+    w.clod= w.clouds=function(lX, y){var w=this
+        lX = N(lX,100)
+        y=N(y,75)
+        _.t(100,function(){
+            w.S(R(400)+lX,y,$r(),R(30))})
+        return w}
+    w.rub= w.rubber=function(x,y,len){var w=this,rub
+        len=N(len,200)
+        x+=len/2
+        return w.S(x,y).rec({
+            w:len,h:20,c:'r',s:1
+        }).fr(.3).r(.7)
+    }
+    w.grass=function(x, y, len){var w=this
+        len=N(len,200)
+        x+=len/2
+        return w.S(x,y,'g',len,20).fr(.3).r(.3)}
+    w.ice=function(x, y, len){var w=this
+        len=N(len,200)
+        x += len/2
+        return w.S(  x, y, 'w', len, 20).fr(0).r(0)}
+    w.ramp=function me(x, y, W,H,a){var w=this, g=G(arguments)
+
+        if(A(g[0])){
+            _.e(g, function(g){
+                me.apply(w,g)})
+            return w}
+
+        o = O(g[0])?g[0]: {x:g[0],y:g[1],w:g[2],h:g[3],a:g[4]}
+        o.x = N(o.x, 300)
+        o.y = N(o.y, 300)
+        o.w = N(o.w, 100)
+        o.h = N(o.h, 100)
+        o.a = N(o.h, 10)
+        o.c = o.c || 'y'
+
+        return  w.S(o.x, o.y, o.c, o.w, o.h).rot(a).DFB(1,0,0)
+    }
 }
-w.bricks=function(){var w=this,g=G(arguments)
-    _.e(g, function(g){w.S.apply(w,g)})
-    return w
+function goals() {
+    w.goal = function (x, y) {
+        w.S(x - 20, y - 15, 'y', 10, 40)
+        w.S(x, y, 'y', 40, 10)
+        w.S(x + 20, y - 15, 'y', 10, 40)
+
+    }
+    w.buck = w.sensorBucket = function (x, y, k) {
+        var w = this, sens
+
+        x = N(x, 320)
+        y = N(y, 245)
+        k = k || 'sensorBucket buck'
+
+        w.S(x - 150, y - 15, 'r', 20, 200)
+        w.S(x + 150, y - 15, 'r', 20, 200)
+        w.S(x - 200, y - 120, 'r', 320, 20, 200, 200)
+
+        return w.S(x, y, 'd', [[280, 170, '-']]).K(k)
+
+
+    }
+    w.coin = function (x, y) {
+        var w = this, c
+
+        x = _.tN(x, R(600))
+        y = _.tN(y, R(300))
+
+
+        c = w.D(x, y, 'y', 20).K('coin').bo(0).den(0).lD(0)
+
+        c.I(R(15, -5), R(15, -5))
+        c.warp()
+
+        return c
+    }
 }
-scrolling()
-yip()
 function scrolling(){
     w.tr= w.track=  function(t,cX,cY, bf){var w=this
         //i can leave the world-centering in fw
@@ -812,32 +767,32 @@ function scrolling(){
         return w
     }
     w.tX=function(t){var w=this
-            if(U(t)){return w.tSpr.X()}
-            w.tSpr.X.apply(w.tSpr, arguments)
-            return w
-        }
+        if(U(t)){return w.tSpr.X()}
+        w.tSpr.X.apply(w.tSpr, arguments)
+        return w
+    }
     w.tY=function(t){var w=this
-            if(U(t)){return w.tSpr.Y()}
-            w.tSpr.Y.apply(w.tSpr,arguments)
-            return w}
+        if(U(t)){return w.tSpr.Y()}
+        w.tSpr.Y.apply(w.tSpr,arguments)
+        return w}
     w.tXY=function(x,y){var w=this
-            if(U(x)){return {x: w.tX(), y: w.tY()}}
+        if(U(x)){return {x: w.tX(), y: w.tY()}}
 
-            y=N(y)?y:x
+        y=N(y)?y:x
 
-            return w.tX(x).tY(y)
-        }
+        return w.tX(x).tY(y)
+    }
     w.tRightLeft=function(){var w=this, left
-            T.t(function(){
-                if(!left){
-                    w.tX(10,'+')
-                    if(w.tX() > 2000){left=1}
-                }
-                else {
-                    w.tX(10,'-')
-                    if(w.tX() < 400){left=0}
-                }})
-            return w}
+        T.t(function(){
+            if(!left){
+                w.tX(10,'+')
+                if(w.tX() > 2000){left=1}
+            }
+            else {
+                w.tX(10,'-')
+                if(w.tX() < 400){left=0}
+            }})
+        return w}
     refMakeWorldScrollCode=function(){
 
         alert('refMakeWorldScrollCode')
@@ -873,62 +828,41 @@ function scrolling(){
 
     }
 }
-function yip(){
-    b2d.cn.t = b2d.cn.thrust = function (p, o) {
 
-        v = p.vec(-1)
 
-        if (U(o)) {
-            o = 5
-        }
-        if (N(o)) {
-            o = {n: o}
-        }
-        o = O(o) ? o : {}
-        o.n = N(o.n, 5)
 
-        if (K.u) {
-            p.I(v.m(o.n * 40))
-        }
-
-        if (K.d) {
-            p.I(-v)
-        } //.m(o.n?)
-        p.aV(K.r ? 15 : K.l ? -15 : 0)
-
-        if (K.l) {
-            p.rt(2, '-')
-        }
-        if (K.r) {
-            p.rt(2, '+')
-        }
-
+function willAlert() {
+    w.sun=function(x,y){
+        alert('sun')
+        var w=this
+        //djd.init?? joint
+        x=N(x,300)
+        y=N(y,150)
+        return w.S(300,150, 20,'p',10).d(1).r(.5).bS('sun',.2)
     }
-    b.wP = b.wPt = function (x, y) {
+
+
+    b.cam = function (x, y) {
+        alert('b.cam')
+        var b=this,s= b.stg()
+        s.XY(b.diff(x, y))
+        return b}
+
+    b.follow = function (x, y) {
+        alert('b.follow')
         var b = this
-        return b.GetWorldPoint(V(x, y).div()).mult()
+        cjs.t(function(){if (O(b.sprite)){b.cam(x, y)}})
+        return b
     }
-    b.v = b.vec = function () {
-        var b = this, g = G(arguments), o
-
-        if (g.m) {
-            return b.GetWorldVector(V(0, -1).m(N(g.f, 100)))
-        }
-
-        o = g.O ? g.f :
-            g.s ? {x: g.f, y: g.s} : //this not error
-            {y: g.f}
-
-        o.x = N(o.x, 0)
-
-        o.y = N(o.y, -1)
-
-        //the current direction of that vector in world coordinates
-
-        return b.GetWorldVector(V(o.x, o.y))
-
+    b.dir = function(d){
+        alert('b.dir')
+        var b = this
+        if (U(d)) {return b._dir}
+        b._dir = d
+        return b
     }
     b.polBu = b.polyBul = function () {
+        alert('b.polBu polyBul')
         var b = this, w = b.W(), v, pt, bu
         v = b.vec(-20)
         pt = b.wP(0, -50)
@@ -936,195 +870,360 @@ function yip(){
         return bu.K('polBu')
 
     }
-    b.bu = b.bul = function () {
-        var b = this, g = G(arguments)
+    b2d.cn.sl= b2d.cn.slidey = function(p){
+        alert('slidy')
+        var k = cjs.Keys
+
+        if (p.onG) {if (k.u) {
+
+            if(k.r){p.I(20,-60)}
+            else if (k.l) {p.I(-20, -60)}
+            else {p.I(0, -100)}
+        }
+
+        else {
+            if (k.l) {p.dir(0);p.I(-20, 0)}
+            if (k.r) {p.dir(1);p.I(20, 0)}
+
+
+        }
+
+        }
+
+        else {
+            if (k.l) {p.dir(0);p.I(-10, 0)}
+            if (k.r) {
+                p.dir(1);
+                p.I(10, 0)}
+        }
+
+        /*
+
+         p.I(p.onG&&k.u ? V(0, -70)
+
+         : k.r ? V(30, 0)
+         : k.l ? V(-30, 0)
+         : V(0, 0)  )*/
+
+        return p
+    }
+    b2d.cn.h=b2d.cn.hop = function (p) {
+        alert('hop')
+        var k = cjs.Keys
+        if (p.onGround) {
+            if (k.l) {p.I(-30,-120)}
+            if (k.r) {p.I(30,-120)}}
+        else {if(k.d){p.I(0,20)}}
+    }
+
+    b2d.cn.power=function(p){
+        alert('power')
+        var K=cjs.Keys
+        if(K.u){  p.I(0,-45)}
+        if(K.l){  p.I(-20, 0)}
+        if(K.r){  p.I(20, 0)}
+
+    }
+
+    b2d.cn.powX=function(p){
+        alert('powX')
+        var K=cjs.Keys
+        if(K.u){  p.I(0,-4500)}
+        if(K.l){  p.I(-2000, 0)}
+        if(K.r){  p.I(2000, 0)}
+        if(K.d){  p.I(0,4500)}
+    }
+
+
+    b.byI=b.byImp=function(i){alert('b.byI')
+        var k=cjs.Keys
+        if(k.right){this.I(i,0)}
+        else if(k.left){this.I(-i,0)}
+        return this}
+    b.byV=b.byVel=function(v){alert('b.byV')
+        var k = cjs.Keys
+        if (k.right) { p.lV(v,0) }
+        else  if (k.left) { p.lV(-v,0) }
+        return this}
+
+    b.diffx = b.difx = function (x, y) {
+        alert('b.diffx difx')
+        var b=this// compare with DIF  - achtung!
+        return {
+            x: x - b.X(),
+            y: y - b.Y()}
+    }
+    w.p1 = w.player1 = function (x, y, sc, cn) {
+        alert('w.p1 player1')
+        var w = this, g = G(arguments), p,
+            o = g.S_ ?
+            {cn: g.f} :
+                N(g.t) ? {x: g.f, y: g.s, sc: g.t, cn: g[3]} :
+                {x: g.f, y: g.s, cn: g.t}
+        o.x = N(o.x, w.hW)
+        o.y = N(o.y, w.hH)
+        o.sc = N(o.sc, 4)
+        p = w.me(o.x, o.y, o.sc)
         if (g.p) {
-            b.SetSensor(true)
+            p.track()
         }
-        return b
-    }
-    w.bu = w.bul = function () {
-        var w = this, g = G(arguments), o, bu
-
-        o = O(g[0]) ? {x: g.f.x, y: g.f.y, r: g.s} : {x: g.f, y: g.s, r: g.t}
-
-        o.r = N(o.r, 8)
-
-        o.x = N(o.x, 100);
-        o.y = N(o.y, o.x)
-
-        bu = w.D(o.x, o.y, 'w', o.r).K('bul bu')
-        bu.lD(0).aD(0).fr(0).d(.1).r(.5)
-        bu.SetBullet(true)
-        bu.cl(function (f) {
-            if (!g.n) {
-                this.xB()
+        p.cn(o.cn)
+        p.speed = 40
+        p._dir = 'r'
+        p.dir = function (d) {
+            var p = this
+            if (U(d)) {
+                return p._dir
             }
-            if (g.p) {
-                f.xB()
+            p._dir = d;
+            return p
+        }
+        p.moveInDir = function () {
+            var p = this, g = G(arguments)
+            if (g.n) {
+                return p.move(-p.speed)
             }
-        })
-
-        return bu
-    }
-    b.sht = function (vel) {
-        var b = this, g = G(arguments), dst, bu, o
-
-        o = g.S_ ? {k: g.f, v: g.s} : {v: g.f}
-        o.v = N(o.v, 50000)
-        //dst= this.v().m(100) //bu=w.bu(b.X()+dst.x,  b.Y()+dst.y)
-        return w.bu(
-            this.wP(0, -200)  //just above b
+            //n = _.tN(g[0], p.speed)// ?
+            if (p.dir()) {
+                p.I(3, 0)
+            } else {
+                p.I(-3, 0)
+            }
+            return p
+        }
+        p.SetBullet(true)
+        w.cl('feet',
+            function (f) {
+                if (!f.sen()) {
+                    p.onG = 1
+                }
+            }
         )
-            .d(.5).lD(0).fR()
-            .lV(
-            this.v(o.v, '*')
-        )
-            .K(o)
 
-
-    }
-    b.shtSp = function (k) {
-        var b = this
-        $.space(function () {
-            b.sht(k)
+        w.end(function (cx) {
+            cx.w('feet', function (f) {
+                if (!f.sen()) {
+                    p.onG = 0
+                }
+            })
         })
-        return b
+        $.testJump = 1
+        if ($.testJump) {
+            T.t(function () {
+                if (p.onG) {
+                    $l('onG')
+                }
+                else {
+                    $l('in air')
+                }
+            })
+            w.show(function () {
+                return p.onG
+            })
+        }
+        T.t(function () {
+            p.I(0, 500)
+        })
+        return p
 
     }
-    b.shtEv = b.shootOnInt = function (ms, k) {
-        var b = this
-        _.ev(N(ms / 1000, 0.4), function () {
-            if (b.IsActive()) {
-                b.sht(k)
+    w.me = function (x, y, Z) {
+        var w = this, p
+
+        alert('w.me')
+        Z = N(Z, 4)
+        p = w.D(x, y)
+        p.cir({c: 'X', C: 'X', l: 0, r: 1})
+        p.rec('X', Z * 12, Z * 22).K('head')
+        p.rec('X', Z * 10, Z * 20, 0, Z * 10, '-').K('feet')
+        p.rec('X', Z * 2, Z * 6, 0, -Z * 12, '-').K('hat')
+        p.rec('X', Z * 8, Z * 2, Z * 8, 0, '-').K('right')
+        p.rec(Z * 8, Z * 2, -Z * 8, 0, '-').K('left')
+        p.d(1).r(0).fr(.1).fixRot()
+        p.bS({
+            i: 'me',
+            sc: Z / 10
+        })
+
+        return p.K('p player')
+    }
+    b.jumping = function (y, x) {
+        alert('b.jumping')
+        var b = this, k = cjs.Keys
+        if (k.u) {
+            if (k.r) {
+                b.lV(x, -(y - x))
             }
-        })
-        return b
-    }
-
-
-    b.thr = function () {
-        this.cn('thrust')
-    }
-    b.dir = function (d) {
-        var b = this
-        if (U(d)) {
-            return b._dir
-        }
-        b._dir = d
-        return b
-    }
-    b.tow = b.towards = function (x, y, sp) {
-        var b = this, lV
-
-        __sp = function (s) {
-            s = N(s, 5)
-            s = 11 - (  s > 10 ? 10 : s )
-            s *= 20
-            return s
-        }
-        sp = N(sp, 5)
-        sp = 11 - (  sp > 10 ? 10 : sp )
-        sp *= 20
-        lV = V(x - b.X(), y - b.Y()).d(sp)
-        return b.lV(lV)
-
-        //if(isBody(x)){return self(x.X(), x.Y(), y)}
-//move towards x,y (or body?)
-        //more realistic to accelerate, via forces?
-    }
-    b.rTow = function (y) {
-        var b = this,
-
-            a = -M.tD(M.atan((y.X() - b.X()) / (y.Y() - b.Y())))
-        if (y.Y() > b.Y()) {
-            a += 180
-        }
-        b.rt(a)
-        return b
-    }
-
-    w.y = w.ship = function () {
-        var w = this, g = G(arguments), hS, side, ship, y, o
-
-
-        o = g.O ? g.f : g.S_ ? {c: g.f, x: g.s, y: g.t, sc: g[3]} :
-        {x: g.f, y: g.s, sc: g.t}
-        o.c = o.c || 'y';
-        o.sc = N(o.sc, 4);
-        o.x = N(o.x, 100);
-        o.y = N(o.y, 100)
-
-        y = w.D(o.x, o.y);
-        hS = o.sc * 4;
-        side = hS * 2;
-        y.pol(oO('c', o.c), [[-hS, hS], [0, -side * 2], [hS, hS]])
-
-        y.push = function (frc) {
-            var y = this, g = G(arguments)
-
-            frc = N(g.f, 1)
-
-            if (g.p) {
-                _.ev(N(g.s, 100 * 1000), function () {
-                    y.push(frc)
-                })
+            else if (k.l) {
+                b.lV(-x, -(y - x))
             }
             else {
-                y.I(y.v().m(frc * 0.1))
+                b.lV(0, -y)
             }
-
-            return y
         }
-        y.going = function () {
-            var y = this,
-                lv = y.lV()
-            return M.a(lv.x) > 0.5 || M.a(lv.y) > 0.5 || M.a(y.aV()) > 0.5
-        }
-
-        if (!g.n) {
-            y.cn('thrust').shtSp()
-        }
-        if (g.p) {
-            y.tr()
-        }
-        //y.sht= _.b($.mo(.15,y.sht),y)
-
-        y.fixedRot(false)
-        y.aD(0)
-        y.r(.8)
-        y.SetBullet(true)
-
-        return y.K('ship yip y')
+        return b
     }
-//these just thrust and dont
+    b.arrowMove = function () {
+        alert('b.arrowMove')
+        var b = this
+        $.key({
+            l: function () {
+                b.dir('l').move()
+            },
+            r: function () {
+                b.dir('r').move()
+            },
+            u: function () {
+                if (b.dir() == 'l') {
+                    b.I(5, -12)
+                }
+                else if (b.dir() == 'r') {
+                    b.I(-5, -12)
+                }
+            }
+        })
+
+        return b
+
+    }
+    b.relPos = function () {
+        alert('b.relPos')
+        var b = this;
+        return b.X() + b.S().X()
+    }
+    b.pWarping = function () {
+        alert('b.pWarping')
+        var p = this, b = this
+        cjs.t(function () {
+            if (p.Y() < 0) {
+                p.Y(300)
+            }
+            if (p.Y() > 300) {
+                p.Y(0)
+            }
+            if (p.X() < 0) {
+                p.X(600)
+            }
+            if (p.X() > 600) {
+                p.X(0)
+            }
+        })
+
+        return b
+
+    }
+    w.xW = function () {
+        alert('w.xW')
+        this.e('wall', function (b) {
+            b.kill()
+        })
+        return this
+    }
+//w.left and w.up move all objects in world
+//i think only used in 1 game (talk?)
+    w.left = function (n) {
+        alert('w.left (horiz)')
+        var w = this;
+        n = N(n, 4)
+        w.e(function (b) {
+            b.X(n, '-')
+        })
+    }
+    w.up = function (n) {
+        alert('w.up')
+        var w = this;
+        n = N(n, 4)
+        w.e(function (b) {
+            b.Y(n, '-')
+        })
+    }//=w.vert
+
+}
+
+//willLog
+b.moveInCircle = function(rad, speed){
+    $l('b.moveInCircle')
+
+    var g=G(arguments),rad=N(g[0])?g[0]:100,
+        speed=N(g[1])?g[1]:2,
+        toRad=Math.toRadians, cos=Math.cos,  sin=Math.sin,
+        b=this,
+        ang=0,
+        x=b.X(),
+        y=b.Y(),
+        bX,
+        bY
+
+    T.t(function(){
+        ang += toRad(speed)
+
+        bX= rad * cos(ang)
+        bY= rad * sin(ang)
+
+        if(g.p){bY*=2}
+        if(g.n){bX*=2}
+
+
+        b.XY(bX+ x, bY+ y)
+    })
+
+    return this}
+b.warp = function(p){
+    $l('b.warp')
+    var b=this,w=b.W()
+    cjs.t(function(){
+        if(b.Y()<0){b.Y(w.H)}
+        if(b.Y()>w.W){b.Y(0)}
+        if(b.X()<0){b.X(w.W)}
+        if(b.X()>w.W){b.X(0)}})
+    return b}
+w.stars=function(n){
+    $l('w.stars')
+    var w=this
+    _.t(N(n,30),function(){w.D(R(1000,-500),R(800,-400),'w',2).den(0).rest(2)})
+    return w}
+w.tim=w.addTim=function(n){
+    $l('w.tim')
+    var w=this
+    if(U(n)){
+
+        return w.D(300,300,'w',15).K('tim').bS('guy', .3)
+    }
+    _.t(n, function(){w.addTim()})
+    return w
+}
+b.tow = b.towards = function (x, y, sp) {
+    $l('b.tow')
+    var b = this, lV
+    __sp = function (s) {
+        s = N(s, 5)
+        s = 11 - (  s > 10 ? 10 : s )
+        s *= 20
+        return s
+    }
+    sp = N(sp, 5)
+    sp = 11 - (  sp > 10 ? 10 : sp )
+    sp *= 20
+    lV = V(x - b.X(), y - b.Y()).d(sp)
+    return b.lV(lV)
+    //if(isBody(x)){return self(x.X(), x.Y(), y)}
+//move towards x,y (or body?)
+    //more realistic to accelerate, via forces?
+
+    //these just thrust and dont
 //otherwise apply forces to neighbors.  but what if
 //they 'SUCKED' instead of 'thrusted' ?
 //is that the same as having a gravitational inwards force?
 //  y = $ys(300, 200, 3).angDamp(0).linDamp(1)
-    w.Y = function () {
-        var w = this, g = G(arguments)
-
-        y = $a(w, 'y', g)
-
-        if (g.p) {
-            y.track()
-        }
-        return w
-
-    }
-
-
 }
-w.rR = w.randRects = function (ob) {
-    var w = this, g = G(arguments),
-        o = g.O ? g.f : {y: g.f, z: g.s}
-    o.y = N(o.y, 0)
-    o.z = N(o.z, 1)
-    _.t(20,
-        function (i) {
-            w.S(R(1100, 20), R(150, 40 + o.y), $r(),
-                R(40, 15) * o.z, R(40, 15) * o.z).K('randomRect rR')
-        })
-    return w
+b.rTow = function (y) {$l('b.rTow')
+    var b = this,
+
+        a = -M.tD(M.atan((y.X() - b.X()) / (y.Y() - b.Y())))
+    if (y.Y() > b.Y()) {
+        a += 180
+    }
+    b.rt(a)
+    return b
+
 }
