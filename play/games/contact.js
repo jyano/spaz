@@ -434,8 +434,8 @@ function post(){
         imp=0;  tang = 0; sum=0
         w.po(function(cx, i, t){
             imp =i; tang =t
-            if(first && M.a(i+t)>5) {
-                sum = M.a(i + t)
+            if(first && M.avg(i+t)>5) {
+                sum = M.avg(i + t)
                 first = 0}
         })
 
@@ -444,7 +444,7 @@ function post(){
         w.show(function(){return imp+' + '+tang+' = ' + sum  })
 
 
-// $l('i:'+i+' t:'+t+' sum:'+(M.a(i)+ M.a(t)) + ' prod:'+M.a((i*t)))
+// $l('i:'+i+' t:'+t+' sum:'+(M.avg(i)+ M.avg(t)) + ' prod:'+M.avg((i*t)))
 
 
 
@@ -497,8 +497,8 @@ function post(){
         imp=0;  tang = 0; sum=0
         w.po(function(cx, i, t){
             imp =i; tang =t
-            if(first && M.a(i+t)>5) {
-                sum = M.a(i + t)
+            if(first && M.avg(i+t)>5) {
+                sum = M.avg(i + t)
                 first = 0}
         })
 
@@ -507,7 +507,7 @@ function post(){
         w.show(function(){return imp+' + '+tang+' = ' + sum  })
 
 
-// $l('i:'+i+' t:'+t+' sum:'+(M.a(i)+ M.a(t)) + ' prod:'+M.a((i*t)))
+// $l('i:'+i+' t:'+t+' sum:'+(M.avg(i)+ M.avg(t)) + ' prod:'+M.avg((i*t)))
 
 
 

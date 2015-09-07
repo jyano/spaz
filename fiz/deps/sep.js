@@ -1,6 +1,4 @@
-b2d.sep= b2d.fig=b2d.conc=b2d.separator=function(body, verts, scale){
-
-
+b2d.sep =function(body, verts, scale){
 
     /*
      //This class is specifically for non-convex polygons.
@@ -21,12 +19,7 @@ b2d.sep= b2d.fig=b2d.conc=b2d.separator=function(body, verts, scale){
      * @see b2PolygonShape.SetAsVector()
      * @see b2Fixture
      * */
-
-
-
-
     //pass in an array of points //each will get scaled and then, calcShapes is applied to it //and then for EACH OF THE SHAPES!! ....
-
     Separate = function(b,vs,sc){var g=G(arguments),
         i,j,  m, figsVec,  polyShape,  n
 
@@ -56,9 +49,6 @@ b2d.sep= b2d.fig=b2d.conc=b2d.separator=function(body, verts, scale){
         return b.d(1)
 
     }
-
-
-
     Validate=function(verticesVec){
         /**
          * Checks whether the vertices in <code>verticesVec</code> can be properly distributed into the new fixtures
@@ -279,13 +269,12 @@ b2d.sep= b2d.fig=b2d.conc=b2d.separator=function(body, verts, scale){
     }
     det=function(x1,y1,x2,y2,x3,y3) {return x1*y2+x2*y3+x3*y1-y1*x2-y2*x3-y3*x1}
     // err=function(){throw new Error("A problem has occurred. Use the Validate() method to see where the problem is.")}
-
     if(b2d.isGPoly(verts)){
 
         verts = verts.verts()
     }
-
     verts= _.map(verts,function(v){v=V(v);return [v.x, v.y]})
 
-    return U(body)? Separate : Separate(body, verts, scale)
-}
+    return U(body)? Separate :
+        Separate(body, verts, scale)
+} //= b2d.fig=b2d.conc=b2d.separator

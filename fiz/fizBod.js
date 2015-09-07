@@ -45,6 +45,7 @@ f.cen=  f.mid= f.cent=f.center=function(){
     if(g.p){w.dot(v)}
     return  v
 }
+
 f.pX=function(){return this.pos().x}
 f.pY=function(){return this.pos().y}
 f.rad = function(){return this.H().m_radius*30}
@@ -56,13 +57,10 @@ f.H=  function(h){ //should let user specify dimensions of shape, // not just ha
 f.iC= function(){ return this.H() && this.H().m_type == 0 }
 f.hT= f.hType=function(){return this.H().m_type}
 f.pos = function(){// for circs
-    return V(
-        this.H().m_p.x * 30,
-        this.H().m_p.y * 30
-    )
+    return V(this.H().m_p.x * 30, this.H().m_p.y * 30)
 }
-f.$=function(fn){var f=this, b=f.B(), w=b.W()
 
+f.$=function(fn){var f=this, b=f.B(), w=b.W()
     w.$(function(o){
         w.q(o.x, o.y, function(fx){
             if(f==fx){  _.b(fn,f)(o) }
@@ -70,6 +68,8 @@ f.$=function(fn){var f=this, b=f.B(), w=b.W()
     })
     return f
 }
+
+
 f.kill   = function () {
     var f=this,b= f.B(),w= b.W()
     if (!f) {return}
@@ -79,6 +79,7 @@ f.kill   = function () {
 f.killB=  f.kB= f.xB = f.xX = f.XX = function () { if (this && this.B()) {
     this.B().kill() }}
 fixDef()
+p=b
 b.mid=function(){var b=this, w= b.W()
     return b.XY(
         w.w/2,

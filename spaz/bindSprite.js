@@ -1,3 +1,61 @@
+i = cjs.DisplayObject.prototype
+ct = cjs.Container.prototype
+st = s = cjs.Stage.prototype
+t=cjs.Text.prototype
+h = cjs.Shape.prototype
+ct=cjs.Container.prototype
+s=cjs.Stage.prototype
+h=cjs.Shape.prototype
+ct=cjs.Container.prototype
+h = cjs.Shape.prototype // gx = cjs.Graphics.prototype
+h = cjs.Shape.prototype // gx = cjs.Graphics.prototype
+ct = cjs.Container.prototype
+ct.bm = ct.b = function() {var ct = this, g = G(arguments), bm,
+     o = g.F_ ? {fn: g.s, sc: g.s} :
+         g.N_ ? {sc: g.f, fn: g.s} :
+             _.x({i: g.f}, N(g.s) ? {sc: g.s, fn: g.t} :
+             {fn: g.s, sc: g.t})
+    o.sc = o.sc || 1
+    $df.im(o)
+    if(O(o.i)) {return ct.A($Bm(o.i))}//alert('ct.bm O(o.i)'); never alerted
+    $.i(o.i, function (i) {
+        bm = $Bm(i[0]).a2(ct).sXY(o.sc)
+        if (!g.n) {
+            bm.rC()
+        }
+        if (g.p) {
+            bm.drag()
+        }
+        if (o.fn) {
+            o.fn(bm)
+        }
+    })
+    return ct
+}
+// u might say xTHIS but not thisX? i dont know what i am talking about
+/* TICKER
+ paused : Indicates whether the ticker is currently paused.
+ d       delta :  time since the last tick
+ t       time : how much  since T  started
+ r      runTime  : how much time has T been running for
+ */
+/*
+ // returns   The average time spent in a tick in milliseconds.
+ //This can vary significantly from the value provided by getMeasuredFPS because it only measures the time spent
+ // within the tick execution stack.
+ Example 1: With a target FPS of 20, getMeasuredFPS()
+ returns 20fps, which indicates an average of 50ms between the end of one tick and the end of the next.
+ However, getMeasuredTickTime() returns 15ms.
+ This indicates i there may be up to 35ms of "idle" time between the end of one tick and the start of the next.
+
+ Example 2: With a target FPS of 30, getFPS() returns 10fps,
+ which indicates an average of 100ms between the end of one tick and the end of the next. However,
+ getMeasuredTickTime() returns 20ms.
+ This would indicate i something other than the tick is using ~80ms
+ (another script, DOM rendering, etc).
+
+ */
+
 f.initSp=function(){
     this._sp = this._sp || []; this.SP = this.SP || []; this.sprites = this.sprites || []
     return this
@@ -201,75 +259,6 @@ w.bfR = function () {var w = this, g = G(arguments), b, h, o
 }
 b2d.m=function(vs){ return _.m(vs, b2d.mult) }
 b2d.tA=function(vs){return _.m(vs, function(v){return v.tA(v)})}
-b._pol=function(o){
-    var b=this, fs  = newFixts(b, o)
-
-    dressFs(fs,o)
-
-    bindS(b,o)
-    return fsRetVal(fs)
-
-
-}
-b.pol = function(){
-
-
-    var b = this,
-        w = b.W(),
-        g = G(arguments);
-    if (g.u) {  return b  }
-
-
-    var  fs, arr, o, vs //-> {c:'r', v:[[],[],[]]} //pass in {c:'r', v:[[],[],[]]} //pass in [[],[],[]] //pass in ['r',[],[],[]] // b.fs(function(f){b1.pol(f.rV())})//g[0].ps(function(v){b.pol(v)})// else {_.e(g[0], function(v){b.pol(v)})}
-
-    if(_passedVs(g)) {  return b.pol({v: g.f})  }
-    if(_passedColAndVs(g)) {return b.pol({c: g.f, v: g.s})}
-    if (b2d.iB(g.f)) {g.f.fs(b);return b}
-
-    if (b2d.iF(g.f)) {g.f = g.f.vs()}
-
-
-
-
-    o= polyShapeArgs(g)
-
-    return b._pol(o)
-
-
-}
-function dressFs(fs,o){
-
-    _.e(fs, function (f){
-        f.d(o.d).r(o.b).fr(o.f)
-        if (o.s) {f.m_isSensor = o.s ? true : false; f.sen(1) }
-        f.K(o.k)
-        f.C(o.c, o.C, o.l)
-        if (o.lf) {  f.bS(w.s.h().lf(o).lt(o.v)) }
-        if (o.rf) {  f.bS(w.s.h().rf(o).lt(o.v))  }
-    })
-}
-function _passedVs(g){return  b2d.iGP(g.f) && U(g.s)}
-function _passedColAndVs(g){return S(g.f) && b2d.iGP(g.s) && U(g.t)}
-function fsRetVal(fs){
-    return fs.length > 1 ? fs : fs[0]
-}
-function newFixts(b,o) {var fs,n
-    n = b.n()
-    sep(b, o)
-    fs = _.f(b.fs(), b.n() - n) //each of only the NEW fixts
-    return fs
-}
-function bindS(b,o){
-    o.i = o.i || o.bf
-    if (o.i) {_bindS(b)}
-    function _bindS(b){
-
-
-        var h = w.g.h();
-        h.bV(o);
-        b.bS(h)
-    }
-}
 f.C = function () {
 
     var f = this,
@@ -291,32 +280,6 @@ f.C = function () {
 
     return f
 }
-function polyShapeArgs(g){
-    var o= g.A ? (S(g.f[0]) ? {c: g.f[0], v: _.r(g.f)} : {v: g.f}) :
-        g.O ? g.f : !g.S_ ?  {v:g} : _.x({c: g.f}, g.t ? {v: g.r} : {  v: g.s} )
-    $df.h(o)
-    if (b2d.iGP(o.v)) {o.v = o.v.vs()}
-    return o
-}
-function sep(b, o){
-    if (O(o.v) && O(o.v[0][0])) {
-        _.e(o.v, function (v) {b2d.sep(b, v)})
-    }
-    else {
-        b2d.sep(b, o.v);
-        o.v = [o.v]
-    }
-
-    //pass in 2 or more objs->
-
-    //pass in one object
-    //->  ['r', [],[],[] ]//->  [[],[],[]]
-    //pass in color and loose verts//->'r',[],[],[]//->  'r', [[],[],[]]
-    //just pass in loose verts//-> [],[],[]
-    //same two as above but also nested in wrapper array.. so just ONE pam
-    //if (o.X) {b.clear()}
-    //the NEW fixts
-}
 f.vs =function(){var f=this, b=f.B(),g=G(arguments),
     vs=  b2d.m(  this.H().m_vertices   )
     if( g.p){
@@ -334,21 +297,62 @@ w.cen = w.cent = function () {
     }
     return v
 }
+b.sep=function(verts,scale){var body=this
+    if(!O(verts)){alert('o.v must be object'); return}
 
-function createStuff(){
-    $El = cjs.el = function (a) {
-        a = $(a)[0]
-        return new cjs.DOMElement(a)
-    }
-    ELM = function () {
-        z()
-        d = $.d('r', 400, 400).A($.ip()).drag()
-        el = $El(d)
-        s = $St('y').t()
-        s.A(el)
-        // tw(el, [{x:300,y:300},2000])
-        // tw([el,'l'],[{r:360, sx:.5, sy:.5},8000],{r:0},[{r:360, sx:1, sy:1},8000])
-    }
+    if (b2d.iGP(verts)) {verts = verts.vs()}
 
+    //needs array of verts.. or one vert (which is converted here to arr)
+    _.e(O(verts[0][0])? verts: [verts], function (v) {
+        b2d.sep(body,v, scale)
+    })  //  'sep' each of the verts onto the body
+    return this
 }
+b.pol = function(){var b = this, w = b.W(), g = G(arguments), o,
+    n=b.n(), fs, h, numFixtsAdded, newFixts; if (g.u) {  return b  }
 
+
+    //if passed verts:
+    if( b2d.iGP(g.f) && U(g.s)) {
+        return b.pol({v: g.f})  }
+    //if passed color and verts:
+    if(S(g.f) && b2d.iGP(g.s) && U(g.t)) {
+        return b.pol({c: g.f, v: g.s})}
+    if (b2d.iB(g.f)) {g.f.fs(b);return b}
+    if (b2d.iF(g.f)) {g.f = g.f.vs()}
+
+
+    o= g.A ? (
+        // pass in ['r',[],[],[]]
+        S(g.f[0]) ? {c: g.f[0], v: _.r(g.f)} :
+            // pass in [[],[],[]]
+        {v: g.f}
+    ) :
+
+        g.O ? g.f :
+            !g.S_ ?  {v:g} : //pass in [],[]
+                _.x({c: g.f},
+                    g.t ? {v: g.r} : // pass in 'r', [], []
+                    {  v: g.s}   //pass in  {c:'r', v:[[],[],[]]}
+                )
+    $df.h(o)
+
+    b.sep(o.v)
+
+    numFixtsAdded=b.n()-n
+    newFixts = _.f(b.fs(), numFixtsAdded)
+    _.e(newFixts, function dressFixture(f){
+        f.d(o.d).r(o.b).fr(o.f)
+        if (o.s) {f.m_isSensor = o.s ? true : false; f.sen(1) }
+        f.K(o.k)
+        f.C(o.c, o.C, o.l)
+        if (o.lf) {
+            f.bS(w.s.h().lf(o).lt(o.v)) }
+        if (o.rf) {
+            f.bS(w.s.h().rf(o).lt(o.v))  }
+    })
+
+    o.i = o.i || o.bf
+    if (o.i){ h = w.g.h(); h.bV(o); b.bS(h) }
+    return newFixts.length > 1 ? newFixts : newFixts[0]
+}
