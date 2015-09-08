@@ -1,3 +1,27 @@
+$sw = cjs.sw = cjs.stopWatch = function () {
+    alert('$sw')
+    _$t = function () {
+        return new Date().getTime()
+    }
+    var t = _$t()
+    return function self() {
+        var g = G(arguments),
+            d = _$t() - t
+        if (g.d) {
+            t = _$t()
+        }
+        if (g.n) {
+            var f = _.cap(
+                (self('/') - 500) / 20,
+                0,
+                100
+            )
+            return f
+        }
+        return d
+    }
+}
+
 //w.spBox???
 SPRY=function(){W([1200,600,2400,1200],{g:20})//.chalk('spritebox example')
 //for 400 x 400 flash squares !!!

@@ -100,10 +100,8 @@ cjs.sSB= cjs.builder = cjs.spriteSheetBuilder =   cjs.ssB = cjs.ssb = function (
     if (mc) { sSB.A(mc) }
     return sSB
 }
-
 meSprite=function(){
     return $Sp( $SS ).XY(10).drag()}
-
 cjs.bindSlide = SL = function () {
     var g = G(arguments),
         b = g[0],
@@ -126,15 +124,10 @@ cjs.bindSlide = SL = function () {
 
         })
 }
-
-
-
-
 i.RT = function () {var i = this;
     RT(i);
     return i
 }
-
 cjs.bindReverseSlide = LS = function (b, b2) {
     var g = G(arguments),
         b = g[0],
@@ -358,7 +351,6 @@ cjs.bindTransform = TR = function TR(b, b2, m) {
 
     })
 }
-
 tween()
 movie()
 function tween(){
@@ -1547,14 +1539,10 @@ function spr(){
 
 
 }
-
 i.grow = function(){
 
     $Tw(this, [{sxy:10},10000]); return this
 }
-
-
-
 i.RT = function(){RT(this);return this}
 i.TR = function(){TR(this);return this}
 i.dg=i.drag=i.SL = function(){

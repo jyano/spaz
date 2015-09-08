@@ -131,7 +131,7 @@ function Player(){var p = w.p(200,400,5).cn('j')
 
     p.lWeb=function(){return _.l(_.wh(p.webs,{cn:1}))}
     p.detach=function(){if(p.iCn()){p.lWeb().die()};return p}
-    $.k({l: function(){p.lV(-40, 0)}, r: function(){p.lV(40, 0)},
+    $.kD({l: function(){p.lV(-40, 0)}, r: function(){p.lV(40, 0)},
         u: function(){if(p.webs[0]){_.l(p.webs).die()}},
         d: function(){if(!p.iCn()){ p.web().b.I(0, -100000) }}})
     w.b(function (cx) {cx.w('wbB', 'rr', function(f){var web= _.fW(p.webs,{b:this.B()}); if(!web.cn){web.attach(f.B())}})})

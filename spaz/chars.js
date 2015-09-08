@@ -58,24 +58,22 @@ function maro() {
 
         var m = p.mass()
         if (p.inAir()) {
-            if (K.r) {
+            if ($.K.r) {
                 p.I(m / 2, 0)
             }
-            else if (K.l) {
+            else if ($.K.l) {
                 p.I(-m / 2, 0)
             }
-            else {
 
-            }
             p.I(0, m * 3)
         }
 
         else {//on ground
-            if (K.u) {//initiate a jump
-                if (K.r) {
+            if ($.K.u) {//initiate a jump
+                if ($.K.r) {
                     p.lV(m, -m * 4)
                 }
-                else if (K.l) {
+                else if ($.K.l) {
                     p.lV(-m, -m * 4)
                 }
                 else {
@@ -83,10 +81,10 @@ function maro() {
                 }
             }
             else {//not jumping, may be running
-                if (K.r) {
+                if ($.K.r) {
                     p.lV(m * 2, 0)
                 }
-                else if (K.l) {
+                else if ($.K.l) {
                     p.lV(-m * 2, 0)
                 }
                 else {
@@ -95,7 +93,7 @@ function maro() {
             }
         }
 
-        if (K.d) {
+        if ($.K.d) {
             p.I(0, m * 3)
         }
     }
@@ -237,11 +235,12 @@ function yip() {
         var vec
         mult = N(mult, 200)
 
-        if (K.u) {
+        if ($.K.u) {
             vec = p.vec().m(mult)
             p.I(vec)
         }
-        p.aV(K.r ? 15 : K.l ? -15 : 0)
+
+        p.aV($.K.r ? 15 : $.K.l ? -15 : 0)
         //  $l('vec: '+ parseInt(vec.x) + ', '+ parseInt(vec.y))
     }
     w.y = w.ship = function () {

@@ -506,4 +506,374 @@ function bods(){
     }
 }
 
+//from create
+ct.d = ct.dot = function (c, x, y) {
+    var ct = this, o, d, tw, g = G(arguments)
 
+    if (b2d.isGPoly(g.f)) {
+
+        _.e(g.f.vs(), function (v) {
+            ct.dot(V(v))
+        })
+
+        return this
+    }
+
+
+    if (g.A) {
+
+        _.e(c, function (G) {
+            if (A(G)) {
+                ct.dot.apply(ct, G)
+            }
+            else {
+                ct.dot(G)
+            }
+        })
+
+        return this
+    }
+
+
+    o = g.S_ ? (
+
+        b2d.iB(g.s) ? {c: g.f, x: g.s.sX, y: g.s.sY} :
+            O(g.s) ? {c: g.f, x: g.s.x, y: g.s.y} :
+            {c: g.f, x: g.s, y: g.t}
+
+    ) :
+        b2d.iB(g.f) ? {x: g.f.sX, y: g.f.sY} :
+            g.O_ ? {x: g.f.x, y: g.f.y} :
+            {x: g.f, y: g.s}
+
+
+    o.x = N(o.x, ct.W() / 2)
+    o.y = N(o.y, ct.H() / 2)
+    o.c = o.c || 'y'
+    d = this.h(o.x, o.y).cir(8, o.c, 'z', 2).al(.7).drag()
+    tw = d.twL([{sxy: 1.3}, 100], [{sxy: 1}, 100]).$()
+    d.$$(function () {
+        tw.$()
+    })
+    return d.K('dev dot')
+}
+i.dot = function () {
+    var i = this
+    i.getStage().dot(i.X(), i.Y())
+    return i
+}
+
+
+shapz()
+function shapz() {
+    turtle2 = [['green', [0, 0], [-50, -10], [-40, -20], [0, -40], [20, -10]], ['yellow', [-60, -30], [-50, -60], [-20, -45], [-15, -35]], ['yellow', [-50, 10], [-50, -10], [-40, -10], [-40, 10]], ['yellow', [-10, 10], [-10, -10], [0, -10], [0, 10]]]
+
+    dick = [
+        [50, 300, 0, -100],
+        [50, 100, 150],
+        [50, -100, 150]
+    ]
+    guyInBed = [
+        [30],
+        [20, 30, 30],
+        [100, 30]
+    ]
+
+    cjs.somePolyFixt = [
+        [
+            [-100, 0], [0, -100],
+            [100, 0], [60, 50]]]
+    cjs.compoundShape = [
+        [50, 10],
+        [60, 30, 0, 0, 40],
+        [120, 30, 0, 0, 29],
+        [60, 10, 0, 50, 60],
+        [84, 10, 15, 80, -120]
+    ]
+    cjs.compoundShape2 = [
+        [50, 10],
+        [20, 20],
+        [20, 10, 0, 0, 10],
+        [40, 10, 50, 0, 45],
+        [84, 10, 15, 80, -120],
+        [60, 10, 0, 50, 60]
+    ]
+    cjs.compoundStar = [
+        [10, 10],
+        [20],
+        [4, 80, 10, 30, 135],
+        [4, 80, 0, 0, 45],
+        [4, 80, 100, 0, 90],
+        [4, 80, 0, 0, 180]
+    ]
+
+    v1 = [[-100, 0], [0, -100], [100, -50], [0, -50]]
+
+    turtle = [
+        ['green', [0, 0], [-50, -10], [-40, -20], [0, -40], [20, -10]]
+
+        , ['yellow', [10, -10], [20, -30], [50, -15], [45, -5]]
+
+        , ['yellow',
+
+            [-50, 10], [-50, -10], [-40, -10], [-40, 10]
+        ]
+
+        , ['yellow',
+
+            [-10, 10], [-10, -10], [0, -10], [0, 10]
+        ]
+    ]
+
+
+    pin = [
+        ['o', [-20, 20], [0, -80], [20, 20], [0, -40]],
+        ['w', 8, 0, -75],
+        ['w', 8, -20, 20],
+        ['w', 8, 20, 20]
+    ]
+}
+
+function more(){
+
+
+    function alertIfUsed() {
+        function createStuff(){
+            $El = cjs.el = function (a) {
+                a = $(a)[0]
+                return new cjs.DOMElement(a)
+            }
+            ELM = function () {
+                z()
+                d = $.d('r', 400, 400).A($.ip()).drag()
+                el = $El(d)
+                s = $St('y').t()
+                s.A(el)
+                // tw(el, [{x:300,y:300},2000])
+                // tw([el,'l'],[{r:360, sx:.5, sy:.5},8000],{r:0},[{r:360, sx:1, sy:1},8000])
+            }
+        }
+        i.bB = i.bindBody = function (b) {
+            alert('i.bindBody i.bB')
+            var i = this
+            cjs.t(function () {
+                b.X(i.X())
+                b.Y(i.Y())
+                b.rt(i.rt())
+            })
+            return i
+        }
+        i.tf = function () {
+            alert('i.tf')
+            var i = this, g = G(arguments)
+            if (g.u) {return [
+                i.x,
+                i.y,
+                i.scaleX,
+                i.scaleY,
+                i.rotation,
+                i.skewX,
+                i.skewY,
+                i.regX,
+                i.regY
+            ]}
+            if (O(g[0]) && F(g[0].getTransform)) {
+                g[0] = g[0].getTransform()
+            }
+            i.setTransform.apply(i, A(g[0]) ? g[0] : g)
+            return i
+        }
+
+        i.getTransform = function () {
+            alert('i.getTransform')
+            var ob = this
+            return [
+                ob.x, ob.y, ob.scaleX, ob.scaleY,
+                ob.rotation, ob.skewX, ob.skewY,
+                ob.regX, ob.regY
+            ]
+        }
+        i.cu = i.bM = function (cu) {
+            alert('i.cu i.bM')
+            var ob = this,
+                st = ob.st()
+            CUob = {
+                d: 'default', n: 'none', h: 'help',
+                p: 'pointer', ch: 'crosshair',
+                P: 'progress', w: 'wait',
+                t: 'text',
+                m: 'move', g: 'grab', c: 'copy',
+                cm: 'context-menu',
+                C: 'cell',
+                N: 'not-allowed', v: 'not-allowed',
+                z: 'zoom-in'
+            }
+            if (U(cu)) {
+                st.MM(function () {
+                    ob.x = st.m().x;
+                    ob.y = st.m().y
+                })
+            }
+            else if (S(cu)) {
+                ob.cursor = CUob[cu] ? CUob[cu] : cu
+            }
+            return ob
+        }
+
+        cjs.rgb=function(r,g,b,a){
+            alert('cjs.rgb')
+            var str
+            a = N(a)? a: 1
+            str = 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')'
+            return str
+        }
+        drawHalf=function(c,i){
+            alert('drawHalf')
+            c.dI(i, -i.width/2, -i.h/2)}
+        drag = drg = function (element) {
+            alert('drag')
+            var q = $b(qq(element).q)
+                .css({position: 'absolute'})
+                .on('mousedown', function (e) {
+
+                    var offset = $(this).offset(),
+
+                        deltaX = e.pageX - offset.left, deltaY = e.pageY - offset.top
+
+                    $('html').on('mousemove', function (e) {
+                        q.css({left: e.pageX - deltaX, top: e.pageY - deltaY})
+                    })
+                        .on('mouseup', function () {
+                            $(this).off()
+                        })
+
+                })
+
+            touchDrg(element)
+            return qq(element)
+
+        }
+        $.fn.hideOnKeyDown = function (a) {
+            alert('$.fn.hideOnKeyDown ')
+            var that = this
+            $('body').keydown(function (ev) {
+                e = ev
+                $l(e.which)
+                if (e.which == 40) {
+                    that.hide()
+                }
+                if (e.which == 38) {
+                    that.show()
+                }
+            })
+        }
+        $.fn.T = function () {
+            alert('$.fn.T')
+            var d = this, g = G(arguments)
+            d.E()
+            g.e(function (str) {
+                d.A($.h3(str))
+            })
+            return d
+        }
+        $.joystick = function () {
+            alert('joystick')
+            $('#left').on('mousedown mouseover touchenter', function (e) {
+                $.K.left = true;
+                e.preventDefault()
+            })
+            $('#left').on('mouseup mouseout touchleave', function () {
+                $.K.left = false
+            })
+            $('#jump').on('mousedown mouseover touchenter', function () {
+                $.K.up = true
+            })
+            $('#jump').on('mouseup mouseout touchleave', function () {
+                $.K.up = false
+            })
+            $('#right').on('mousedown mouseover touchenter', function () {
+                $.K.right = true
+            })
+            $('#right').on('mouseup mouseout touchleave', function () {
+                $.K.right = false
+            })
+        }
+        $.fn.toR = $.fn.moveRight = function (num) {
+            alert('toL')
+            num = num || 20
+            if (this.left() == 'auto') {
+                this.left(0)
+            }
+            this.left(parseInt(this.left()) + num)
+            return this
+        }
+        $.fn.toL = $.fn.moveLeft = function (num) {
+            alert('toL')
+            num = num || 20
+            if (this.left() == 'auto') {
+                this.left(0)
+            }
+            this.left(parseInt(this.left()) - num)
+            return this
+        }
+        $.fn.toU = $.fn.moveDown = function (num) {
+            alert('toL')
+            num = num || 20
+            if (this.top() == 'auto') {
+                this.top(0)
+            }
+            this.top(this.top() - num)
+            return this
+        }
+        $.fn.toD = $.fn.moveDown = function (num) {
+            alert('toL')
+            num = num || 20
+            if (this.top() == 'auto') {
+                this.top(0)
+            }
+            this.top(this.top() + num)
+            return this
+        }
+    }
+    i.warpX = function (lo, hi, cush) {
+        alert('i.warpX')
+        var i = this,
+            wrp = M.wrp(lo, hi, cush)
+        T.t(function () {
+            i.x = wrp(i.x)
+        })
+        return i
+    }
+
+    i.warpY = function (lo, hi, cush) {
+        alert('i.warpY')
+        var i = this, wrp = M.wrp(lo, hi, cush)
+        T.t(function () {
+            i.y = wrp(i.y)
+        })
+        return i
+    }
+
+    i.warp = function (n) {
+        var i = this, s = i.S(), n = n || 0
+        i.warpX(0, s.W(), n)
+        i.warpY(0, s.H(), n)
+        return i
+    }
+
+
+}
+i.tickX = function (fn) {
+    var i = this
+    T.t(function () {
+        i.X(fn())
+    })
+    return i
+}
+i.tickY = function (fn) {
+    var i = this
+    T.t(function () {
+        i.Y(fn())
+    })
+    return i
+}

@@ -9,7 +9,7 @@ function prevKeyFns() {
                     $.kU(k.toLowerCase(), fn)
                 }
                 else {
-                    $.k(k, fn)
+                    $.kD(k, fn)
                 }
             })
             return
@@ -183,7 +183,38 @@ function prevKeyFns() {
         }
     }
 }
-
+$.K = function (o) {
+    alert('$.K')
+    if (!O(o)) {return}
+    if (F(o.u)) {
+        cjs.tick(function () {
+            if ($.K.u) {
+                o.u($.K.u)
+            }
+        })
+    }
+    if (F(o.d)) {
+        cjs.tick(function () {
+            if ($.K.d) {
+                o.d($.K.d)
+            }
+        })
+    }
+    if (F(o.l)) {
+        cjs.tick(function () {
+            if ($.K.l) {
+                o.l($.K.l)
+            }
+        })
+    }
+    if (F(o.r)) {
+        cjs.tick(function () {
+            if ($.K.r) {
+                o.r($.K.r)
+            }
+        })
+    }
+}
 //alert
 cjs.watchKeys = function () {
     alert('cjs.watchKeys')
@@ -246,29 +277,6 @@ cjs.watchKeys = function () {
         }
         $.K.d = $.K.down = false
     })
-}
-$sw = cjs.sw = cjs.stopWatch = function () {
-    alert('$sw')
-    _$t = function () {
-        return new Date().getTime()
-    }
-    var t = _$t()
-    return function self() {
-        var g = G(arguments),
-            d = _$t() - t
-        if (g.d) {
-            t = _$t()
-        }
-        if (g.n) {
-            var f = _.cap(
-                (self('/') - 500) / 20,
-                0,
-                100
-            )
-            return f
-        }
-        return d
-    }
 }
 
 //$.space = function (fn) {return $.kD('space', fn)}

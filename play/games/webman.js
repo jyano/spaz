@@ -290,7 +290,7 @@ WEBMAN = function () {
     p.bit(0)
     //p.fixedRot(false)
 
-    $.k({
+    $.kD({
 
         u: function () {
             p.unstick()
@@ -351,7 +351,7 @@ WEBMAN = function () {
 BEARD  = function () {
     W().randRects()
     p = w.Webman()
-    $.k({
+    $.kD({
         l: function () {
             p.I(-20, 0)
         },
@@ -390,7 +390,7 @@ WEB = function () {
     })
     p = w.Webman()
 
-    $.k({
+    $.kD({
         l: function () {
             p.lV(-40, 0)
         },
@@ -449,7 +449,7 @@ WEBBY = function () {
             }
         })
     })
-    $.k({
+    $.kD({
 
         u: function (e, K) {
             var i
@@ -552,7 +552,7 @@ BLN = function () {
     p = w.me(394, 530, 4).track()
     Blns = []
 
-    $.k({
+    $.kD({
 
         l: function () {
             p.I(-100, 0)

@@ -1872,13 +1872,8 @@ $.dg = $.dragFrame = function (d) {
 _z=function z(a,b,c){return U(b)?_.size(a)
     :N(b)?_z(a)==b
     :_z(a)==_z(b)}
-z = function (fn) {
-    var g = G(arguments)
-    if (g.F_) {
-        return T.t(fn)
-    }
-    $('body').empty()
-}
+
+z = function (fn) {$('body').empty()}
 $.bd=function(){var dc
     bd = $('body')
     return bd
@@ -1907,15 +1902,6 @@ $.h=function(){var g=G(arguments),o
     return $
 }
 function evenz(){
-    KEYOB = keyObj = {
-
-        up: 38, u: 38,
-        down: 40, d: 40,
-        left: 37, l: 37,
-        right: 39, r: 39,
-        space: 32, s: 32,
-        enter: 13, e: 13
-    }
     $.$ = function (f) {
         return $(document).on('click', _v(f))
 
@@ -2070,17 +2056,53 @@ function evenz(){
         this.on('mousedown', function(e){  e.stopPropagation()  })
         return this
     }
-
-
     $.wh = function (a, b) {
         return D(b) ? a.which == b : a.which
     }
+    KEYOB = KEYOBJ=  {
 
-
+        up: 38, u: 38,
+        down: 40, d: 40,
+        left: 37, l: 37,
+        right: 39, r: 39,
+        space: 32, s: 32,
+        enter: 13, e: 13
+    }
+    $.kD =  function self(key, fn) {
+        if (O(key)) {
+            _.e(key, function (fn, k) {
+                if (s$(k).isUpper()) {
+                    $.kU(k.toLowerCase(), fn)
+                }
+                else {
+                    $.kD(k, fn)
+                }
+            })
+            return
+        }
+        if (KEYOB[key]) {
+            key = KEYOB[key]
+        }
+        $('body').on('keydown', function (e) {
+            if (e.which == key) {
+                fn(e, $.K)
+            }
+        })
+    }
+    $.kU =   function (key, funk) {
+        if (KEYOBJ[key]) {
+            key = KEYOBJ[key]
+        }
+        $('body').on('keyup', function (e) {
+            if (e.which == key) {
+                funk(e, $.K)
+            }
+        })
+    }
+    $.K = {}
     $.space = function (fn) {
         return $.kD('space', fn)
     }
-
     $.fn.dg = $.fn.drag = function () {
 
         this.A()
@@ -2116,9 +2138,8 @@ function evenz(){
         return this
 
     }
-
-
 }
+
 
 html()
 image()
