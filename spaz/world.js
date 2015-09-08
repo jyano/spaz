@@ -361,6 +361,7 @@ function mouse() {
     }
 }
 function keys(){
+
     $.kD('l',function(){
         if ($.test) {$l('left pressed')}
         K.l = cjs.Keys.l = cjs.Keys.left = true
@@ -368,6 +369,7 @@ function keys(){
         K.l = 1;
         K.L = 0
     })
+
     $.kU('l',function(){if ($.test) { $l('left lifted') }
         K.l = cjs.Keys.l = cjs.Keys.left = false
         K.l = 0;
@@ -879,8 +881,7 @@ W=b2d.W=function(){var g=G(arguments),o
     }
 
     w.walls(_w)
-
-    keys()
+     keys()
     mouse()
     T.t(function(){
         if(w.mj){w.mj.tg(w.mx, w.my)}
@@ -913,6 +914,7 @@ W=b2d.W=function(){var g=G(arguments),o
     return w
 
 }
+
 $W=function(){
     W()
     w.y()

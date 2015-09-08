@@ -31,7 +31,6 @@ P = cjs.P = $Pt = cjs.Pt = function (x, y) {
     }
     return new cjs.Point(x, y)
 }
-
 T = cjs.Ticker
 T.t = cjs.t = cjs.tick = function (fn) {
     var g = G(arguments)
@@ -87,15 +86,9 @@ T.m = function (ticks) {
     return T.getMeasuredTickTime(ticks)
 } //ticks: // optional The number of previous ticks over which to measure the average time spent in a tick.Defaults to the number of ticks per second.To get only the last tick's time, pass in 1.
 
-KEYOB = {
-    up: 38, u: 38,
-    down: 40, d: 40,
-    left: 37, l: 37,
-    right: 39, r: 39,
-    space: 32, s: 32,
-    enter: 13, e: 13
-}
-$.k = $.key = $.keyDown = $.kD = kD = function self(key, fn) {
+
+
+$.k = $.key = $.keyDown = $.kD =  function self(key, fn) {
 
     if (O(key)) {
         _.e(key, function (fn, k) {
@@ -108,21 +101,17 @@ $.k = $.key = $.keyDown = $.kD = kD = function self(key, fn) {
         })
         return
     }
-
     if (KEYOB[key]) {
         key = KEYOB[key]
     }
-
-
     $('body').on('keydown', function (e) {
 
         if (e.which == key) {
             fn(e, cjs.Keys)
         }
     })
-
 }
-$.keyUp = $.kU = kU = function (key, funk) {
+$.keyUp = $.kU =   function (key, funk) {
     keyObj = {
         up: 38, u: 38,
         down: 40, d: 40,
@@ -141,106 +130,193 @@ $.keyUp = $.kU = kU = function (key, funk) {
         }
     })
 }
-cjs.Keys = function (o) {
 
-    if (O(o)) {
+function prevKeyFns(){
+    $.k = $.key = $.kD = function self(k, fn) {
 
-        if (F(o.u)) {
-            cjs.tick(function () {
-                if (cjs.Keys.u) {
-                    o.u(cjs.Keys.u)
+        if (O(k)) {
+            _.e(k, function (fn, k) {
+                if (s$(k).isUpper()) {
+                    $.kU(k.toLowerCase(), fn)
+                }
+                else {
+                    $.k(k, fn)
                 }
             })
+            return
         }
 
-        if (F(o.d)) {
-            cjs.tick(function () {
-                if (cjs.Keys.d) {
-                    o.d(cjs.Keys.d)
-                }
-            })
+        if (KEYOB[k]) {
+            k = KEYOB[k]
         }
 
-        if (F(o.l)) {
-            cjs.tick(function () {
-                if (cjs.Keys.l) {
-                    o.l(cjs.Keys.l)
-                }
-            })
-        }
-
-        if (F(o.r)) {
-            cjs.tick(function () {
-                if (cjs.Keys.r) {
-                    o.r(cjs.Keys.r)
-                }
-            })
-        }
+        $('body').on('keydown', function (e) {
+            if (e.which == k) {
+                fn(e, $.K)
+            }
+        })
 
     }
+    $.kU = function (k, fn) {
+
+        if (keyObj[k]) {
+            k = keyObj[k]
+        }
+        $('body').on('keyup', function (e) {
+            if (e.which == k) {
+                fn(e, $.K)
+            }
+        })
+    }
+    $.spc = function (fn) {
+        return $.kD('space', fn)
+    }
+
+    K = function (k, fn) {
+        var g = G(arguments), o, key
+
+        if (g.u) {
+            if (K._loaded) {
+                return
+            }
+            $.kD('l', function () {
+                if ($.test) {
+                    $l('left pressed')
+                }
+                K.l = cjs.Keys.l = cjs.Keys.left = true
+                cjs.Keys.dir = 'left'
+                K.l = 1;
+                K.L = 0
+            })
+
+            $.kU('l', function () {
+                if ($.test) {
+                    $l('left lifted')
+                }
+                K.l = cjs.Keys.l = cjs.Keys.left = false
+                K.l = 0;
+                K.L = 1
+            })
+
+            $.kD('r', function () {
+                if ($.test) {
+                    $l('right pressed')
+                }
+                K.r = cjs.Keys.r = cjs.Keys.right = true
+                cjs.Keys.dir = 'right'
+                K.r = 1;
+                K.R = 0
+            })
+
+            $.kU('r', function () {
+                if ($.test) {
+                    $l('right lifted')
+                }
+                cjs.Keys.r = cjs.Keys.right = false
+                K.r = 0;
+                K.R = 1
+            })
+            $.kD('u', function () {
+                if ($.test) {
+                    $l('up pressed')
+                }
+                cjs.Keys.u = cjs.Keys.up = true
+                K.u = 1;
+                K.U = 0
+            })
+            $.kU('u', function () {
+                if ($.test) {
+                    $l('up lifted')
+                }
+                cjs.Keys.u = cjs.Keys.up = false
+                K.u = 0;
+                K.U = 1
+            })
+            $.kD('d', function () {
+                if ($.test) {
+                    $l('down pressed')
+                }
+                cjs.Keys.d = cjs.Keys.down = true
+                K.d = 1;
+                K.D = 0
+            })
+            $.kU('d', function () {
+                if ($.test) {
+                    $l('down lifted')
+                }
+                cjs.Keys.d = cjs.Keys.down = false
+                K.d = 0;
+                K.D = 1
+            })
+            K._loaded = 1
+            return
+        }
+
+        if (O(k)) {
+            if (g.p) {
+                if (F(k.u)) {
+                    z(function () {
+                        if (K.u) {
+                            k.u(K.u)
+                        }
+                    })
+                }
+                if (F(k.d)) {
+                    z(function () {
+                        if (K.d) {
+                            k.d(K.d)
+                        }
+                    })
+                }
+                if (F(k.l)) {
+                    z(function () {
+                        if (K.l) {
+                            k.l(K.l)
+                        }
+                    })
+                }
+                if (F(k.r)) {
+                    z(function () {
+                        if (K.r) {
+                            k.r(K.r)
+                        }
+                    })
+                }
+            }
+            else {
+                _.e(k, function (fn, k) {
+                    K(k, fn)
+                })
+            }
+
+            return
+        }
+
+        o = s$(k).isUpper() ? {on: 'keyup', k: k.toLowerCase()} : {on: 'keydown', k: k}
+
+        if (g.p) {
+            return z(function () {
+                if (K[k]) {
+                    fn()
+                }
+            })
+        }
+
+        key = Key(o.k)
+        return $('body').on(o.on, function (e) {
+            if (e.which == key) {
+                fn(e)
+            }
+        })
+        function Key(k) {
+            var ob = {u: 38, d: 40, l: 37, r: 39, s: 32, e: 13};
+            return ob[k] ? ob[k] : k
+        }
+    }
 }
-cjs.watchKeys = function () {
-    cjs.Keys.l = cjs.Keys.left = false
-    cjs.Keys.r = cjs.Keys.right = false
-    cjs.Keys.u = cjs.Keys.up = false
-    cjs.Keys.d = cjs.Keys.down = false
-
-    $.kD('l', function () {
-        if ($.test) {
-            $l('left pressed')
-        }
-        cjs.Keys.l = cjs.Keys.left = true
-        cjs.Keys.dir = 'left'
-    })
-
-
-    $.kU('l', function () {
-        if ($.test) {
-            $l('left lifted')
-        }
-        cjs.Keys.l = cjs.Keys.left = false
-    })
-    $.kD('r', function () {
-        if ($.test) {
-            $l('right pressed')
-        }
-        cjs.Keys.r = cjs.Keys.right = true
-        cjs.Keys.dir = 'right'
-    })
-    $.kU('r', function () {
-        if ($.test) {
-            $l('right lifted')
-        }
-        cjs.Keys.r = cjs.Keys.right = false
-    })
-    $.kD('u', function () {
-        if ($.test) {
-            $l('up pressed')
-        }
-        cjs.Keys.u = cjs.Keys.up = true
-    })
-    $.kU('u', function () {
-        if ($.test) {
-            $l('up lifted')
-        }
-        cjs.Keys.u = cjs.Keys.up = false
-    })
-    $.kD('d', function () {
-        if ($.test) {
-            $l('down pressed')
-        }
-        cjs.Keys.d = cjs.Keys.down = true
-    })
-
-
-    $.kU('d', function () {
-        if ($.test) {
-            $l('down lifted')
-        }
-        cjs.Keys.d = cjs.Keys.down = false
-    })
-}
-K = function (k, fn) {
+//alert
+K = function (k, fn){
+    alert('K')
     var g = G(arguments), o, key
     if (g.u) {
         if (K._loaded) {
@@ -315,6 +391,7 @@ K = function (k, fn) {
         K._loaded = 1
         return
     }
+
     if (O(k)) {
         if (g.p) {
             if (F(k.u)) {
@@ -371,23 +448,118 @@ K = function (k, fn) {
         var ob = {u: 38, d: 40, l: 37, r: 39, s: 32, e: 13};
         return ob[k] ? ob[k] : k
     }
-
 }
-$.space = function (fn) {
-    return $.kD('space', fn)
+cjs.Keys = function (o) {
+alert('cjs.Keys')
+    if (O(o)) {
+
+        if (F(o.u)) {
+            cjs.tick(function () {
+                if (cjs.Keys.u) {
+                    o.u(cjs.Keys.u)
+                }
+            })
+        }
+
+        if (F(o.d)) {
+            cjs.tick(function () {
+                if (cjs.Keys.d) {
+                    o.d(cjs.Keys.d)
+                }
+            })
+        }
+
+        if (F(o.l)) {
+            cjs.tick(function () {
+                if (cjs.Keys.l) {
+                    o.l(cjs.Keys.l)
+                }
+            })
+        }
+
+        if (F(o.r)) {
+            cjs.tick(function () {
+                if (cjs.Keys.r) {
+                    o.r(cjs.Keys.r)
+                }
+            })
+        }
+
+    }
+}
+cjs.watchKeys = function () {
+    alert('cjs.watchKeys')
+    cjs.Keys.l = cjs.Keys.left = false
+    cjs.Keys.r = cjs.Keys.right = false
+    cjs.Keys.u = cjs.Keys.up = false
+    cjs.Keys.d = cjs.Keys.down = false
+
+    $.kD('l', function () {
+        if ($.test) {
+            $l('left pressed')
+        }
+        cjs.Keys.l = cjs.Keys.left = true
+        cjs.Keys.dir = 'left'
+    })
+
+
+    $.kU('l', function () {
+        if ($.test) {
+            $l('left lifted')
+        }
+        cjs.Keys.l = cjs.Keys.left = false
+    })
+    $.kD('r', function () {
+        if ($.test) {
+            $l('right pressed')
+        }
+        cjs.Keys.r = cjs.Keys.right = true
+        cjs.Keys.dir = 'right'
+    })
+    $.kU('r', function () {
+        if ($.test) {
+            $l('right lifted')
+        }
+        cjs.Keys.r = cjs.Keys.right = false
+    })
+    $.kD('u', function () {
+        if ($.test) {
+            $l('up pressed')
+        }
+        cjs.Keys.u = cjs.Keys.up = true
+    })
+    $.kU('u', function () {
+        if ($.test) {
+            $l('up lifted')
+        }
+        cjs.Keys.u = cjs.Keys.up = false
+    })
+    $.kD('d', function () {
+        if ($.test) {
+            $l('down pressed')
+        }
+        cjs.Keys.d = cjs.Keys.down = true
+    })
+
+
+    $.kU('d', function () {
+        if ($.test) {
+            $l('down lifted')
+        }
+        cjs.Keys.d = cjs.Keys.down = false
+    })
 }
 $sw = cjs.sw = cjs.stopWatch = function () {
+    alert('$sw')
     _$t = function () {
         return new Date().getTime()
     }
-
-
     var t = _$t()
     return function self() {
         var g = G(arguments),
-            d = $t() - t
+            d = _$t() - t
         if (g.d) {
-            t = $t()
+            t = _$t()
         }
         if (g.n) {
             var f = _.cap(
@@ -399,7 +571,6 @@ $sw = cjs.sw = cjs.stopWatch = function () {
         }
         return d
     }
-
 }
 
-
+//$.space = function (fn) {return $.kD('space', fn)}

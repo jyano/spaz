@@ -68,7 +68,7 @@ _.e(dirs, function(dir){
     $a.use($e.static(dir))
 })
 
-require('http').createServer($a).listen(80, function(){
-    $l('game server listening on port 80')
+require('http').createServer($a).listen(90, function(){
+    $l('game server listening on port 90')
 })
 

@@ -459,7 +459,7 @@ function obvious() {
             return pos.x
         }
         this.XY(
-            $.update(pos.x, x, g), pos.y
+            _.upd(pos.x, x, g), pos.y
         )
         return this
     }
@@ -473,7 +473,7 @@ function obvious() {
         }
 
         this.XY(pos.x,
-            $.update(pos.y, y, g))
+            _.upd(pos.y, y, g))
         return this
     }
     b.XY = function (x, y) {

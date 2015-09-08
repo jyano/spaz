@@ -171,7 +171,7 @@ dJ.l=   dJ.len= function(a){var j=this, g=G(arguments),
     l = j.GetLength() * 30
     if(g.u){return l}
     j.SetLength(
-        $.update(j,g.f,g)/30)
+        _.upd(j,g.f,g)/30)
     return j
 }
 dJ.d=   dJ.damp= function(dR){
