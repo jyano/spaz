@@ -908,12 +908,16 @@ function proto(){
         g.unshift(this)
         return _tw = tw = cjs.Tw.apply(null, g)
     }
-    i.twL = function () {
-        var g = G(arguments), tw
-        g.unshift([this, 'l'])
-        return tw = _tw = J.tween.apply(null, g)
 
+    i.twL = function () {
+        var g = G(arguments), tw,i=this
+
+        g.unshift([this, 'l'])
+
+        return tw = _tw = $Tw.apply(i, g)
     }
+
+
     i.sp = i.spin = function () {
         this.twL([{r: 360}, 4000]);
         return this

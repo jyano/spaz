@@ -105,52 +105,9 @@ CAMBALL=function(){
 
 
 }
-AUTO = function () {
-    W({g: 300, w: 0}).P(300, -300)
-
-    w.plat = function (x, y, W, H) {
-        var w = this//=brk=brick=
-        x = N(x) ? x : 60;
-        y = N(y) ? y : x
-        W = N(W) ? W : 30;
-        H = N(H) ? H : W
-        return w.S(x, y, 'w', W, H).r(.3).K('plat')
-    }
 
 
-    w.plat(800, 500, 600, 100)
-    w.plat(300, 530, 100, 100)
-    w.plat(1400, 300, 600, 100)
-    w.plat(1800, 500, 1000, 100)
-    w.plat(1900, 200, 600, 100)
 
-    w.p(300, -100)
-
-    T.t(function () {
-
-        w.left(4)
-
-        if (p.Y() > 2000) {
-            p.XY(300, -300)
-        } //comeback
-
-        if (b2d.onG) {
-            if (cjs.Keys.u) {
-                p.jumping(180, 30)
-            }
-            else {
-                p.byVel(40)
-            }
-        }
-
-        else {
-            p.byImp(10)
-        }
-
-    })
-
-    w.D(800, 100, 'r', 50, 50).bS('guy')
-}
 HEADACHE=function(){W().P()
 
     // w.clouds(100,200)
@@ -325,90 +282,7 @@ GRAV = function () {
     })
 
 }
-STAB = function () {
-    W({g: 0})
-    w.S(200, 200, 'b', 50, 260)
-    w.S(140, 200, 'd', 140, 50)
 
-
-    co = w.tCo();
-    _.t(10, function () {
-        co.B(
-            w.D(R(1000, 100), 300, 'x', 30).lV(10, 20).lD(0))
-    })
-
-    hits = 0
-
-    y = w.y().K('ship').lD(5)
-
-    bg = w.y('b', 500, 300, '-').d(3).lD(2).K('bg').aD(.2)
-
-    bg.rotTowards = function (y) {
-        var b = this, a
-        a = -M.tD(M.atan((y.X() - b.X()) / (y.Y() - b.Y())))
-        if (y.Y() > b.Y()) {
-            a += 180
-        }
-        b.rt(R(40, a - 20))
-    }
-
-    _.ev(.5, function () {
-        bg.aV(0);
-        bg.rotTowards(y)
-    })
-
-    bg.push(50, '+')
-
-    T.t(function () {
-        _.t(20, function () {
-            bg.I()
-        })
-    })
-
-
-    w.b(function (cx) {
-        var i
-        if (cx.w('ship', 'bg')) {
-
-            i = cx.m().m_points[0].m()
-
-            _.in(.1,
-                (
-                M.lD(V(i.x, i.y), V(y.X(), y.Y())) >
-                M.lD(V(i.x, i.y), V(bg.X(), bg.Y()))
-                ) ?
-                    function () {
-                        hits++;
-                        w.C('g');
-                        bg.XY(300, 300);
-                        y.XY(700, 400)
-                    }
-                    :
-                    function () {
-                        w.C('p');
-                        bg.XY(700, 400);
-                        y.XY(100)
-                    })
-        }
-    })
-    //w.show(function(){return 'hits: '+ hits})
-}
-ZIL = function () {
-    W({g: 0, w: 0})
-    health = 100
-
-    y = w.ship().warp().cl(function () {
-        health -= 5
-    })
-
-
-    z = w.zilla(600, 300).fireBallsAtInt(4000)
-
-
-    w.show(function () {
-        return 'health: ' + health + ', hits: ' + z.hits
-    })
-}
 PINBALL = function () {
     W([420, 600], {})
     w.floor.kill()
@@ -435,24 +309,9 @@ PINBALL = function () {
     )
 
 }
-TRAP = function () {
 
-    W(0).C('r')
-    co = w.tCo()
-    _.t(3, function () {
-        co.B(
-            w.y('z', R(500, 50), R(300, 50), '-').lV(10, 20).lD(0)
-            //  w.D(400,300, 'z',10,10)
-        )
-    })
-    y = w.y()
-    rot = 45
 
-    bg = w.y('b', 500, 300, '-').shtEv().stat()
 
-    T.t(function () {bg.rTow(y)})
-
-}
 CHARSWITCH = function () {
     W([1200, 600, 3600, 800])
 
@@ -1454,75 +1313,6 @@ KILL = function () {
 
 
 }
-COLORSHIP = function () {
-    W().G(1)//.C('z').pen('welcome to tensor (damping) controller - the timing here is amazing!')
-
-    co = w.tCo()
-
-    co.B(
-        r = w.D(100, 100, 'r', 100).lV(10, 20).grp(-1).lD(.2),
-        b = w.D(500, 500, 'b', 90).lV(-10, -20).grp(-1).lD(.2),
-        y = w.D(300, 300, 'y', 70).lV(-10, -20).grp(-1).lD(.2)
-    )
-
-    o = w.D(300, 300, 'o', 70).lV(-10, -20).grp(-1).lD(.2)
-
-
-    _.t(30, function () {
-        var b = w.D(400, 300, 'o', 20)//.lV(10,20).lD(0)//.L(10,20,0)
-        b.f().grp(-1)
-
-        co.B(b)
-    })
-    w.y().grp('-1')
-
-    // w.r_.cl(function(f){f.C('b'); co.xB(f)})
-
-    l = w.m_controllerList.GetBodyList()
-
-
-}
-
-
-
-TOWARD = function () {
-
-    W({g: 0}).C('z')
-    b = w.D(500, 300, 'r', 100)
-    y = w.ship()
-
-    cjs.t(function () {
-
-        b.towards(y.X(), y.Y(), 9)
-
-    })
-
-
-    _.t(5, function () {
-        w.ship('b', R(500, 50), R(500, 50))
-    })
-    w.b(function (cx) {
-        cx.w('ship', 'bul', function (bul, cx) {
-            this.kill()
-        })
-    })
-    w.D(200, 200, 'b', 80).d(1).K('bad')
-    w.D(200, 200, 'r', 150, 150).d(1).K('bad')
-    y = w.y('b', 100, 200, 6, '-').aD(1).lD(1)
-        .r(0).fr(1).K('guy')
-        .shootOnInt(.2)
-        .cn('thrust')
-
-    w.cl('bul', 'bad', function (b) {
-        if (this.B()) {
-            this.B().kill()
-        }
-        if (b.B()) {
-            b.B().kill()
-        }
-    })
-}
-
 
 TFSET= function(){W()._(function(){
 
@@ -1573,4 +1363,231 @@ TFSET= function(){W()._(function(){
 })
 }
 
+moree()
+function moree(){
 
+    JFAL = function () {
+        w.me = function (x, y, Z) {
+            var w = this, p
+
+
+            Z = N(Z, 4)
+            p = w.D(x, y)
+            p.cir({c: 'X', C: 'X', l: 0, r: 1})
+            p.rec('X', Z * 12, Z * 22).K('head')
+            p.rec('X', Z * 10, Z * 20, 0, Z * 10, '-').K('feet')
+            p.rec('X', Z * 2, Z * 6, 0, -Z * 12, '-').K('hat')
+            p.rec('X', Z * 8, Z * 2, Z * 8, 0, '-').K('right')
+            p.rec(Z * 8, Z * 2, -Z * 8, 0, '-').K('left')
+            p.d(1).r(0).fr(.1).fixRot()
+            p.bS({
+                i: 'me',
+                sc: Z / 10
+            })
+
+            return p.K('p player')
+        }
+        W({g: 10, w: 'L'})
+        //w.s.sX(.95)
+        num = 0;
+        heads = 0
+        y = w.ship()//.den(.3)
+
+        _.ev(1, function () {
+            w.me(100, 100).K('head')
+            num++
+        })
+
+        //w.show(function(){return num + ' - ' + heads  })
+        game = true
+
+        T.t(function () {
+            /*
+             if(num > 30){
+             $.pop('score: '+heads)
+             num=0
+             heads=0
+             w.each(function(b){
+             if(b.data() == 'head'){
+             b.kill()
+             heads++}})}
+             */
+
+            if (game) {
+                if (num > 60) {
+                    game = false
+
+                    msg = 'score: ' + heads
+
+                    $l(msg)//$.pop(msg)
+                }
+
+                else {
+                    w.e(function (b) {
+                        if (b.K() == 'head' && b.Y() > 600) {
+                            b.kill();
+                            heads++
+                        }
+                    })
+                }
+            }
+        })
+    }
+    MINI = function () {
+        W({g: 10, W: 1000, H: 800})
+
+        d = $.div('y', 1500, 40).A().abs(200, 200).pad(2)
+
+        p = w.p(300, 200, 2, 'thrust')
+
+        data = function (str) {
+            if (U(str)) {
+                str = 'data'
+            }
+            d.E($.h4(str))
+        }
+
+        data()
+    }
+    FRICK = function () {
+        W()
+
+        w.fricky = function (x, y) {
+            var w = this,
+
+                b = w.D(x, y)
+
+            b.rec('r', 40, 20, 0, 0, 180).fr(1).r(0)
+            b.rec('b', 20, 40, 0, 0, 90).fr(1).r(0)
+            return b
+        }
+
+        w.fricky(400, 120)
+    }
+    SCALE = function () {
+        W()
+        r = 10
+        w.y(200, 200)
+        w.S(400, 300, 'r', 40);
+        w.S(290, 350, 'b', 40);
+        w.S(280, 220, 'y', 40)
+        w.S(100, 100, 'r', 80, 80)
+
+        bb = w.D(600, 400, 'o', 150, 150)
+        bb.bS('me')//cant attach to above at the moment..
+
+        b23 = w.D(400, 100)
+        b23.rec('r', 20, 40, 0, 0, 180).fr(0).r(0)
+        b23.rec('b', 20, 40, 0, 0, 90).fr(0).r(0)
+
+
+        w.S(100, 200, 'b', 50).f().dot()
+        w.S(100, 300, 'r', 80, 80)
+            .f().dot().C('p').dot().C('x') //overwrites dot?
+
+        T.t(function () {
+            var p = bb.wP(80, -80)
+            w.dot(p)
+            bb.I(0, -200, p)
+        })
+
+        w.show(function () {
+            var msg = 'num: ' + w.n()
+            $l(msg)
+            return msg
+        })
+
+
+    }
+    KILLFX = function () {
+
+        W()
+        r = 10
+
+        b = w.D(300, 300, 'g', r)
+        _.ev(.2, function () {
+
+            if (b.f()) {
+
+                b.f().kill()
+                r += .2;
+                b.cir('g', r)
+            }
+        })
+
+    }
+    ACH = function () {
+        W()
+
+        b33 = w.D(500, 300, 'r', [[40], ['b', 30, 100, 'arm', '-']])
+        w.b(function (cx) {
+            if (cx.w('arm')) {
+                b33.I(50, 50)
+            }
+            if (cx.w('arm', w.right)) {
+                w.C($r())
+            }
+        })
+
+        b3 = w.D(100, 100, 'b', [
+            [40],
+            [100, 200, 100],
+            [50, 200],
+            [200, 200, 300, 400]
+        ])
+
+
+        _.in(2, function () {
+            b3.fs(function (f) {
+                f.sen(1)
+                $l('shape type: ' + f.GetShape().m_type)
+            })
+        })
+    }
+    TRI = function () {
+        W()
+
+
+        b = w.S(500, 200, 'o', [
+            [[-100, 0], [0, -100], [100, 0]]
+        ]).rt(25)
+        f = b.f()
+        v = f.wV()
+
+        w.S(400, 200, 'w', [v])
+        _.e(v, function (v) {
+            w.dot(v)
+        })
+        w.S(600, 200, [f.wV('+')])
+
+    }
+    SUGARWEASEL = function () {
+        var i = -20
+        W([800, 1000], {g: -10})
+        w.roof.kill()
+        w.floor.kill()
+
+        glider = w.D(300, 500, 'b', 100, 200, 50, 50, 20)
+
+        w.D(300, 500, 'b', [-100, 0], [0, -100], [100, 20]).K('b')
+        w.D(500, 500, 'r', [-100, 0], [0, -100], [100, 20], '-').K('r')
+
+
+        w.left.K('b')
+        w.dot(300, 500)
+
+        T.t(function () {
+            glider.I(i, 0)
+        })
+        w.$(function () {
+            glider.I(i * -12, 0)
+        })
+        w.$$(function () {
+            i = ( i * -1  )
+        })
+
+        //y=w.ship()
+        //y.C(function(f){if (f.of('b')) {f.B().kill()}})
+
+    }
+}

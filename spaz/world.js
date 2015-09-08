@@ -1,6 +1,6 @@
 f.S = f.stg = function () {return this.W().s}
 b.St = b.S = b.stg = function () {return this.W().s}
-b.horizCenter = function () {var b = this; b.X(b.W().hW); return b}   //-> b.X('hC')//b.g=function(){ return this.f().g }
+
 b.c= b.C = function (c) {
     this.fs(function (f) {
         f.C(c)
