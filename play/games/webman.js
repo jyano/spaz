@@ -228,19 +228,19 @@ NETGUY = function(){W({ g:30 ,w:'_'}).C('r'); blocks=function() {
 
     $.key({
 
-        r:function(){var K=cjs.Keys
+        r:function(){var K=$.K
             if(K.d){p.didShoot = true; if(!F(p.shotClock)){ p.shotClock=cjs.stopWatch() };return }
             if  (p.isConnected())  {p.F(100,0)}  else  {p.I(8,0)}},
 
-        l:function(){var K=cjs.Keys
+        l:function(){var K=$.K
             if(K.d){p.didShoot = true; if(!F(p.shotClock)) {p.shotClock=cjs.stopWatch()}}
             if  (p.isConnected())  {p.F(-250,-50) }  else  {p.I(-8,0)}},
 
-        R:function(){var K=cjs.Keys; p.webs= p.webs||[]
+        R:function(){var K=$.K; p.webs= p.webs||[]
             if(p.webs[1]){p.webs[1].die()};
             if(K.d){p.shR()}},
 
-        L:function(){var K=cjs.Keys;  p.webs= p.webs||[]
+        L:function(){var K=$.K;  p.webs= p.webs||[]
             if(p.webs[1]){p.webs[1].die()}; if(K.d){p.shL()}},
 
         D:function(){
@@ -252,7 +252,7 @@ NETGUY = function(){W({ g:30 ,w:'_'}).C('r'); blocks=function() {
             if(cn[0] && cn[1]){cn[0].die()}
             p.canWeb = true ; p.shotForce=0},
 
-        u: function(){var K=cjs.Keys, web,ba,n
+        u: function(){var K=$.K, web,ba,n
             if(p.isConnected() && !p.webs[1] && p.canWeb){
 
                 n = Math.abs(p.lV().x*2)

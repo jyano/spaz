@@ -6,8 +6,8 @@ SPRY=function(){W([1200,600,2400,1200],{g:20})//.chalk('spritebox example')
 
     y = w.spBox( $$ship ).track()
 
-    cjs.Keys($$ship.key)
-    cjs.Keys({  //takes a spritebox!//uses cjs.watchKeys()
+    $.K($$ship.key)
+    $.K({  //takes a spritebox!//uses cjs.watchKeys()
         l: function () {y.rot(8, '-')},
         r: function () {y.rot(8, '+')},
         u: function(){y.I(0,-10)}})
@@ -59,7 +59,7 @@ function toAlert() {
     }
     b2d.cn.sl= b2d.cn.slidey = function(p){
         alert('slidy')
-        var k = cjs.Keys
+        var k = $.K
 
         if (p.onG) {if (k.u) {
 
@@ -96,7 +96,7 @@ function toAlert() {
     }
     b2d.cn.h=b2d.cn.hop = function (p) {
         alert('hop')
-        var k = cjs.Keys
+        var k = $.K
         if (p.onGround) {
             if (k.l) {p.I(-30,-120)}
             if (k.r) {p.I(30,-120)}}
@@ -105,7 +105,7 @@ function toAlert() {
 
     b2d.cn.power=function(p){
         alert('power')
-        var K=cjs.Keys
+        var K=$.K
         if(K.u){  p.I(0,-45)}
         if(K.l){  p.I(-20, 0)}
         if(K.r){  p.I(20, 0)}
@@ -114,7 +114,7 @@ function toAlert() {
 
     b2d.cn.powX=function(p){
         alert('powX')
-        var K=cjs.Keys
+        var K=$.K
         if(K.u){  p.I(0,-4500)}
         if(K.l){  p.I(-2000, 0)}
         if(K.r){  p.I(2000, 0)}
@@ -207,7 +207,7 @@ function toAlert() {
 
     b.jumping = function (y, x) {
         alert('b.jumping')
-        var b = this, k = cjs.Keys
+        var b = this, k = $.K
         if (k.u) {
             if (k.r) {
                 b.lV(x, -(y - x))
@@ -294,7 +294,7 @@ function toAlert() {
     }
     b2d.cn.jet = function (p) {
         alert('jet')
-        var k = cjs.Keys, vec = p.GetWorldVector(V(0, -100))
+        var k = $.K, vec = p.GetWorldVector(V(0, -100))
         p.fixRot()
         if (k.left) {
             p.rot(8, '-').I(0, -5)

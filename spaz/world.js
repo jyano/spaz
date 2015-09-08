@@ -364,55 +364,54 @@ function keys(){
 
     $.kD('l',function(){
         if ($.test) {$l('left pressed')}
-        K.l = cjs.Keys.l = cjs.Keys.left = true
-        cjs.Keys.dir = 'left'
+        K.l = $.K.l = $.K.left = true
+        $.K.dir = 'left'
         K.l = 1;
         K.L = 0
     })
-
     $.kU('l',function(){if ($.test) { $l('left lifted') }
-        K.l = cjs.Keys.l = cjs.Keys.left = false
+        K.l = $.K.l = $.K.left = false
         K.l = 0;
         K.L = 1
     })
     $.kD('r',function(){if ($.test) {$l('right pressed')}
-        K.r = cjs.Keys.r = cjs.Keys.right = true
-        cjs.Keys.dir = 'right'
+        K.r = $.K.r = $.K.right = true
+        $.K.dir = 'right'
         K.r = 1;
         K.R = 0
     })
     $.kU('r',function(){if ($.test) {
         $l('right lifted')
     }
-        cjs.Keys.r = cjs.Keys.right = false
+        $.K.r = $.K.right = false
         K.r = 0;
         K.R = 1
     })
     $.kD('u',function(){if ($.test) {
         $l('up pressed')
     }
-        cjs.Keys.u = cjs.Keys.up = true
+        $.K.u = $.K.up = true
         K.u = 1;
         K.U = 0
     })
     $.kU('u',function(){if ($.test) {
         $l('up lifted')
     }
-        cjs.Keys.u = cjs.Keys.up = false
+        $.K.u = $.K.up = false
         K.u = 0;
         K.U = 1
     })
     $.kD('d',function(){if ($.test) {
         $l('down pressed')
     }
-        cjs.Keys.d = cjs.Keys.down = true
+        $.K.d = $.K.down = true
         K.d = 1;
         K.D = 0
     })
     $.kU('d',function(){if ($.test) {
         $l('down lifted')
     }
-        cjs.Keys.d = cjs.Keys.down = false
+        $.K.d = $.K.down = false
         K.d = 0;
         K.D = 1
     })

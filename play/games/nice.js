@@ -900,7 +900,7 @@ TRICYCLE = function () {
 
     // j.mt(-50)
     T.t(function () {
-        var K = cjs.Keys
+        var K = $.K
         car.I(0, 5000)
 
         if (K.r) {

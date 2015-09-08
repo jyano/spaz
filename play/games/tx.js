@@ -191,7 +191,7 @@ function Bike(){
     wh3.bS('me')
 
     T.t(function () {
-        var K = cjs.Keys
+        var K = $.K
 
         if (K.u) {
             wh.ApplyTorque(150000)

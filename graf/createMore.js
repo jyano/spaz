@@ -1784,23 +1784,23 @@ function alertIfUsed() {
     $.joystick = function () {
         alert('joystick')
         $('#left').on('mousedown mouseover touchenter', function (e) {
-            cjs.Keys.left = true;
+            $.K.left = true;
             e.preventDefault()
         })
         $('#left').on('mouseup mouseout touchleave', function () {
-            cjs.Keys.left = false
+            $.K.left = false
         })
         $('#jump').on('mousedown mouseover touchenter', function () {
-            cjs.Keys.up = true
+            $.K.up = true
         })
         $('#jump').on('mouseup mouseout touchleave', function () {
-            cjs.Keys.up = false
+            $.K.up = false
         })
         $('#right').on('mousedown mouseover touchenter', function () {
-            cjs.Keys.right = true
+            $.K.right = true
         })
         $('#right').on('mouseup mouseout touchleave', function () {
-            cjs.Keys.right = false
+            $.K.right = false
         })
     }
     $.fn.toR = $.fn.moveRight = function (num) {

@@ -669,12 +669,12 @@ function auto(){
         }
 
         b.byI=b.byImp=function(i){
-            var k=cjs.Keys
+            var k=$.K
             if(k.right){this.I(i,0)}
             else if(k.left){this.I(-i,0)}
             return this}
         b.byV=b.byVel=function(v){alert('b.byV')
-            var k = cjs.Keys
+            var k = $.K
             if (k.right) { p.lV(v,0) }
             else  if (k.left) { p.lV(-v,0) }
             return this}
@@ -708,7 +708,7 @@ function auto(){
             } //comeback
 
             if (b2d.onG) {
-                if (cjs.Keys.u) {
+                if ($.K.u) {
                     p.jumping(180, 30)
                 }
                 else {
@@ -795,13 +795,13 @@ function orbit() {
 
         cjs.t(function () {
             p.XY(500, 300)
-            if (cjs.Keys.left) {
+            if ($.K.left) {
                 p.rot(8, '-')
             }
-            if (cjs.Keys.right) {
+            if ($.K.right) {
                 p.rot(8, '+')
             }
-            if (cjs.Keys.up) {
+            if ($.K.up) {
 
                 w.e(function (b) {
                     if (
